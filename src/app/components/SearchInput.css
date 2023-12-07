@@ -1,8 +1,31 @@
 .input__container{
     background-color: #fef9c3;
     border-radius: 5px ;
+    grid-column: 2/3;
+    width: 100%;
+    height: 40px;
 }
 .input__container input{
     background-color: #00000000;
     border: none;
+    width: max-content;
+    height: 100%;
+    padding-left: 2.5rem;
+    width: calc(100% - 2.5rem) ;
+    font-size: 1.2rem;
+    color: dimgrey;
+    border-radius: 5px;
+}
+.input__container input:focus{
+    /* border: 0px solid gray; */
+    outline: none;
+    border: none;
+    background-color: #fefce8;
+
+}
+.input__container .input__icon{
+    font-size: 2.2rem;
+    /* text-align: end; */
+    position: absolute;
+    /* border-right: 3px solid black; */
 }

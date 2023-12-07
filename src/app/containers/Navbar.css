@@ -4,5 +4,24 @@
     /* flex-direction: row; */
     display: grid;
     grid-template-columns: repeat(auto,3);
-    grid-template-rows: repeat(auto,3);
+    gap: 20px;
+    padding: 10px;
+    /* grid-template-rows: repeat(auto,3); */
+}
+.comerce__icon{
+    height: 40px;
+}
+
+.mobile__menu{
+    grid-column: 3/4;
+    display: flex;
+    /* flex-direction: row; */
+    /* width: min-content; */
+    justify-content: space-around;
+    flex-direction: row;
+    /* height: 50px; */
+
+    /* place-items: center; */
+
+    /* flex-direction: column; */
 }

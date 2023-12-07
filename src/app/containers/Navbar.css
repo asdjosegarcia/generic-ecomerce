@@ -1,0 +1,8 @@
+.nav__container{
+    background-color: #fff159;
+    /* display: flex; */
+    /* flex-direction: row; */
+    display: grid;
+    grid-template-columns: repeat(auto,3);
+    grid-template-rows: repeat(auto,3);
+}

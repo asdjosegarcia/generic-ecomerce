@@ -1,0 +1,8 @@
+.input__container{
+    background-color: #fef9c3;
+    border-radius: 5px ;
+}
+.input__container input{
+    background-color: #00000000;
+    border: none;
+}

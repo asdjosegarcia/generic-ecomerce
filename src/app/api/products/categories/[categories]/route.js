@@ -13,10 +13,6 @@ export async function GET(request, { params }) {
             categories: {
                 path: [params.categories], //filtramos los articulos que tengan la categorio ingresada en la url 
                 not:null //cualquier articulo que NO sea nomre_caegoria:null
-
-                // equals: 'summer',
-                // equals:{{"summer"}}
-                
             }
         }
     })

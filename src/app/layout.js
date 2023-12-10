@@ -14,10 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="image/x-icon " href="/favicon.ico" />
+        <title>Open Trade</title>
+      </head>
       <body className={inter.className}>
-      <Navbar></Navbar>
+        <Navbar></Navbar>
         {children}
-        </body>
+      </body>
     </html>
   )
 }

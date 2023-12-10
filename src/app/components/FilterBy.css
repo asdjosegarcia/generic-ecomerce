@@ -1,0 +1,9 @@
+.filter-button-container{
+    display: flex;
+    align-items: center;/* centra el contenido verticalmente */
+    justify-content: center;/* centra el contenido horizontalmente */
+    width: 100%;
+    border: none;
+    background-color: #00000000;
+    height: 30px;
+}

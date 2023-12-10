@@ -1,0 +1,9 @@
+.order-by__container{
+    display: flex;
+    align-items: center;/* centra el contenido verticalmente */
+    justify-content: center;/* centra el contenido horizontalmente */
+    width: 100%;
+    border: none;
+    /* background-color: red; */
+    height: 30px;
+}

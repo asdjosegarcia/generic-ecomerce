@@ -1,0 +1,19 @@
+.top-menu__container{
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 5px 0px;
+    /* background-color: red; */
+    /* height: 30px; */
+
+}   
+.top-menu__div-order{
+    border-right: 1px solid #696969;
+    /* padding-right: 20px ; */
+    width: 50%;
+}
+.top-menu__div-filter{
+    width: 50%;
+}

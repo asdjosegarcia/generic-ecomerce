@@ -13,11 +13,11 @@ model Product {
     description   String? //tipo string, ? por que es opcional
     price         Float    @default(0.00)
     condition     String   @default("New")
-    shipment      String   @default("Free") //
+    shipment      Float    @default(0.00) //
     qualification Float    @default(5)
-    images        Json?
+    images        Json?    @default("{ \"image1\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images\"}")
     categories    Json?
     seller        String? //por el momento no lo agregamos por que no se relacionar usuarios
     createdAt     DateTime @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
-    views         Int?      @default(0)
+    views         Int?     @default(0)
 }

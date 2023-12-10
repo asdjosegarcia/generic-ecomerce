@@ -1,20 +1,39 @@
 import React from 'react'
+import EmptyStarSVG from '../SVG/EmptyStarSVG';
+import HalftStarSVG from '../SVG/HalftStarSVG';
+import CompleteStarSVG from '../SVG/CompleteStarSVG';
+// import 
 
 const BadgetStars = (props) => {
-    const completeStars=Math.floor(props.qualification);
-    const emptyStars=Math.floor(5-props.qualification);
-    let midStar=1
-    if(props.qualification%2  == 0.00){
-        midStar=0
-    }
-    console.log({completeStars,midStar,emptyStars})
-    // const starts[]
-    
-  return (
-    <span>{
+  const allStar = []
+  const completeStars = Math.floor(props.qualification);
+  const emptyStars = Math.floor(5 - props.qualification);
+  let midStar = 1
+  if (props.qualification % 2 == 0.00) {
+    midStar = 0
+  }
+  // console.log({ completeStars, midStar, emptyStars })
+  for (let i = 0; i < 5; i++) {
+    switch (true) {
+      case (i < completeStars):
+        allStar.push(<CompleteStarSVG key={i} />)
+        break;
+      case (i== completeStars && midStar==1):
+        allStar.push(<HalftStarSVG  key={i} />)
+        break;
+      default:
+        allStar.push(<EmptyStarSVG  key={i}/>)
 
-      
-      }</span>
+    }
+
+
+  }
+
+
+  return (
+    <span className='badgetStars'>
+      {allStar.map((item,index) => ( item))}
+    </span>
   )
 }
 

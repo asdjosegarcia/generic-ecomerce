@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProductList.css'
-import { PrismaClient } from '@prisma/client'
 import ProductCard from '../components/ProductCard'
+import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function loadProducts() {//extraemos los productos de la base de datos

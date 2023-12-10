@@ -1,11 +1,18 @@
 'use client'
 import React from 'react'
 import './OrderBy.css'
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
+
+// async function loadProducts() {//extraemos los productos de la base de datos
+//     const products = await prisma.product.findMany() //buscamos todos los productos de la DB
+
+//     return products
+//   }
 
 const OrderBy = () => {
       const handleOrderChange=(event)=>{
         const option=event.target.value
-                
       }
     
     return (

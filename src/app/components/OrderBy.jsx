@@ -23,9 +23,9 @@ const OrderBy = () => {
         <div className='order-by__container'>
             <label htmlFor="order" >Order by:</label>
             <select id="order" name="order" onChange={handleOrderChange }>
-                <option value="lowPrice">Low price</option>
-                <option value="highPrice">High price</option>
-                <option value="mostRelevant">Most relevant</option>
+                <option value="low-price">Low price</option>
+                <option value="high-price">High price</option>
+                <option value="most-relevant">Most relevant</option>
             </select>
         </div>
     )

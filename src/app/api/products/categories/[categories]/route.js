@@ -6,9 +6,9 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 
-export async function GET(request, { params }) {
+export async function GET(request, { params }) {//busca los items que tengan el 'params.categories' en alguna parte de item.categories{aqui}
     console.log(params)
-    const products = await prisma.product.findMany({//encontrar unica 
+    const products = await prisma.product.findMany({//encontrar todas
         where: { //were se usa para buscar lo que coincida
             categories: {
                 path: [params.categories], //filtramos los articulos que tengan la categorio ingresada en la url 

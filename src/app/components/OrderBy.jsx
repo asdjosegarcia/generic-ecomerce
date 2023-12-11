@@ -1,17 +1,23 @@
 'use client'
 import './OrderBy.css'
-import React, { useContext } from "react";
+import React, { useContext} from "react";
 import { variableContext } from "../context/contexto";
 
 
 const OrderBy = () => {
-    const contexto = useContext(variableContext)
-    console.log(contexto)
+    // const contexto = useContext(variableContext)
+    // console.log(contexto)
 
+    const handleOrderChange=(event)=>{
+      const option=event.target.value
+      fetch(`/api/products/shipment/${option}`)//realizamos una peticion get a parametro de la url.id
+      .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+      .then(data => {
+        console.log(data)
+      })
+    }
 
-      const handleOrderChange=(event)=>{
-        const option=event.target.value
-      }
+    
     
     return (
         <div className='order-by__container'>

@@ -16,13 +16,13 @@ const BadgetStars = (props) => {
   for (let i = 0; i < 5; i++) {
     switch (true) {
       case (i < completeStars):
-        allStar.push(<CompleteStarSVG key={i} />)
+        allStar.push(<CompleteStarSVG fill={'#3483fa'} key={i} />)
         break;
       case (i== completeStars && midStar==1):
-        allStar.push(<HalftStarSVG  key={i} />)
+        allStar.push(<HalftStarSVG fill={'#3483fa'}  key={i} />)
         break;
       default:
-        allStar.push(<EmptyStarSVG  key={i}/>)
+        allStar.push(<EmptyStarSVG fill={'#3483fa'}  key={i}/>)
 
     }
 

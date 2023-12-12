@@ -29,12 +29,14 @@
 
 }
 .prodcut-card__title{
-    padding-top: 10px;
     grid-column: 2/3;
     grid-row:1/4 ;
+    padding-top: 10px;
+    font-size: 1.1rem;
 }
 .prodcut-card__price{
-    grid-row:2/4 ;
+    grid-row:2/3 ;
+    align-self: center;
 }
 .prodcut-card__shipment{
     grid-row:3/4 ;
@@ -44,6 +46,8 @@
     grid-row:2/3 ;
     padding-right: 10px;
     justify-self: end;
+    align-self: center;
+
 
 }
 .prodcut-card__favorite{

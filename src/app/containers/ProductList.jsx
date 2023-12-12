@@ -31,7 +31,6 @@ const ProductList = () => {//ccrea la lista de productos
 
   return (
     <div className='product-list__container'>
-
       {!getLoading ? productList.map((product, index) => (<ProductCard key={index} product={product}></ProductCard>)) : <Loading></Loading>}
 
     </div>

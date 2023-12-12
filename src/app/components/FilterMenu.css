@@ -1,0 +1,24 @@
+.filter-menu-container{
+    /* background-color:#fefce8; */
+    background-color: white;
+    border: 1px solid #69696921;
+    border-top: 0;
+    border-radius: 0 0px 5px 5px;
+    width: 49.5%;
+    position: absolute;
+    color:#696969 ;
+}
+.toggle-button{
+    display: flex;
+    align-items: center;/* centra el contenido verticalmente */
+    /* justify-content: center;centra el contenido horizontalmente */
+    width: 100%;
+    border: none;
+    background-color: #00000000;
+    height: 30px;
+    justify-content: space-between;/* separamos los items al maximo espacio disponible */
+    padding: 25px 5px;    
+    border-bottom: 1px solid #69696921;
+
+
+}

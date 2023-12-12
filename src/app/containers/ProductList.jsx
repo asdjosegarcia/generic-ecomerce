@@ -1,32 +1,38 @@
-import React, { useContext} from "react";
+'use client'
+import React, { useContext, useEffect, useState } from "react";
 import { variableContext } from "../context/contexto.jsx";
 import './ProductList.css'
 import ProductCard from '../components/ProductCard'
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import Loading from "../components/Loading.jsx";
 
 
-async function loadProducts() {//extraemos los productos de la base de datos
-  const products = await prisma.product.findMany() //buscamos todos los productos de la DB
-  return products
-}
+let apiUrl = '';//por defecto sera 0
+let productList = []//por defecto no habran productos para renderizar
+const ProductList = () => {//ccrea la lista de productos
+  const [getLoading, setLoading] = useState(true);//si se esta cargando la lista de productos
+  const contexto = useContext(variableContext)
+  useEffect(() => {
+    setLoading(true)//
+    if (contexto.getOrderBy == '') {
+      apiUrl = '/api/products/'//url para trar todos los productos
+    } else {
+      apiUrl = `/api/products/order-by/${contexto.getOrderBy}`//url para ordenar los productos segun elijamos
+    }
+    fetch(apiUrl)//realizamos una peticion get a parametro de la url.id
+      .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+      .then(data => {
+        // console.log(data)//mostramos el array de prodcutoss
+        productList = data; //cargamos los datos a la lista de procutos
+        setLoading(false)//indicamos que ya dejo de cargar y creamos un renderizado
+      })
 
-// const contexto = useContext(variableContext)
-// console.log(contexto)
-const ProductList = async () => {
-  const productList = await loadProducts() //llamamos a la funcion que carga los productos y los almacenamos en productList
-
-
+  }, [contexto.getOrderBy])
 
 
   return (
-
-
     <div className='product-list__container'>
-      {productList.map((product, index) => (<ProductCard key={index} product={product}></ProductCard>))}
 
-      {/* {tasks.map(task => ( <TaskCard task={task}></TaskCard>))} */}
-      {/* <ProductCard></ProductCard> */}
+      {!getLoading ? productList.map((product, index) => (<ProductCard key={index} product={product}></ProductCard>)) : <Loading></Loading>}
 
     </div>
   )

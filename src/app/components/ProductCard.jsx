@@ -1,3 +1,4 @@
+// 'use client'
 import React from 'react'
 import './ProductCard.css'
 import BadgetFreeShipping from './BadgetFreeShipping'
@@ -6,6 +7,7 @@ import HeartOutlineSVG from '../SVG/HeartOutlineSVG'
 import BadgetStars from './BadgetStars'
 
 const ProductCard = ({product}) => {
+  // console.log('product-card', product )
 
     // console.log(product)
   return (

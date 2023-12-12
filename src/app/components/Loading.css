@@ -1,0 +1,16 @@
+.loading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+    width: 100vw;
+    position: absolute;
+}
+.loading-container img{
+    width: 50px;
+}
+.loading-container p{
+    text-align: center;
+    font-size: 30px;
+}

@@ -5,20 +5,24 @@ import './FilterMenu.css'
 
 
 const FilterMenu = () => {
+  const filterCliked=(clickValue)=>{
+    console.log(clickValue)
+  }
+
 
   return (
     <div className='filter-menu-container'>
-      <button className='toggle-button'>
+      <button className='toggle-button' onClick={()=>filterCliked('freeShip  ')}>
         <p>Free Shiping ㅤㅤㅤㅤ</p>
         <ToggleOffSVG width={'48px'} fill={'#696969'}></ToggleOffSVG>
         {/* <ToggleOnSVG></ToggleOnSVG> */}
       </button>
-      <button className='toggle-button'>
+      <button className='toggle-button' onClick={()=>filterCliked('New')}>
         <p>New ㅤㅤㅤㅤ</p>
         <ToggleOffSVG width={'48px'} fill={'#696969'}></ToggleOffSVG>
         {/* <ToggleOnSVG></ToggleOnSVG> */}
       </button>
-      <button className='toggle-button'> 
+      <button className='toggle-button'onClick={()=>filterCliked('official')}> 
         <p>Official Stores ㅤㅤㅤㅤ</p>
         <ToggleOffSVG width={'48px'} fill={'#696969'}></ToggleOffSVG>
         {/* <ToggleOnSVG></ToggleOnSVG> */}

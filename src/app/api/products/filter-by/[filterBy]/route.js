@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
     console.log(params.filterBy)
     // let 
     switch (true) {
-        case (params.filterBy == 'free-shiping'):
+        case (params.filterBy == 'free-shipping'):
             property = 'shipment'
             value = 0
             break;
@@ -16,10 +16,10 @@ export async function GET(request, { params }) {
             property = 'condition'
             value='New'
             break;
-        case (params.filterBy == 'official-stores'):
-            value = ''
-            property = 'views'
-            break;
+        // case (params.filterBy == 'official-stores'):
+        //     value = ''
+        //     property = 'views'
+        //     break;
         default:
 
     }

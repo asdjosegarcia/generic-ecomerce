@@ -13,10 +13,10 @@ const ProductList = () => {//ccrea la lista de productos
   const contexto = useContext(variableContext)
   useEffect(() => {
     setLoading(true)//
-    if (contexto.getOrderBy == '') {
+    if (contexto.getProductListURL == "") {
       apiUrl = '/api/products/'//url para trar todos los productos
     } else {
-      apiUrl = `/api/products/order-by/${contexto.getOrderBy}`//url para ordenar los productos segun elijamos
+      apiUrl = contexto.getProductListURL//url para ordenar los productos segun elijamos
     }
     fetch(apiUrl)//realizamos una peticion get a parametro de la url.id
       .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
@@ -26,7 +26,7 @@ const ProductList = () => {//ccrea la lista de productos
         setLoading(false)//indicamos que ya dejo de cargar y creamos un renderizado
       })
 
-  }, [contexto.getOrderBy])
+  }, [contexto.getProductListURL])
 
 
   return (

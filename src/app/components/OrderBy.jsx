@@ -10,12 +10,11 @@ const OrderBy = () => {
 
   const handleOrderChange = (event) => {
     const option = event.target.value
-    contexto.setOrderBy(option)
-    // fetch(`/api/products/order-by/${option}`)//realizamos una peticion get a parametro de la url.id
-    // .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-    // .then(data => {
-    //   console.log(data)
-    // })
+    if(option==""){
+      contexto.setProductListURL("")
+    }else{
+      contexto.setProductListURL(`/api/products/order-by/${option}`)
+    }
   }
 
 
@@ -36,30 +35,3 @@ const OrderBy = () => {
 export default OrderBy
 
 
-// import React, { useState } from 'react';
-
-// const TuComponente = () => {
-//   const [selectedOrder, setSelectedOrder] = useState('');
-
-//   const handleOrderChange = (event) => {
-//     const selectedValue = event.target.value;
-//     setSelectedOrder(selectedValue);
-
-//     // Llama a tu función con el valor seleccionado
-//     tuFuncionEspecifica(selectedValue);
-//   };
-
-
-//   return (
-//     <div>
-//       <label htmlFor="order">Order by:</label>
-//       <select id="order" name="order" onChange={handleOrderChange} value={selectedOrder}>
-//         <option value="lowPrice">Low price</option>
-//         <option value="highPrice">High price</option>
-//         <option value="mostRelevant">Most relevant</option>
-//       </select>
-//     </div>
-//   );
-// };
-
-// export default TuComponente;

@@ -12,8 +12,8 @@ const FilterMenu = () => {
 
   return (
     <div className='filter-menu-container'>
-      <button className='toggle-button' onClick={()=>filterCliked('freeShip  ')}>
-        <p>Free Shiping ㅤㅤㅤㅤ</p>
+      <button className='toggle-button' onClick={()=>filterCliked('free-shipment')}>
+        <p>Free Shipping ㅤㅤㅤㅤ</p>
         <ToggleOffSVG width={'48px'} fill={'#696969'}></ToggleOffSVG>
         {/* <ToggleOnSVG></ToggleOnSVG> */}
       </button>

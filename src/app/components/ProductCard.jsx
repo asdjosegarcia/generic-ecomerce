@@ -9,7 +9,7 @@ import BadgetStars from './BadgetStars'
 const ProductCard = ({product}) => {
   // console.log('product-card', product )
 
-    // console.log(product)
+    console.log(product)
   return (
     <>
       <div className='product-card'>
@@ -19,6 +19,7 @@ const ProductCard = ({product}) => {
         <span className='prodcut-card__favorite'>{(product.favorites)?<HeartSVG width={24} height={24} fill={'#3483fa'}/>:<HeartOutlineSVG width={24} height={24}fill={'#3483fa'}/>}</span>
         <span className='prodcut-card__qualification'><BadgetStars qualification={product.qualification}/></span>
         <p className='prodcut-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>
+        <p className='prodcut-card__condition' >{product.condition}</p>
       </div>
     </>
   )

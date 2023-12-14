@@ -8,7 +8,7 @@ import FilterMenu from "../components/FilterMenu.jsx";
 const FilterBy = () => {
   const [getClicked,setClicked]=useState(false)
   const FilterCliked=()=>{
-    console.log('click')
+    // console.log('click')
     setClicked(!getClicked)
   }
   return (

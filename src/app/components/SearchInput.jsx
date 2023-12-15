@@ -9,7 +9,7 @@ const SearchInput = () => {
                 <span className='input__icon'>
                     <SearchSVG width={'40px'} height={'40px'} fill={'#696969'}></SearchSVG>
                 </span>
-                <input type="text" />
+                <input type="text" placeholder='Search' />
             </div>
         </>
     )

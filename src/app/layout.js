@@ -2,6 +2,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from './containers/Navbar';
 import 'normalize.css';
+import { FuncionProvider } from "./context/contexto.jsx";
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,8 +21,10 @@ export default function RootLayout({ children }) {
         <title>Open Trade</title>
       </head>
       <body className={inter.className}>
-        <Navbar></Navbar>
+        <FuncionProvider>
+          <Navbar/>
         {children}
+        </FuncionProvider>
       </body>
     </html>
   )

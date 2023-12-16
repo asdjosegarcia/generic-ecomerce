@@ -1,9 +1,9 @@
-let arr='gatosearch?textobuscado'
+// Supongamos que "search" es la cadena que recibes como entrada
+const search = "search=";
 
-let index=arr.indexOf('search?')+7
-
-console.log(index)
-
-let sub=arr.substring(index)
-
-console.log('sub',sub)
+// Verifica si "search" es igual a 'search='
+if (search === "search=") {
+  console.log('solo search=');
+} else {
+//   console.log('search=' + search.slice(7)); // Si "search" contiene algo más, muestra la parte después de 'search='
+}

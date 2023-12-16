@@ -16,11 +16,8 @@ export async function GET(request, { params }) {
         console.log('search')
         let index = params.filterBy.indexOf('search=') + 7//obtenemos la posicion de la ultima letra de serach?
         let toSearch = params.filterBy.substring(index)//filtramos el texto que sigue luego de index(posicion del ? de search)
-        property.push({title:{contains:toSearch}})
-
+        property.push({title:{contains:toSearch}})//agregamos la peticion a el grupo de peticiones
         console.log('to-search',toSearch)
-
-
     }
 
 

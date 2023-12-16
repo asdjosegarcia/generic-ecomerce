@@ -9,7 +9,7 @@ import BadgetStars from './BadgetStars'
 const ProductCard = ({product}) => {
   // console.log('product-card', product )
 
-    console.log(product)
+    // console.log(product)
   return (
     <>
       <div className='product-card'>

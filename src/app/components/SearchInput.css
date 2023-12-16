@@ -6,10 +6,10 @@
     height: 40px;
     transition: width 0.9s ease;
 }
-.input__container:hover{
+/* .input__container:hover{
     position: absolute;
     width: 95vw;
-}
+} */
 .input__container input{
     background-color: #00000000;
     border: none;

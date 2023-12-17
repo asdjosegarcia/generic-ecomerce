@@ -24,6 +24,7 @@ const ProductList = () => {//ccrea la lista de productos
       paramsUrl = paramsUrl + contexto.getUrlParams.search //le agregamos el contenido del input
       apiUrl = `/api/products/filter-by/${paramsUrl}` //las commilas del final se agregan para evitar un error en la peticion
     }
+    console.log(apiUrl)
 
     setLoading(true)//establecemos que inicio la carga
 

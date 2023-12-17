@@ -9,7 +9,9 @@ export function FuncionProvider({children}){//creamos la funcion que encapsulara
     const [getUrlParams,setUrlParams]=useState({
         freeShipping: false,
         new: false,
-        search:'search='    })
+        search:'search=',
+        orderBy:'order=default'
+    })
     const [getProductListURL,setProductListURL]=useState("")
     return (
         <variableContext.Provider

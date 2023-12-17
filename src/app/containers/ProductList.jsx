@@ -21,7 +21,7 @@ const ProductList = () => {//ccrea la lista de productos
     if(contexto.getUrlParams.search === 'search=' && contexto.getUrlParams.orderBy==='orderby=' && paramsUrl===''  /* && contexto.getUrlParams.orderBy==='most-relevant' */){//si no hay nada en searh ni params
       apiUrl = '/api/products/'
     }else{
-      console.log(contexto.getUrlParams.search)
+      // console.log(contexto.getUrlParams.search)
       paramsUrl = paramsUrl + contexto.getUrlParams.search + contexto.getUrlParams.orderBy //le agregamos el contenido del input + el de orden de busqueda
       apiUrl = `/api/products/filter-by/${paramsUrl}` //las commilas del final se agregan para evitar un error en la peticion
     }

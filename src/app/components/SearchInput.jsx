@@ -13,12 +13,17 @@ const SearchInput = () => {
 
     const send = (event) => {
         event.preventDefault();
+<<<<<<< HEAD
         if(searchValue!==undefined){
             contexto.setUrlParams({ ...contexto.getUrlParams, search: 'search=' + searchValue })
         }else{
             contexto.setUrlParams({ ...contexto.getUrlParams, search: 'search=' })
         }
         
+=======
+        contexto.setUrlParams({ ...contexto.getUrlParams, search: 'search=' + searchValue })
+
+>>>>>>> 357e601b8c6ceb2178b6ae348cedfab3e720399f
 
     }
     return (

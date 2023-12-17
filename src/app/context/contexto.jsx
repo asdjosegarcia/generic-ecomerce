@@ -10,7 +10,11 @@ export function FuncionProvider({children}){//creamos la funcion que encapsulara
         freeShipping: false,
         new: false,
         search:'search=',
+<<<<<<< HEAD
         orderBy:'orderby=most-relevant'
+=======
+        orderBy:'order=default'
+>>>>>>> 357e601b8c6ceb2178b6ae348cedfab3e720399f
     })
     const [getProductListURL,setProductListURL]=useState("")
     return (

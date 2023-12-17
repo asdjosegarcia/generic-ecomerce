@@ -10,11 +10,12 @@ const OrderBy = () => {
 
   const handleOrderChange = (event) => {
     const option = event.target.value
-    if(option==""){
-      contexto.setProductListURL("")
-    }else{
-      contexto.setProductListURL(`/api/products/order-by/${option}`)
-    }
+    contexto.setUrlParams({...contexto.getUrlParams,orderBy:'orderby='+option})/* .orderBy= */
+    // if(option==""){
+    //   contexto.setProductListURL("")
+    // }else{
+    //   contexto.setProductListURL(`/api/products/order-by/${option}`)
+    // }
   }
 
 
@@ -23,7 +24,7 @@ const OrderBy = () => {
     <div className='order-by__container'>
       <label htmlFor="order" >Order by:</label>
       <select id="order" name="order" onChange={handleOrderChange}>
-        <option value="">Default</option>
+        {/* <option value="">Default</option> */}
         <option value="low-price">Low price</option>
         <option value="high-price">High price</option>
         <option value="most-relevant">Most relevant</option>

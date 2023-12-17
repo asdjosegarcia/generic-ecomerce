@@ -18,12 +18,15 @@ const ProductList = () => {//ccrea la lista de productos
     const onlyTrue = Object.keys(contexto.getUrlParams).filter(propiedad => contexto.getUrlParams[propiedad] === true);
     //Objet.keys convierte las propiedades en array, filter recorre el arrray y filtra las propiedades que sean true
     paramsUrl = onlyTrue.join('')//eliminamos las '' de array convirtiendolo asi en una cadena de texto
-    if(contexto.getUrlParams.search === 'search=' && paramsUrl===''){//si no hay nada en searh ni params
+    if(contexto.getUrlParams.search === 'search=' && contexto.getUrlParams.orderBy==='orderby=' && paramsUrl===''  /* && contexto.getUrlParams.orderBy==='most-relevant' */){//si no hay nada en searh ni params
       apiUrl = '/api/products/'
     }else{
-      paramsUrl = paramsUrl + contexto.getUrlParams.search //le agregamos el contenido del input
+      console.log(contexto.getUrlParams.search)
+      paramsUrl = paramsUrl + contexto.getUrlParams.search + contexto.getUrlParams.orderBy //le agregamos el contenido del input + el de orden de busqueda
       apiUrl = `/api/products/filter-by/${paramsUrl}` //las commilas del final se agregan para evitar un error en la peticion
     }
+    // console.log(apiUrl)
+    // console.log(contexto.getUrlParams)
 
     setLoading(true)//establecemos que inicio la carga
 

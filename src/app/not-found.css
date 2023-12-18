@@ -1,0 +1,25 @@
+.not-found-container{
+    height: 70vh;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    text-decoration: none;
+}
+p{
+    font-weight: 600;
+  /* color: #696969; */
+
+}
+.not-found-link{
+  background-color: #fff159;
+  font-weight: 600;
+  
+  
+  /* color: white; */
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  border: 3px solid #696969;
+  color: #696969;
+  padding: 5px 10px;
+}

@@ -1,3 +1,7 @@
+.link{ /* establecemos el color y subrayado del texto por defecto  */
+    text-decoration: none;
+    color: inherit;
+}
 .product-card{
     border: 1px solid #6969696c;
     border-radius: 5px;

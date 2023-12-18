@@ -5,6 +5,7 @@ import BadgetFreeShipping from './BadgetFreeShipping'
 import HeartSVG from '../SVG/HeartSVG'
 import HeartOutlineSVG from '../SVG/HeartOutlineSVG'
 import BadgetStars from './BadgetStars'
+import Link from 'next/link'
 
 const ProductCard = ({product}) => {
   // console.log('product-card', product )
@@ -12,6 +13,7 @@ const ProductCard = ({product}) => {
     // console.log(product)
   return (
     <>
+    <Link href='/product' className='link'> 
       <div className='product-card'>
         <img className='prodcut-card__img' src={product.images.image1} alt="" />
         <p className='prodcut-card__title'>{product.title}</p>
@@ -21,6 +23,7 @@ const ProductCard = ({product}) => {
         <p className='prodcut-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>
         <p className='prodcut-card__condition' >{product.condition}</p>
       </div>
+    </Link>
     </>
   )
 }

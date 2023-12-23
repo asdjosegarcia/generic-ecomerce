@@ -4,7 +4,12 @@ const prisma = new PrismaClient()
 
 
 export async function GET(){
-    const products=await prisma.product.findMany() //prisma la clas que instanciamos en prisma.js, como planificamos la tabla en eschema.prisma, findMany() trae todo lo que hay
+    const products=await prisma.product.findMany({
+        
+        // include: {
+        //     ProductComplete: true,
+        //   },
+        }) //prisma la clas que instanciamos en prisma.js, como planificamos la tabla en eschema.prisma, findMany() trae todo lo que hay
     // console.log(products)
     return NextResponse.json(products)
 }

@@ -10,7 +10,7 @@ const ProductMain = ({ product }) => {
     <div>
       {!product && <Loading></Loading>}
       <h1>{product?.title}</h1>
-      <img className='product__img' src={product?.images.image1} alt="" />
+      <img className='product__img' src={product?.previewImg} alt="" />
       <h4 className='prodcut__price'>${product?.price}</h4>
       <p className='prodcut__shipment'>{product?.shipment==0? <BadgetFreeShipping/>: '$'+ product?.shipment }</p>
       <div>Stock()</div>

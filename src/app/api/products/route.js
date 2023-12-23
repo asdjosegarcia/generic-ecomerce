@@ -15,19 +15,19 @@ export async function GET(){
 }
 
 export async function POST(request){
-    const {title,description,price,images,condition,shipment,qualification,categories,seller,}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+    const {title,description,price,previewImg,condition,shipment,qualification,seller,categoryId ,}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
     const newProduct=await prisma.product.create({//linea para crear datos en nuestra base de datos
         data:{
             //aqui no mandamos ni id ni fecha por que se crean solos
             title: title, //podria solo poner 1 vez title ya que asi llega, pero lo pongo 2 veces para que sea mas didactico
             price:price,
             description: description,
-            images:images,
+            previewImg:previewImg,
             condition:condition,
             shipment:shipment,
             qualification:qualification,
-            categories:categories,
             seller:seller,
+            categoryId :categoryId ,
         }
     })
     return NextResponse.json(newProduct)

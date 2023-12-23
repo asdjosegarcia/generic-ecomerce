@@ -5,10 +5,10 @@ const prisma = new PrismaClient()
 
 export async function GET(request, { params }){
     const products=await prisma.category.findMany({//iniciamos la 
-        // include: {
-        //     ProductComplete: true,//nos incluye la 
-        //   },
+        include: {
+            products: true,//nos incluye los productos que tienen este categoria
+          },
         }) 
-    // console.log(products)
     return NextResponse.json(products)
 }
+

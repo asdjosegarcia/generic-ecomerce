@@ -8,35 +8,22 @@ datasource db {
 }
 
 model Product {
-    id              Int               @id @default(autoincrement()) // Int el id es un entero, @id es un identificador unico, (autoincrement()) y se va a ir incrementando
-    title           String?           @default("Product")
-    price           Float             @default(0.00)
-    condition       String            @default("New")
-    shipment        Float             @default(0.00) //
-    qualification   Float             @default(5)
-    previewImg      String            @default("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.c2t8tS3Bw3wAu29lJZXcKgAAAA%26pid%3DApi&f=1&ipt=152bbe465eda1732e5837221e4a9c09866e36e0f8f0695e54deb8379d78f64b0&ipo=images")
+    id              Int              @id @default(autoincrement()) // Int el id es un entero, @id es un identificador unico, (autoincrement()) y se va a ir incrementando
+    title           String?          @default("Product")
+    price           Float            @default(0.00)
+    condition       String           @default("New")
+    shipment        Float            @default(0.00) //
+    qualification   Float            @default(5)
+    previewImg      String           @default("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.c2t8tS3Bw3wAu29lJZXcKgAAAA%26pid%3DApi&f=1&ipt=152bbe465eda1732e5837221e4a9c09866e36e0f8f0695e54deb8379d78f64b0&ipo=images")
     seller          String? //por el momento no lo agregamos por que no se relacionar usuarios
-    createdAt       DateTime          @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
-    views           Int?              @default(0)
-    //informacion extra del producto
-    ProductComplete ProductComplete?   //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
-    //categoria
-    category        Category          @relation(fields: [categoryId], references: [id])
-    //relation indica relacion con otra tabla,
-    //field con que columna de la tabla actual se leraciona, 
-    //refetence con que columna de la otra tabla se relaciona 
-    categoryId      Int
-    //detalles del producto
-    // details     ProductDetails?
-
-    // @@unique([id]) //el valor de la columna id sera unico, intentar subir otro igual generaria un error/
+    createdAt       DateTime         @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
+    views           Int?             @default(0)
+    //////////relacion informacion extra del producto
+    ProductComplete ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
+    //////////relacion categoria
+    category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
+    categoryId Int
 }
-// model ProductDetails {
-//   id          Int          @id @default(autoincrement())
-//   description String?
-//   product     Product      @relation(fields: [productId], references: [id])
-//   productId   Int          @unique
-// }
 
 model Category {
     id       Int       @id @default(autoincrement())
@@ -45,17 +32,10 @@ model Category {
 }
 
 model ProductComplete {
-    id          Int     @id 
+    id          Int     @id
     stock       Int     @default(1)
     description String? //tipo string, ? por que es opcional
     // images      Json?   @default("{ \"image1\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images\"}")
     // colors      Json?
-    addComplete Product @relation(fields: [id], references: [id])
-
-    //addToComplete es solo un nombre
-    //Product el Modelo con el que nos vamos  a relacionar
-    //@relation para especificar como se van a arelacionar los datos
-    //fields:[] columnas que se utilizan en el model ProductComplete
-    //references:[] columnas de Product, en este caso la columna id
+    addComplete Product @relation(fields: [id], references: [id]) //addToComplete nombre de la relacion,Product el Modelo a relacionarse,@relacion especifica relacion,fields:[] columnas que se utilizan en el model ProductComplete,references:[] columnas de Product, en este caso la columna id
 }
-

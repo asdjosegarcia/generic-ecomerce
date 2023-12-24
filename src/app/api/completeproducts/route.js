@@ -4,9 +4,10 @@ const prisma = new PrismaClient()
 
 
 export async function GET(){
+  console.log('hola')
     const products=await prisma.product.findMany({//iniciamos la 
         include: {
-            ProductComplete: true,//nos incluye la 
+            ProductComplete: true,//nos incluye los completeproduct en cada objeto
           },
         }) 
     // console.log(products)

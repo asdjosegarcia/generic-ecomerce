@@ -24,12 +24,12 @@ CREATE TABLE "Category" (
 );
 
 -- CreateTable
-CREATE TABLE "Productcomplete" (
+CREATE TABLE "ProductComplete" (
     "id" INTEGER NOT NULL,
     "stock" INTEGER NOT NULL DEFAULT 1,
     "description" TEXT,
 
-    CONSTRAINT "Productcomplete_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ProductComplete_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -39,4 +39,4 @@ CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
 ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Productcomplete" ADD CONSTRAINT "Productcomplete_id_fkey" FOREIGN KEY ("id") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ProductComplete" ADD CONSTRAINT "ProductComplete_id_fkey" FOREIGN KEY ("id") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

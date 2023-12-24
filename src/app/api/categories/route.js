@@ -12,3 +12,12 @@ export async function GET(request, { params }){
     return NextResponse.json(products)
 }
 
+export async function POST(request,{params}){
+    const {name}=await request.json()//
+    const newCategory=await prisma.category.create({
+        data:{
+            name:name,
+        },
+    })
+    return NextResponse.json(newCategory)
+}

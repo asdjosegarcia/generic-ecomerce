@@ -39,6 +39,6 @@ export async function DELETE(request, { params }) {
         })
         return NextResponse.json(productRemoved)
     } catch (error) {
-        return NextResponse.json('no hemos encontrado la tarea con el id ' + params.id + ' ' + error.message)
+        return NextResponse.json('no hemos encontrado el producto con el id ' + params.id + ' ' + error.message)
     }
 }

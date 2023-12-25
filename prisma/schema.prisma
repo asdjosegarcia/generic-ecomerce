@@ -22,13 +22,7 @@ model Product {
     ProductComplete ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
     //////////relacion categoria
     category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
-    categoryId Int
-}
-
-model Category {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
+    categoryId      Int              @default(1)
 }
 
 model ProductComplete {
@@ -36,6 +30,11 @@ model ProductComplete {
     stock       Int     @default(1)
     description String? //tipo string, ? por que es opcional
     // images      Json?   @default("{ \"image1\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images\"}")
-    // colors      Json?
     addComplete Product @relation(fields: [id], references: [id]) //addToComplete nombre de la relacion,Product el Modelo a relacionarse,@relacion especifica relacion,fields:[] columnas que se utilizan en el model ProductComplete,references:[] columnas de Product, en este caso la columna id
+}
+
+model Category {
+    id       Int       @id @default(autoincrement())
+    name     String    @unique
+    products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
 }

@@ -7,7 +7,12 @@ export async function GET(request, { params }) {
         where: { //were se usa para buscar lo que coincida
             id: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
         },
-        include: { ProductComplete: true },
+        include: { 
+            ProductComplete: true,
+            include: { Comment: true },
+        },
+        
+
 
     })
     console.log(porductcomplete)

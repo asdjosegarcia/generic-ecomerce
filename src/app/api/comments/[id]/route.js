@@ -3,9 +3,9 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function GET(request, { params }) {
-    const porductcomplete = await prisma.comment.findUnique({//encontrar unico
+    const porductcomplete = await prisma.comment.findMany({//encontrar todos los que conicidan
         where: { //were se usa para buscar lo que coincida
-            id: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
+            productCompleteId: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
         },
         // include: { ProductComplete: true },
 

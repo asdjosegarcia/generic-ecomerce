@@ -13,7 +13,7 @@ export async function GET(){
 }
 
 export async function POST(request){
-    const {qualification,comment,productCompleteId ,}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+    const {qualification,comment,productCompleteId}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
     const newProduct=await prisma.comment.create({//linea para crear datos en nuestra base de datos
         data:{
             //aqui no mandamos ni id ni fecha por que se crean solos

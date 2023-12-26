@@ -31,7 +31,7 @@ export async function POST(request) {
       // categoryId: 1, // Asegúrate de proporcionar categoryId
       ProductComplete: { // Si es una relación 1 a 1, puedes crear ProductComplete aquí
         create: {
-          stock: 10,
+          stock: stock,
           description: description,
         }
       },

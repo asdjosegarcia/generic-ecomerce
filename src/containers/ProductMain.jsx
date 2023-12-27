@@ -5,7 +5,7 @@ import BadgetFreeShipping from '@/components/BadgetFreeShipping'
 
 const ProductMain = ({ product }) => {
 
-  // console.log(product.title)
+
   return (
     <div>
       {!product && <Loading></Loading>}

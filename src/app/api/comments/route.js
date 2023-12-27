@@ -20,6 +20,8 @@ export async function POST(request){
             qualification:qualification,
             comment:comment,
             productCompleteId :productCompleteId,
+            productId :productCompleteId,
+
         }
     })
     return NextResponse.json(newProduct)

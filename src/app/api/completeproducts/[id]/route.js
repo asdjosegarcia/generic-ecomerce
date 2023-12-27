@@ -8,13 +8,16 @@ export async function GET(request, { params }) {
             id: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
         },
         include: { 
-            ProductComplete: true,
-            include: { Comment: true },
+            ProductComplete: {
+                include: {
+                    comments: true,
+                  },
+            }
         },
         
 
 
     })
-    console.log(porductcomplete)
+    // console.log(porductcomplete)
     return NextResponse.json(porductcomplete)//mostramos la tarea en pantalla
 }

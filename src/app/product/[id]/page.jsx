@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect,useState } from 'react'
 import ProductMain from '@/containers/ProductMain'
+import CommentList from '@/containers/CommentList'
 // import { useRouter } from 'next/navigation'
 
 
@@ -9,7 +10,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
 
   useEffect(() => {
     if (params.id) {//si params.id tiene algo
-      fetch(`/api/products/${params.id}`)//realizamos una peticion get a parametro de la url.id
+      fetch(`/api/completeproducts/${params.id}`)//realizamos una peticion get a parametro de la url.id
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {
           setProduct(data)
@@ -21,8 +22,9 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
 
   return (
     <>
-      <div>hola</div>
+      {/* <div>hola</div> */}
       <ProductMain product={getProduct}></ProductMain>
+      <CommentList product={getProduct}></CommentList>
       
     </>
   )

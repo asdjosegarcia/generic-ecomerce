@@ -24,14 +24,8 @@ model Product {
     //////////relacion categoria
     category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
     categoryId      Int              @default(1)
-
     // Comment Comment[]
-}
-
-model Category {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
+    comments        Comment[] //relacion 1 a muchos,
 }
 
 model ProductComplete {
@@ -49,8 +43,14 @@ model Comment {
     id                Int              @id @default(autoincrement())
     qualification     Float            @default(5.00)
     comment           String?
-    // product           Product          @relation(fields: [productId], references: [id])
-    // productId         Int
     ProductComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
     productCompleteId Int
+    Product   Product? @relation(fields: [productId], references: [id])//relacion 1 a 1 con products
+    productId Int
+}
+
+model Category {
+    id       Int       @id @default(autoincrement())
+    name     String    @unique
+    products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
 }

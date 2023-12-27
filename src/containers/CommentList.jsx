@@ -3,27 +3,20 @@ import React, {useEffect, useState } from 'react'
 
 
 const CommentList = ({product}) => {
-  const [getComments,setComments]=useState()
+  // const [getComments,setComments]=useState()
   
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  if (product?.id) {//si params.id tiene algo
-    // console.log('ejecucion')
-    fetch(`/api/comments/${product?.id}`)//realizamos una peticion get a parametro de la url.id
-    .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-    .then(data => {
-      setComments(data)
-      // console.log('data',data)
-    })
-    
-    
-  }
-  }, [])
+  // if (product?.id) {//si params.id tiene algo
+
+  // }, [])
+  // console.log(product)
   
   return (
     <div>
       {/* {!getLoading ? productList.map((product, index) => (<ProductCard key={index} product={product}></ProductCard>)) : <Loading></Loading>} */}
+      {product?.ProductComplete.comments.map((comment,index)=>(<p key={index}>{comment.comment}</p>))}
 
     </div>
   )

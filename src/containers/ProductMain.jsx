@@ -5,10 +5,11 @@ import BadgetFreeShipping from '@/components/BadgetFreeShipping'
 import BadgetStars from '@/components/BadgetStars'
 import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
+// import PorductQuestionList from './PorductQuestionList'
 
 
 const ProductMain = ({ product }) => {
-  console.log(product)
+  // console.log(product)
   return (
     <div className='product__container'>
       {!product ? <Loading></Loading> : <>
@@ -40,7 +41,7 @@ const ProductMain = ({ product }) => {
         <p>Seller:{product?.seller}</p>
         <p>{product?.description}</p>
       </>
-      }
+      }        <span>Like</span>
 
     </div>
   )

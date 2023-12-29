@@ -2,6 +2,8 @@
 import React, { useEffect,useState } from 'react'
 import ProductMain from '@/containers/ProductMain'
 import CommentList from '@/containers/CommentList'
+import PorductQuestionList from '@/containers/PorductQuestionList'
+
 // import { useRouter } from 'next/navigation'
 
 
@@ -24,7 +26,9 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
     <>
       {/* <div>hola</div> */}
       <ProductMain product={getProduct}></ProductMain>
-      <CommentList product={getProduct}></CommentList>
+      {/* <CommentList product={getProduct}></CommentList> */}
+      <PorductQuestionList product={getProduct}></PorductQuestionList>
+
       
     </>
   )

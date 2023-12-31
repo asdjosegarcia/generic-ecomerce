@@ -5,11 +5,16 @@ import SearchInput from '../components/SearchInput'
 import MenuSVG from '../SVG/MenuSVG'
 import CartSVG from '../SVG/CartSVG'
 import Image from 'next/image';
+import Link from 'next/link'
 
 const Navbar = () => {
     return (
         <nav className='nav__container'>
-            <img className='comerce__icon'   src='/img/open-trade-1.jpg' alt='Opentrade icon' />
+            <Link /* legacyBehavior */ href='/'>
+            {/* <a> */}
+            <img className='comerce__icon'   src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
+            {/* </a> */}
+            </Link>
             <SearchInput></SearchInput>
                 <div className='mobile__menu' alt='search bar'>
                     <MenuSVG width={'40px'}  height={'40px'} fill={'#696969'} ></MenuSVG>

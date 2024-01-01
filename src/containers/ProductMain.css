@@ -30,6 +30,7 @@ header .porduct--qualification__container{
 }
 .product--img__contiainter .product__img{
     width: 100vw;
+    height: 80vw;
 }
 .prodcut__price{
     /* color: green; */

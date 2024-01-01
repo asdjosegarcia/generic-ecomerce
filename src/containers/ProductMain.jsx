@@ -24,19 +24,19 @@ const ProductMain = ({ product }) => {
 
         <p className='product__title'>{product?.title}</p>
         <div className='product--img__contiainter'>
-          <img className='product__img' src={product?.ProductComplete.images.image1} alt="" />
+          <img className='product__img' src={product?.ProductComplete?.images.image1} alt="" />
         </div>
         <p className='prodcut__price'>${product?.price}</p>
         <div className='product__shipment--container'>
           <ShippingSVG width={'24px'} fill={"#696969"}></ShippingSVG>
           <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
         </div>
-        <p className='product__stock'>{`Stock(${product?.ProductComplete.stock})`}</p>
+        <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
         <button className='btn btn__buy'>Buy now</button>
         <button className='btn btn__cart'>Add to cart</button>
         <div>
           <p className='product__description--title'>Description</p>
-          <p className='product__description--content'>{product?.ProductComplete.description}</p>
+          <p className='product__description--content'>{product?.ProductComplete?.description}</p>
         </div>
         <p>Seller:{product?.seller}</p>
         <p>{product?.description}</p>

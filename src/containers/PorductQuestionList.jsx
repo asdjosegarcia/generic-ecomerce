@@ -6,7 +6,7 @@ const PorductQuestionList = ({ product }) => {
     // console.log(product)
   return (
     <div className='questions--list__container'>
-        <QuestionCard product={product}></QuestionCard>
+        {/* <QuestionCard   product={product}></QuestionCard> */}
 
     </div>
   )

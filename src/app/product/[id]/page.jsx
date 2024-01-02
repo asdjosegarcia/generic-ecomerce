@@ -2,7 +2,7 @@
 import React, { useEffect,useState } from 'react'
 import ProductMain from '@/containers/ProductMain'
 import CommentList from '@/containers/CommentList'
-import PorductQuestionList from '@/containers/PorductQuestionList'
+import PorductQuestionList from '@/containers/ProductQuestionList'
 
 // import { useRouter } from 'next/navigation'
 

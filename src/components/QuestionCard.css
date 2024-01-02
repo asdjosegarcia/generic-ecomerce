@@ -1,0 +1,26 @@
+.question--card__container {
+    border-bottom: 1px solid #d1d5db;
+    /* color: ; */
+}
+.question--card__container p{
+    /* margin: 0; */
+}
+.question--card__like-dislike-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.question--card__like-dislike-container span{
+    border: 1px solid #d1d5db;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;   
+    padding: 3px 7px;
+    margin: 0 5px 5px 0px;
+}
+.question--card__like-dislike-container span p{
+    margin: 0px;
+    margin-right: 5px;
+
+}

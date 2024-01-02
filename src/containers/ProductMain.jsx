@@ -5,7 +5,7 @@ import BadgetFreeShipping from '@/components/BadgetFreeShipping'
 import BadgetStars from '@/components/BadgetStars'
 import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
-// import PorductQuestionList from './PorductQuestionList'
+import ProductQuestionList from './ProductQuestionList'
 
 
 const ProductMain = ({ product }) => {
@@ -38,10 +38,10 @@ const ProductMain = ({ product }) => {
           <p className='product__description--title'>Description</p>
           <p className='product__description--content'>{product?.ProductComplete?.description}</p>
         </div>
-        <p>Seller:{product?.seller}</p>
-        <p>{product?.description}</p>
+        <p className='porduct__seller'>Seller:{product?.seller}</p>
+        {/* <p>{product?.description}</p> */}
       </>
-      }        <span>Like</span>
+      }
 
     </div>
   )

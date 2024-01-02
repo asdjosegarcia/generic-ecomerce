@@ -45,6 +45,8 @@ model ProductComplete {
 model Question {
     id                Int              @id @default(autoincrement())
     question          String?
+    like              Int              @default(0)
+    dislike           Int              @default(0)
     ProductComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
     productCompleteId Int
     Product           Product?         @relation(fields: [productId], references: [id]) //relacion 1 a 1 con products

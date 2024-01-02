@@ -59,13 +59,13 @@ export async function DELETE(request, { params }) {
     }
   })
   // console.log('question ok')
-  const porductCompleteRemoved = await prisma.productComplete.deleteMany({//deleteMany para que busque entre todos, lo ideal sea findUnique pero si falta prdoucComplete o porduct nos dara un catch
+  const porductCompleteRemoved = await prisma.productComplete.delete({//deleteMany para que busque entre todos, lo ideal sea delete pero si falta prdoucComplete o porduct nos dara un catch
     where: {
       id: +params.id
     }
   })
   // console.log('productComp oK')
-  const porductRemoved = await prisma.product.deleteMany({
+  const porductRemoved = await prisma.product.delete({
     where: {
       id: +params.id
     }

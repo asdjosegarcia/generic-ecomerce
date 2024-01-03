@@ -1,6 +1,8 @@
 "use client"
-import {Form, useForm} from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+
+
 
 const Registerpage=()=>{
     const {register,handleSubmit, formState:{errors}}=useForm()//descomponemos el objeto devuelto por la funcion useForm()
@@ -24,7 +26,7 @@ const Registerpage=()=>{
                 password:data.password
             }),
             headers:{
-                'Content-type':'aplication/json'
+                'Content-type':'application/json'
             }
         })
         if(res.ok){
@@ -32,12 +34,20 @@ const Registerpage=()=>{
         }
     })
     return(
-        <div className="register--form__container">
+        <div /* className="register--form__container" */>
             <form onSubmit={onSubmit}>
-                <h1>register</h1>
+                <h1>Register</h1>
                 <label>Username</label>
                 <input type="text" placeholder="yourUser123"></input>
+                <label>Email</label>
+                <input type="email" placeholder="yourUser123"></input>
+                <label>Password</label>
+                <input type="password" placeholder="****"></input>
+                <button>Register</button>
+                
+
             </form>
         </div>
     )
 }
+export default Registerpage

@@ -13,6 +13,7 @@ const Registerpage=()=>{
     const router=useRouter()//para redirigir a el usuario
 
     const onSubmit=handleSubmit(async(data)=>{//
+        console.log(data)
         
         if(data.password !== data.confirmPassword){//comprobamos si contraseña y confirmarcontraseña no coinciden
             alert("password do not match")
@@ -34,15 +35,17 @@ const Registerpage=()=>{
         }
     })
     return(
-        <div /* className="register--form__container" */>
+        <div className="register--form__container" >
             <form onSubmit={onSubmit}>
                 <h1>Register</h1>
                 <label>Username</label>
-                <input type="text" placeholder="yourUser123"></input>
+                <input type="text" {...(register("username", { required: { value: true, message: 'Username is required' } }))} placeholder="yourUser123"></input>{/*  */}
                 <label>Email</label>
-                <input type="email" placeholder="yourUser123"></input>
+                <input type="email" {...(register("email", {required: { value: true, message: 'Email is required' }  }))} placeholder="yourUser123"></input>
                 <label>Password</label>
-                <input type="password" placeholder="****"></input>
+                <input type="password" {...(register("password", {required: { value: true, message: 'Password is required' }  }))} placeholder="****"></input>
+                <label>Confirm Password</label>
+                <input type="password" {...(register("confirmPassword", {required: { value: true, message: 'Confirm Password is required' }}))} placeholder="****"></input>
                 <button>Register</button>
                 
 

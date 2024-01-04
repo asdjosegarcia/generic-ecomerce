@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 import { useForm } from "react-hook-form";//para el manejo del formulario
 import { signIn } from 'next-auth/react'; //para el envio del formulario a la DB
 import { useRouter } from 'next/navigation'; //para la redirecciones
+import "./LoginPage.css"
 
 
 const LoginPage = () => {
@@ -29,26 +30,27 @@ const LoginPage = () => {
 
 
   return (
-    <div className=''>
+    <div className='login--form__container'>
       <form onSubmit={onSubmit} className=''>{/* una vez completado el formulario ejecuta la funcion onSubmit, que ejecuta handle submit */}
-        {error && (
-          <p className=''>{error}</p>
-        )}
         <h1 className="">Login</h1>
         <label htmlFor="email" className="">Email</label>{/* texto superior */}
         <input type="text" {...(register("email", { required: { value: true, message: 'Email is required' } }))} placeholder="yourUser123@email.com" className="" />
         {
           errors.email && (//si error.email existe
-            <span className="">{errors.email.message}</span>//se crea este span
+          <span className="">{errors.email.message}</span>//se crea este span
           )
         }
+        <br></br>
         <label htmlFor="password" className="">Password</label>{/* texto superior */}
         <input type="password" {...(register("password", { required: { value: true, message: 'Password is required' } }))} placeholder="******" className="" />
         {
           errors.password && (//si error.password existe
-            <span className="">{errors.password.message}</span>//se crea este span
+          <span className="">{errors.password.message}</span>//se crea este span
           )
         }
+        {error && (
+          <p className=''>{error}</p>
+        )}
         <button className="">
           Login
         </button>

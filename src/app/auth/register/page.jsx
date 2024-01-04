@@ -1,6 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import "./RegisterPage.css"
 
 
 
@@ -35,17 +36,18 @@ const Registerpage=()=>{
         }
     })
     return(
+       /*  <secition className='register--form__section'> */
         <div className="register--form__container" >
             <form onSubmit={onSubmit}>
-                <h1>Register</h1>
+                <h2>Sing up</h2>
                 <label>Username</label>
-                <input type="text" {...(register("username", { required: { value: true, message: 'Username is required' } }))} placeholder="yourUser123"></input>{/*  */}
+                <input type="text" {...(register("username", { required: { value: true, message: 'Username is required' } }))} placeholder="user123"></input>{/*  */}
                 <label>Email</label>
-                <input type="email" {...(register("email", {required: { value: true, message: 'Email is required' }  }))} placeholder="yourUser123"></input>
+                <input type="email" {...(register("email", {required: { value: true, message: 'Email is required' }  }))} placeholder="user@mail.com"></input>
                 <label>Password</label>
-                <input type="password" {...(register("password", {required: { value: true, message: 'Password is required' }  }))} placeholder="****"></input>
+                <input type="password" {...(register("password", {required: { value: true, message: 'Password is required' }  }))} placeholder="*******"></input>
                 <label>Confirm Password</label>
-                <input type="password" {...(register("confirmPassword", {required: { value: true, message: 'Confirm Password is required' }}))} placeholder="****"></input>
+                <input type="password" {...(register("confirmPassword", {required: { value: true, message: 'Confirm Password is required' }}))} placeholder="*******"></input>
                 <button>Register</button>
                 
 

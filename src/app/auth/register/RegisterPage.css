@@ -29,6 +29,9 @@
     border: 1px solid #66666652;
     /* background-color:   #fef9c3; */
 }
+.register--form__container form input:focus{
+    border: 1px solid #00000000;
+}
 .register--form__container form button{
     width: 100%;
     padding: 10px;
@@ -40,6 +43,4 @@
     background-color: #3483fa;
     margin-top: 10px;
     /* margin-bottom: 10px; */
-
-
 }

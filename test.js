@@ -1,28 +1,24 @@
-// let textoCompleto='newsearch=vasoorderby=low-price'
-// let indexOrder = textoCompleto.indexOf('orderby=')//
-// let index = textoCompleto.indexOf('search=') + 7
-// let toSearch = textoCompleto.substring(index,indexOrder)
-// let toOrder= textoCompleto.substring(indexOrder+8)
-// console.log({indexOrder,index,toSearch,toOrder})
+try {
+  const res = await fetch('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({
+      username: data.username,
+      email: data.email,
+      password: data.password
+    }),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
 
-
-let textoCompleto='newsearch=vasoorderby=lower'
-let toOrder;
-let toSearch;
-const indexOrder = textoCompleto.indexOf('orderby=')//
-const indexSearch = textoCompleto.indexOf('search=') 
-if(indexOrder!==-1 && indexSearch!==-1){
-  console.log('1')
-  toSearch = textoCompleto.substring(indexSearch+7,indexOrder)//extraemos lo que dice luego de search= y antes de orderby=
-  toOrder= textoCompleto.substring(indexOrder+8)//extraemos lo que dice luego de orderby
-  
-}else if(indexOrder!==-1){
-  toSearch = textoCompleto.substring(indexSearch+7,indexOrder)//extraemos lo que dice luego de search= y antes de orderby=
+  if (res.ok) {
+    // Si la respuesta es exitosa, redirigir al usuario a la página de inicio de sesión
+    router.push('/auth/login');
+  } else {
+    // Si hay un error, obtener el mensaje de error de la respuesta
+    const errorResponse = await res.json();
+    console.error(errorResponse.message);
+  }
+} catch (error) {
+  console.error('Error en la solicitud:', error);
 }
-else if(indexSearch!==-1){
-  toSearch = textoCompleto.substring(indexSearch+ 7)
-  toOrder= textoCompleto.substring(indexOrder+8)
-}
-
-console.log({indexOrder,indexSearch,toSearch,toOrder})
-

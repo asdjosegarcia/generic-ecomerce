@@ -34,6 +34,8 @@ width: 90vw;
 }
 .login--form__container p{
     color: red;
+    text-align: center;
+
 }
 .login--form__container span{
     color: #3483fa;

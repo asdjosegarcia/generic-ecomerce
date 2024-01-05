@@ -44,3 +44,14 @@
     margin-top: 10px;
     /* margin-bottom: 10px; */
 }
+.register--form__container p{
+    color: red;
+    text-align: center;
+}
+.register--form__container span{
+    color: #3483fa;
+}
+
+.register--form__container br{
+    margin-bottom: 20px;
+}

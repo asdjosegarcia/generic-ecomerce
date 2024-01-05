@@ -14,37 +14,38 @@ const Registerpage=()=>{
         //objeto que alamcena los datos que extrae formState
     const router=useRouter()//para redirigir a el usuario
   const [error,setError]=useState(null)//para almacenar el errror
+    const [getPasswordNoMatch,setPasswordNoMatch]=useState(null)
 
 
     const onSubmit=handleSubmit(async(data)=>{//
         // console.log(data) datos que enviamos
         
         if(data.password !== data.confirmPassword){//comprobamos si contraseña y confirmarcontraseña no coinciden
-            alert("password do not match")
-        }
+            // alert("password do not match")
+            setPasswordNoMatch("Password does not match")
+        }else{
+            const res=await fetch('/api/auth/register',{//enviamos los datos a register
+                method:'POST',
+                body:JSON.stringify({//transformamos el objeto a JSON
+                    username:data.username,//enviamos los datos de data por separado
+                    email:data.email,
+                    password:data.password
+                }),
+                headers:{
+                    'Content-type':'application/json'
+                }
+            })
     
-
-        const res=await fetch('/api/auth/register',{//enviamos los datos a register
-            method:'POST',
-            body:JSON.stringify({//transformamos el objeto a JSON
-                username:data.username,//enviamos los datos de data por separado
-                email:data.email,
-                password:data.password
-            }),
-            headers:{
-                'Content-type':'application/json'
-            }
-        })
-
-            if(res.ok){
-                    router.push('/auth/login')//si todo sale bien al ejecutar la funcion redirifimos a el usuario a el Login
-            }else{
-                 const errorResponse= await res.json()
-                 setError(errorResponse.message)
-                 console.log(errorResponse.message)
-
-            }
+                if(res.ok){//comborbamos respuesta
+                        router.push('/auth/login')//si todo sale bien al ejecutar la funcion redirifimos a el usuario a el Login
+                }else{
+                     const errorResponse= await res.json()
+                     setError(errorResponse.message)
+                     console.log(errorResponse.message)
+                }
+        }
     })
+    
     return(
        /*  <secition className='register--form__section'> */
         <div className="register--form__container" >
@@ -64,6 +65,8 @@ const Registerpage=()=>{
                         <span>{errors.username.message}</span>//mostramos el error que cargamos desde el span
                     )
                 }
+                <br></br>
+
                 <label>Email</label>
                 <input type="email" {...(register("email", {required: { value: true, message: 'Email is required' }  }))} placeholder="user@mail.com"></input>
                 {
@@ -71,20 +74,16 @@ const Registerpage=()=>{
                         <span>{errors.email.message}</span>
                     )
                 }
+                <br></br>
                 <label>Password</label>
-                <input type="password" {...(register("password", {required: { value: true, message: 'Password is required' }  }))} placeholder="*******"></input>
-                {
-                    errors.password && (
-                        <span>{errors.password.message}</span>
-                    )
-                }
+                <input className="register--form__password-input" type="password" {...(register("password", {required: { value: true, message: 'Password is required' }  }))} placeholder="*******"></input>
+                {!errors.confirmPassword && getPasswordNoMatch?(<span>{getPasswordNoMatch}</span>):(<span>{errors.password?.message}</span>)}
+                <br></br>
                 <label>Confirm Password</label>
-                <input type="password" {...(register("confirmPassword", {required: { value: true, message: 'Confirm Password is required' }}))} placeholder="*******"></input>
-                {
-                    errors.confirmPassword && (
-                        <span>{errors.confirmPassword.message}</span>
-                    )
-                }
+                <input className="register--form__password-input" type="password" {...(register("confirmPassword", {required: { value: true, message: 'Confirm Password is required' }}))} placeholder="*******"></input>
+                {!errors.confirmPassword && getPasswordNoMatch?(<span>{getPasswordNoMatch}</span>):(<span>{errors.confirmPassword?.message}</span>)}
+                {/* operador ternario para mostrar uno u otro mensaje */}
+
                 {
                     error && (<p>{error}</p>)
                 }

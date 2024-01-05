@@ -28,8 +28,6 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
       <ProductMain product={getProduct}></ProductMain>
       {/* <CommentList product={getProduct}></CommentList> */}
       <PorductQuestionList product={getProduct}></PorductQuestionList>
-
-      
     </>
   )
 }

@@ -35,8 +35,7 @@ const Registerpage=()=>{
                     'Content-type':'application/json'
                 }
             })
-    
-                if(res.ok){//comborbamos respuesta
+                if(res.ok ){//comborbamos respuesta
                         router.push('/auth/login')//si todo sale bien al ejecutar la funcion redirifimos a el usuario a el Login
                 }else{
                      const errorResponse= await res.json()

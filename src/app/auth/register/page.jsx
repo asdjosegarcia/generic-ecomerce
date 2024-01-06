@@ -6,6 +6,7 @@ import "./RegisterPage.css"
 
 
 
+
 const Registerpage=()=>{
     const {register,handleSubmit, formState:{errors}}=useForm()//descomponemos el objeto devuelto por la funcion useForm()
         //register para poder acceder a las funcionalidades de useForm

@@ -6,9 +6,14 @@ import BadgetStars from '@/components/BadgetStars'
 import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
 import ProductQuestionList from './ProductQuestionList'
+import { useRouter } from 'next/navigation'
+
+
 
 
 const ProductMain = ({ product }) => {
+  const router = useRouter()
+
   // console.log(product)
   return (
     <div className='product__container'>
@@ -32,7 +37,7 @@ const ProductMain = ({ product }) => {
           <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
         </div>
         <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
-        <button className='btn btn__buy'>Buy now</button>
+        <button onClick={()=>{router.push('/product/'+product?.id+'/buy')}} className='btn btn__buy'>Buy now</button>
         <button className='btn btn__cart'>Add to cart</button>
         <div>
           <p className='product__description--title'>Description</p>

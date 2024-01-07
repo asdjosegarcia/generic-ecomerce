@@ -34,14 +34,15 @@
 }
 .register--form__container form button{
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     font-size: 1.2rem;
     font-weight: 700;
-    border: 0px none;
+    border: 2px solid #3483fa ;
     border-radius: 6px;
     color: beige;
     background-color: #3483fa;
     margin-top: 10px;
+    
     /* margin-bottom: 10px; */
 }
 .register--form__container p{
@@ -54,4 +55,8 @@
 
 .register--form__container br{
     margin-bottom: 20px;
+}
+.register--form__container form .register--form__login{
+    color: #3483fa;
+    background-color: #ffffff;
 }

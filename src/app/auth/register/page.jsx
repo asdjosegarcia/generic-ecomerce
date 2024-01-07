@@ -88,6 +88,7 @@ const Registerpage=()=>{
                     error && (<p>{error}</p>)
                 }
                 <button>Register</button>
+                <button className="register--form__login" onClick={()=>{router.push('/auth/login')}}>Login</button>
                 
 
             </form>

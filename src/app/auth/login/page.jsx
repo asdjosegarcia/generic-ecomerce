@@ -54,6 +54,7 @@ const LoginPage = () => {
         <button className="">
           Login
         </button>
+        <button className='login--form__register' onClick={()=>{router.push('/auth/register')}}>Register</button>
       </form>
     </div>
   )

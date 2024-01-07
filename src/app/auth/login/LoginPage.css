@@ -23,10 +23,10 @@ width: 90vw;
 }
 .login--form__container form button{
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     font-size: 1.2rem;
     font-weight: 700;
-    border: 0px none;
+    border: 2px solid #3483fa ;
     border-radius: 6px;
     color: beige;
     background-color: #3483fa;
@@ -42,4 +42,8 @@ width: 90vw;
 }
 .login--form__container br{
     margin-bottom: 20px;
+}
+.login--form__container form .login--form__register{
+    color: #3483fa;
+    background-color: #ffffff;
 }

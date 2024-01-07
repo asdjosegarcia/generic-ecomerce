@@ -32,7 +32,7 @@ const authOptions={
         })
     ],
     pages:{
-        signIn:"/auth/login"
+        signIn:"/auth/login"//le decimos que ignore la pagina de logueo que creamos arriba con dentials y use la nuestra personalizada
     }
 }
 

@@ -4,8 +4,6 @@ import Navbar from '../containers/Navbar';
 import 'normalize.css';
 import { FuncionProvider } from "../context/contexto.jsx";
 
-
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -21,6 +19,7 @@ export default function RootLayout({ children }) {
         <title>Open Trade</title>
       </head>
       <body className={inter.className}>
+
         <FuncionProvider>
           <Navbar/>
         {children}
@@ -29,3 +28,5 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+

@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect,useState } from 'react'
-import ProductBuy from '@/containers/ProductBuy'
+import CreditCardForm from '@/containers/CreditCardForm'
 import ProductCard from '@/components/ProductCard'
 
 
@@ -27,7 +27,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
     {getProduct &&(
         <ProductCard product={getProduct}></ProductCard>)
     }
-    <ProductBuy product={getProduct}></ProductBuy>
+    <CreditCardForm product={getProduct}></CreditCardForm>
       
 
       

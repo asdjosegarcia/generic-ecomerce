@@ -1,4 +1,5 @@
 'use client'
+import { SessionProvider } from 'next-auth/react';
 import React, { useState } from "react";
 // import { createContext, useContext } from 'react';
 
@@ -13,7 +14,9 @@ export function FuncionProvider({children}){//creamos la funcion que encapsulara
         orderBy:'orderby=most-relevant'
     })
     const [getProductListURL,setProductListURL]=useState("")
-    return (
+    return (   
+         <SessionProvider>{/* lo usamos para tener los datos del usuario en todos los componentes */}
+    
         <variableContext.Provider
          value={{
             getProductListURL,setProductListURL,
@@ -23,6 +26,8 @@ export function FuncionProvider({children}){//creamos la funcion que encapsulara
          >{/* value almacena lo que queremos entregar a el resto de la app */}
             {children} {/* un children por que aqui entrar el elemento que encapsulemos */}
         </variableContext.Provider>
+        </SessionProvider>
+
     )
 }
 

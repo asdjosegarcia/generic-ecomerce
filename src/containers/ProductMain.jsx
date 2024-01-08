@@ -37,7 +37,7 @@ const ProductMain = ({ product }) => {
           <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
         </div>
         <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
-        <button onClick={()=>{router.push('/product/'+product?.id+'/buy')}} className='btn btn__buy'>Buy now</button>
+        <button onClick={()=>{router.push('/product/buy/'+product?.id)}} className='btn btn__buy'>Buy now</button>
         <button className='btn btn__cart'>Add to cart</button>
         <div>
           <p className='product__description--title'>Description</p>

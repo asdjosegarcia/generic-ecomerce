@@ -1,0 +1,45 @@
+.puchase-complete__background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* position: fixed; */
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.767);    
+}
+.puchase-complete__container{
+    
+    top: 50%;
+    left: 50%; /* top y left envian el div al centro del contenedor */
+    transform: translate(-50%, -50%);/* transform tranlate le resta 50% de su propio espacio centrando el div */
+    width: 92%;
+    position: absolute;
+    text-align: center;
+    /* background-color: white; */
+    background-color: rgb(231, 231, 231);
+    border: 1px solid #6969696c;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.puchase-complete__title{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.puchase-complete__thanks-user{
+    font-size: 1.4rem;
+}
+.puchase-complete__msj{
+    font-size: 1.2rem;
+}
+.puchase-complete__button{
+    width: 100%;
+    height: 50px;
+    background-color: #003cb5;
+    border-radius: 5px;
+    border: none;
+    color: beige;
+    font-weight: 300;
+    font-size: 1.4rem;
+
+}

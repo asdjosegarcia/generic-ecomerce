@@ -1,9 +1,12 @@
-import React from "react";
+"use client'"
+import React, {  useState } from "react";
 import { useSession } from "next-auth/react";
 import "./CreditCardForm.css";
+import PuchaseComplete from "@/components/PuchaseComplete";
 
 const CreditCardForm = () => {
   const { data: session } = useSession();
+  const [getPuchaseComplete,setPuchaseComplete]=useState(null)//despues lo cambiamos por false
 
   console.log(session?.user?.name);
 
@@ -18,16 +21,18 @@ const CreditCardForm = () => {
       <input className="credit-card-form__number-input" type="text" />
       <label className="credit-card-form__expiration-mm">Expiration date</label>
       <div className="credit-card-form__expiration-input">
-      <input className="credit-card-form__expirtation-mm-input" type="text" placeholder="MM" maxLength="2" />
+      <input className="credit-card-form__expirtation-mm-input" /* type="number" */ placeholder="MM" maxLength="2" /* min="1" max="12" */ />
       <p>/</p>
-      <input className="credit-card-form__expiration-yy-input" type="text" placeholder="YY" maxLength="2" />
+      <input className="credit-card-form__expiration-yy-input" /* type="number" */ placeholder="YY" maxLength="2" /* min="0" max="99" */ />
       </div>
       <div className="credit-card-form__credit-cards-logos">
       <img src="/img/visa-logo.png" alt="" />
       <img src="/img/mastercard-logo.png" alt="" />
       </div>
       {/* <input type="date" id="expiracion" name="expiracion" min="2022-01" max="2030-12"></input> */}
-      <button className="credit-card-form__confirm-button">Confirm </button>
+      <button onClick={()=>setPuchaseComplete(true)} className="credit-card-form__confirm-button"  >Confirm </button>
+    {getPuchaseComplete && (<PuchaseComplete username={session?.user?.name}></PuchaseComplete>)}
+      
     </div>
   );
 };

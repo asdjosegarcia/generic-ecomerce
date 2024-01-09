@@ -8,7 +8,7 @@ const CreditCardForm = () => {
   const { data: session } = useSession();
   const [getPuchaseComplete,setPuchaseComplete]=useState(null)//despues lo cambiamos por false
 
-  console.log(session?.user?.name);
+  // console.log(session?.user?.name);
 
   return (
     <div className="credit-card-form__container">

@@ -1,26 +1,31 @@
-import React from 'react'
+'use client'
+import React,{useState} from 'react'
 import './Navbar.css'
-// import SearchInput from '@components/SearchInput.jsx'
 import SearchInput from '../components/SearchInput'
 import MenuSVG from '../SVG/MenuSVG'
 import CartSVG from '../SVG/CartSVG'
-import Image from 'next/image';
 import Link from 'next/link'
+import MobileMenu from './MobileMenu'
+
 
 const Navbar = () => {
+    const [getMobileMenu,setMobileMenu]=useState(false)
+    // let mobileMenuOn=null
     return (
+        <>
         <nav className='nav__container'>
             <Link /* legacyBehavior */ href='/'>
-            {/* <a> */}
             <img className='comerce__icon'   src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
-            {/* </a> */}
             </Link>
             <SearchInput></SearchInput>
-                <div className='mobile__menu' alt='search bar'>
+                <div className='nav__buttons-container' alt='search bar'>
+                    <button className='nav_button' onClick={()=>{setMobileMenu(!getMobileMenu)}}>
                     <MenuSVG width={'40px'}  height={'40px'} fill={'#696969'} ></MenuSVG>
+                    </button>
+                    <button className='nav_button'>
                     <CartSVG width={'40px'}  height={'40px'}  fill={'#696969'}></CartSVG>
+                    </button>
                 </div>
-
             {/* <div>ubicación</div> */}
             {/*         <ul>
             <li>Categorias</li>
@@ -39,6 +44,9 @@ const Navbar = () => {
             <li>🛒</li>
         </ul> */}
         </nav>
+        {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu}></MobileMenu>)}
+
+        </>
 
 
     )

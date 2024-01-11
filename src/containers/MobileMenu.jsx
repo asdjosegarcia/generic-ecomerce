@@ -42,7 +42,7 @@ const MobileMenu = (props) => {
             <button onClick={() => { props.setMobileMenu(false) }} >Inicio</button>
           </Link>
           <button>Buscar</button>
-          <button>Notificaciones</button>onClick={() => {props.setMobileMenu(false)}}
+          <button>Notificaciones</button>
           <button>Mis Compras</button>
           <button>Favoritos</button>
           <button>Ofertas</button>

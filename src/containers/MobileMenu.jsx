@@ -31,7 +31,7 @@ const MobileMenu = (props) => {
             :
             <>
             <p className="mobile-menu__username">{session?.user?.name}</p>
-            <a className="mobile-menu__user-profile" >{"Mi perfil >"}</a>
+            <a className="mobile-menu__user-profile" >{"My Profile >"}</a>
             </>
           }
 
@@ -39,13 +39,13 @@ const MobileMenu = (props) => {
         </div>
         <div className='mobile-menu__options'>
           <Link href='/'>
-            <button onClick={() => { props.setMobileMenu(false) }} >Inicio</button>
+            <button onClick={() => { props.setMobileMenu(false) }} >Home</button>
           </Link>
-          <button>Buscar</button>
-          <button>Notificaciones</button>
-          <button>Mis Compras</button>
-          <button>Favoritos</button>
-          <button>Ofertas</button>
+          <button>Search</button>
+          <button>Notifications</button>
+          <button>My Shopping</button>
+          <button>Favorites</button>
+          <button>Offers</button>
           {(!session?.user?.name) ?
             <Link href='/auth/login'>
               <button onClick={() => { props.setMobileMenu(false) }}>Login</button>

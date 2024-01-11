@@ -1,21 +1,24 @@
 import React from 'react'
 import ProductList from './ProductList'
-import OrderBy from '../components/OrderBy'
-import FilterBy from '../components/FilterBy'
+// import CartList from './CartList'
 import TopMenu from './TopMenu'
-import { Rubik } from 'next/font/google'
-const rubik = Rubik({
+import { Rubik } from 'next/font/google'//funte
+
+const rubik = Rubik({//fuente
     weight: ['300','400','500', '700',],
     subsets: ['latin'],
   })
 
 
+
+
 const Main = () => {
   return (
     <div className={rubik.className}>
-      {/* <OrderBy></OrderBy> */}
       <TopMenu></TopMenu>
       <ProductList></ProductList>
+      {/* <CartList></CartList> */}
+
       
     </div>
   )

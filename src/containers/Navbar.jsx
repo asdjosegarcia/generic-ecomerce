@@ -1,5 +1,5 @@
 'use client'
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import SearchInput from '../components/SearchInput'
 import MenuSVG from '../SVG/MenuSVG'
@@ -9,27 +9,29 @@ import MobileMenu from './MobileMenu'
 
 
 const Navbar = () => {
-    const [getMobileMenu,setMobileMenu]=useState(false)
-    
+    const [getMobileMenu, setMobileMenu] = useState(false)
+
 
     // let mobileMenuOn=null
     return (
         <>
-        <nav className='nav__container'>
-            <Link /* legacyBehavior */ href='/'>
-            <img className='comerce__icon'   src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
-            </Link>
-            <SearchInput></SearchInput>
+            <nav className='nav__container'>
+                <Link /* legacyBehavior */ href='/'>
+                    <img className='comerce__icon' src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
+                </Link>
+                <SearchInput></SearchInput>
                 <div className='nav__buttons-container' alt='search bar'>
-                    <button className='nav_button' onClick={()=>{setMobileMenu(!getMobileMenu)}}>
-                    <MenuSVG width={'40px'}  height={'40px'} fill={'#696969'} ></MenuSVG>
+                    <button className='nav_button' onClick={() => { setMobileMenu(!getMobileMenu) }}>
+                        <MenuSVG width={'40px'} height={'40px'} fill={'#696969'} ></MenuSVG>
                     </button>
-                    <button className='nav_button'>
-                    <CartSVG width={'40px'}  height={'40px'}  fill={'#696969'}></CartSVG>
-                    </button>
+                    <Link href='/cart/'>
+                        {/* <button className='nav_button' onClick={() => {}}> */}
+                            <CartSVG width={'40px'} height={'40px'} fill={'#696969'}></CartSVG>
+                        {/* </button> */}
+                    </Link>
                 </div>
-            {/* <div>ubicación</div> */}
-            {/*         <ul>
+                {/* <div>ubicación</div> */}
+                {/*         <ul>
             <li>Categorias</li>
             <li>Ofertas</li>
             <li>Historial</li>
@@ -37,16 +39,16 @@ const Navbar = () => {
             <li>Vender</li>
             <li>Ayuda</li>
         </ul> */}
-            {/* <span>imagen promocional</span> */}
+                {/* <span>imagen promocional</span> */}
 
-            {/*         <ul className='personal-menu'>
+                {/*         <ul className='personal-menu'>
             <li>Crea tu cuenta</li>
             <li>Ingresá</li>
             <li>Mis compras</li>
             <li>🛒</li>
         </ul> */}
-        </nav>
-        {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu}></MobileMenu>)}
+            </nav>
+            {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu}></MobileMenu>)}
 
         </>
 

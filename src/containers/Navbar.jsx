@@ -10,6 +10,8 @@ import MobileMenu from './MobileMenu'
 
 const Navbar = () => {
     const [getMobileMenu,setMobileMenu]=useState(false)
+    
+
     // let mobileMenuOn=null
     return (
         <>

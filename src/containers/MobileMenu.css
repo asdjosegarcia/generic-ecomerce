@@ -34,9 +34,28 @@
     border: 3px solid #fff159 ;
     margin: 10px;
 }
+.mobile-menu__username-link{
+    text-decoration: none;
+    color:white;
+    grid-row:1/3;
+    align-self:center; 
+    /* border: 2px solid #3483fa; */
+    padding: 5px;
+    background-color: #3483fa;
+    border-radius: 5px;
+    text-align: center;
+}
+.mobile-menu__username-button{
+    color: aliceblue;
+    background-color: #00000000;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
 .mobile-menu__username{
     grid-column: 2/4;
     font-size: 1.4rem;
+    bottom: 0;
 }
 .mobile-menu__user-profile{
     grid-column: 2/4;

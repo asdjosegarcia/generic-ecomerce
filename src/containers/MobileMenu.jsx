@@ -1,10 +1,12 @@
 'use client'
-import React from 'react'
+import React,{useContext} from 'react'
 import './MobileMenu.css'
 import UserSVG from '@/SVG/UserSVG'
 import Link from 'next/link'
 import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react'//importamos la funcion que nos desloquea desde next-auth
+import { variableContext } from "../context/contexto";
+
 
 
 
@@ -12,6 +14,18 @@ import { signOut } from 'next-auth/react'//importamos la funcion que nos desloqu
 
 const MobileMenu = (props) => {
   const { data: session } = useSession();
+  const contexto = useContext(variableContext)
+
+  // const inputRef = useRef(null)
+  // const enfocarInput = () => {
+  //   if (inputRef.current) {
+  //     inputRef.current.focus();
+  //   }
+  // };
+  const searchFunc=()=>{
+    props.setMobileMenu(false)
+    contexto.focusSearch()
+  }
 
 
 
@@ -41,7 +55,8 @@ const MobileMenu = (props) => {
           <Link href='/'>
             <button onClick={() => { props.setMobileMenu(false) }} >Home</button>
           </Link>
-          <button>Search</button>
+          {/* <input ref={inputRef}></input> */}
+          <button onClick={searchFunc} >Search</button>
           <button>Notifications</button>
           <button>My Shopping</button>
           <button>Favorites</button>

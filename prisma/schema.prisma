@@ -7,13 +7,45 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model User{
-    id Int @id @default (autoincrement())
-    email String @unique
-    username String @unique
-    password String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model User {
+    id            Int             @id @default(autoincrement())
+    email         String          @unique
+    username      String          @unique
+    password      String
+    createdAt     DateTime        @default(now())
+    updatedAt     DateTime        @updatedAt
+    ///////////////relacion cart
+    cart          Cart? //relacion 1 a 1
+    ///////////////relacion notificaciones
+    notifications Notifications?
+}
+
+model Cart {
+    id       Int       @id @default(autoincrement())
+    //////////////relacion con user
+    user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
+    //////////////relacion con products
+    products Product[] //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
+}
+
+model Notifications {
+    id           Int            @id @default(autoincrement())
+    password     String
+    //////////////relacion user
+    user         User           @relation(fields: [id], references: [id])
+    //////////////relacion notificacion
+    Notification Notification[] //relacion 1 a muchos
+}
+
+model Notification {
+    id            Int            @id @default(autoincrement())
+    title         String?
+    description   String?
+    icon          String?
+    link          String?
+    //relacion notificacion
+    Notifications Notifications? @relation(fields: [id], references: [id]) 
+
 }
 
 model Product {
@@ -33,9 +65,13 @@ model Product {
     //////////relacion categoria
     category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
     categoryId      Int              @default(1)
-    // Comment Comment[]
+    //////////relacion comentarios
     comments        Comment[] //relacion 1 a muchos,
+    //////////relacion preguntas
     Question        Question[]
+    //////////relacion carrito
+    cart            Cart             @relation(fields: [cartId], references: [id])
+    cartId          Int              @default(1)
 }
 
 model ProductComplete {

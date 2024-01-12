@@ -27,6 +27,7 @@ const MobileMenu = (props) => {
     contexto.focusSearch()
   }
 
+  // console.log(session)
 
 
   return (

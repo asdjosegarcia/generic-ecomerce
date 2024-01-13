@@ -40,7 +40,12 @@ export async function POST(request){//creacion de usuario
             data:{
                 username:data.username,
                 email:data.email,
-                password:hashedPassword//enviamos la hash password
+                password:hashedPassword,//enviamos la hash password
+                cart:{
+                    create:{
+                        password: data.password
+                    }
+                }
             }
         })
         const {password:_,...user}=newUser//copiamos el usuario sin password

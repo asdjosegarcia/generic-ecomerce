@@ -7,16 +7,38 @@ import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
 import ProductQuestionList from './ProductQuestionList'
 import { useRouter } from 'next/navigation'
+import FloatingNotification from '@/components/FloatingNotification'
 
 
 
 
 const ProductMain = ({ product }) => {
   const router = useRouter()
+  // console.log(product?.id)
+  const addToCart=async (productId)=>{
+    const userId=2
+    const res = await fetch(`/api/cart/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId,
+        productId,
+        
+      }),
+    });
+    if(!res.ok){
+      alert('could not be added')
+    }
+    const result= await res.json();
+    console.log(result)
+  }
 
   // console.log(product)
   return (
     <div className='product__container'>
+        <FloatingNotification></FloatingNotification>
       {!product ? <Loading></Loading> : <>
         <header>
           <p>{product?.condition}</p>
@@ -38,7 +60,7 @@ const ProductMain = ({ product }) => {
         </div>
         <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
         <button onClick={()=>{router.push('/product/buy/'+product?.id)}} className='btn btn__buy'>Buy now</button>
-        <button className='btn btn__cart'>Add to cart</button>
+        <button onClick={()=>{addToCart(product.id)}} className='btn btn__cart'>Add to cart</button>
         <div>
           <p className='product__description--title'>Description</p>
           <p className='product__description--content'>{product?.ProductComplete?.description}</p>

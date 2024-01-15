@@ -1,9 +1,9 @@
 .product__container{
     padding: 0px 10px;
-    background-color: #1f2937;
+    /* background-color: #1f2937; */
     /* background-color: #d1d5db; */
 
-    color: #d1d5db;
+    /* color: #d1d5db; */
 }
 header{
     width: 100%;
@@ -32,7 +32,7 @@ header .porduct--qualification__container{
     height: 100%;
 }
 .product--img__contiainter .product__img{
-    width: 100vw;
+    width: 100%;
 }
 .prodcut__price{
     /* color: green; */

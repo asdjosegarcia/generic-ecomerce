@@ -11,10 +11,10 @@ import FloatingNotification from '@/components/FloatingNotification'
 
 
 
-
 const ProductMain = ({ product }) => {
   const router = useRouter()
-  // console.log(product?.id)
+  const [getNotificationText,setNotificationText]=useState(null)
+
   const addToCart=async (productId)=>{
     const userId=2
     const res = await fetch(`/api/cart/`, {
@@ -30,15 +30,21 @@ const ProductMain = ({ product }) => {
     });
     if(!res.ok){
       alert('could not be added')
-    }
-    const result= await res.json();
-    console.log(result)
+    }else{
+      setNotificationText('Product added sussesfully')
+      setTimeout(() => {//eliminamos la notificacion en 2.5seg
+        setNotificationText(null)
+    }, 2500);
+  }
+  //  const result= await res.json();
+  //   console.log(result)
   }
 
   // console.log(product)
   return (
     <div className='product__container'>
-        <FloatingNotification></FloatingNotification>
+      {getNotificationText&& <FloatingNotification notificationText={getNotificationText}></FloatingNotification>}
+        
       {!product ? <Loading></Loading> : <>
         <header>
           <p>{product?.condition}</p>

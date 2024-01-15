@@ -1,7 +1,26 @@
+@keyframes viewNotify {
+    from {
+        transform: translate(-50%, -200%);
+    }
+    to {
+        transform: translate(-50%, 0%);
+    }
+  }
+
+  @keyframes hideNotify {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
 .floating-notifaction__container{
     position: fixed;
     color: black;
-    background-color: rgba(255, 255, 255, 0.253);
+    background-color: rgba(252, 255, 57, 0.322);
     backdrop-filter: blur(5px);
     height: 70px;
     width: 350px;
@@ -15,9 +34,11 @@
     top: 05%;
     left: 50%; /* top y left envian el div al centro del contenedor */
     transform: translate(-50%, -5%);/* transform tranlate le resta 50% de su propio espacio centrando el div */
-
+    box-shadow: 0px 0px 10px #000000d3;
+    animation: viewNotify .5s ease-in-out forwards;
 }
-.floating-notifaction__container p{
-    /* filter: blur(0px); */
-
+.hidden {
+    animation: hideNotify 1s ease-in-out forwards;/* forwards para que se mantegna el estilo de la animacon una vez concluida*/
+    animation-delay: 1s; 
 }
+

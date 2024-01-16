@@ -1,12 +1,14 @@
 import React from 'react'
-import CartCard from '@/components/CartCard'
+import CartCard from '@/components/CartCard.jsx'
 
-const CartList = () => {
+const CartList = ({products}) => {
+    // console.log(products)
     return (
         <div>
-            <CartCard>
-                
-            </CartCard>
+            {products.map((product,index)=>(
+                // console.log(product);
+                <CartCard  key={index} product={product}></CartCard>
+            ))}
         </div>
     )
 }

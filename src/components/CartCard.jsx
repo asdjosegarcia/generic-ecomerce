@@ -8,11 +8,12 @@ import DeleteSVG from '@/SVG/DeleteSVG'
 
 
 const CartCard = ({product}) => {
+
   // console.log('card '+product);
   // console.log('hola')
   return (
     <>
-    <Link className='link' href="/product/'+product.id">
+    {/* <Link className='link' href="/product/'+product.id"> */}
       <div className='cart-card' >
         <img className='cart-card__img' src={product.previewImg} alt=""/>
         <p className='cart-card__title'>{product.title}</p>
@@ -26,7 +27,7 @@ const CartCard = ({product}) => {
         {/* <p className='cart-card__condition' >{product.condition}</p> */}
       <CartInputNumber></CartInputNumber>
       </div>
-    </Link>
+    {/* </Link> */}
     </>
 
 

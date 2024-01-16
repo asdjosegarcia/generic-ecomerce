@@ -49,15 +49,16 @@
 
 }
  .cart-card__favorite-delete-container{
-    margin-top: 10px;
+    margin: 10px 10px 0px 0px;
     justify-self: end;
     grid-column:3/4 ;
     grid-row:1/2;
 
 }
-.cart-card__delete{
-    margin-right: 10px;
+.cart-card__delete svg:hover{
+    /* margin-right: 10px; */
     /* right: 0px; */
+    fill: red;
     
 }
 /* estilos del componente CartInputNumber */

@@ -28,6 +28,11 @@ input[type="number"] {/* remueve las flechas hacia arriba y abajo de un input de
     /* border-radius: 5px; */
     /* font-size: 1.5rem; */
 }
+.cart-input__container button:hover{
+    background-color: white;
+    fill:#3483fa ;
+    border: 1px solid #696969;
+}
 .cart-input__container .cart-input__minus-button {
     border-top-left-radius:5px;
     border-bottom-left-radius:5px ;
@@ -35,5 +40,4 @@ input[type="number"] {/* remueve las flechas hacia arriba y abajo de un input de
 .cart-input__container .cart-input__plus-button{
     border-top-right-radius:5px;
     border-bottom-right-radius:5px ;
-
 }

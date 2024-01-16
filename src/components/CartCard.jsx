@@ -8,7 +8,7 @@ import DeleteSVG from '@/SVG/DeleteSVG'
 
 
 const CartCard = ({product}) => {
-
+  
   // console.log('card '+product);
   // console.log('hola')
   return (

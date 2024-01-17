@@ -29,7 +29,8 @@ const ProductMain = ({ product }) => {
       }),
     });
     if(!res.ok){
-      alert('could not be added')
+      setNotificationText("We could not add the product")
+
     }else{
       setNotificationText('Product added sussesfully')
       setTimeout(() => {//eliminamos la notificacion en 2.5seg

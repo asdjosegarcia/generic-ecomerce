@@ -15,19 +15,13 @@ const LoadUserData = () => {
         fetch(`/api/user/${email}`)//realizamos una peticion get a parametro de la url.id
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {
-          console.log(data)
+        //   console.log(data)
+          contexto.userData=data//cargamos el objeto que nos devuelve como respuesta a el contexto
         })
+        onlyExecution=false
         
-
-        console.log(session)
-        // console.log(session.user.name)
-        // console.log(session.user.email)
-
-            contexto.userData.username=name
-            contexto.userData.email=email
-            onlyExecution=false
-            // console.log(contexto.userData)
     }
+    // console.log(contexto.userData)
 
     return (
         <></>

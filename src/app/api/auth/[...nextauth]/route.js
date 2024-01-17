@@ -22,11 +22,12 @@ const authOptions={
 
                 const matchPassword=await bcrypt.compare(credentials.password,userFound.password)
                 if(!matchPassword)throw new Error('Password wrong')
-
+                console.log('id'+userFound.id)
                 return{
-                    id:userFound.id,
                     name:userFound.username,
                     email:userFound.email,
+                    id:userFound.id
+                    // createdAt:userFound.createdAt,
                 }
             }
         })

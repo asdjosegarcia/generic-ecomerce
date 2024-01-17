@@ -13,6 +13,7 @@ const LoginPage = () => {
 
   const onSubmit = handleSubmit(async data => { //data es la informacion que tomamos del usuario
     const res = await signIn('credentials', {//signIn es una funcion de next-auth para el logueo, ya sea con google,facebook etc, por defecto nos redirecciona
+
       email: data.email,
       password: data.password,
       redirect: false,//para evitar el redireccionamiento al loguearse
@@ -25,7 +26,7 @@ const LoginPage = () => {
       router.push('/') //si la autenticacion sale bien redireccionamos a el usuario a dashboard
       router.refresh() //y refresca, aqui se refrescaria el dashboard
     }
-    console.log('res', res)
+    // console.log('res', res)
   })
 
 

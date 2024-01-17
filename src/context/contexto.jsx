@@ -41,7 +41,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getProductListURL, setProductListURL,
           getUrlParams, setUrlParams,
           searchRef, focusSearch,
-
+          userData,
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}
         {children} {/* un children por que aqui entrar el elemento que encapsulemos */}

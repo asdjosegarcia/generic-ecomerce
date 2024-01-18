@@ -1,16 +1,20 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Link from 'next/link'
 import './CartCard.css'
 import CartInputNumber from './CartInputNumber'
 import HeartSVG from '@/SVG/HeartSVG'
 import HeartOutlineSVG from '@/SVG/HeartOutlineSVG'
 import DeleteSVG from '@/SVG/DeleteSVG'
+import DeleteProductButton from './atoms/DeleteProductButton'
+
 
 
 const CartCard = ({product}) => {
 
-  // console.log('card '+product);
-  // console.log('hola')
+
+// console.log(product.id)
+  
+
   return (
     <>
     {/* <Link className='link' href="/product/'+product.id"> */}
@@ -20,7 +24,8 @@ const CartCard = ({product}) => {
         <h4 className='cart-card__price'>${product.price}</h4>
         <div className='cart-card__favorite-delete-container'>
         <span className='cart-card__favorite'>{(product.favorites)?<HeartSVG width={24} height={24} fill={'#3483fa'}/>:<HeartOutlineSVG width={24} height={24}fill={'#3483fa'}/>}</span>
-        <span onClick={()=>{}} className='cart-card__delete'><DeleteSVG height={'24px'} fill={'#696969'}></DeleteSVG></span>
+        {/* <span onClick={()=>{deleteFromCart()}} className='cart-card__delete'><DeleteSVG height={'24px'} fill={'#696969'}></DeleteSVG></span> */}
+        <DeleteProductButton link={'api/cart/'} productId={product.id} ></DeleteProductButton>
         </div>
         {/* <span className='cart-card__qualification'><BadgetStars qualification={product.qualification}/></span> */}
         <p className='cart-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>

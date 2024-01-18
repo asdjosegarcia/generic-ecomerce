@@ -16,13 +16,14 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
       searchRef.current.focus();//el metodo focus enfoca el input para que el usuario pueda conezar a escribir
     }
   };
-  const [getUrlParams, setUrlParams] = useState({
+  const [getUrlParams, setUrlParams] = useState({//filtros de busqueda que se fusionan
     freeShipping: false,
     new: false,
     search: 'search=',
     orderBy: 'orderby=most-relevant'
   })
-  // console.log(session?.user)
+  const [getNotificationText,setNotificationText]=useState(false) //estado que manjea las notificaciones
+
   const [getProductListURL, setProductListURL] = useState("")
   const userData={
     userId:0,
@@ -41,6 +42,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getProductListURL, setProductListURL,
           getUrlParams, setUrlParams,
           searchRef, focusSearch,
+          getNotificationText,setNotificationText,
           userData,
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}

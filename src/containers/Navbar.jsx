@@ -1,20 +1,26 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import './Navbar.css'
 import SearchInput from '../components/SearchInput'
 import MenuSVG from '../SVG/MenuSVG'
 import CartSVG from '../SVG/CartSVG'
 import Link from 'next/link'
 import MobileMenu from './MobileMenu'
+import FloatingNotification from '@/components/FloatingNotification';
+import { variableContext } from "@/context/contexto";
+
+
 
 
 const Navbar = () => {
     const [getMobileMenu, setMobileMenu] = useState(false)
+    const contexto = useContext(variableContext)
 
 
     // let mobileMenuOn=null
     return (
         <>
+            {contexto.getNotificationText && <FloatingNotification/> }
             <nav className='nav__container'>
                 <Link /* legacyBehavior */ href='/'>
                     <img className='comerce__icon' src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />

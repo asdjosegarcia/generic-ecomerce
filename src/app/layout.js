@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '../containers/Navbar';
 import 'normalize.css';
 import { FuncionProvider } from "../context/contexto.jsx";
-import LoadUserData from '@/components/LoadUserData';
+// import LoadUserData from '@/components/LoadUserData';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <FuncionProvider>
           <Navbar />
-          <LoadUserData></LoadUserData>
+          {/* <LoadUserData></LoadUserData> */}
           {children}
         </FuncionProvider>
       </body>

@@ -8,6 +8,7 @@ import Link from 'next/link'
 import MobileMenu from './MobileMenu'
 import FloatingNotification from '@/components/FloatingNotification';
 import { variableContext } from "@/context/contexto";
+import LoadUserData from '@/components/LoadUserData'
 
 
 
@@ -20,6 +21,7 @@ const Navbar = () => {
     // let mobileMenuOn=null
     return (
         <>
+        <LoadUserData></LoadUserData>
             {contexto.getNotificationText && <FloatingNotification/> }
             <nav className='nav__container'>
                 <Link /* legacyBehavior */ href='/'>

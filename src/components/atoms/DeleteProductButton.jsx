@@ -9,23 +9,29 @@ const DeleteProductButton = ({link,productId,userId,size}) => {
   
 
   const deleteFromCart= async()=>{
-/*     const res = await fetch(`${link}`, {
+    const res = await fetch(`${link}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId:contexto.userData.id,
+        userId:contexto.getUserData.id,
         productId:productId,  
       }),
     });
-    console.log(res.json())
-    // console.log('delete'+link+productId)
     if(res.ok){
-      contexto.setNotificationText('Eliminado')
-      
-    } */
-    contexto.setNotificationText('Eliminado')
+      contexto.setNotificationText('Deleted')
+    }else{
+      contexto.setNotificationText('Error')
+    }
+    console.log( 'link'+link)
+    console.log('porductId'+productId)
+    console.log('userId',contexto.getUserData.id)
+      // contexto.setNotificationText('Deleted')
+
+
+    // link=null;
+    // productId=null;
 
   }
   

@@ -25,7 +25,7 @@ const CartCard = ({product}) => {
         <div className='cart-card__favorite-delete-container'>
         <span className='cart-card__favorite'>{(product.favorites)?<HeartSVG width={24} height={24} fill={'#3483fa'}/>:<HeartOutlineSVG width={24} height={24}fill={'#3483fa'}/>}</span>
         {/* <span onClick={()=>{deleteFromCart()}} className='cart-card__delete'><DeleteSVG height={'24px'} fill={'#696969'}></DeleteSVG></span> */}
-        <DeleteProductButton link={'api/cart/'} productId={product.id} ></DeleteProductButton>
+        <DeleteProductButton link={'/api/cart/'} productId={product.id} ></DeleteProductButton>
         </div>
         {/* <span className='cart-card__qualification'><BadgetStars qualification={product.qualification}/></span> */}
         <p className='cart-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>

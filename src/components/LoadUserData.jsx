@@ -16,12 +16,12 @@ const LoadUserData = () => {
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {
         //   console.log(data)
-          contexto.userData=data//cargamos el objeto que nos devuelve como respuesta a el contexto
+        //   contexto.userData=data//cargamos el objeto que nos devuelve como respuesta a el contexto
+        contexto.setUserData(data)
         })
         onlyExecution=false
-        
     }
-    // console.log(contexto.userData)
+    
 
     return (
         <></>

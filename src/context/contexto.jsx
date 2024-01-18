@@ -6,9 +6,14 @@ import React, { useState, useRef } from "react";
 
 
 export const variableContext = React.createContext();//creamos un context
+// let userData={
+//   id:0,
+//   username:'',
+//   email:'',
+//   password:'',
+// }
 
 export function FuncionProvider({ children }) {//creamos la funcion que encapsulara los valores y luego encapsulara el componente principal de la app
-
   //lo que vamos a compartir en toda la app
   const searchRef = useRef(null)//useRef para el input
   const focusSearch = () => {//funcion de el boton "search"
@@ -22,16 +27,10 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
     search: 'search=',
     orderBy: 'orderby=most-relevant'
   })
-  const [getNotificationText,setNotificationText]=useState(false) //estado que manjea las notificaciones
-
+  const [getNotificationText, setNotificationText] = useState(false) //estado que manjea las notificaciones
+  const [getUserData,setUserData]=useState(null)
   const [getProductListURL, setProductListURL] = useState("")
-  const userData={
-    userId:0,
-    username:'',
-    email:'',
-    password:'',
 
-  }
 
 
   return (
@@ -42,8 +41,9 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getProductListURL, setProductListURL,
           getUrlParams, setUrlParams,
           searchRef, focusSearch,
-          getNotificationText,setNotificationText,
-          userData,
+          getNotificationText, setNotificationText,
+          // userData,
+          getUserData,setUserData
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}
         {children} {/* un children por que aqui entrar el elemento que encapsulemos */}

@@ -1,8 +1,11 @@
 'use client'
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import CartList from '@/containers/CartList'
+import { variableContext } from "@/context/contexto";
+
 
 const Cart = () => {
+  const contexto = useContext(variableContext)
   const [getProducts,setProducts]=useState(null)//aqui cargaremos los datos del produto
 
   useEffect(() => {
@@ -13,7 +16,7 @@ const Cart = () => {
           setProducts(data)
         })
     // }
-  }, [])
+  }, [contexto.getNotificationText])
   return (
     <div>
       {getProducts &&(

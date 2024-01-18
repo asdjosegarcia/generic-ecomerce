@@ -19,7 +19,7 @@ const FloatingNotification = (props) => {
   return (
     <>
       { contexto.getNotificationText &&
-      <div className={`floating-notifaction__container ${(getClearNotify) ? 'hidden' : ''}`} >
+      <div className={`floating-notifaction__container ${getClearNotify ? 'hidden' : ''}`} >
         <p>{contexto.getNotificationText ? contexto.getNotificationText : ''} </p>
         {(props.error) ? <CloseSVG></CloseSVG> : <CheckCompleteSVG width={'40px'} fill={'green'}></CheckCompleteSVG>}
       </div>

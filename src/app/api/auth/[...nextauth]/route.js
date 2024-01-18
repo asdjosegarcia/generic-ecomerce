@@ -22,16 +22,18 @@ const authOptions={
 
                 const matchPassword=await bcrypt.compare(credentials.password,userFound.password)
                 if(!matchPassword)throw new Error('Password wrong')
-                console.log('id'+userFound.id)
+                console.log('user DB',userFound)
                 return{
+                    // user:userFound
+                    id:userFound.id,
                     name:userFound.username,
                     email:userFound.email,
-                    id:userFound.id
                     // createdAt:userFound.createdAt,
                 }
             }
         })
     ],
+    
     pages:{
         signIn:"/auth/login"//le decimos que ignore la pagina de logueo que creamos arriba con dentials y use la nuestra personalizada
     }

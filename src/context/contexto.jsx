@@ -6,12 +6,7 @@ import React, { useState, useRef } from "react";
 
 
 export const variableContext = React.createContext();//creamos un context
-// let userData={
-//   id:0,
-//   username:'',
-//   email:'',
-//   password:'',
-// }
+
 
 export function FuncionProvider({ children }) {//creamos la funcion que encapsulara los valores y luego encapsulara el componente principal de la app
   //lo que vamos a compartir en toda la app
@@ -34,7 +29,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
 
 
   return (
-    <SessionProvider>{/* lo usamos para tener los datos del usuario en todos los componentes */}
+    <SessionProvider >{/* lo usamos para tener los datos del usuario en todos los componentes */}
 
       <variableContext.Provider
         value={{

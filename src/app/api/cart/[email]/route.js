@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 export async function GET(request, { params }) {
     
     const user = await prisma.user.findUnique({//
-        where: { id:Number( params.id )},
+        where: { email: params.email },
         include: { cart: true },
     })
     const cart = await prisma.cart.findUnique({//

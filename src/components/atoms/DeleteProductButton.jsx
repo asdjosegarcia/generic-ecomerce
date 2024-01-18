@@ -24,8 +24,8 @@ const DeleteProductButton = ({link,productId,userId,size}) => {
     }else{
       contexto.setNotificationText('Error')
     }
-    console.log( 'link'+link)
-    console.log('porductId'+productId)
+    // console.log( 'link'+link)
+    // console.log('porductId'+productId)
     console.log('userId',contexto.getUserData.id)
       // contexto.setNotificationText('Deleted')
 

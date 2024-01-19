@@ -1,44 +1,47 @@
 // 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import Loading from '@/components/Loading'
 import BadgetFreeShipping from '@/components/BadgetFreeShipping'
 import BadgetStars from '@/components/BadgetStars'
 import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
 import ProductQuestionList from './ProductQuestionList'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import FloatingNotification from '@/components/FloatingNotification'
+import Link from 'next/link'
+import { variableContext } from "@/context/contexto";
+
+
 
 
 
 const ProductMain = ({ product }) => {
-  const router = useRouter()
+  const contexto = useContext(variableContext)
+  // const router = useRouter()
   const [getNotificationText,setNotificationText]=useState(null)
 
   const addToCart=async (productId)=>{
-    const userId=2
-    const res = await fetch(`/api/cart/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId,
-        productId,
-        
-      }),
-    });
-    if(!res.ok){
-      setNotificationText("We could not add the product")
-
-    }else{
-      setNotificationText('Product added sussesfully')
-      setTimeout(() => {//eliminamos la notificacion en 2.5seg
-        setNotificationText(null)
-    }, 2500);
+  //   console.log('eeee')
+    const email='user8@gmail.com'
+  const res = await fetch(`/api/cart/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email:email,
+      // pasword:'',
+      productId:productId,  
+    }),
+  });
+  console.log(productId,email)
+  console.log(await res.json())
+  if(res.ok){
+    contexto.setNotificationText('Added to cart!')
+  }else{
+    contexto.setNotificationText('Error')
   }
-  //  const result= await res.json();
-  //   console.log(result)
+
   }
 
   // console.log(product)
@@ -66,7 +69,9 @@ const ProductMain = ({ product }) => {
           <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
         </div>
         <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
-        <button onClick={()=>{router.push('/product/buy/'+product?.id)}} className='btn btn__buy'>Buy now</button>
+        <Link href={'/product/buy/'+product?.id}>
+        <button /* onClick={()=>{router.push('/product/buy/'+product?.id)}} */ className='btn btn__buy'>Buy now</button>
+        </Link>
         <button onClick={()=>{addToCart(product.id)}} className='btn btn__cart'>Add to cart</button>
         <div>
           <p className='product__description--title'>Description</p>

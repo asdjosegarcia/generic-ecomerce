@@ -55,12 +55,7 @@
     grid-row:1/2;
 
 }
-.cart-card__delete svg:hover{
-    /* margin-right: 10px; */
-    /* right: 0px; */
-    fill: red;
-    
-}
+
 /* estilos del componente CartInputNumber */
 .cart-input__container{ 
     grid-row:3/4 ;

@@ -29,19 +29,11 @@ const DeleteProductButton = ({link,productId,userId,size}) => {
     }else{
       contexto.setNotificationText('Error')
     }
-    // console.log( 'link'+link)
-    // console.log('porductId'+productId)
-    // console.log('userId',contexto.getUserData.id)
-      // contexto.setNotificationText('Deleted')
-
-
-    // link=null;
-    // productId=null;
 
   }
   
   return (
-    <button onClick={()=>deleteFromCart()}>
+    <button onClick={()=>deleteFromCart()} className="button-delete">
       <DeleteSVG height={'24px'} fill={'#696969'} ></DeleteSVG>
     </button>
   )

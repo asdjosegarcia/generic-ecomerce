@@ -1,0 +1,15 @@
+.button-delete {
+    border: none;
+    background-color: #00000000;
+}
+.button-delete svg{
+    fill:#696969;
+    height: 24px;
+    
+}
+.button-delete svg:hover{
+    /* margin-right: 10px; */
+    /* right: 0px; */
+    fill: red;
+    
+}

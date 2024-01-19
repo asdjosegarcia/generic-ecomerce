@@ -10,6 +10,10 @@ import DeleteProductButton from './atoms/DeleteProductButton'
 
 
 const CartCard = ({product}) => {
+  const handleClickOnButtons = (event) => {
+    // Evita que el clic en los botones active el enlace del padre
+    event.stopPropagation();
+  };
 
 
 // console.log(product.id)
@@ -17,22 +21,22 @@ const CartCard = ({product}) => {
 
   return (
     <>
-    {/* <Link className='link' href="/product/'+product.id"> */}
       <div className='cart-card' >
+    <Link className='cart-card__link-img' href={`/product/${product.id}`} >
         <img className='cart-card__img' src={product.previewImg} alt=""/>
+    </Link>
+    <Link className='cart-card__link-title' href={`/product/${product.id}`} >
         <p className='cart-card__title'>{product.title}</p>
+    </Link>
+
         <h4 className='cart-card__price'>${product.price}</h4>
         <div className='cart-card__favorite-delete-container'>
-        <span className='cart-card__favorite'>{(product.favorites)?<HeartSVG width={24} height={24} fill={'#3483fa'}/>:<HeartOutlineSVG width={24} height={24}fill={'#3483fa'}/>}</span>
-        {/* <span onClick={()=>{deleteFromCart()}} className='cart-card__delete'><DeleteSVG height={'24px'} fill={'#696969'}></DeleteSVG></span> */}
-        <DeleteProductButton link={'/api/cart/'} productId={product.id} ></DeleteProductButton>
+        <span className='cart-card__favorite'>{(product.favorites)?<HeartSVG width={24} height={24} fill={'#3483fa'} />:<HeartOutlineSVG width={24} height={24}fill={'#3483fa'}/>}</span>
+        <DeleteProductButton style={{ pointerEvents: 'none' }} link={'/api/cart/'} productId={product.id} ></DeleteProductButton>
         </div>
-        {/* <span className='cart-card__qualification'><BadgetStars qualification={product.qualification}/></span> */}
         <p className='cart-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>
-        {/* <p className='cart-card__condition' >{product.condition}</p> */}
-      <CartInputNumber></CartInputNumber>
+      <CartInputNumber ></CartInputNumber>
       </div>
-    {/* </Link> */}
     </>
 
 
@@ -40,3 +44,7 @@ const CartCard = ({product}) => {
 }
 
 export default CartCard
+
+
+
+

@@ -8,6 +8,7 @@ input[type="number"] {/* remueve las flechas hacia arriba y abajo de un input de
     flex-direction: row;
     height: 30px;
     align-items: center;
+    
 
 }
 .cart-input__container input{

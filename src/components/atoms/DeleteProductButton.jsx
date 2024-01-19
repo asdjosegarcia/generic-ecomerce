@@ -2,20 +2,25 @@ import React,{useContext} from 'react'
 import './DeleteProductButton.css'
 import DeleteSVG from '@/SVG/DeleteSVG'
 import { variableContext } from "@/context/contexto";
+import { useSession } from 'next-auth/react';
+
 
 
 const DeleteProductButton = ({link,productId,userId,size}) => {
   const contexto = useContext(variableContext)
+  const { data: session } = useSession();//cargamos datos del usuario en session   
+
   
 
   const deleteFromCart= async()=>{
+    
     const res = await fetch(`${link}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId:contexto.getUserData.id,
+        email:session?.user.email,
         productId:productId,  
       }),
     });
@@ -26,7 +31,7 @@ const DeleteProductButton = ({link,productId,userId,size}) => {
     }
     // console.log( 'link'+link)
     // console.log('porductId'+productId)
-    console.log('userId',contexto.getUserData.id)
+    // console.log('userId',contexto.getUserData.id)
       // contexto.setNotificationText('Deleted')
 
 

@@ -13,9 +13,9 @@ export async function GET(request, { params }){
 }
 
 export async function POST(request) {
-    const {userId,password,productId}=await request.json()
+    const {email,password,productId}=await request.json()
     const user = await prisma.user.findUnique({//buscamos 1 unico item en la lista user
-        where: { id: userId },//cuando encuentra un user con la id userId..
+        where: { email: email },//cuando encuentra un user con la id userId..
         include: { cart: true },//incluimos el carrito...
       })
 
@@ -32,9 +32,9 @@ export async function POST(request) {
 
 
 export async function DELETE(request) {
-    const {userId,password,productId}=await request.json()
+    const {email,password,productId}=await request.json()
     const user = await prisma.user.findUnique({//buscamos 1 unico item en la lista user
-        where: { id: userId },//cuando encuentra un user con la id userId..
+        where: { email: email },//cuando encuentra un user con el email..
         include: { cart: true },//incluimos el carrito...
       })
 

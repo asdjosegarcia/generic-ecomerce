@@ -17,14 +17,14 @@ const LoadUserData = () => {
 
     
     if(session?.user && onlyExecution){
-        // const { name, email,id} = session.user;
-        // fetch(`/api/user/${email}`)//realizamos una peticion get a parametro de la url.id
-        // .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-        // .then(data => {
-        // //   console.log(data)
-        // //   contexto.userData=data//cargamos el objeto que nos devuelve como respuesta a el contexto
-        // contexto.setUserData(data)
-        // })
+        const { name, email,id} = session.user;
+        fetch(`/api/user/${email}`)//realizamos una peticion get a parametro de la url.id
+        .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+        .then(data => {
+        //   console.log(data)
+        //   contexto.userData=data//cargamos el objeto que nos devuelve como respuesta a el contexto
+        contexto.setUserData(data)
+        })
         onlyExecution=false
     }
     

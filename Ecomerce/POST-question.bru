@@ -1,0 +1,19 @@
+meta {
+  name: POST-question
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3000/api/products/questions/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username":"user8",
+    "question":"this is a question 2",
+    "productCompleteId":14
+  }
+}

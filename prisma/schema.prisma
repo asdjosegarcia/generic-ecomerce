@@ -8,16 +8,18 @@ datasource db {
 }
 
 model User {
-    id            Int             @id @default(autoincrement())
-    email         String          @unique
-    username      String          @unique
+    id            Int            @id @default(autoincrement())
+    email         String         @unique
+    username      String         @unique
     password      String
-    createdAt     DateTime        @default(now())
-    updatedAt     DateTime        @updatedAt
+    createdAt     DateTime       @default(now())
+    updatedAt     DateTime       @updatedAt
     ///////////////relacion cart
     cart          Cart? //relacion 1 a 1
     ///////////////relacion notificaciones
     notifications Notifications?
+    //////////////relacion preguntas
+    questions     Question[] //relacion uno a muchos
 }
 
 model Cart {
@@ -39,16 +41,14 @@ model Notifications {
 }
 
 model Notification {
-    id            Int            @id @default(autoincrement())
-    title         String?
-    description   String?
-    icon          String?
-    link          String?
+    id              Int            @id @default(autoincrement())
+    title           String?
+    description     String?
+    icon            String?
+    link            String?
     //relacion notificacion
-    Notifications Notifications? @relation(fields: [notificationsId], references: [id])
-    notificationsId      Int              @default(1)
-
-
+    Notifications   Notifications? @relation(fields: [notificationsId], references: [id])
+    notificationsId Int            @default(1)
 }
 
 model Product {
@@ -73,8 +73,8 @@ model Product {
     //////////relacion preguntas
     Question        Question[]
     //////////relacion carrito
-    cart            Cart?             @relation(fields: [cartId], references: [id])
-    cartId          Int?              
+    cart            Cart?            @relation(fields: [cartId], references: [id])
+    cartId          Int?
 }
 
 model ProductComplete {
@@ -97,8 +97,12 @@ model Question {
     dislike           Int              @default(0)
     ProductComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
     productCompleteId Int
-    Product           Product?         @relation(fields: [productId], references: [id]) //relacion 1 a 1 con products
+    ///////////relacion porduct
+    Product           Product?         @relation(fields: [productId], references: [id]) //relacion 1 a muchos
     productId         Int
+    ///////////relacion user
+    User              User?            @relation(fields: [username], references: [username]) //relacion 1 a muchos con products
+    username          String?
 }
 
 model Comment {

@@ -34,8 +34,8 @@ const ProductMain = ({ product }) => {
       productId:productId,  
     }),
   });
-  console.log(productId,email)
-  console.log(await res.json())
+  // console.log(productId,email)
+  // console.log(await res.json())
   if(res.ok){
     contexto.setNotificationText('Added to cart!')
   }else{

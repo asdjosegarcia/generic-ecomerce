@@ -13,16 +13,21 @@ export async function GET(){
 }
 
 export async function POST(request){
-    const {/* qualification, */question,productCompleteId}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
-    const newProduct=await prisma.question.create({//linea para crear datos en nuestra base de datos
+    const {username,question,productCompleteId}=await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+    const user=await prisma.user.findUnique({//validamos que el nombre de usuario exista
+        where:{username:username}
+    })
+
+    const newQuestion=await prisma.question.create({//linea para crear datos en nuestra base de datos
         data:{
             //aqui no mandamos ni id ni fecha por que se crean solos
             // qualification:qualification,
+            username:user.username,
             question:question,
             productCompleteId :productCompleteId,
             productId :productCompleteId,
 
         }
     })
-    return NextResponse.json(newProduct)
+    return NextResponse.json(newQuestion)
 }

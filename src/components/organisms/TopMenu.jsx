@@ -1,6 +1,6 @@
 import React from 'react'
-import FilterBy from '../components/FilterBy'
-import OrderBy from '../components/OrderBy'
+import FilterBy from '@/components/molecules/FilterBy'
+import OrderBy from '../atoms/OrderBy'
 import './TopMenu.css'
 
 const TopMenu = () => {

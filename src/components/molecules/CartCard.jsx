@@ -4,8 +4,8 @@ import './CartCard.css'
 import CartInputNumber from './CartInputNumber'
 import HeartSVG from '@/SVG/HeartSVG'
 import HeartOutlineSVG from '@/SVG/HeartOutlineSVG'
-import DeleteSVG from '@/SVG/DeleteSVG'
-import DeleteProductButton from './atoms/DeleteProductButton'
+// import DeleteSVG from '@/SVG/DeleteSVG'
+import DeleteProductButton from '@/components/atoms/DeleteProductButton'
 
 
 

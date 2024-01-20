@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect,useState } from 'react'
-import ProductMain from '@/containers/ProductMain'
-import CommentList from '@/containers/CommentList'
-import PorductQuestionList from '@/containers/ProductQuestionList'
+import ProductMain from '@/components/templates/ProductMain'
+// import CommentList from '@/containers/CommentList'
+import PorductQuestionList from '@/components/organisms/ProductQuestionList'
 
 // import { useRouter } from 'next/navigation'
 

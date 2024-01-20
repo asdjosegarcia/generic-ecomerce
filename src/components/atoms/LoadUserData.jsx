@@ -1,7 +1,7 @@
 'use client'
 import React,{useContext, useEffect} from 'react'
 import { useSession } from 'next-auth/react';
-import { variableContext } from "../context/contexto";
+import { variableContext } from "../../context/contexto";
 
 let onlyExecution=true
 const LoadUserData = () => {

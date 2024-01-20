@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import FilterSVG from '../SVG/FilterSVG'
+import FilterSVG from '@/SVG/FilterSVG'
 import './FilterBy.css'
-import FilterMenu from "../components/FilterMenu.jsx";
+import FilterMenu from "@/components/atoms/FilterMenu";
 
 
 const FilterBy = () => {

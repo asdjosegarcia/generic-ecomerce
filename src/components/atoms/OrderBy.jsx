@@ -1,7 +1,7 @@
 'use client'
 import './OrderBy.css'
 import React, { useContext } from "react";
-import { variableContext } from "../context/contexto";
+import { variableContext } from "../../context/contexto";
 
 
 const OrderBy = () => {

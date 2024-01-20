@@ -1,13 +1,13 @@
 // 'use client'
 import React, { useEffect, useState,useContext } from 'react'
-import Loading from '@/components/Loading'
-import BadgetFreeShipping from '@/components/BadgetFreeShipping'
-import BadgetStars from '@/components/BadgetStars'
+import Loading from '@/components/templates/Loading'
+import BadgetFreeShipping from '@/components/atoms/BadgetFreeShipping'
+import BadgetStars from '@/components/molecules/BadgetStars'
 import './ProductMain.css'
 import ShippingSVG from '@/SVG/ShippingSVG'
-import ProductQuestionList from './ProductQuestionList'
+import ProductQuestionList from '@/components/organisms/ProductQuestionList'
 // import { useRouter } from 'next/navigation'
-import FloatingNotification from '@/components/FloatingNotification'
+import FloatingNotification from '@/components/atoms/FloatingNotification'
 import Link from 'next/link'
 import { variableContext } from "@/context/contexto";
 

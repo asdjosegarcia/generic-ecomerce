@@ -1,8 +1,8 @@
 'use client'
 import React, { useContext, useRef  } from 'react'
 import './SearchInput.css'
-import SearchSVG from '../SVG/SearchSVG'
-import { variableContext } from "../context/contexto";
+import SearchSVG from '@/SVG/SearchSVG'
+import { variableContext } from "@/context/contexto";
 
 
 

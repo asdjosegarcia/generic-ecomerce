@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '../containers/Navbar';
+import Navbar from '@/components/organisms/Navbar';
 import 'normalize.css';
 import { FuncionProvider } from "../context/contexto.jsx";
 // import LoadUserData from '@/components/LoadUserData';

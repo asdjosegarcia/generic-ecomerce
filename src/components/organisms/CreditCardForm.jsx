@@ -2,7 +2,7 @@
 import React, {  useState } from "react";
 import { useSession } from "next-auth/react";
 import "./CreditCardForm.css";
-import PuchaseComplete from "@/components/PuchaseComplete";
+import PuchaseComplete from "@/components/organisms/PuchaseComplete";
 
 const CreditCardForm = () => {
   const { data: session } = useSession();

@@ -1,5 +1,5 @@
 import React from 'react'
-import CartCard from '@/components/CartCard.jsx'
+import CartCard from '@/components/molecules/CartCard'
 
 const CartList = ({products}) => {
     // console.log(products)

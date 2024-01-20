@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import ToggleOffSVG from '../SVG/ToggleOffSVG'
-import ToggleOnSVG from '../SVG/ToggleOnSVG'
+import ToggleOffSVG from '@/SVG/ToggleOffSVG'
+import ToggleOnSVG from '@/SVG/ToggleOnSVG'
 import './FilterMenu.css'
-import { variableContext } from "../context/contexto";
+import { variableContext } from "@/context/contexto";
 
 let paramsUrl = ''
 // const contexto.urlParams = {

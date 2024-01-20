@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect,useState } from 'react'
-import CreditCardForm from '@/containers/CreditCardForm'
-import ProductCard from '@/components/ProductCard'
+import CreditCardForm from '@/components/organisms/CreditCardForm'
+import ProductCard from '@/components/molecules/ProductCard'
 
 
 // import { useRouter } from 'next/navigation'

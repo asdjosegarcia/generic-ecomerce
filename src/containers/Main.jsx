@@ -1,7 +1,7 @@
 import React from 'react'
-import ProductList from './ProductList'
+import ProductList from '@/components/organisms/ProductList'
 // import CartList from './CartList'
-import TopMenu from './TopMenu'
+import TopMenu from '../components/organisms/TopMenu'
 import { useSession } from "next-auth/react";//sesión del usuario
 import { Rubik } from 'next/font/google'//funte
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import './ProductQuestionList.css'
-import QuestionCard from '@/components/QuestionCard'
+import QuestionCard from '@/components/molecules/QuestionCard'
 
 const PorductQuestionList = ({ product }) => {
     // console.log(product)

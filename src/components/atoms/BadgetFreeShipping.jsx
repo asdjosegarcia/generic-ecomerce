@@ -1,6 +1,6 @@
 import React from 'react'
 import './BadgetFreeShipping.css'
-import CartSVG from '../SVG/CartSVG'
+import CartSVG from '../../SVG/CartSVG'
 
 const BadgetFreeShipping = () => {
   return (

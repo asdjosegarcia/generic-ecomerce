@@ -2,9 +2,9 @@
 
 import React from 'react'
 import './ProductCard.css'
-import BadgetFreeShipping from './BadgetFreeShipping'
-import HeartSVG from '../SVG/HeartSVG'
-import HeartOutlineSVG from '../SVG/HeartOutlineSVG'
+import BadgetFreeShipping from '@/components/atoms/BadgetFreeShipping'
+import HeartSVG from '../../SVG/HeartSVG'
+import HeartOutlineSVG from '../../SVG/HeartOutlineSVG'
 import BadgetStars from './BadgetStars'
 import { useRouter } from 'next/navigation'
 

@@ -1,9 +1,9 @@
 'use client'
 import React,{useState,useEffect,useContext} from 'react'
-import CartList from '@/containers/CartList'
+import CartList from '@/components/organisms/CartList'
 import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
-import Loading from '@/components/Loading';
+import Loading from '@/components/templates/Loading';
 
 
 

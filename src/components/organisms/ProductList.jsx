@@ -1,9 +1,9 @@
 'use client'
 import React, { useContext, useEffect, useState } from "react";
-import { variableContext } from "../context/contexto.jsx";
+import { variableContext } from "@/context/contexto.jsx";
 import './ProductList.css'
-import ProductCard from '../components/ProductCard'
-import Loading from "../components/Loading.jsx";
+import ProductCard from '@/components/molecules/ProductCard.jsx'
+import Loading from "@/components/templates/Loading.jsx";
 
 
 let apiUrl = '';//por defecto sera 0

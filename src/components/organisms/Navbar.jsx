@@ -1,14 +1,14 @@
 'use client'
 import React, { useState,useContext } from 'react'
 import './Navbar.css'
-import SearchInput from '../components/SearchInput'
-import MenuSVG from '../SVG/MenuSVG'
-import CartSVG from '../SVG/CartSVG'
+import SearchInput from '@/components/molecules/SearchInput'
+import MenuSVG from '@/SVG/MenuSVG'
+import CartSVG from '@/SVG/CartSVG'
 import Link from 'next/link'
-import MobileMenu from './MobileMenu'
-import FloatingNotification from '@/components/FloatingNotification';
+import MobileMenu from '@/components/templates/MobileMenu'
+import FloatingNotification from '@/components/atoms/FloatingNotification';
 import { variableContext } from "@/context/contexto";
-import LoadUserData from '@/components/LoadUserData'
+import LoadUserData from '@/components/atoms/LoadUserData'
 
 
 

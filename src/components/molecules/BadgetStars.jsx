@@ -1,7 +1,7 @@
 import React from 'react'
-import EmptyStarSVG from '../SVG/EmptyStarSVG';
-import HalftStarSVG from '../SVG/HalftStarSVG';
-import CompleteStarSVG from '../SVG/CompleteStarSVG';
+import EmptyStarSVG from '../../SVG/EmptyStarSVG';
+import HalftStarSVG from '../../SVG/HalftStarSVG';
+import CompleteStarSVG from '../../SVG/CompleteStarSVG';
 // import 
 
 const BadgetStars = (props) => {

@@ -5,7 +5,7 @@ import UserSVG from '@/SVG/UserSVG'
 import Link from 'next/link'
 import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react'//importamos la funcion que nos desloquea desde next-auth
-import { variableContext } from "../context/contexto";
+import { variableContext } from "@/context/contexto";
 
 
 

@@ -25,6 +25,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
   const [getNotificationText, setNotificationText] = useState(false) //estado que manjea las notificaciones
   const [getUserData,setUserData]=useState(null)
   const [getProductListURL, setProductListURL] = useState("")
+  const [getQuestionMenu,setQuestionMenu]=useState(false)
 
 
 
@@ -38,7 +39,8 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           searchRef, focusSearch,
           getNotificationText, setNotificationText,
           // userData,
-          getUserData,setUserData
+          getUserData,setUserData,
+          getQuestionMenu,setQuestionMenu,
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}
         {children} {/* un children por que aqui entrar el elemento que encapsulemos */}

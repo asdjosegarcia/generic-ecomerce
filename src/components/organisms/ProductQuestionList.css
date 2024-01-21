@@ -1,12 +1,15 @@
 .questions--list__container{
-    background-color: #1f2937;
+    /* background-color: #1f2937; */
     padding: 40px 10px 0px 10px;
     /* color: ; */
-    color: #d1d5db;
+    /* color: #d1d5db; */
 
 
 
 }
 .questions--list__title{
     margin: 0;
+}
+p{
+    padding-left: 3px;
 }

@@ -2,6 +2,7 @@
 import React, { useEffect,useState } from 'react'
 import ProductMain from '@/components/templates/ProductMain'
 // import CommentList from '@/containers/CommentList'
+import QuestionInput from '@/components/molecules/QuestionInput'
 import PorductQuestionList from '@/components/organisms/ProductQuestionList'
 
 // import { useRouter } from 'next/navigation'

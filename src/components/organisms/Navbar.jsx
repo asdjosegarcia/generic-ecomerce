@@ -9,6 +9,8 @@ import MobileMenu from '@/components/templates/MobileMenu'
 import FloatingNotification from '@/components/atoms/FloatingNotification';
 import { variableContext } from "@/context/contexto";
 import LoadUserData from '@/components/atoms/LoadUserData'
+// import  from '../molecules/QuestionCard'
+import QuestionCardMenu from './QuestionCardMenu'
 
 
 
@@ -21,6 +23,11 @@ const Navbar = () => {
     // let mobileMenuOn=null
     return (
         <>
+        {contexto.getBackground &&
+        <div onClick={()=>contexto.setBackground(false)} className='nav__black-background'>
+            <QuestionCardMenu></QuestionCardMenu>
+        </div>
+        }
         <LoadUserData></LoadUserData>
             {contexto.getNotificationText && <FloatingNotification/> }
             <nav className='nav__container'>
@@ -57,7 +64,6 @@ const Navbar = () => {
         </ul> */}
             </nav>
             {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu}></MobileMenu>)}
-
         </>
 
 

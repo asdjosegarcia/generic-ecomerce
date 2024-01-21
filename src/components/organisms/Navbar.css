@@ -29,3 +29,11 @@
     border: none;
     background-color: #00000000;
 }
+.nav__black-background{
+    height: 100%;
+    width: 100vh;
+    background-color: rgba(0, 0, 0, 0.500);
+    position: fixed;
+    z-index: 1;
+    /* overflow-y:none ; */
+}

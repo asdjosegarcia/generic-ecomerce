@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 7px;
 }
 .question--card__like-dislike-container span{
     border: 1px solid #d1d5db;
@@ -24,14 +25,18 @@
 }
 .question--card__like-dislike-container span p{
     margin: 0px;
-    margin-right: 5px;
+    margin-left: 5px;
 
 }
-.MoreSVG{
+.MoreSVG_button{
+    background-color: #00000000;
+    border: none;
+    padding: 10px;
     position: absolute;
     right: 0px;
-    padding: 0 7px;
+    
 }
+
 .question--card__menu-background{
     background-color: rgba(0, 0, 0, 0.514);
     position: fixed;

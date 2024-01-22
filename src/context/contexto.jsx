@@ -27,7 +27,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
   const [getProductListURL, setProductListURL] = useState("")
   const [getBackground,setBackground]=useState(false)
   const [getQuestionMenu,setQuestionMenu]=useState(false)
-  const [getNewQuestion,setNewQuestion]=useState([])
+  const [getNewQuestion,setNewQuestion]=useState()
 
 
   return (

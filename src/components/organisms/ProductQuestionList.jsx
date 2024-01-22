@@ -13,9 +13,11 @@ const PorductQuestionList = ({ product }) => {
   const contexto = useContext(variableContext)
   const [getViewMore, setViewMore] = useState(false);
   const [getReversedQuestions,setReversedQuestions]=useState([...product?.ProductComplete.question].reverse())//cargamos los productos con el orden invertido
-
+  console.log(contexto.getNewQuestion)
   useEffect(() => {
-    setReversedQuestions([...contexto.getNewQuestion,...getReversedQuestions])//cargamos la nueva pregunta para no hacer una llamada inecesaria a la DB
+    if(contexto.getNewQuestion !== undefined){//si no es undefined (por que sino da error)
+      setReversedQuestions([contexto.getNewQuestion,...getReversedQuestions])//cargamos la nueva pregunta para no hacer una llamada inecesaria a la DB
+    }
   }, [contexto.getNewQuestion])
 
   if ((getReversedQuestions.length > 3) && getViewMore === false) {//si las questions son mas de 3..

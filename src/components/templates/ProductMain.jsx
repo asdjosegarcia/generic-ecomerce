@@ -49,7 +49,6 @@ const ProductMain = ({ product }) => {
     <div className='product__container'>
       {getNotificationText&& <FloatingNotification notificationText={getNotificationText}></FloatingNotification>}
         
-      {!product ? <Loading></Loading> : <>
         <header>
           <p>{product?.condition}</p>
           <div className='porduct--qualification__container'>
@@ -79,8 +78,6 @@ const ProductMain = ({ product }) => {
         </div>
         <p className='porduct__seller'>Seller:{product?.seller}</p>
         {/* <p>{product?.description}</p> */}
-      </>
-      }
 
     </div>
   )

@@ -13,3 +13,14 @@
 p{
     padding-left: 3px;
 }
+.questions--list__viewMore{
+    width: 100%;
+    border: none;
+    background-color: #00000000;
+}
+.questions--list__viewMore p{
+    margin: 0px;
+}
+.ExpandMoreSVG{
+    width: 100%;
+}

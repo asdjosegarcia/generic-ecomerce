@@ -7,3 +7,10 @@
     /* background-color: red; */
     height: 30px;
 }
+select{
+    border:none ;
+    border-radius: 5px;
+    padding: 5px;
+    /* background-color: white; */
+
+}  

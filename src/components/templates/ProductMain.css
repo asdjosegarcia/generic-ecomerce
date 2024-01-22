@@ -65,10 +65,14 @@ header .porduct--qualification__container{
     background-color: #003cb5;
     /* margin: 30px; */
     margin-bottom: 10px;
+    border: 2px solid  #2a8ddc;
+    font-weight: 600;
+
 }
 .btn__cart{
     color: #2a8ddc;
-    background-color: #030f1f;
+    background-color: beige;
+    border: 2px solid  #2a8ddc;
 }
 .product__description--title{
     font-weight: 600;

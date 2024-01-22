@@ -25,7 +25,7 @@ const OrderBy = () => {
       <label htmlFor="order" >Order by:</label>
       <select id="order" name="order" onChange={handleOrderChange}>
         {/* <option value="">Default</option> */}
-        <option value="low-price">Low price</option>
+        <option className='option' value="low-price">Low price</option>
         <option value="high-price">High price</option>
         <option value="most-relevant">Most relevant</option>
       </select>

@@ -4,7 +4,7 @@ import QuestionCard from '@/components/molecules/QuestionCard'
 import QuestionInput from '../molecules/QuestionInput'
 
 const PorductQuestionList = ({ product }) => {
-    console.log(product?.ProductComplete.question.length)
+    // console.log(product?.ProductComplete.question.length)
   return (
     <div className='questions--list__container'>
       <h4 className='questions--list__title'>Questions</h4>

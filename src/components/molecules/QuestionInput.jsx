@@ -32,7 +32,17 @@ const QuestionInput = (props) => {
             });
             if (res.ok) {
                 contexto.setNotificationText('Question added')
-                setTextareaValue('')
+                setTextareaValue('') 
+                contexto.setNewQuestion([
+                    ...contexto.getNewQuestion,
+                    {
+                        username:name,
+                        question: getTextareaValue,
+                        like: 0,
+                        dislike:0,
+                    }
+                ])
+                // contexto.addNew
             } else {
                 contexto.setNotificationText('Error')
             }

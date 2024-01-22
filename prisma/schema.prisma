@@ -20,6 +20,7 @@ model User {
     notifications Notifications?
     //////////////relacion preguntas
     questions     Question[] //relacion uno a muchos
+    Favorites     Favorites[]
 }
 
 model Cart {
@@ -29,6 +30,15 @@ model Cart {
     user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
     //////////////relacion con products
     products Product[] //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
+}
+
+model Favorites {
+    id       Int       @id @default(autoincrement())
+    password String    
+    //////////relacion 1 a 1 con products
+    user     User      @relation(fields: [id], references: [id])
+    //////////relacion 1 a muchos con products
+    products Product[]
 }
 
 model Notifications {
@@ -75,6 +85,9 @@ model Product {
     //////////relacion carrito
     cart            Cart?            @relation(fields: [cartId], references: [id])
     cartId          Int?
+    //////////relacion Favoritos 
+    favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
+    favoritesId     Int?
 }
 
 model ProductComplete {

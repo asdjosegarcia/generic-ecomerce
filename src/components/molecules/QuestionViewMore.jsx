@@ -4,7 +4,7 @@ import ExpandLessSVG from '@/SVG/ExpandLessSVG'
 
 
 const QuestionViewMore = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <button onClick={() => { props.setViewMore(!props.getViewMore) }} className='questions--list__viewMore'>{/* invertimos  */}
             {!props.getViewMore ?

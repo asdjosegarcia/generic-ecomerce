@@ -61,8 +61,8 @@ const MobileMenu = (props) => {
           <button>Notifications</button>
           <button>My Shopping</button>
           {(session?.user?.name) ?
-          <Link className='mobile-menu__username-link' href='/auth/login'>
-          <button>Favorites</button>
+          <Link className='mobile-menu__Favorites-link' href='/favorites'>
+          <button onClick={() => { props.setMobileMenu(false) }}>Favorites</button>
           </Link>
           :
             <></>

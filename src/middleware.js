@@ -3,7 +3,8 @@ export {default} from 'next-auth/middleware'//estportamos la funcion que trae ne
 export const config = {
     matcher: [
       '/product/buy/:path*',
-      '/cart/:path*'
+      '/cart/:path*',
+      '/favorites/:path*'
     ]
 
 

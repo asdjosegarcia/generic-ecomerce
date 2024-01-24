@@ -12,12 +12,8 @@
 }
 .product-card *{
     margin: 0 ;
-
 }
 .prodcut-card__img{
-    /* background-color: red; */
-    /* background-color: #0026ff; */
-
     height: 120px;
     width: 120px;
     grid-column: 1/2;

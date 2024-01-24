@@ -36,7 +36,8 @@ const PorductQuestionList = ({ product }) => {
       {(getReversedQuestions.length > 0) ? (//si no hay preguntas
         <>
           {questions}{/* preguntas que renderizamos */}
-          <QuestionViewMore setViewMore={setViewMore} getViewMore={getViewMore} ></QuestionViewMore>{/* boton ver mas */}
+          {(getReversedQuestions.length>3)?  (<QuestionViewMore setViewMore={setViewMore} getViewMore={getViewMore} ></QuestionViewMore>): (<></>)} {/* boton ver mas, solo aparece si hay mas de 3 questions */}
+         
         </>
       ) :
         <p> Nobody has asked yet, be the first! 😁</p>//si no hay preguntas renderizamos esto

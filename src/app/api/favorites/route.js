@@ -20,3 +20,21 @@ export async function POST(request) {
     });
     return NextResponse.json(updatedFovorites)
 }
+
+export async function DELETE(request) {
+    const {email,password,productId}=await request.json()
+    const user = await prisma.user.findUnique({//buscamos 1 unico item en la lista user
+        where: { email: email },//cuando encuentra un user con el email..
+        include: { favorites: true },//incluimos el carrito...
+      })
+
+    const updatedFavorites = await prisma.favorites.update({
+        where: { id: user.favorites.id },//buscamos la id del carrito, para asegurarnos de que el carrito corresponda a el usuario, extaemos la id del carrito del objeto usuario
+        data: {//actualizamos el carrito
+            products: {//seleccionamos la tabla product
+                disconnect: [{ id: productId }],//desconectamos el producto del favorites mediante su id
+            },
+        },
+    });
+    return NextResponse.json(updatedFavorites)
+}

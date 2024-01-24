@@ -60,7 +60,13 @@ const MobileMenu = (props) => {
           <button onClick={searchFunc} >Search</button>
           <button>Notifications</button>
           <button>My Shopping</button>
+          {(session?.user?.name) ?
+          <Link className='mobile-menu__username-link' href='/auth/login'>
           <button>Favorites</button>
+          </Link>
+          :
+            <></>
+          }
           <button>Offers</button>
           {(!session?.user?.name) ?
             <Link href='/auth/login'>

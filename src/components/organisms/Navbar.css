@@ -7,10 +7,18 @@
     gap: 20px;
     padding: 5px;
     align-items: center;
+    justify-items: center;
     /* grid-template-rows: repeat(auto,3); */
 }
-.comerce__icon{
+
+a{ /* este es el Link */
+    display: flex;
+    align-items: center;
+}
+.ecomerce__icon{
     height: 40px;
+    margin: auto 0;
+
 }
 
 .nav__buttons-container{

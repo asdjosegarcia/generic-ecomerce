@@ -32,7 +32,7 @@ const Navbar = () => {
             {contexto.getNotificationText && <FloatingNotification/> }
             <nav className='nav__container'>
                 <Link /* legacyBehavior */ href='/'>
-                    <img className='comerce__icon' src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
+                    <img className='ecomerce__icon' src='/img/open-trade-1.jpg' alt='Opentrade icon' /* onClick={()=>{router.push('/')}} */ />
                 </Link>
                 <SearchInput></SearchInput>
                 <div className='nav__buttons-container' alt='search bar'>

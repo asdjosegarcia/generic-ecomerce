@@ -45,7 +45,13 @@ export async function POST(request){//creacion de usuario
                     create:{
                         password: data.password
                     }
+                },
+                favorites:{
+                    create:{
+                        password: data.password
+                    }
                 }
+
             }
         })
         const {password:_,...user}=newUser//copiamos el usuario sin password

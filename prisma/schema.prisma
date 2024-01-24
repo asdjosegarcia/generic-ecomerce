@@ -20,16 +20,8 @@ model User {
     notifications Notifications?
     //////////////relacion preguntas
     questions     Question[] //relacion uno a muchos
-    Favorites     Favorites[]
-}
-
-model Cart {
-    id       Int       @id @default(autoincrement())
-    password String
-    //////////////relacion con user
-    user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
-    //////////////relacion con products
-    products Product[] //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
+    //////////////relacion Favorites
+    favorites     Favorites?//relacion 1 a 1 
 }
 
 model Favorites {
@@ -39,6 +31,15 @@ model Favorites {
     user     User      @relation(fields: [id], references: [id])
     //////////relacion 1 a muchos con products
     products Product[]
+}
+
+model Cart {
+    id       Int       @id @default(autoincrement())
+    password String
+    //////////////relacion con user
+    user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
+    //////////////relacion con products
+    products Product[] //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
 }
 
 model Notifications {

@@ -56,3 +56,9 @@
 svg{
     padding-bottom: 5px;
 }
+.question--card__dislike-container .LikeFilledSVG{
+    /* rotate: 180; */
+    /* fill: red; */
+    transform: rotate(180deg);
+    padding-bottom: 0px;
+}

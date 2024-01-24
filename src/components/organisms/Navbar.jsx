@@ -36,14 +36,14 @@ const Navbar = () => {
                 </Link>
                 <SearchInput></SearchInput>
                 <div className='nav__buttons-container' alt='search bar'>
-                    <button className='nav_button' onClick={() => { setMobileMenu(!getMobileMenu) }}>
-                        <MenuSVG width={'40px'} height={'40px'} fill={'#696969'} ></MenuSVG>
-                    </button>
                     <Link href='/cart/'>
                         {/* <button className='nav_button' onClick={() => {}}> */}
                             <CartSVG width={'40px'} height={'40px'} fill={'#696969'}></CartSVG>
                         {/* </button> */}
                     </Link>
+                    <button className='nav_button' onClick={() => { setMobileMenu(!getMobileMenu) }}>
+                        <MenuSVG width={'40px'} height={'40px'} fill={'#696969'} ></MenuSVG>
+                    </button>
                 </div>
                 {/* <div>ubicación</div> */}
                 {/*         <ul>

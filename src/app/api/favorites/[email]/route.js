@@ -4,19 +4,15 @@ const prisma = new PrismaClient()
 
 export async function GET(request, { params }) {
     
-    const user = await prisma.user.findUnique({//
+    const allProducts= await prisma.product.findMany({}) //todos los products
+
+    const userFavorites = await prisma.user.findUnique({//unico producto
         where: { email: params.email },
         include: { favorites: true },
     })
-    const favorites = await prisma.favorites.findUnique({//
-        where: { id:user.favorites.id},
-        include: { products: true },
-    })
 
-    return NextResponse.json(favorites)
+    return NextResponse.json(allProducts)
 }
-
-
 
 
 

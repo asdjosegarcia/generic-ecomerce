@@ -39,7 +39,7 @@ model Cart {
     //////////////relacion con user
     user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
     //////////////relacion con products
-    products Product[] //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
+    products Product[] @relation("cartProducts") //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
 }
 
 model Notifications {
@@ -84,8 +84,9 @@ model Product {
     //////////relacion preguntas
     Question        Question[]
     //////////relacion carrito
-    cart            Cart?            @relation(fields: [cartId], references: [id])
-    cartId          Int?
+    // cart            Cart?            @relation(fields: [cartId], references: [id])
+    // cartId          Int?
+    cart            Cart[]            @relation("cartProducts")
     //////////relacion Favoritos 
     // favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
     // favoritesId     Int?

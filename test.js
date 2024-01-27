@@ -8,6 +8,7 @@ const filteredItems= all.map((value)=>{
     if(finded==undefined){
         return value
     }else{
+        finded.newwwwwwItem=true
         return finded
     }
 })

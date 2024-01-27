@@ -55,9 +55,9 @@ const ProductCard = ({product}) => {
         <p className='prodcut-card__title'>{product.title}</p>
         <h4 className='prodcut-card__price'>${product.price}</h4>
         <span className='prodcut-card__favorite' >{(product.favorites)?
-        <EnabledFavoriteButton email={session.user.email} product={product.id} notification={contexto.setNotificationText} />
+        <EnabledFavoriteButton email={session?.user.email} product={product.id} notification={contexto.setNotificationText} />
         :
-        <DisabledFavoriteButton email={session.user.email} productId={product.id} notification={contexto.setNotificationText}/>}
+        <DisabledFavoriteButton email={session?.user.email} productId={product.id} notification={contexto.setNotificationText}/>}
         </span>
         <span className='prodcut-card__qualification'><BadgetStars qualification={product.qualification}/></span>
         <p className='prodcut-card__shipment'>{product.shipment==0? <BadgetFreeShipping/>: '$'+ product.shipment }</p>

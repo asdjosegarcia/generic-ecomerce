@@ -30,7 +30,7 @@ model Favorites {
     //////////relacion 1 a 1 con products
     user     User      @relation(fields: [id], references: [id])
     //////////relacion 1 a muchos con products
-    products Product[]
+    products Product[]  @relation("favoritesPorducts")
 }
 
 model Cart {
@@ -87,8 +87,9 @@ model Product {
     cart            Cart?            @relation(fields: [cartId], references: [id])
     cartId          Int?
     //////////relacion Favoritos 
-    favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
-    favoritesId     Int?
+    // favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
+    // favoritesId     Int?
+    favorites       Favorites[]      @relation("favoritesPorducts")
 }
 
 model ProductComplete {

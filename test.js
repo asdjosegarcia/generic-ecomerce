@@ -1,10 +1,15 @@
-// Array original
-let array1 = [1, 2, 3, 4, 5,6,7,8];
+let all = [ {id:1}, {id:2}, {id:3}, {id:4},{id:5},{id:6},{id:7},{id:8},{id:9},{id:10},];
 
-// Nuevo array para sobrescribir
-let array2 = [6, 7, 8, 9, 10];
+let favorites = [{id:1,txt:'que'},{id:2,txt:'que'},{id:3}];
 
-// Sobrescribe los elementos de array1 con los de array2 desde la posición 0
-array1.splice(0, array1.length, ...array2);
+///////////////////////////////////////////////////////
+const filteredItems= all.map((value)=>{
+    const finded=favorites.find(favorite => favorite.id == value.id)
+    if(finded==undefined){
+        return value
+    }else{
+        return finded
+    }
+})
 
-console.log(array1);  // Resultado: [6, 7, 8, 9, 10]
+console.log(filteredItems);  

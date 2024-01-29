@@ -6,7 +6,7 @@ export async function POST( request ) {
     const {freeShipping,new: isNew,search,orderBy,userEmail}=await request.json()//new:isNew es para evitar errores con la palabra reservada new de JS
     let property = []//almacenamos los filtros que nos pidan los parametros para usarlos junta=os si es necesario
     let order;//con esta variable seleccionamos el orden que queremos
-    // console.log(isNew)
+    console.log({freeShipping,new: isNew,search,orderBy,userEmail})
     let orderByParams={//ordenes predefinidos
         'low-price': { price: 'asc' },//opciones que se selccionaran segun llegue ppeticion, 'low-price','high-price etc'
         'high-price': { price: 'desc' },
@@ -30,7 +30,7 @@ export async function POST( request ) {
         orderBy:orderByParams[order]//ordernar por
     })
 
-    if(userEmail!==''){
+    if(userEmail!==''){//si tenemos el email de usuario le agregaremos una seccion favorite=true a los productos que corresponda
         const user = await prisma.user.findUnique({//
             where: { email: userEmail },
             include: { favorites: true },

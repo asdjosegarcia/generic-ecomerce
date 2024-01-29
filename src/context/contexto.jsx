@@ -19,9 +19,9 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
   const [getUrlParams, setUrlParams] = useState({//filtros de busqueda que se fusionan
     freeShipping: false,
     new: false,
-    search: 'search=',
-    orderBy: 'orderby=most-relevant',
-    user:''
+    search: '',
+    orderBy: 'most-relevant',
+    userEmail:''
   })
   const [getNotificationText, setNotificationText] = useState(false) //estado que manjea las notificaciones
   const [getUserData,setUserData]=useState(null)

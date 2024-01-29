@@ -20,7 +20,8 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
     freeShipping: false,
     new: false,
     search: 'search=',
-    orderBy: 'orderby=most-relevant'
+    orderBy: 'orderby=most-relevant',
+    user:''
   })
   const [getNotificationText, setNotificationText] = useState(false) //estado que manjea las notificaciones
   const [getUserData,setUserData]=useState(null)

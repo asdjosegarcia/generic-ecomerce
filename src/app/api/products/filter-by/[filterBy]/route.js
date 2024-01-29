@@ -46,7 +46,7 @@ export async function GET(request, { params }) {
         where: {//donde..
             AND: property, // propiedad y valor correspondan 
         },
-        orderBy:orderByParams[order]
+        orderBy:orderByParams[order]//ordernar por
 
     })
 
@@ -80,3 +80,4 @@ export async function GET(request, { params }) {
 
     return NextResponse.json(products)
 }
+

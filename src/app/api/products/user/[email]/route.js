@@ -16,7 +16,7 @@ export async function GET(request, { params }) {
     })
 
 
-    const filteredItems = allProducts.map((product) => {
+    const filteredItems = allProducts.map((product) => { //este codigo podria mejorarse, para bajar la carga, pero por tiempo me veo obligado a crear deuda tecnica
         const finded = favorites.products.find(favorite => favorite.id == product.id)
         if (finded == undefined) {
             return product

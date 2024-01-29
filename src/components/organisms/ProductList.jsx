@@ -4,14 +4,32 @@ import { variableContext } from "@/context/contexto.jsx";
 import './ProductList.css'
 import ProductCard from '@/components/molecules/ProductCard.jsx'
 import Loading from "@/components/templates/Loading.jsx";
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation'
+
+
 
 
 let apiUrl = '';//por defecto sera 0
 let productList = []//por defecto no habran productos para renderizar
 let paramsUrl = '';
-const ProductList = () => {//ccrea la lista de productos
+const ProductList = (params) => {//ccrea la lista de productos
   const [getLoading, setLoading] = useState(true);//si se esta cargando la lista de productos
   const contexto = useContext(variableContext)
+  const { data: session } = useSession();//cargamos datos del usuario en session   
+// console.log(params)
+const router = useRouter()
+
+function navigateToSearch(searchTerm) {
+  console.log('aver')
+  window.history.replaceState({}, '', `${window.location.pathname}?${searchTerm.toString()}`);
+
+}
+useEffect(() => {
+  navigateToSearch('queso')
+
+
+}, [])
 
 
   useEffect(() => {
@@ -25,7 +43,7 @@ const ProductList = () => {//ccrea la lista de productos
       paramsUrl = paramsUrl + contexto.getUrlParams.search + contexto.getUrlParams.orderBy //le agregamos el contenido del input + el de orden de busqueda
       apiUrl = `/api/products/filter-by/${paramsUrl}` //las commilas del final se agregan para evitar un error en la peticion
     }
-    // console.log(apiUrl)
+    console.log(apiUrl)
     // console.log(contexto.getUrlParams)
 
     setLoading(true)//establecemos que inicio la carga

@@ -27,23 +27,23 @@ const ProductCard = ({product}) => {
   
 
 
-  const deleteFavorite=async()=>{
-    const res = await fetch(`/api/favorites/`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email:session.user.email,
-        productId:product.id
-      }),
-    });
-    if(res.ok){
-      contexto.setNotificationText('Deleted')
-    }else{
-      contexto.setNotificationText('Error')
-    }
-  }
+  // const deleteFavorite=async()=>{
+  //   const res = await fetch(`/api/favorites/`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       email:session.user.email,
+  //       productId:product.id
+  //     }),
+  //   });
+  //   if(res.ok){
+  //     contexto.setNotificationText('Deleted')
+  //   }else{
+  //     contexto.setNotificationText('Error')
+  //   }
+  // }
   
 
   

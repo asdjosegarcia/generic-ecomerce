@@ -3,9 +3,15 @@ import './globals.css'
 import Navbar from '@/components/organisms/Navbar';
 import 'normalize.css';
 import { FuncionProvider } from "../context/contexto.jsx";
-// import LoadUserData from '@/components/LoadUserData';
+import { Rubik } from 'next/font/google'//funte
 
-const inter = Inter({ subsets: ['latin'] })
+const rubik = Rubik({//fuente
+  weight: ['300','400','500', '700',],
+  subsets: ['latin'],
+})
+
+
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Open Comerce',
@@ -19,7 +25,7 @@ export default function RootLayout({ children }) {
         <link rel="image/x-icon " href="/favicon.ico" />
         <title>Open Trade</title>
       </head>
-      <body className={inter.className}>
+      <body className={rubik.className} >
         <FuncionProvider>
           <Navbar />
           {/* <LoadUserData></LoadUserData> */}

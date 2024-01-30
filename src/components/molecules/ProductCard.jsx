@@ -24,6 +24,7 @@ const ProductCard = ({product,favorite}) => {
     <>
       <div className='product-card' onClick={()=>{router.push('/product/'+product.id)}}>
         <img className='prodcut-card__img' src={product.previewImg} alt=""/>
+        {/* <p>{product.id}</p> */}
         <p className='prodcut-card__title'>{product.title}</p>
         <h4 className='prodcut-card__price'>${product.price}</h4>
         <span className='prodcut-card__favorite' >{(getFavorite)?

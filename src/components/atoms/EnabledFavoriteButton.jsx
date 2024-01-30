@@ -17,6 +17,8 @@ const EnabledFavoriteButton = (props) => {
     if (res.ok) {
       props.notification('Deleted')
       props.favorite(false)
+      // console.log('delete'+ props.productId)
+
     } else {
       props.notification('Error')
     }

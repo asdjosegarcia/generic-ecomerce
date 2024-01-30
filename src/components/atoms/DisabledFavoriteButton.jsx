@@ -18,7 +18,6 @@ const DisabledFavoriteButton = (props) => {
     if (res.ok) {
       props.notification('Added')
       props.favorite(true)
-
     } else {
       props.notification('Error')
     }

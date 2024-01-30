@@ -54,7 +54,7 @@ const ProductList = (params) => {//ccrea la lista de productos
       setLoading(false)
       // console.log(data)
       productList=data
-      console.log(productList)
+      // console.log(productList)
       if (res.ok) {
         // props.notification('Added')
       } else {

@@ -13,8 +13,8 @@ import EnabledFavoriteButton from '../atoms/EnabledFavoriteButton'
 import DisabledFavoriteButton from '../atoms/DisabledFavoriteButton'
 
 
-const ProductCard = ({product}) => {
-  const [getFavorite,setFavorite]=useState(product.favorite)
+const ProductCard = ({product,favorite}) => {
+  const [getFavorite,setFavorite]=useState(product.favorite|| favorite)
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const contexto = useContext(variableContext)
   const router = useRouter()

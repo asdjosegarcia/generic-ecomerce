@@ -18,7 +18,7 @@ const page = () => {
         if (session) {//si params.id tiene algo
             fetch(`/api/favorites/${session.user.email}`)//realizamos una peticion get a parametro de la url.id
                 .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-                .then(data => {
+                .then(data => {                    
                     setProducts(data.products)
                     // console.log(data.products)
                 })

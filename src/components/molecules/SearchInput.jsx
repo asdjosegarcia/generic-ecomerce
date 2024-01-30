@@ -3,23 +3,25 @@ import React, { useContext, useRef  } from 'react'
 import './SearchInput.css'
 import SearchSVG from '@/SVG/SearchSVG'
 import { variableContext } from "@/context/contexto";
+import { useRouter } from 'next/navigation'
+
 
 
 
 let searchValue
 const SearchInput = () => {
+    const router = useRouter();
     const contexto = useContext(variableContext)
     // console.log('contexto',contexto.urlParams.search+"hola") 
     
-    const send = (event) => {
-        event.preventDefault();
+    const send = (event) => {//funcion que carga los datos y nos redirije
+        event.preventDefault();//evitamos la recarga por defecto
         if(searchValue!==undefined){
-            contexto.setUrlParams({ ...contexto.getUrlParams, search: 'search=' + searchValue })
+            contexto.setUrlParams({ ...contexto.getUrlParams, search: '' + searchValue })
         }else{
-            contexto.setUrlParams({ ...contexto.getUrlParams, search: 'search=' })
+            contexto.setUrlParams({ ...contexto.getUrlParams, search: '' })
         }
-        
-
+        router.push('/search/e');
     }
     return (
         <>

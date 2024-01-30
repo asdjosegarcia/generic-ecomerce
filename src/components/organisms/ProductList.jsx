@@ -42,6 +42,7 @@ const ProductList = (params) => {//ccrea la lista de productos
     
     setLoading(true)//establecemos que inicio la carga
     const itemsRequest = async () => {
+      // console.log('')
       const res = await fetch(`/api/products/filter-by/`, {
         method: 'POST',
         headers: {
@@ -53,7 +54,7 @@ const ProductList = (params) => {//ccrea la lista de productos
       setLoading(false)
       // console.log(data)
       productList=data
-      // console.log(productList)
+      console.log(productList)
       if (res.ok) {
         // props.notification('Added')
       } else {

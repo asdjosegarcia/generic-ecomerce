@@ -5,6 +5,7 @@ import React, { useState, useRef } from "react";
 
 
 
+
 export const variableContext = React.createContext();//creamos un context
 
 

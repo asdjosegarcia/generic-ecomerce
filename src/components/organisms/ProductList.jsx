@@ -19,6 +19,7 @@ const ProductList = (params) => {//ccrea la lista de productos
 
 
 
+
   useEffect(() => {
     if (apiUrl == '') {
       // const onlyTrue = Object.keys(contexto.getUrlParams).filter(propiedad => contexto.getUrlParams[propiedad] === true);
@@ -39,7 +40,6 @@ const ProductList = (params) => {//ccrea la lista de productos
     
     
     
-    
     setLoading(true)//establecemos que inicio la carga
     const itemsRequest = async () => {
       const res = await fetch(`/api/products/filter-by/`, {
@@ -47,17 +47,19 @@ const ProductList = (params) => {//ccrea la lista de productos
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(contexto.getUrlParams),
+        body: JSON.stringify({...contexto.getUrlParams,userEmail:'user8@gmail.com'}),
       });
       const data = await res.json();
       setLoading(false)
       // console.log(data)
       productList=data
+      // console.log(productList)
       if (res.ok) {
         // props.notification('Added')
       } else {
         // props.notification('Error')
       }
+      // console.log(contexto.getUrlParams)
     }
     itemsRequest()
     

@@ -1,6 +1,7 @@
 import React from 'react'
-// import CartList from './CartList'
-import { useSession } from "next-auth/react";//sesión del usuario
+// import { useSession } from "next-auth/react";//sesión del usuario
+import VerticalProductList from '@/components/organisms/VerticalProductList';
+import MainBanner from '@/components/organisms/MainBanner';
 
 
 
@@ -9,6 +10,8 @@ import { useSession } from "next-auth/react";//sesión del usuario
 const Main = () => {
   return (
     <div >
+      <MainBanner></MainBanner>
+      <VerticalProductList></VerticalProductList>
 
       {/* <CartList></CartList> */}
       

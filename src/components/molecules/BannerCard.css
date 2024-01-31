@@ -1,0 +1,20 @@
+.banner-card__container{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    /* align-self: center; */
+    /* align-content: center; */
+    /* justify-items: center; */
+    /* align-self: center;s */
+    background-color: #00000000;
+    /* box-shadow: 0px -10px 20px rgb(0, 0, 0); */
+    background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,241,89,1) 41%, rgba(255,241,89,1) 100%);
+
+}
+.banner-card__img{  
+    width: 90vw;
+    height: 100%;
+    border-radius: 5px;
+    /* background-color: red; */
+}

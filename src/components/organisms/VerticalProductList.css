@@ -1,0 +1,9 @@
+.vertical-product__container{
+    background-color: aliceblue;
+    padding: 5px;
+    margin: 10px 0px;
+}
+.vertical-product__title{
+    margin: 0px;
+    padding: 5px;
+}

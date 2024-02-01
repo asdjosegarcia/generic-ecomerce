@@ -1,11 +1,11 @@
 import React from 'react'
 import './VerticalProductCard.css'
 
-const VerticalProductCard = () => {
+const VerticalProductCard = (props) => {
     return (
         <div className='vertical-card__container'>
             <img></img>
-            <p>Title</p>
+            <p>{props.title}Title</p>
             <span>
                 <p>Price</p>
                 <p>discount</p>

@@ -9,6 +9,8 @@
   );
   overflow-x: auto; /* Habilita el scroll horizontal */
   white-space: nowrap; /* Evita que las imágenes se rompan en múltiples líneas */
+  /* scroll-snap-type: x mandatory; */
+
 }
 .banner-card__cards-container {
   display: inline-block;

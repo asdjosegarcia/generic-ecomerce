@@ -77,8 +77,9 @@ model Product {
     //////////relacion informacion extra del producto
     ProductComplete ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
     //////////relacion categoria
-    category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
-    categoryId      Int              @default(1)
+    // category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
+    // categoryId      Int              @default(1) //old categorysm relacion 1 a 1 reemplazado por relacion 1 a muchos
+    category           Category[]
     //////////relacion comentarios
     comments        Comment[] //relacion 1 a muchos,
     //////////relacion preguntas

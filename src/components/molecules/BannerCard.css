@@ -1,20 +1,22 @@
-.banner-card__container{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    /* align-self: center; */
-    /* align-content: center; */
-    /* justify-items: center; */
-    /* align-self: center;s */
-    background-color: #00000000;
-    /* box-shadow: 0px -10px 20px rgb(0, 0, 0); */
-    background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,241,89,1) 41%, rgba(255,241,89,1) 100%);
-
+.banner-card__container {
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 241, 89, 1) 41%,
+    rgba(255, 241, 89, 1) 100%
+  );
+  overflow-x: auto; /* Habilita el scroll horizontal */
+  white-space: nowrap; /* Evita que las imágenes se rompan en múltiples líneas */
 }
-.banner-card__img{  
-    width: 90vw;
-    height: 100%;
-    border-radius: 5px;
-    /* background-color: red; */
+.banner-card__cards-container {
+  display: inline-block;
+}
+.banner-card__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* se mantiene la relacion aspecto */
+  border-radius: 10px;
+  padding: 5px;
 }

@@ -14,8 +14,8 @@ const Main = () => {
   return (
     <div  className='main__container'>
       <MainBanner></MainBanner>
-      <VerticalProductList title={'Stuff that might interest you!'}></VerticalProductList>
-      <VerticalProductList title={'Smartphones'}></VerticalProductList>
+      <VerticalProductList title={'Stuff that might interest you!'} link={'/api/products/category/1'}></VerticalProductList>
+      <VerticalProductList title={'Smartphones'} link={'/api/products/category/5'}></VerticalProductList>
 
 
       {/* <CartList></CartList> */}

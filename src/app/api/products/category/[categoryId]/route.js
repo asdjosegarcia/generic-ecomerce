@@ -13,6 +13,6 @@ export async function GET(request, { params }) {
         // include: { ProductComplete: true },
 
     })
-    console.log(productByCategory)
+    // console.log(productByCategory)
     return NextResponse.json(productByCategory)//mostramos la tarea en pantalla
 }

@@ -26,7 +26,9 @@ export async function POST(request) {
       shipment: shipment,
       qualification: qualification,
       seller: seller,
-      categoryId: categoryId,
+      category: {
+        connect:{id:categoryId}
+      },
 
       // categoryId: 1, // Asegúrate de proporcionar categoryId
       ProductComplete: { // Si es una relación 1 a 1, puedes crear ProductComplete aquí

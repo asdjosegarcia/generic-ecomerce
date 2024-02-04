@@ -2,16 +2,28 @@ p{
     margin: 0;
 }
 .vertical-card__container{
-    /* background-color: gray; */
     width: 150px;
-    height: 250px;
+    height: 240px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
+    background-color: #fff;
+    
+}
+.vertical-card__img-container{
+    width: 100%;
+    text-align: center;
+}
+.vertical-card__img{
+    justify-tracks: center;
+    height: 100px;
+}
+.vertical-card__title{
+    margin: 10px 0px;
 }
 .vertical-card__price-container{
     display: flex;
-    flex-direction: row;
+    width: 150px;   
 }
 .vertical-card__old-price{
     color: gray;
@@ -20,9 +32,8 @@ p{
 .vertical-card__price{
     font-size: 1.4rem;
 }
-.vertical-card__price-discount{
-    color: rgb(0, 170, 0);
-}
-.vertical-card__img{
-    width: 100%;
+
+.free-shipping-badget{
+    margin: 5px 0px;
+
 }

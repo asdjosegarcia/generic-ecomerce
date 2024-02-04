@@ -1,6 +1,7 @@
 import React from 'react'
 import './VerticalProductCard.css'
 import BadgetFreeShipping from '../atoms/BadgetFreeShipping'
+import BadgetPercentageDiscount from '../atoms/BadgetPercentageDiscount'
 
 const VerticalProductCard = (props) => {
     let newPrice
@@ -9,15 +10,17 @@ const VerticalProductCard = (props) => {
         newPrice=(props.product.price-priceDiscount).toFixed(2)
     }
 
-    console.log(props.product)
+    // console.log(props.product)
     return (
         <div className='vertical-card__container'>
+            <div className='vertical-card__img-container'>
             <img className='vertical-card__img' src={props.product.previewImg}></img>
-            <p>{props.product.title}</p>
+            </div>
+            <p className='vertical-card__title'>{props.product.title}</p>
             <p className='vertical-card__old-price'>${props.product.price}</p>
             <span className='vertical-card__price-container'>
                 <p className='vertical-card__price'>${(newPrice)?newPrice:props.product.price}&nbsp;</p>
-                <p className='vertical-card__price-discount'>{(props.product.discount>0)?`${props.product.discount}% OFF`: ''}</p>
+                <BadgetPercentageDiscount discount={props.product.discount}></BadgetPercentageDiscount>
             </span>
             {(props.product.shipment==0)&&
             <BadgetFreeShipping></BadgetFreeShipping>

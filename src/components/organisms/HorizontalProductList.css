@@ -1,6 +1,6 @@
-.vertical-product__container{
+.horizontal-product__container{
     /* background-color: aliceblue; */
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 5px;
     margin: 20px 0px;
     border-radius: 5px;
@@ -9,13 +9,16 @@
 
 }
 
-.vertical-product__title-container{
+.horizontal-product__title-container{
     display: flex;
     flex-direction: row;
 }
-.vertical-product__title{
+.horizontal-product__title{
     margin: 0px;
     padding: 5px;
     font-size: 1.3rem;
     font-weight: 400;
+}
+.horizontal-product__cards-container{
+    display: flex;
 }

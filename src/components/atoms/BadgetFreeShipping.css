@@ -1,10 +1,5 @@
 .free-shipping-badget{
-    /* background-color: green; */
-    /* color: white; */
-    color: green;
-    font-weight: 600;
-    /* padding: 5px; */
-    /* border-radius: 10px; */
+    color: rgb(0, 170, 0);;
+    font-weight: 450;
     display: flex;
-
 }

@@ -17,12 +17,8 @@ const Main = () => {
       <MainBanner></MainBanner>
       <HorizontalProductList  title={'Stuff that might interest you!'} link={'/api/products/category/1'}></HorizontalProductList>
       <HorizontalProductList  title={'Smartphones'} link={'/api/products/category/5'}></HorizontalProductList>
-      <VerticalProductList title={'Offers'} link={'/api/products/category/5'}></VerticalProductList>
-
-
-      
-
-      
+      <VerticalProductList title={'Offers'} link={'/api/products/category/5'}></VerticalProductList>  
+            
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext, useEffect, useState } from "react";
 import { variableContext } from "@/context/contexto.jsx";
-import './ProductList.css'
+import './ProductSearchList.css'
 import ProductCard from '@/components/molecules/ProductCard.jsx'
 import Loading from "@/components/templates/Loading.jsx";
 import { useSession } from 'next-auth/react';

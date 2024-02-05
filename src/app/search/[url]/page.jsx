@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductList from '@/components/organisms/ProductList'
+import ProductList from '@/components/organisms/ProductSearchList'
 import TopMenu from '@/components/organisms/TopMenu'
 
 

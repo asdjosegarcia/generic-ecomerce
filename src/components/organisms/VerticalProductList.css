@@ -21,5 +21,5 @@
 .vertical-list__cards-container .vertical-card__container{ /* aplicamos estilos solo a las cards que esten dentro del conetenedor */
     width: 100%;
     margin: 0px;
-    border: 1px solid gray;
+    border: 1px solid rgb(190, 190, 190);
 }

@@ -12,7 +12,7 @@ import { useSession } from 'next-auth/react';
 let apiUrl = '';//por defecto sera ''
 let productList = []//por defecto no habran productos para renderizar
 let paramsUrl = '';
-const ProductList = (params) => {//ccrea la lista de productos
+const ProductSearchList = (params) => {//ccrea la lista de productos
   const [getLoading, setLoading] = useState(true);//si se esta cargando la lista de productos
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
@@ -92,4 +92,4 @@ const ProductList = (params) => {//ccrea la lista de productos
   )
 }
 
-export default ProductList
+export default ProductSearchList

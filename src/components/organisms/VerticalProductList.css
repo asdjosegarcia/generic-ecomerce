@@ -1,0 +1,25 @@
+.vertical-list__container{
+    padding: 5px;
+    margin: 20px 0px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px  #bdbdbd; 
+}
+.vertical-list__title{
+    margin: 0px;
+    padding: 5px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    /* grid-column: 1/3; */
+}
+.vertical-list__cards-container{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    justify-items: center;
+    gap: 10px 20px ;
+    padding: 0 10px;
+}
+.vertical-list__cards-container .vertical-card__container{ /* aplicamos estilos solo a las cards que esten dentro del conetenedor */
+    width: 100%;
+    margin: 0px;
+    border: 1px solid gray;
+}

@@ -4,7 +4,7 @@
     padding: 5px;
     margin: 20px 0px;
     border-radius: 5px;
-    box-shadow: 10px 10px 10px  #bdbdbd;
+    box-shadow: 10px 10px 10px  #bdbdbd; 
 
 
 }
@@ -21,4 +21,9 @@
 }
 .horizontal-product__cards-container{
     display: flex;
+  overflow-x: auto; /* scroll horizontal */
+  /* overflow: hidden; */
+}
+.horizontal-product__cards-container::-webkit-scrollbar {
+    display: none;/* escondemos la barra de scroll cuando no se use */
 }

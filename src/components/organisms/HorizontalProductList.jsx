@@ -4,12 +4,9 @@ import './HorizontalProductList.css'
 import VerticalProductCard from '@/components/molecules/VerticalProductCard';
 import Link from 'next/link';
 
-const VerticalProductList = (props) => {
+const HorizontalProductList = (props) => {
   const [getProducts,setProducts]=useState(null)
 
-  
-  
-  
   
   useEffect(() => {
     if(props?.link && getProducts==null){//si getProduct ya tiiene los productos evitamoshacer otra recarga
@@ -45,4 +42,4 @@ const VerticalProductList = (props) => {
   )
 }
 
-export default VerticalProductList
+export default HorizontalProductList

@@ -21,6 +21,9 @@ const Main = () => {
       <HorizontalProductList  title={'Smartphones'} link={'/api/products/category/5'}></HorizontalProductList>
       <VerticalProductList title={'Offers'} link={'/api/products/category/5'}></VerticalProductList>  
       <ProductList title={'Waiting for you'} link={'/api/products/category/5'}/>      
+      {/* <VerticalProductList title={'Categories'} link={'/api/products/category/5'}></VerticalProductList>   */}
+      <HorizontalProductList  title={'Your history'} link={'/api/products/category/5'}></HorizontalProductList>
+
     </div>
   )
 }

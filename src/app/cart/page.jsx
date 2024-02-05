@@ -1,15 +1,16 @@
 'use client'
-import React,{useState,useEffect,useContext} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import CartList from '@/components/organisms/CartList'
 import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
 import Loading from '@/components/templates/Loading';
+import ProductsSumary from '@/components/molecules/ProductsSumary';
 
 
 
 const Cart = () => {
   const contexto = useContext(variableContext)
-  const [getProducts,setProducts]=useState(null)//aqui cargaremos los datos del produto
+  const [getProducts, setProducts] = useState(null)//aqui cargaremos los datos del produto
   const { data: session } = useSession();//cargamos datos del usuario en session   
   // const [getLoading,setLoading]=useState(true)
 
@@ -22,15 +23,18 @@ const Cart = () => {
         .then(data => {
           setProducts(data)
         })
-    }else{
+    } else {
 
     }
-  }, [contexto.getNotificationText,contexto.getUserData])
+  }, [contexto.getNotificationText, contexto.getUserData])
   return (
     <div>
-      {getProducts?
-        <CartList products={getProducts.products}></CartList>
-      :
+      {getProducts ?
+        <>
+          <CartList products={getProducts.products}></CartList>
+          <ProductsSumary products={getProducts.products}></ProductsSumary>
+        </>
+        :
         <Loading></Loading>
       }
     </div>

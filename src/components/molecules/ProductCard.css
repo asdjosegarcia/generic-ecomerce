@@ -44,6 +44,8 @@
 }
 .prodcut-card__shipment{
     grid-row:3/4 ;
+    padding-bottom: 5px;
+
 }
 .prodcut-card__qualification{
     grid-column:2/4 ;

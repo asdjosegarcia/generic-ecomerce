@@ -60,7 +60,7 @@ const MobileMenu = (props) => {
           <button onClick={searchFunc} >Search</button>
           <button>Notifications</button>
           <button>My Shopping</button>
-          {(session?.user?.name) ?
+          {(session?.user?.name)?
           <Link className='mobile-menu__Favorites-link' href='/favorites'>
           <button onClick={() => { props.setMobileMenu(false) }}>Favorites</button>
           </Link>

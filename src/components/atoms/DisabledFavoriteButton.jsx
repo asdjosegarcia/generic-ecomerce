@@ -23,7 +23,7 @@ const DisabledFavoriteButton = (props) => {
     }
   }
   return (
-    <span onClick={postFavorite}>
+    <span onClick={postFavorite} className='DisabledFavoriteButton'>
       <HeartOutlineSVG width={24} height={24} fill={'#3483fa'} />
     </span>
   )

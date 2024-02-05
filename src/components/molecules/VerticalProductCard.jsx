@@ -15,6 +15,7 @@ const VerticalProductCard = (props) => {
         <div className='vertical-card__container'>
             <div className='vertical-card__img-container'>
             <img className='vertical-card__img' src={props.product.previewImg}></img>
+
             </div>
             <p className='vertical-card__title'>{props.product.title}</p>
             <p className='vertical-card__old-price'>${props.product.price}</p>

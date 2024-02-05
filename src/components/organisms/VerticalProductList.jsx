@@ -18,7 +18,7 @@ const VerticalProductList = (props) => {
     
   return (
     <div className="vertical-list__container" >
-        <p className="vertical-list__title" >Title</p>
+        <p className="vertical-list__title" >{props.title}</p>
         <div className='vertical-list__cards-container'>
         {
         getProducts?.map((product,index)=>(<VerticalProductCard  product={product} key={product.id}/>))

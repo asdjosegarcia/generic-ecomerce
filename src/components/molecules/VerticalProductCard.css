@@ -8,6 +8,7 @@ p{
     margin: 5px;
     padding: 5px;
     background-color: #fff;
+    position: relative;
     
 }
 .vertical-card__img-container{
@@ -15,7 +16,6 @@ p{
     text-align: center;
 }
 .vertical-card__img{
-    justify-tracks: center;
     height: 100px;
 }
 .vertical-card__title{
@@ -35,5 +35,10 @@ p{
 
 .free-shipping-badget{
     margin: 5px 0px;
-
 }
+/* .vertical-card__img-container .DisabledFavoriteButton{
+    top: 0;
+    right: 0;
+    padding: 7px;
+    position: absolute;    
+} */

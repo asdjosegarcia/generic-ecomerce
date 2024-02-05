@@ -36,6 +36,7 @@
     transform: translate(-50%, -5%);/* transform tranlate le resta 50% de su propio espacio centrando el div */
     box-shadow: 0px 0px 10px #000000d3;
     animation: viewNotify .5s ease-in-out forwards;
+    z-index: 1;
 }
 .hidden {
     animation: hideNotify 1s ease-in-out forwards;/* forwards para que se mantegna el estilo de la animacon una vez concluida*/

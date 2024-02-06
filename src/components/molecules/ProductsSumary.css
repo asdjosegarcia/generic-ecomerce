@@ -18,7 +18,7 @@ p{
     font-weight: 500;
 
 }
-.product-summary__totla-products,.product-summary__total-shippment,.product-summary__total-total{
+.product-summary__total-products,.product-summary__total-shippment,.product-summary__total-total{
     right: 0;
     justify-self: right;
 }

@@ -22,6 +22,7 @@ const CartInputNumber = ({ productPrice, productId, productShipment }) => {
     // if(getInputValue>1){
     setInputValue(getInputValue + 1)
     updateProductsPrices(getInputValue + 1)
+    
     // }
   }
 
@@ -32,10 +33,12 @@ const CartInputNumber = ({ productPrice, productId, productShipment }) => {
     // console.log(contexto.getProductsPrices)
     // console.log(contexto.getProductsShippment)
   }
-
-  if (contexto.getProductsPrices[productId] == null) { //si el producto no tiene precio aun lo creamos
-    updateProductsPrices(getInputValue)
-  }
+  useEffect(() => { /* para evitar warnings */
+    if (contexto.getProductsPrices[productId] == null) { //si el producto no tiene precio aun lo creamos
+      updateProductsPrices(getInputValue)
+    }
+  }, [])
+  
 
   return (
     <div className='cart-input__container'>

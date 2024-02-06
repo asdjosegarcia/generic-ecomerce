@@ -30,7 +30,8 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
   const [getBackground,setBackground]=useState(false)
   const [getQuestionMenu,setQuestionMenu]=useState(false)
   const [getNewQuestion,setNewQuestion]=useState()
-
+  const [getProductsPrices,setProductsPrices]=useState({})
+  const [getProductsShippment,setProductsShipment]=useState({})
 
   return (
     <SessionProvider >{/* lo usamos para tener los datos del usuario en todos los componentes */}
@@ -45,7 +46,9 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getUserData,setUserData,
           getBackground,setBackground,
           getQuestionMenu,setQuestionMenu,
-          getNewQuestion,setNewQuestion
+          getNewQuestion,setNewQuestion,
+          getProductsPrices,setProductsPrices,
+          getProductsShippment,setProductsShipment
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}
         {children} {/* un children por que aqui entrar el elemento que encapsulemos */}

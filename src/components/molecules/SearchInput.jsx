@@ -26,7 +26,7 @@ const SearchInput = () => {
     return (
         <>
             <form onSubmit={send}>
-                <div className='input__container'>
+                <div className='input__container SearchInput'>
                     <span className='input__icon'>
                         <SearchSVG width={'40px'} height={'40px'} fill={'#696969'}></SearchSVG>
                     </span>

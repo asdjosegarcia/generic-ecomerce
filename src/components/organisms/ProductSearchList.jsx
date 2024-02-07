@@ -84,7 +84,7 @@ const ProductSearchList = (params) => {//ccrea la lista de productos
 
 
   return (
-    <div className='product-list__container'>
+    <div className='product-search-list__container'>
       {!getLoading ? productList.map((product, index) => (<ProductCard key={index} product={product}></ProductCard>)) : <Loading></Loading>}
       {/* <button onClick={() => { itemsRequest() }}>request</button> */}
 

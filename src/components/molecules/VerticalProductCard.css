@@ -1,6 +1,10 @@
 p{
     margin: 0;
 }
+a{ /* todos los text que se encuentren dentro de <Link/> */
+    text-decoration: none;
+    color: rgb(22, 22, 22);
+}
 .vertical-card__container{
     width: 150px;
     height: 240px;

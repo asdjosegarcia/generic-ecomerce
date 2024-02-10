@@ -21,16 +21,16 @@ model User {
     //////////////relacion preguntas
     questions     Question[] //relacion uno a muchos
     //////////////relacion Favorites
-    favorites     Favorites?//relacion 1 a 1 
+    favorites     Favorites? //relacion 1 a 1 
 }
 
 model Favorites {
     id       Int       @id @default(autoincrement())
-    password String    
+    password String
     //////////relacion 1 a 1 con products
     user     User      @relation(fields: [id], references: [id])
     //////////relacion 1 a muchos con products
-    products Product[]  @relation("favoritesPorducts")
+    products Product[] @relation("favoritesPorducts")
 }
 
 model Cart {
@@ -70,7 +70,7 @@ model Product {
     shipment        Float            @default(0.00) //
     qualification   Float            @default(5)
     previewImg      String           @default("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.c2t8tS3Bw3wAu29lJZXcKgAAAA%26pid%3DApi&f=1&ipt=152bbe465eda1732e5837221e4a9c09866e36e0f8f0695e54deb8379d78f64b0&ipo=images")
-    seller          String? //por el momento no lo agregamos por que no se relacionar usuarios
+    seller          String? //relacion pendiente
     createdAt       DateTime         @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
     views           Int?             @default(0)
     discount        Int              @default(0)
@@ -79,7 +79,7 @@ model Product {
     //////////relacion categoria
     // category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
     // categoryId      Int              @default(1) //old categorysm relacion 1 a 1 reemplazado por relacion 1 a muchos
-    category           Category[]
+    category        Category[]
     //////////relacion comentarios
     comments        Comment[] //relacion 1 a muchos,
     //////////relacion preguntas
@@ -87,7 +87,7 @@ model Product {
     //////////relacion carrito
     // cart            Cart?            @relation(fields: [cartId], references: [id])
     // cartId          Int?
-    cart            Cart[]            @relation("cartProducts")
+    cart            Cart[]           @relation("cartProducts")
     //////////relacion Favoritos 
     // favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
     // favoritesId     Int?
@@ -136,4 +136,11 @@ model Category {
     id       Int       @id @default(autoincrement())
     name     String    @unique
     products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
+}
+
+model ProductImages {
+    id       Int     @id @default(autoincrement())
+    name     String?
+    mimetype String?
+    data     Bytes
 }

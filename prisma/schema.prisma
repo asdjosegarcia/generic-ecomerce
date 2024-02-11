@@ -77,21 +77,16 @@ model Product {
     //////////relacion informacion extra del producto
     ProductComplete ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
     //////////relacion categoria
-    // category        Category         @relation(fields: [categoryId], references: [id]) //relation indica relacion con otra tabla,field con que columna de la tabla actual se relaciona,refetence con que columna de la otra tabla se relaciona 
-    // categoryId      Int              @default(1) //old categorysm relacion 1 a 1 reemplazado por relacion 1 a muchos
     category        Category[]
     //////////relacion comentarios
     comments        Comment[] //relacion 1 a muchos,
     //////////relacion preguntas
     Question        Question[]
     //////////relacion carrito
-    // cart            Cart?            @relation(fields: [cartId], references: [id])
-    // cartId          Int?
     cart            Cart[]           @relation("cartProducts")
     //////////relacion Favoritos 
-    // favorites       Favorites?       @relation(fields: [favoritesId], references: [id])
-    // favoritesId     Int?
     favorites       Favorites[]      @relation("favoritesPorducts")
+    productImages   ProductImages[]  
 }
 
 model ProductComplete {
@@ -139,8 +134,10 @@ model Category {
 }
 
 model ProductImages {
-    id       Int     @id @default(autoincrement())
-    name     String?
-    mimetype String?
-    data     Bytes
+    id        Int     @id @default(autoincrement())
+    name      String
+    mimetype  String
+    data      Bytes
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
 }

@@ -5,6 +5,7 @@ import React,{useState} from 'react';
 let file;
 const UploadImageForm = () => {
   const [getImage,setImage]=useState()
+  
   const uploadImage = async (file) => {
     const reader = new FileReader();//llamamos a el lector de archivos de javascript
     reader.onload = async function (e) {// Cuando la lectura del archivo se complete ejecuta esta funcion
@@ -28,16 +29,14 @@ const UploadImageForm = () => {
       } else {
         console.log('Error')
       }
-
     };
     reader.readAsDataURL(file);//lee el contenido de los datos como url de datos (base64)
   };
 
   const handleFileInputChange = (event) => {
-     file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario
-    // uploadImage(file);//llamamamos a la funcion upload imagen enviando como argumento la imagen
-    
+     file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)    
   };
+
   const butonUpload=()=>{
     uploadImage(file)
   }

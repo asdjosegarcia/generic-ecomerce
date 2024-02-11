@@ -14,6 +14,9 @@ export async function GET(request, { params }) {
                 },
                 include: {
                     question: true
+                },
+                include:{
+                    productImages:true
                 }
             }
         },

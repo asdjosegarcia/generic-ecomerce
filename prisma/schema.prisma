@@ -86,20 +86,20 @@ model Product {
     cart            Cart[]           @relation("cartProducts")
     //////////relacion Favoritos 
     favorites       Favorites[]      @relation("favoritesPorducts")
-    productImages   ProductImages[]  
 }
 
 model ProductComplete {
-    id          Int        @id
-    stock       Int        @default(1)
-    description String? //tipo string, ? por que es opcional
-    images      Json?      @default("{ \"image1\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images\"}")
-    colors      Json?      @default("{}")
+    id            Int             @id
+    stock         Int             @default(1)
+    description   String? //tipo string, ? por que es opcional
+    images        Json?           @default("{ \"image1\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images\"}")
+    colors        Json?           @default("{}")
     ////////////relacion Product
-    addComplete Product    @relation(fields: [id], references: [id]) //addToComplete nombre de la relacion,Product el Modelo a relacionarse,@relacion especifica relacion,fields:[] columnas que se utilizan en el model ProductComplete,references:[] columnas de Product, en este caso la columna id
+    addComplete   Product         @relation(fields: [id], references: [id]) //addToComplete nombre de la relacion,Product el Modelo a relacionarse,@relacion especifica relacion,fields:[] columnas que se utilizan en el model ProductComplete,references:[] columnas de Product, en este caso la columna id
     //////////relacion comentarios
-    comments    Comment[] //relacion 1 a muchos,
-    question    Question[]
+    comments      Comment[] //relacion 1 a muchos,
+    question      Question[]
+    productImages ProductImages[]
 }
 
 model Question {
@@ -134,10 +134,10 @@ model Category {
 }
 
 model ProductImages {
-    id        Int     @id @default(autoincrement())
-    name      String
-    mimetype  String
-    data      Bytes
-    product   Product @relation(fields: [productId], references: [id])
-    productId Int
+    id                Int              @id @default(autoincrement())
+    name              String
+    mimetype          String
+    data              Bytes?
+    productComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
+    productCompleteId Int?
 }

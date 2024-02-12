@@ -1,0 +1,26 @@
+.archive-selector__container{
+    text-align: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    /* background-color: red; */
+    margin: auto calc(50vw - 150px);
+    border-radius: 5px;
+    border: 1px solid gray;
+
+
+}
+.archive-selector__input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    /* background-color: blue; */
+}
+.archive-selector__img{
+    width: 100%;
+    height: 100%;
+    /* margin: 0; */
+}

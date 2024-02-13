@@ -4,7 +4,8 @@ export const config = {
     matcher: [
       '/product/buy/:path*',
       '/cart/:path*',
-      '/favorites/:path*'
+      '/favorites/:path*',
+      '/product/new',
     ]
 
 

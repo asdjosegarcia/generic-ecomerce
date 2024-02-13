@@ -4,6 +4,17 @@ section {
   border-bottom: 1px solid rgb(190, 190, 190);
   box-shadow: 0px 10px 10px rgb(238, 238, 238);
 }
+
+.new-product__name-input{
+  width: calc(90% - 5px);
+  border:none ;
+  border-bottom: 1px solid gray;
+  margin-left: 5%;
+}
+.new-product__name-input:focus{
+ outline: none;
+}
+
 .new-porduct-page__container {
   padding: 0 2%;
 }

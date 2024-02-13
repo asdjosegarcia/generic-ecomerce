@@ -1,13 +1,35 @@
-import React from "react";
+"use client"
+import React,{useState} from "react";
 import "./NewProdcutPage.css";
 import ArchiveSelector from "@/components/molecules/ArchiveSelector";
 
+
 const page = () => {
+  const [getProdcutCompleteDataRequest,setProdcutCompleteDataRequest]=useState({
+      title: "",
+      price: 19.99,
+      previewImg:"https://http2.mlstatic.com/D_NQ_NP_2X_952396-MLU74218675320_012024-F.webp",
+      condition: "Used",
+      shipment: 0.00,
+      qualification: 4.5,
+      seller: "Seller402",
+      categoryId: 5,
+      stock: 11,
+      description: "This is a large description about te product, we can say what is a general description, include not very relevant information",
+      imgName:"",
+      imgType:"",
+      imgData:"base64",
+  })
+
   return (
     <div className="NewProdcutPage new-porduct-page__container">
       <h1 className="new-prodcut-page__title">Sell your product!</h1>
+      <section className="new-product__name-container">
+        <p className="new-product__name-title">Product title:</p>
+        <input className="new-product__name-input" type="text" placeholder="Samsung Galaxy x3 plus" ></input>
+      </section>
       <section>
-        <p className="new-product__section-title">Product image:</p>
+        <p className="new-product__section-title">Image:</p>
         <ArchiveSelector></ArchiveSelector>
       </section>
       <section className="new-product__description-container">

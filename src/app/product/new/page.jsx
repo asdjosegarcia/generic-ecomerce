@@ -7,18 +7,18 @@ const page = () => {
     <div className="NewProdcutPage new-porduct-page__container">
       <h1 className="new-prodcut-page__title">Sell your product!</h1>
       <section>
-        <p className="">Product image:</p>
+        <p className="new-product__section-title">Product image:</p>
         <ArchiveSelector></ArchiveSelector>
       </section>
       <section className="new-product__description-container">
-        <p className="new-product__description-title">Description:</p>
+        <p className="new-product__description-title new-product__section-title">Description:</p>
         <textarea
           className="new-product__description-textarea"
           placeholder="Smartphone xxx model xxxx  "
         ></textarea>
       </section>
-      <section className="new-product_price-container">
-        <p className="new-product__description-title">Price:</p>
+      <section className="new-product_price-container ">
+        <p className="new-product__description-title new-product__section-title">Price:</p>
         <span className="new-product__price-span-container">
           <input
             className="new-product__price-input"
@@ -26,32 +26,47 @@ const page = () => {
             pattern="^\d*(\.\d{0,2})?$" //decimales
             min={0}
             max={99999}
-            inputMode="numeric"//teclado numerico en mobiles
+            inputMode="numeric" //teclado numerico en mobiles
             placeholder="5.60"
           ></input>
           <p> &nbsp; $</p>
         </span>
       </section>
       <section className="new-product_condition-container">
-        <p className="new-product__description-title">Condition:</p>
+        <p className="new-product__description-title new-product__section-title">Condition:</p>
         <span className="new-product__condition-span-container">
           <form>
             <label>
-              <input type="radio" name="opciones" value="true" />
+              <input type="radio" name="options" value="true" />
               &nbsp;New&nbsp;
             </label>
             <label>
-              <input type="radio" name="opciones" value="false" />
+              <input type="radio" name="options" value="false" />
               &nbsp;Used
             </label>
           </form>
         </span>
       </section>
-      <section>
-        <p>Units available:</p>
-        <input type="Number" defaultValue={0}></input>
+      <section className="new-product__units-container">
+        <p className="new-product__section-title">Units available:</p>
+        <input className="new-product__units-input" type="Number" defaultValue={1} min={1}></input>
       </section>
-    </div>  
+      <section className="new-product_shipment-container">
+        <p className="new-product__shipment-title new-product__section-title">Shipment:</p>
+        <span className="new-product__shipment-span-container">
+          <form>
+            <label>
+              <input type="radio" name="options" value="true" />
+              &nbsp;Auto&nbsp;
+            </label>
+            <label>
+              <input type="radio" name="options" value="false" />
+              &nbsp;Free
+            </label>
+          </form>
+        </span>
+      </section>
+    </div>
   );
 };
 

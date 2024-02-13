@@ -1,25 +1,61 @@
-import React from 'react'
-import "./NewProdcutPage.css"
-import ArchiveSelector from '@/components/molecules/ArchiveSelector'
+import React from "react";
+import "./NewProdcutPage.css";
+import ArchiveSelector from "@/components/molecules/ArchiveSelector";
 
 const page = () => {
   return (
-    <div className='NewProdcutPage'>
-      <h1 className='NewProdcutPage__title' >Sell your product!</h1>
-      <div>
-      <p className=''>Prodcut image</p>
-      <ArchiveSelector></ArchiveSelector>
-      </div>
-      <div>
-        <p>Product description:</p>
-        <textarea></textarea>
-      </div>
+    <div className="NewProdcutPage new-porduct-page__container">
+      <h1 className="new-prodcut-page__title">Sell your product!</h1>
+      <section>
+        <p className="">Product image:</p>
+        <ArchiveSelector></ArchiveSelector>
+      </section>
+      <section className="new-product__description-container">
+        <p className="new-product__description-title">Description:</p>
+        <textarea
+          className="new-product__description-textarea"
+          placeholder="Smartphone xxx model xxxx  "
+        ></textarea>
+      </section>
+      <section className="new-product_price-container">
+        <p className="new-product__description-title">Price:</p>
+        <span className="new-product__price-span-container">
+          <input
+            className="new-product__price-input"
+            type="text"
+            pattern="^\d*(\.\d{0,2})?$" //decimales
+            min={0}
+            max={99999}
+            inputMode="numeric"//teclado numerico en mobiles
+            placeholder="5.60"
+          ></input>
+          <p> &nbsp; $</p>
+        </span>
+      </section>
+      <section className="new-product_condition-container">
+        <p className="new-product__description-title">Condition:</p>
+        <span className="new-product__condition-span-container">
+          <form>
+            <label>
+              <input type="radio" name="opciones" value="true" />
+              &nbsp;New&nbsp;
+            </label>
+            <label>
+              <input type="radio" name="opciones" value="false" />
+              &nbsp;Used
+            </label>
+          </form>
+        </span>
+      </section>
+      <section>
+        <p>Units available:</p>
+        <input type="Number" defaultValue={0}></input>
+      </section>
+    </div>  
+  );
+};
 
-    </div>
-  )
-}
-
-export default page
+export default page;
 
 // 'use client'
 // import React,{useState} from 'react';
@@ -27,7 +63,7 @@ export default page
 // let file;
 // const UploadImageForm = () => {
 //   const [getImage,setImage]=useState()
-  
+
 //   const uploadImage = async (file) => {
 //     const reader = new FileReader();//llamamos a el lector de archivos de javascript
 //     reader.onload = async function (e) {// Cuando la lectura del archivo se complete ejecuta esta funcion
@@ -56,7 +92,7 @@ export default page
 //   };
 
 //   const handleFileInputChange = (event) => {
-//      file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)    
+//      file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)
 
 //   };
 

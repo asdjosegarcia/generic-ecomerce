@@ -1,10 +1,10 @@
 .archive-selector__container{
     text-align: center;
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     /* background-color: red; */
-    margin: auto calc(50vw - 150px);
+    margin: auto calc(50vw - 100px);
     border-radius: 5px;
     border: 1px solid gray;
 

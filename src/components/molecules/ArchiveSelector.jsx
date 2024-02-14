@@ -1,26 +1,42 @@
-'use client'
-import React from 'react'
-import './ArchiveSelector.css'
-import AddPhotoSVG from '@/SVG/AddPhotoSVG'
+"use client";
+import React from "react";
+import "./ArchiveSelector.css";
+import AddPhotoSVG from "@/SVG/AddPhotoSVG";
 
+let file
+let img64
 const ArchiveSelector = (props) => {
+  const reader = new FileReader();//creamos una instancia de reader
+  
+  const handleFileInputChange = (event) => {
+    file = event.target.files[0]; //obtenemmos el archivo 0 ssubido por el usuario(la imagen)
     
-
-    const handleFileInputChange = (event) => {
-     file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)    
-    };
+    if(props.type=="image"){
+      reader.readAsDataURL(file)//leemos datos de la imagen
+      reader.onload = ()=> {// Cuando la lectura del archivo se complete ejecuta esta funcion
+       img64=reader.result.split(',')[1];//split(',') separa la cadena en la primer , y con 1 seleccionamos la cadena restante
+       props.setImage({...props.getImage,imgName:file.name,imgType:file.type,imgData:img64})
+      }
+    }
+  };
+    
 
   return (
     <div className="archive-selector__container ArchiveSelector">
-      <input className="archive-selector__input" type="file" onChange={handleFileInputChange} />
+      <input
+        className="archive-selector__input"
+        type="file"
+        onChange={handleFileInputChange}
+      />
       <AddPhotoSVG></AddPhotoSVG>
-      <label htmlFor="file-input" className="archive-selector__button">{props.title}</label>
-      </div>
-  )
-}
+      <label htmlFor="file-input" className="archive-selector__button">
+        {props.title}
+      </label>
+    </div>
+  );
+};
 
-export default ArchiveSelector
-
+export default ArchiveSelector;
 
 // 'use client'
 // import React,{useState} from 'react';
@@ -28,7 +44,7 @@ export default ArchiveSelector
 // let file;
 // const UploadImageForm = () => {
 //   const [getImage,setImage]=useState()
-  
+
 //   const uploadImage = async (file) => {
 //     const reader = new FileReader();//llamamos a el lector de archivos de javascript
 //     reader.onload = async function (e) {// Cuando la lectura del archivo se complete ejecuta esta funcion
@@ -57,7 +73,7 @@ export default ArchiveSelector
 //   };
 
 //   const handleFileInputChange = (event) => {
-//      file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)    
+//      file = event.target.files[0];//obtenemmos el archivo 0 ssubido por el usuario(la imagen)
 //   };
 
 //   const butonUpload=()=>{

@@ -1,5 +1,5 @@
 'use client'
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import './MobileMenu.css'
 import UserSVG from '@/SVG/UserSVG'
 import Link from 'next/link'
@@ -22,7 +22,7 @@ const MobileMenu = (props) => {
   //     inputRef.current.focus();
   //   }
   // };
-  const searchFunc=()=>{
+  const searchFunc = () => {
     props.setMobileMenu(false)
     contexto.focusSearch()
   }
@@ -45,8 +45,8 @@ const MobileMenu = (props) => {
             </Link>
             :
             <>
-            <p className="mobile-menu__username">{session?.user?.name}</p>
-            <a className="mobile-menu__user-profile" >{"My Profile >"}</a>
+              <p className="mobile-menu__username">{session?.user?.name}</p>
+              <a className="mobile-menu__user-profile" >{"My Profile >"}</a>
             </>
           }
 
@@ -60,20 +60,30 @@ const MobileMenu = (props) => {
           <button onClick={searchFunc} >Search</button>
           <button>Notifications</button>
           <button>My Shopping</button>
-          {(session?.user?.name)?
-          <Link className='mobile-menu__Favorites-link' href='/favorites'>
-          <button onClick={() => { props.setMobileMenu(false) }}>Favorites</button>
-          </Link>
-          :
+          {(session?.user?.name) ?
+            <Link className='mobile-menu__Favorites-link' href='/favorites'>
+              <button onClick={() => { props.setMobileMenu(false) }}>Favorites</button>
+            </Link>
+            :
             <></>
           }
           <button>Offers</button>
           {(!session?.user?.name) ?
-            <Link href='/auth/login'>
-              <button onClick={() => { props.setMobileMenu(false) }}>Login</button>
-            </Link>
+            <>
+              <Link href='/auth/login'>
+                <button onClick={() => { props.setMobileMenu(false) }}>Trade</button>
+              </Link>
+              <Link href='/auth/login'>
+                <button onClick={() => { props.setMobileMenu(false) }}>Login</button>
+              </Link>
+            </>
             :
-            <button className="mobile-menu__logout-button" onClick={() => { props.setMobileMenu(false); signOut() }}>Logout</button>
+            <>
+              <Link href='/product/new/'>
+                <button onClick={() => { props.setMobileMenu(false) }}>Trade</button>
+              </Link>
+              <button className="mobile-menu__logout-button" onClick={() => { props.setMobileMenu(false); signOut() }}>Logout</button>
+            </>
           }
         </div>
       </div>

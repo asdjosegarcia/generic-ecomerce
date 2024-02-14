@@ -1,9 +1,10 @@
+'use client'
 import React from 'react'
 import './MainButton.css'
 
 const MainButton = ({text,funct}) => {
   return (
-    <button onClick={()=>funct} className='MainButton'>{text}</button>
+    <button onClick={funct} className='MainButton'>{text}</button>
   )
 }
 

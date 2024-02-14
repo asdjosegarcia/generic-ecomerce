@@ -66,3 +66,12 @@ section {
   border-radius: 50px;
 }
 
+.new-product_create-container{
+  text-align: center;
+}
+
+.new-product_create-container .MainButton{
+  margin: 20px 0;
+  width: 300px;
+}
+

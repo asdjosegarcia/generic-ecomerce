@@ -39,7 +39,7 @@ const page = () => {
     <div className="NewProdcutPage new-porduct-page__container">
       <h1 className="new-prodcut-page__title">Sell your product!</h1>
       <section className="new-product__name-container">
-        <p className="new-product__name-title">Product title:</p>
+        <p className="new-product__name-title new-product__section-title">Product title:</p>
         <input
           name="title"
           className="new-product__name-input"

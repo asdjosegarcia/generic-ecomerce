@@ -17,7 +17,7 @@ const page = () => {
     condition: "Used",
     shipment: 0,
     qualification: 0,
-    seller: session?.user.email,
+    sellerEmail: "",
     categoryIds: [],
     stock: 0,
     description: "",
@@ -31,7 +31,6 @@ const page = () => {
       .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
       .then(data => {
         setCategories(data)
-        console.log(data)
       })
   }, [])
 
@@ -59,19 +58,22 @@ const page = () => {
         break
       case (name == "categoryIds"):
         value = Number(value);
-        setProduct({ ...getProduct, categoryIds: [...getProduct.categoryIds, value] })
+        if(getProduct.categoryIds.includes(value)){//si ela lista de categorias ya contiene el valor/categoryId
+          value=getProduct.categoryIds.filter((category)=>(category!==value)? category : null) //filtramos todos las categorias que no correspondan con el valor
+          setProduct({ ...getProduct, categoryIds: value })//cargamos el array filtrado en categoryIds
+        }else{
+          setProduct({ ...getProduct, categoryIds: [...getProduct.categoryIds, value] })//cargamos la nueva categoria
+        }
         return //salimos de la funcion sin cargar lo de abajo asi evitar problemas con setProducts
       default:
     }
-    console.log('e')
-    setProduct({
-      ...getProduct,
-      [name]: value,
-    });
-    console.log(getProduct);
+    setProduct({ ...getProduct, [name]: value, });
   };
 
   const create = () => {
+    setProduct({ ...getProduct, sellerEmail: session.user.email })
+    console.log(getProduct);
+
     console.log("create");
   };
 
@@ -114,24 +116,11 @@ const page = () => {
       </section>
       <section className="new-product_category-container">
         <p className="new-product__category-title new-product__section-title">
-          Category:
+          Categories:
         </p>
-        <span className="new-product__scategory-span-container">
+        <span className="new-product__category-span-container">
           <form>
-            {getCategories?.map(({ id, name }) => (<label key={id} ><input type="checkbox" name="categoryIds" onChange={inputChange} value={id} />{name}</label>))}
-            {/* <label>
-              <input type="checkbox" name="shipment" value="Auto" onChange={inputChange} />
-              &nbsp;category1&nbsp;
-            </label>
-            <label>
-              <input type="checkbox" name="shipment" value={0} onChange={inputChange} />
-              &nbsp;category2
-            </label>
-            <label>
-              <input type="checkbox" name="shipment" value={0} onChange={inputChange} />
-
-              <></>
-            </label> */}
+            {getCategories?.map(({ id, name }) => (<label key={id} ><input type="checkbox" name="categoryIds" onChange={inputChange} value={id} /><p>{name}</p></label>))}
           </form>
         </span>
       </section>

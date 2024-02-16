@@ -42,6 +42,15 @@ section {
   border-radius: 5px;
 }
 
+.new-product__category-span-container label{
+  display: flex;
+}
+.new-product__category-span-container p::first-letter {
+  margin-left: .5rem;
+  text-transform: uppercase;
+  color: rgb(255, 0, 0);
+}
+
 .new-product__price-span-container,
 .new-product__shipment-span-container,
 .new-product__shipment-span-container {

@@ -1,22 +1,25 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./NewProdcutPage.css";
 import ArchiveSelector from "@/components/molecules/ArchiveSelector";
 import MainButton from "@/components/atoms/MainButton";
+import { useSession } from 'next-auth/react';
+
 
 const page = () => {
-  const [getCategories,setCategories]=useState([])
+  const { data: session } = useSession();//cargamos datos del usuario en session   
+  const [getCategories, setCategories] = useState([])
   const [getError, setError] = useState();
-  const [getProdcut, setProdcut] = useState({
+  const [getProduct, setProduct] = useState({
     title: "",
     price: 0,
     previewImg: "",
     condition: "Used",
     shipment: 0,
     qualification: 0,
-    seller: "",
-    categoryId: [],
-    stock: 11,
+    seller: session?.user.email,
+    categoryIds: [],
+    stock: 0,
     description: "",
     imgName: "",
     imgType: "",
@@ -25,13 +28,13 @@ const page = () => {
 
   useEffect(() => {
     fetch(`/api/categories`)//realizamos una peticion get a parametro de la url.id
-    .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-    .then(data => {                    
+      .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+      .then(data => {
         setCategories(data)
         console.log(data)
-    })
+      })
   }, [])
-  
+
 
   const inputChange = (event) => {
     let { name, value } = event.target;
@@ -54,19 +57,18 @@ const page = () => {
           value = 0
         }
         break
-      case (name=="categoryId"):
+      case (name == "categoryIds"):
         value = Number(value);
-        // setProdcut({...getProdcut,})
+        setProduct({ ...getProduct, categoryIds: [...getProduct.categoryIds, value] })
         return //salimos de la funcion sin cargar lo de abajo asi evitar problemas con setProducts
-        break;
       default:
     }
     console.log('e')
-    setProdcut({
-      ...getProdcut,
+    setProduct({
+      ...getProduct,
       [name]: value,
     });
-    console.log(getProdcut);
+    console.log(getProduct);
   };
 
   const create = () => {
@@ -93,8 +95,8 @@ const page = () => {
         <p className="new-product__section-title">Image:</p>
         <ArchiveSelector
           type={"image"}
-          getImage={getProdcut}
-          setImage={setProdcut}
+          getImage={getProduct}
+          setImage={setProduct}
         ></ArchiveSelector>
         {getError?.image && <p className="error">{getError.image}</p>}
       </section>
@@ -116,7 +118,7 @@ const page = () => {
         </p>
         <span className="new-product__scategory-span-container">
           <form>
-            {getCategories?.map(({id,name})=>(<label key={id} ><input type="checkbox"  name="categoryId" onChange={inputChange} value={id}/>{name}</label>))}
+            {getCategories?.map(({ id, name }) => (<label key={id} ><input type="checkbox" name="categoryIds" onChange={inputChange} value={id} />{name}</label>))}
             {/* <label>
               <input type="checkbox" name="shipment" value="Auto" onChange={inputChange} />
               &nbsp;category1&nbsp;

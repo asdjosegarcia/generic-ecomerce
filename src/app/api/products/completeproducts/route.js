@@ -15,7 +15,12 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { title, price, previewImg, condition, shipment, qualification, seller, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+  const { title, price, previewImg, condition, shipment, qualification, sellerEmail, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+  const seller = await prisma.user.findUnique({
+    where: { //were se usa para buscar lo que coincida
+      email: sellerEmail//lo que coincida con el email
+  },
+  })
   const newProduct = await prisma.product.create({//linea para crear datos en nuestra base de datos
     data: {
       title: title, //podria solo poner 1 vez title ya que asi llega, pero lo pongo 2 veces para que sea mas didactico
@@ -25,11 +30,10 @@ export async function POST(request) {
       condition: condition,
       shipment: shipment,
       qualification: qualification,
-      seller: seller,
+      seller: seller.username,
       category: {
         connect:  categoryIds.map((categoryId) => ({ id: Number(categoryId) })) //reicivimos un array y conectamos cada id del array con product
       },
-
 
       // categoryId: 1, // Asegúrate de proporcionar categoryId
       ProductComplete: { // Si es una relación 1 a 1, puedes crear ProductComplete aquí

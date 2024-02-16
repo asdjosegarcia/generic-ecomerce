@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { title, price, previewImg, condition, shipment, qualification, seller, categoryId, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+  const { title, price, previewImg, condition, shipment, qualification, seller, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
   const newProduct = await prisma.product.create({//linea para crear datos en nuestra base de datos
     data: {
       title: title, //podria solo poner 1 vez title ya que asi llega, pero lo pongo 2 veces para que sea mas didactico
@@ -27,7 +27,7 @@ export async function POST(request) {
       qualification: qualification,
       seller: seller,
       category: {
-        connect: { id: categoryId }
+        connect:  categoryIds.map((categoryId) => ({ id: Number(categoryId) })) //reicivimos un array y conectamos cada id del array con product
       },
 
 

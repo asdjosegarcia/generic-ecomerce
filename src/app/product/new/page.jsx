@@ -56,7 +56,7 @@ const page = () => {
         break
       case (name=="categoryId"):
         value = Number(value);
-        setProdcut({...getProdcut,})
+        // setProdcut({...getProdcut,})
         return //salimos de la funcion sin cargar lo de abajo asi evitar problemas con setProducts
         break;
       default:

@@ -135,8 +135,8 @@ model Category {
 
 model ProductImages {
     id                Int              @id @default(autoincrement())
-    name              String
-    mimetype          String
+    name              String           @default("")
+    mimetype          String           @default("")
     data              Bytes?
     productComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
     productCompleteId Int?

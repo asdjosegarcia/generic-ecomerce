@@ -57,7 +57,7 @@ const page = () => {
         break;
       case (name == "shipment"):
         if (value == "Auto") {
-          value = (Math.random() * 10).toFixed(2);//por el momento no tenemos logistica :P
+          value = Number((Math.random() * 10).toFixed(2));//por el momento no tenemos logistica :P
           console.log(value)
         } else {
           value = 0

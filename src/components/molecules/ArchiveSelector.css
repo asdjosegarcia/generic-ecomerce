@@ -19,8 +19,11 @@
     opacity: 0;
     /* background-color: blue; */
 }
-.archive-selector__img{
-    width: 100%;
-    height: 100%;
+.archive-selector__img-preview{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    /* width: 100%; */
+    /* height: 100%; */
     /* margin: 0; */
 }

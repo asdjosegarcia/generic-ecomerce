@@ -14,13 +14,13 @@ const ArchiveSelector = (props) => {
       const reader = new FileReader();//creamos una instancia de reader,
       reader.readAsDataURL(file)//leemos datos de la imagen
       reader.onload = ()=> {// Cuando la lectura del archivo se complete ejecuta esta funcion
-        console.log(reader.result)
+        // console.log(reader.result)
        img64=reader.result.split(',')[1];//split(',') separa la cadena en la primer , y con 1 seleccionamos la cadena restante
        props.setImage({...props.getImage,imgName:file.name,imgType:file.type,imgData:img64})
       }
     }
   };
-  console.log(props.getImage)
+  // console.log(props.getImage)
     
 
   return (

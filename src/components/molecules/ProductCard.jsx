@@ -18,6 +18,7 @@ const ProductCard = ({product,favorite,disableFavorite}) => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const contexto = useContext(variableContext)
   const router = useRouter()
+  // console.log(product)
 
   return (
     <>

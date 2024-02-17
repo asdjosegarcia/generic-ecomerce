@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { title, price, previewImg, condition, shipment, qualification, sellerEmail, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+  const { title, price, previewImg,previewImgName,previewImgType,previewImgData, condition, shipment, qualification, sellerEmail, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
   const seller = await prisma.user.findUnique({
     where: { //were se usa para buscar lo que coincida
       email: sellerEmail//lo que coincida con el email
@@ -28,6 +28,13 @@ export async function POST(request) {
       // description: description,
       previewImg: previewImg,
       condition: condition,
+      previewImgBase: {
+        create: {
+          name: previewImgName,
+          mimetype: previewImgType,
+          data: previewImgData,
+        }
+      },
       shipment: shipment,
       qualification: qualification,
       seller: seller.username,

@@ -5,10 +5,10 @@ import ArchiveSelector from "@/components/molecules/ArchiveSelector";
 import MainButton from "@/components/atoms/MainButton";
 import { useSession } from 'next-auth/react';
 
-
+let email = ''
 const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
-  const [getCategories, setCategories] = useState([])
+  const [getCategories, setCategories] = useState(null)
   const [getError, setError] = useState();
   const [getProduct, setProduct] = useState({
     title: "",
@@ -17,7 +17,7 @@ const page = () => {
     condition: "Used",
     shipment: 0,
     qualification: 0,
-    sellerEmail: "",
+    sellerEmail: '',
     categoryIds: [],
     stock: 0,
     description: "",
@@ -27,20 +27,27 @@ const page = () => {
   });
 
   useEffect(() => {
-    fetch(`/api/categories`)//realizamos una peticion get a parametro de la url.id
-      .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-      .then(data => {
-        setCategories(data)
-      })
-  }, [])
+    if (getCategories == null) {
+      fetch(`/api/categories`)//peticion GET para traer las categorias disponibles
+        .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+        .then(data => {
+          setCategories(data)
+        })
+    }
+    if (getProduct.sellerEmail === '' && session?.user.email !== undefined) {//
+      email = session.user.email
+      setProduct({ ...getProduct, sellerEmail: email, })//carga de email del vendedor si no hay nada
+    }
+  }, [getProduct])
 
 
   const inputChange = (event) => {
     let { name, value } = event.target;
-    console.log(name, value)
+    // console.log(name, value)
     if (getError !== null) {//si hay algo en errores
       setError()//borramos errores
     }
+
     switch (true) {
       case name == "price":
         value = Number(value) ? Number(value) : setError({ ...getError, price: "The price can only contain numbers" });
@@ -58,10 +65,10 @@ const page = () => {
         break
       case (name == "categoryIds"):
         value = Number(value);
-        if(getProduct.categoryIds.includes(value)){//si ela lista de categorias ya contiene el valor/categoryId
-          value=getProduct.categoryIds.filter((category)=>(category!==value)? category : null) //filtramos todos las categorias que no correspondan con el valor
+        if (getProduct.categoryIds.includes(value)) {//si ela lista de categorias ya contiene el valor/categoryId
+          value = getProduct.categoryIds.filter((category) => (category !== value) ? category : null) //filtramos todos las categorias que no correspondan con el valor
           setProduct({ ...getProduct, categoryIds: value })//cargamos el array filtrado en categoryIds
-        }else{
+        } else {
           setProduct({ ...getProduct, categoryIds: [...getProduct.categoryIds, value] })//cargamos la nueva categoria
         }
         return //salimos de la funcion sin cargar lo de abajo asi evitar problemas con setProducts
@@ -70,11 +77,26 @@ const page = () => {
     setProduct({ ...getProduct, [name]: value, });
   };
 
-  const create = () => {
-    setProduct({ ...getProduct, sellerEmail: session.user.email })
+  const create = async() => {
     console.log(getProduct);
-
     console.log("create");
+
+    const res = await fetch(`/api/products/completeproducts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(getProduct),
+    });
+    // const data = await res.json();
+    if (res.ok) {
+      console.log('ok')
+      // props.notification('Added')
+    } else {
+      // props.notification('Error')
+      console.log('error')
+    }
+  
   };
 
   return (

@@ -22,6 +22,7 @@ export async function POST( request ) {
         property.push({title:{contains:search}})//titulo que contenga lo que buscamos
     }
     order=orderBy//se establece en asendente, desendente y las view segun llegue la peticion
+    // console.log(orderByParams[orderBy])
     let products = await prisma.product.findMany({//buscar todos los articulos que...
         // take: 10, // limitamos los resultados a 10, funcionalidad para despuess
         where: {//donde..
@@ -53,6 +54,7 @@ export async function POST( request ) {
             }
         })
     }
+    // console.log(products)
 
     prisma.$disconnect()
     return NextResponse.json(products)

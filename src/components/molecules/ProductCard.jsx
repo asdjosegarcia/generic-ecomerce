@@ -3,8 +3,8 @@
 import React, { useContext, useState } from 'react'
 import './ProductCard.css'
 import BadgetFreeShipping from '@/components/atoms/BadgetFreeShipping'
-import HeartSVG from '../../SVG/HeartSVG'
-import HeartOutlineSVG from '../../SVG/HeartOutlineSVG'
+// import HeartSVG from '../../SVG/HeartSVG'
+// import HeartOutlineSVG from '../../SVG/HeartOutlineSVG'
 import BadgetStars from './BadgetStars'
 import { useRouter } from 'next/navigation'
 import { variableContext } from "@/context/contexto";
@@ -18,8 +18,8 @@ const ProductCard = ({ product, favorite, disableFavorite }) => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const contexto = useContext(variableContext)
   const router = useRouter()
-  if (Array.isArray(product.previewImgBase)&& product.previewImgBase.length > 0) {
-    const byteArray = new Uint8Array(product.previewImgBase[0].data.data);//creamos un Unit8Array que no almacena los array en grupos aunque asi lo mustre firefox, sino en un valor de 8bits/1 byte(datos binarios de 8 bits 0 a 255) ej 125,0,5,3,etc (datos codificados en bits)
+  if (product.previewImgBase?.data ){
+    const byteArray = new Uint8Array(product.previewImgBase.data.data);//creamos un Unit8Array que no almacena los array en grupos aunque asi lo mustre firefox, sino en un valor de 8bits/1 byte(datos binarios de 8 bits 0 a 255) ej 125,0,5,3,etc (datos codificados en bits)
     let binaryString = '';//almacenara un string, a cada string se le suma 1 caracter por cada 8bites/1byte gracias a String.fromCharCode que transforma cada byte en 1 caracter, los � son datos que el navegador no puede representar
     for (let i = 0; i < byteArray.length; i++) {//1 recorrido por cada byte
       binaryString += String.fromCharCode(byteArray[i]);//byteArray[i] nos dara cada byte, String.fromCharCode() transformara el byte de DECIMAL a caracter UTF-16,+= sumara el caracter a binaryString 

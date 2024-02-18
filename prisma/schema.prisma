@@ -87,9 +87,19 @@ model Product {
     //////////relacion Favoritos 
     favorites       Favorites[]            @relation("favoritesPorducts")
     //////////relacion preievImgBase64
-    previewImgBase  ProductPreviewImage[]
+    previewImgBase  ProductPreviewImage?    // Relación 1 a 1 opcional
+    productPreviewImageId Int?
 }
 
+model ProductPreviewImage {
+    id       Int    @id @default(autoincrement())
+    name     String @default("")
+    mimetype String @default("")
+    data     Bytes?
+    //relacion con product
+    product   Product? @relation(fields: [productId], references: [id])
+    productId Int  @unique
+}
 model ProductComplete {
     id            Int             @id
     stock         Int             @default(1)
@@ -145,12 +155,3 @@ model ProductImages {
     productCompleteId Int?
 }
 
-model ProductPreviewImage {
-    id       Int    @id @default(autoincrement())
-    name     String @default("")
-    mimetype String @default("")
-    data     Bytes?
-    //relacion con product
-    product   Product? @relation(fields: [productId], references: [id])
-    productId Int?
-}

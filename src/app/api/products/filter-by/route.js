@@ -27,7 +27,9 @@ export async function POST( request ) {
         where: {//donde..
             AND: property, // propiedad y valor correspondan 
         },
+        include: { previewImgBase: true },
         orderBy:orderByParams[order]//ordernar por
+
     })
 
     if(userEmail!==''){//si tenemos el email de usuario le agregaremos una seccion favorite=true a los productos que corresponda

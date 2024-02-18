@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 
 let email = ''
 const page = () => {
+  const [getPreviewImage,setPreviewImage]=useState()
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getCategories, setCategories] = useState(null)
   const [getError, setError] = useState();
@@ -21,7 +22,10 @@ const page = () => {
     categoryIds: [],
     stock: 0,
     description: "",
-    imgName: "",
+    previewImgName:"",
+    previewImgType:"",
+    previewImgData:"",
+    imgName: "", //esto requiere cambios para agregar varias imagenes a Complete prodcuts
     imgType: "",
     imgData: "",
   });
@@ -38,12 +42,17 @@ const page = () => {
       email = session.user.email
       setProduct({ ...getProduct, sellerEmail: email, })//carga de email del vendedor si no hay nada
     }
-  }, [getProduct])
+    if(getProduct.previewImgName!==getPreviewImage?.imgName){
+      setProduct({...getProduct,previewImgName:getPreviewImage?.imgName,previewImgType:getPreviewImage?.imgType,previewImgData:getPreviewImage?.imgData})
+    }
+    
+  }, [getProduct,getPreviewImage])
 
 
   const inputChange = (event) => {
     let { name, value } = event.target;
     // console.log(name, value)
+    console.log(getProduct)
     if (getError !== null) {//si hay algo en errores
       setError()//borramos errores
     }
@@ -78,8 +87,8 @@ const page = () => {
   };
 
   const create = async() => {
-    console.log(getProduct);
-    console.log("create");
+    // console.log(getProduct);
+    // console.log("create");
 
     const res = await fetch(`/api/products/completeproducts`, {
       method: 'POST',
@@ -119,8 +128,8 @@ const page = () => {
         <p className="new-product__section-title">Image:</p>
         <ArchiveSelector
           type={"image"}
-          getImage={getProduct}
-          setImage={setProduct}
+          getImage={getPreviewImage}
+          setImage={setPreviewImage}
         ></ArchiveSelector>
         {getError?.image && <p className="error">{getError.image}</p>}
       </section>

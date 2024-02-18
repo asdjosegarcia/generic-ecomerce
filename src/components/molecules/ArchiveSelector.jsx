@@ -20,7 +20,6 @@ const ArchiveSelector = (props) => {
       }
     }
   };
-  // console.log(props.getImage)
     
 
   return (

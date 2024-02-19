@@ -44,6 +44,7 @@ const page = () => {
     }
     if(getProduct.previewImgName!==getPreviewImage?.imgName){
       setProduct({...getProduct,previewImgName:getPreviewImage?.imgName,previewImgType:getPreviewImage?.imgType,previewImgData:getPreviewImage?.imgData})
+      setProduct({...getProduct,imgName:getPreviewImage?.imgName,imgType:getPreviewImage?.imgType,imgData:getPreviewImage?.imgData}) //hay que modificar esot cuando se agreguen carga de mas imagenes
     }
     
   }, [getProduct,getPreviewImage])
@@ -126,6 +127,7 @@ const page = () => {
       </section>
       <section>
         <p className="new-product__section-title">Image:</p>
+
         <ArchiveSelector
           type={"image"}
           getImage={getPreviewImage}

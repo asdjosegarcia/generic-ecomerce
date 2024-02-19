@@ -16,15 +16,17 @@ header .porduct--qualification__container{
     display: flex; 
     flex-direction: row; 
     align-items: center;
+    padding-top: 10px;
 }
-/* p{
-    margin: 15px 0;
-} */
+header .porduct--qualification__container svg{
+ padding: 0;
+}
+
 
 .product__title{
     /* color: brown; */
     font-size: 1.5rem;
-    margin: 10px 0px 25px 0px;
+    margin: 10px 0px 10px 0px;
 }
 .product--img__contiainter{
     width: 100%;
@@ -77,6 +79,7 @@ header .porduct--qualification__container{
 .product__description--title{
     font-weight: 600;
     font-size: 1.1rem;
+    margin: 10px 0px 3px 0px;
 }
 .porduct__seller{
     margin: 0;

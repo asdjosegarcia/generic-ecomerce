@@ -11,11 +11,7 @@ export async function GET(request, { params }) {
             ProductComplete: {
                 include: {
                     comments: true,
-                },
-                include: {
-                    question: true
-                },
-                include:{
+                    question: true,
                     productImages:true
                 }
             }
@@ -24,6 +20,6 @@ export async function GET(request, { params }) {
 
 
     })
-    // console.log(porductcomplete)
+    console.log(porductcomplete)
     return NextResponse.json(porductcomplete)//mostramos la tarea en pantalla
 }

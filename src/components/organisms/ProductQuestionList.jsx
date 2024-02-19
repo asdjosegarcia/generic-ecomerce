@@ -12,7 +12,8 @@ let questions;
 const PorductQuestionList = ({ product }) => {
   const contexto = useContext(variableContext)
   const [getViewMore, setViewMore] = useState(false);
-  const [getReversedQuestions,setReversedQuestions]=useState([...product?.ProductComplete.question].reverse())//cargamos los productos con el orden invertido
+  
+  const [getReversedQuestions,setReversedQuestions]=useState([...product?.ProductComplete?.question].reverse())//cargamos los productos con el orden invertido
   // console.log(contexto.getNewQuestion)
   useEffect(() => {
     if(contexto.getNewQuestion !== undefined){//si no es undefined (por que sino da error)

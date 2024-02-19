@@ -43,8 +43,8 @@ const page = () => {
       setProduct({ ...getProduct, sellerEmail: email, })//carga de email del vendedor si no hay nada
     }
     if(getProduct.previewImgName!==getPreviewImage?.imgName){
-      setProduct({...getProduct,previewImgName:getPreviewImage?.imgName,previewImgType:getPreviewImage?.imgType,previewImgData:getPreviewImage?.imgData})
-      setProduct({...getProduct,imgName:getPreviewImage?.imgName,imgType:getPreviewImage?.imgType,imgData:getPreviewImage?.imgData}) //hay que modificar esot cuando se agreguen carga de mas imagenes
+      setProduct({...getProduct,previewImgName:getPreviewImage?.imgName,previewImgType:getPreviewImage?.imgType,previewImgData:getPreviewImage?.imgData,imgName:getPreviewImage?.imgName,imgType:getPreviewImage?.imgType,imgData:getPreviewImage?.imgData})
+       //hay que modificar esto cuando se agreguen carga de mas imagenes
     }
     
   }, [getProduct,getPreviewImage])

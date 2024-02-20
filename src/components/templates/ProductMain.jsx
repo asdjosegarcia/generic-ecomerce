@@ -21,7 +21,7 @@ const ProductMain = ({ product }) => {
   // const router = useRouter()
   const [getNotificationText,setNotificationText]=useState(null)
 
-  if (product?.ProductComplete?.productImages[0].data){
+  if (product?.ProductComplete?.productImages[0]){
     const byteArray = new Uint8Array(product?.ProductComplete?.productImages[0].data.data);//creamos un Unit8Array que no almacena los array en grupos aunque asi lo mustre firefox, sino en un valor de 8bits/1 byte(datos binarios de 8 bits 0 a 255) ej 125,0,5,3,etc (datos codificados en bits)
     let binaryString = '';//almacenara un string, a cada string se le suma 1 caracter por cada 8bites/1byte gracias a String.fromCharCode que transforma cada byte en 1 caracter, los � son datos que el navegador no puede representar
     for (let i = 0; i < byteArray.length; i++) {//1 recorrido por cada byte

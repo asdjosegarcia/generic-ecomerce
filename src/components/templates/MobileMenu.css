@@ -83,9 +83,10 @@
     border-bottom: 1px solid #69696921;
     height: 50px;
     background-color: #00000000;
+    color: #696969;
 }
 .mobile-menu__options .mobile-menu__trade-button{
-    background-color: #00ff0da1;
+    background-color: #00b10977;
     color: #fff;
     border-radius: 50px;
     font-weight: 500;

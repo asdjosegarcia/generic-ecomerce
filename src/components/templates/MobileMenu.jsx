@@ -6,7 +6,14 @@ import Link from 'next/link'
 import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react'//importamos la funcion que nos desloquea desde next-auth
 import { variableContext } from "@/context/contexto";
-
+import PlusSVG from '@/SVG/PlusSVG'
+import HeartOutlineSVG from '@/SVG/HeartOutlineSVG' 
+import HomeSVG from '@/SVG/HomeSVG'
+import SearchSVG from '@/SVG/SearchSVG'
+import NotificationSVG from '@/SVG/NotificationSVG'
+import TiketSVG from '@/SVG/TiketSVG'
+import PorcentSVG from '@/SVG/PorcentSVG'
+import OffSVG from '@/SVG/OffSVG'
 
 
 
@@ -54,24 +61,24 @@ const MobileMenu = (props) => {
         </div>
         <div className='mobile-menu__options'>
           <Link href='/'>
-            <button onClick={() => { props.setMobileMenu(false) }} >Home</button>
+            <button onClick={() => { props.setMobileMenu(false) }} >Home <HomeSVG width={'24px'} fill={"#696969"}></HomeSVG></button>
           </Link>
           {/* <input ref={inputRef}></input> */}
-          <button onClick={searchFunc} >Search</button>
-          <button>Notifications</button>
-          <button>My Shopping</button>
+          <button onClick={searchFunc} >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
+          <button>Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
+          <button>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
           {(session?.user?.name) ?
             <Link className='mobile-menu__Favorites-link' href='/favorites'>
-              <button onClick={() => { props.setMobileMenu(false) }}>Favorites</button>
+              <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
             </Link>
             :
             <></>
           }
-          <button>Offers</button>
+          <button>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
           {(!session?.user?.name) ?
             <>
               <Link href='/auth/login'>
-                <button onClick={() => { props.setMobileMenu(false) }}>Trade</button>
+                <button className="mobile-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG></button>
               </Link>
               <Link href='/auth/login'>
                 <button onClick={() => { props.setMobileMenu(false) }}>Login</button>
@@ -80,9 +87,9 @@ const MobileMenu = (props) => {
             :
             <>
               <Link href='/product/new/'>
-                <button onClick={() => { props.setMobileMenu(false) }}>Trade</button>
+                <button className="mobile-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#FFF"}></PlusSVG> </button>
               </Link>
-              <button className="mobile-menu__logout-button" onClick={() => { props.setMobileMenu(false); signOut() }}>Logout</button>
+              <button className="mobile-menu__logout-button" onClick={() => { props.setMobileMenu(false); signOut() }}>Logout <OffSVG width={'24px'} fill={"#ff7b7b"}></OffSVG></button>
             </>
           }
         </div>

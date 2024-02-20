@@ -30,3 +30,10 @@ const FloatingNotification = (props) => {
 }
 
 export default FloatingNotification
+/////////////modo de uso
+//componente que lo usara:
+//import React, { useContext } from "react";
+//import { variableContext } from "@/context/contexto";
+//
+//const contexto = useContext(variableContext)
+//contexto.setNotificationText('')

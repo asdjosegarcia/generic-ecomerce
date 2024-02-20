@@ -1,12 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./NewProdcutPage.css";
 import ArchiveSelector from "@/components/molecules/ArchiveSelector";
 import MainButton from "@/components/atoms/MainButton";
 import { useSession } from 'next-auth/react';
+import { variableContext } from "@/context/contexto";
+import { useRouter } from 'next/navigation'
+
 
 let email = ''
 const page = () => {
+  const contexto = useContext(variableContext)
+  const router = useRouter();
   const [getPreviewImage,setPreviewImage]=useState()
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getCategories, setCategories] = useState(null)
@@ -98,12 +103,13 @@ const page = () => {
       },
       body: JSON.stringify(getProduct),
     });
-    // const data = await res.json();
+    const data = await res.json();
     if (res.ok) {
-      console.log('ok')
-      // props.notification('Added')
+      contexto.setNotificationText('Product for sale!')
+      router.push(`/product/${data.id}`)
+
     } else {
-      // props.notification('Error')
+      contexto.setNotificationText('Error')
       console.log('error')
     }
   

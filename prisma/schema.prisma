@@ -8,20 +8,22 @@ datasource db {
 }
 
 model User {
-    id            Int            @id @default(autoincrement())
-    email         String         @unique
-    username      String         @unique
-    password      String
-    createdAt     DateTime       @default(now())
-    updatedAt     DateTime       @updatedAt
+    id              Int            @id @default(autoincrement())
+    email           String         @unique
+    username        String         @unique
+    password        String
+    createdAt       DateTime       @default(now())
+    updatedAt       DateTime       @updatedAt
     ///////////////relacion cart
-    cart          Cart? //relacion 1 a 1
+    cart            Cart? //relacion 1 a 1
     ///////////////relacion notificaciones
-    notifications Notifications?
+    notifications   Notifications?
     //////////////relacion preguntas
-    questions     Question[] //relacion uno a muchos
+    questions       Question[] //relacion uno a muchos
     //////////////relacion Favorites
-    favorites     Favorites? //relacion 1 a 1 
+    favorites       Favorites? //relacion 1 a 1 
+    //////////////relacion UserPuschases 
+    userPurchases   UserPurchases?
 }
 
 model Favorites {
@@ -63,43 +65,44 @@ model Notification {
 }
 
 model Product {
-    id              Int                    @id @default(autoincrement()) // Int el id es un entero, @id es un identificador unico, (autoincrement()) y se va a ir incrementando
-    title           String?                @default("Product")
-    price           Float                  @default(0.00)
-    condition       String                 @default("New")
-    shipment        Float                  @default(0.00) //
-    qualification   Float                  @default(5)
-    previewImg      String                 @default("")
-    seller          String? //relacion pendiente
-    createdAt       DateTime               @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
-    views           Int?                   @default(0)
-    discount        Int                    @default(0)
+    id                    Int                  @id @default(autoincrement()) // Int el id es un entero, @id es un identificador unico, (autoincrement()) y se va a ir incrementando
+    title                 String?              @default("Product")
+    price                 Float                @default(0.00)
+    condition             String               @default("New")
+    shipment              Float                @default(0.00) //
+    qualification         Float                @default(5)
+    previewImg            String               @default("")
+    seller                String? //relacion pendiente
+    createdAt             DateTime             @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
+    views                 Int?                 @default(0)
+    discount              Int                  @default(0)
     //////////relacion informacion extra del producto
-    ProductComplete ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
+    ProductComplete       ProductComplete? //establece relacion 1 a 1, ya que product solo puede tener 1 ProductComplete
     //////////relacion categoria
-    category        Category[]
+    category              Category[]
     //////////relacion comentarios
-    comments        Comment[] //relacion 1 a muchos,
+    comments              Comment[] //relacion 1 a muchos,
     //////////relacion preguntas
-    Question        Question[]
+    Question              Question[]
     //////////relacion carrito
-    cart            Cart[]                 @relation("cartProducts")
+    cart                  Cart[]               @relation("cartProducts")
     //////////relacion Favoritos 
-    favorites       Favorites[]            @relation("favoritesPorducts")
+    favorites             Favorites[]          @relation("favoritesPorducts")
     //////////relacion preievImgBase64
-    previewImgBase  ProductPreviewImage?    // Relación 1 a 1 opcional
+    previewImgBase        ProductPreviewImage? // Relación 1 a 1 opcional
     productPreviewImageId Int?
 }
 
 model ProductPreviewImage {
-    id       Int    @id @default(autoincrement())
-    name     String @default("")
-    mimetype String @default("")
-    data     Bytes?
+    id        Int      @id @default(autoincrement())
+    name      String   @default("")
+    mimetype  String   @default("")
+    data      Bytes?
     //relacion con product
     product   Product? @relation(fields: [productId], references: [id])
-    productId Int  @unique
+    productId Int      @unique
 }
+
 model ProductComplete {
     id            Int             @id
     stock         Int             @default(1)
@@ -150,8 +153,16 @@ model ProductImages {
     name              String           @default("")
     mimetype          String           @default("")
     data              Bytes?
-    //relacion con product Complete
+    //relacion con productComplete
     productComplete   ProductComplete? @relation(fields: [productCompleteId], references: [id])
     productCompleteId Int?
 }
 
+model UserPurchases {
+    id     Int   @id @default(autoincrement())
+    //relacion con user
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int   @unique
+    //relacion con Prodcuts
+
+}

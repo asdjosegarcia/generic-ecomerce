@@ -10,7 +10,7 @@ export async function POST(request) {
     const products=await prisma.userPurchases.findUnique({
         where:{userId:user.id},
         include: {
-            product: true
+            products: true
         }
         
     })

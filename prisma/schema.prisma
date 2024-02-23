@@ -93,9 +93,8 @@ model Product {
     //////////relacion preievImgBase64
     previewImgBase        ProductPreviewImage? // Relación 1 a 1 opcional
     productPreviewImageId Int?
-    userPurchases         UserPurchases?       @relation(fields: [userPurchasesId], references: [id])
-    userPurchasesId       Int?
-    userProducts         UserProducts?       @relation(fields: [userProductsId], references: [id])
+    userPurchases         UserPurchases[]       @relation("userPurchases")
+    userProducts         UserProducts[]       @relation("userProducts")
     userProductsId       Int?
 }
 
@@ -172,7 +171,7 @@ model UserPurchases {
     user    User?     @relation(fields: [userId], references: [id])
     userId  Int       @unique
     //relacion con Prodcuts
-    porduct Product[]
+    products Product[] @relation("userPurchases")
 }
 model UserProducts{
         id      Int       @id @default(autoincrement())
@@ -180,5 +179,5 @@ model UserProducts{
     user    User?     @relation(fields: [userId], references: [id])
     userId  Int       @unique
     //relacion con Prodcuts
-    porduct Product[]
+    products Product[] @relation("userProducts")
 }

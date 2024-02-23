@@ -42,8 +42,8 @@ export async function POST(request) {
         connect:  categoryIds.map((categoryId) => ({ id: Number(categoryId) })) //reicivimos un array y conectamos cada id del array con product
       },
 
-      // categoryId: 1, // Asegúrate de proporcionar categoryId
-      ProductComplete: { // Si es una relación 1 a 1, puedes crear ProductComplete aquí
+
+      ProductComplete: { 
         create: {
           stock: stock,
           description: description,

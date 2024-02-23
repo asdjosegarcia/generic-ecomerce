@@ -50,8 +50,13 @@ export async function POST(request){//creacion de usuario
                     create:{
                         password: data.password
                     }
+                },
+                userPurchases:{
+                    create:{}//creamos la relacion
+                },
+                userProducts:{
+                    create:{}
                 }
-
             }
         })
         const {password:_,...user}=newUser//copiamos el usuario sin password

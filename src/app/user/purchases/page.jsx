@@ -1,8 +1,14 @@
 import React from 'react'
+import ShipmentProgressBar from '@/components/organisms/ShipmentProgressBar'
 
 const page = () => {
+
   return (
-    <div>page</div>
+    <div>
+      {/* <Produc></Produc> */}
+      <ShipmentProgressBar></ShipmentProgressBar>
+
+    </div>
   )
 }
 

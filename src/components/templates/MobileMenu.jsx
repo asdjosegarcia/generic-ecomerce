@@ -7,14 +7,14 @@ import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react'//importamos la funcion que nos desloquea desde next-auth
 import { variableContext } from "@/context/contexto";
 import PlusSVG from '@/SVG/PlusSVG'
-import HeartOutlineSVG from '@/SVG/HeartOutlineSVG' 
+import HeartOutlineSVG from '@/SVG/HeartOutlineSVG'
 import HomeSVG from '@/SVG/HomeSVG'
 import SearchSVG from '@/SVG/SearchSVG'
 import NotificationSVG from '@/SVG/NotificationSVG'
 import TiketSVG from '@/SVG/TiketSVG'
 import PorcentSVG from '@/SVG/PorcentSVG'
 import OffSVG from '@/SVG/OffSVG'
-
+import InventorySVG from '@/SVG/InventorySVG'
 
 
 
@@ -66,11 +66,18 @@ const MobileMenu = (props) => {
           {/* <input ref={inputRef}></input> */}
           <button onClick={searchFunc} >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
           <button>Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
-          <button>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
           {(session?.user?.name) ?
-            <Link className='mobile-menu__Favorites-link' href='/favorites'>
-              <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
-            </Link>
+            <>
+              <Link  href='/user/purchases'>
+                <button onClick={() => { props.setMobileMenu(false) }}>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
+              </Link>
+              <Link  href='/user/products'>
+                <button onClick={() => { props.setMobileMenu(false) }}>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
+              </Link>
+              <Link className='mobile-menu__Favorites-link' href='/favorites'>
+                <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
+              </Link>
+            </>
             :
             <></>
           }

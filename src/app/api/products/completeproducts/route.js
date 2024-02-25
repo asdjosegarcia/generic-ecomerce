@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { title, price, previewImg,previewImgName,previewImgType,previewImgData, condition, shipment, qualification, sellerEmail, categoryIds, stock, description, imgName, imgType, imgData } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
+  const { title, price, previewImg,previewImgName,previewImgType,previewImgData, condition, shipment, qualification, sellerEmail, categoryIds, stock, description, imgName, imgType, imgData, email } = await request.json()//transformamos la peticion a json a js, y se almacenan en title y description
   const seller = await prisma.user.findUnique({
     where: { //were se usa para buscar lo que coincida
       email: sellerEmail//lo que coincida con el email
@@ -41,8 +41,6 @@ export async function POST(request) {
       category: {
         connect:  categoryIds.map((categoryId) => ({ id: Number(categoryId) })) //reicivimos un array y conectamos cada id del array con product
       },
-
-
       ProductComplete: { 
         create: {
           stock: stock,
@@ -56,11 +54,23 @@ export async function POST(request) {
           }
         },
       },
+      userProducts:{
+            connect: { id: seller.id },//conectamos con userProducts
+      },
 
     },
     include: {
       ProductComplete: true,
     },
   })
+    // const newUserProduct= await prisma.userProducts.update({
+    //   where: { userId: seller.id },//buscar el usuario con la id del creador del producto
+    //   data: {
+    //     products: {
+    //         connect: [{ id: seller.id }],
+    //     },
+    // },      
+    // })
+
   return NextResponse.json(newProduct)
 }

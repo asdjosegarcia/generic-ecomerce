@@ -25,7 +25,7 @@ model User {
     //////////////relacion UserPuschases 
     userPurchases UserPurchases?
     //////////////relacion userProducts
-    userProducts UserProducts?
+    userProducts  UserProducts?
 }
 
 model Favorites {
@@ -74,7 +74,7 @@ model Product {
     shipment              Float                @default(0.00) //
     qualification         Float                @default(5)
     previewImg            String               @default("")
-    seller                String? 
+    seller                String?
     createdAt             DateTime             @default(now()) //de tipo fecha, y por defecto va a ser la fecha en la que se ha guardado
     views                 Int                  @default(0)
     discount              Int                  @default(0)
@@ -93,9 +93,9 @@ model Product {
     //////////relacion preievImgBase64
     previewImgBase        ProductPreviewImage? // Relación 1 a 1 opcional
     productPreviewImageId Int?
-    userPurchases         UserPurchases[]       @relation("userPurchases")
-    userProducts         UserProducts[]       @relation("userProducts")
-    userProductsId       Int?
+
+    userProducts   UserProducts @relation(fields: [userProductsId], references: [id])
+    userProductsId Int
 }
 
 model ProductPreviewImage {
@@ -106,6 +106,7 @@ model ProductPreviewImage {
     //relacion con product
     product   Product? @relation(fields: [productId], references: [id])
     productId Int      @unique
+    //relacion con 
 }
 
 model ProductComplete {
@@ -166,18 +167,35 @@ model ProductImages {
 }
 
 model UserPurchases {
-    id      Int       @id @default(autoincrement())
+    id               Int                @id @default(autoincrement())
     //relacion con user
-    user    User?     @relation(fields: [userId], references: [id])
-    userId  Int       @unique
-    //relacion con Prodcuts
-    products Product[] @relation("userPurchases")
+    user             User?              @relation(fields: [userId], references: [id])
+    userId           Int                @unique
+    //relacion con PurchasedProduct
+    purchasedProduct PurchasedProduct[]
 }
-model UserProducts{
-        id      Int       @id @default(autoincrement())
+
+model UserProducts {
+    id       Int       @id @default(autoincrement())
     //relacion con user
-    user    User?     @relation(fields: [userId], references: [id])
-    userId  Int       @unique
+    user     User?     @relation(fields: [userId], references: [id])
+    userId   Int       @unique
     //relacion con Prodcuts
-    products Product[] @relation("userProducts")
+    products Product[]
+}
+
+model PurchasedProduct {
+    id                 Int           @id @default(autoincrement())
+    originalId         Int
+    title              String?       @default("Product")
+    price              Float?
+    condition          String?
+    shipment           Float         @default(0.00) //
+    previewImg         String        @default("")
+    seller             String?
+    previewImgBase     Bytes?
+    previewImgMimetype String        @default("")
+    //relacion con UserPurchases
+    userPurchases      UserPurchases @relation(fields: [userPurchasesId], references: [id])
+    userPurchasesId    Int
 }

@@ -8,11 +8,12 @@ export async function GET(request, { params }) {
             id: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
         },
         include: {
+            userProducts:true,
             ProductComplete: {
                 include: {
                     comments: true,
                     question: true,
-                    productImages:true
+                    productImages:true,
                 }
             }
         },

@@ -10,10 +10,13 @@ export async function POST(request) {
     const products=await prisma.userProducts.findUnique({
         where:{userId:user.id},
         include: {
-            products: true
+            products:{
+                include:{
+                    previewImgBase: true ,
+                }
+            }
         }
         
     })
-    console.log(user)
     return NextResponse.json(products)
 }

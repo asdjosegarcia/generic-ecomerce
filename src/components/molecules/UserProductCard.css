@@ -1,0 +1,12 @@
+.user-product-card__container{
+
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+}
+.user-product-card__buttons-container{
+ display: flex;
+
+}
+.user-product-card__buttons-container .MainButton, .MainDeleteButton{
+    margin: 5px 5px;
+}

@@ -1,36 +1,38 @@
 "use client"
-import React,{useContext,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useSession } from 'next-auth/react';
 import UserProductCard from '@/components/molecules/UserProductCard';
 
 
-let onlyLoad=true;
+
 const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getProducts,setProducts]=useState(null)
+  const[getReaload,setReload]=useState(false)
 
   
-  const request=async ()=>{
-    if(getProducts == null && session?.user && onlyLoad==true){
-      onlyLoad=false
-      console.log('request')
-      const res = await fetch(`/api/user/products`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({userEmail:session?.user.email}),
-      });
-      const data = await res.json();
-      setProducts(await data)
-      // console.log(getProducts)
+  useEffect(() => {
+    console.log('request')
+    const request=async ()=>{
+      if(session?.user ){
+        const res = await fetch(`/api/user/products`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({userEmail:session?.user.email}),
+        });
+        const data = await res.json();
+        setProducts( data)
+      }
     }
-  }
-  request()
+    request()
+  }, [session,getReaload])
+  
 
   return (
     <>
-      {getProducts&& getProducts.products.map((product,index)=>(<UserProductCard userEmail={session?.user.email} key={index} product={product}></UserProductCard>))}
+      {getProducts&& getProducts.products.map((product,index)=>(<UserProductCard getReaload={getReaload} setReload={setReload}  key={index} product={product}></UserProductCard>))}
     </>
   )
 }

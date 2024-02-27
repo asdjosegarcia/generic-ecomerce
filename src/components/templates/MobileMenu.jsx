@@ -85,7 +85,7 @@ const MobileMenu = (props) => {
           {(!session?.user?.name) ?
             <>
               <Link href='/auth/login'>
-                <button className="mobile-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG></button>
+                <button className="mobile-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#FFF"}></PlusSVG></button>
               </Link>
               <Link href='/auth/login'>
                 <button onClick={() => { props.setMobileMenu(false) }}>Login</button>

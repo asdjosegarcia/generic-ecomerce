@@ -2,6 +2,11 @@
 import React,{useState,useEffect} from 'react'
 import { useSession } from 'next-auth/react';
 import UserProductCard from '@/components/molecules/UserProductCard';
+import MainAddButton from '@/components/atoms/MainAddButton';
+import PlusSVG from '@/SVG/PlusSVG';
+import "./UserProductPage.css"
+import Link from 'next/link'
+
 
 
 
@@ -31,9 +36,12 @@ const page = () => {
   
 
   return (
-    <>
+    <div className='UserProductPage'>
       {getProducts&& getProducts.products.map((product,index)=>(<UserProductCard getReaload={getReaload} setReload={setReload}  key={index} product={product}></UserProductCard>))}
-    </>
+      <Link href='/product/new/'>
+      <MainAddButton text={"Trade"} icon={<PlusSVG></PlusSVG>}></MainAddButton>
+      </Link>
+    </div>
   )
 }
 

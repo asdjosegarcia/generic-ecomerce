@@ -1,0 +1,11 @@
+.UserProductPage a{
+    /* font-style: none; */
+    /* background-color: none  ;     */
+    text-decoration: none;
+}
+.UserProductPage .MainAddButton{
+    margin: 5px 5px;
+    width: calc(100% - 10px );
+    cursor: pointer;
+    
+}

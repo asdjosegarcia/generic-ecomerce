@@ -68,35 +68,95 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  const { userEmail,productId } = await request.json()
-  // const user = await prisma.user.findUnique({
-  //   where: { //were se usa para buscar lo que coincida
-  //     email: userEmail//lo que coincida con el email
-  //   },
-  // })
-  // const 
-  const productImagesRemoved = await prisma.ProductImages.deleteMany({ //eliminamos todas la imagenes
-    where: {
-      productCompleteId:Number(productId)
-    }
-  })
-  const productPreviewImgRemoved = await prisma.ProductPreviewImage.delete({//elimnamos la imagen de preview
-    where: {
-      productId:Number(productId)
-    }
-  })
-
-  const productCompleteRemoved = await prisma.productComplete.delete({//eliminamos los datos extras del producto
-    where: {
-      id:Number(productId)
-    }
-  })
-  const productRemoved = await prisma.product.delete({//eliminamos el producto
-    where: {
-       id:Number(productId)
+  const { userEmail, productId } = await request.json()
+  const product = await prisma.product.findUnique({
+    where: { id: Number(productId) },
+    include: {
+      ProductComplete: true,
+      category: true,
+      comments: true,
+      Question: true,
+      cart: true,
+      favorites: true,
+      previewImgBase: true,
+      userProducts: {
+        include:{
+          products:true
+        }
+      },
     },
-    include:{ProductComplete:true}
-  })
+  });
 
-  return NextResponse.json( productRemoved,productCompleteRemoved,productPreviewImgRemoved,productImagesRemoved)
+  await prisma.question.deleteMany({  //borramos todas las preguntas 
+    where: { productCompleteId: product.productCompleteId }
+  });//eliminamos  todas las preguntas
+
+  if (product?.ProductComplete?.id) { //si tiene algo lo borramos 
+    await prisma.productComplete.deleteMany({//eliminamos los datos extras del producto
+      where: { id: Number(product.ProductComplete.id) }
+    })
+  }
+
+  await prisma.category.deleteMany({ //
+    where: { id: { in: product.category.map(c => c.id) } }  //c categoria, extraemos el id de cada categoria generando un array con categorias
+    //in palabra clave de prisma que se utiliza para buscar los valores que se encuentren dentro de un array, en ese caso el array que generamos con map
+  });
+
+  await prisma.comment.deleteMany({
+    where: { productCompleteId: product.productCompleteId } //borramos todos los comentarios que tengan el id
+  });
+
+
+  if (prisma.cart.length > 0) {//si tiene algo
+    await prisma.cart.updateMany({
+      where: { id: { in: product.cart.map(c => c.id) } }, //creamos un array con las id de Cart, los buscamos
+      data: {
+        products: { disconnect: { id: productId } }//aqui desconectamos cada id  del cart que se almaceno en el array previamente creado
+      }
+    });
+  }
+
+  if (product.favorites.length > 0) {//si tiene algo
+    await prisma.favorites.updateMany({  //desconectamos relaciones muchos a muchos
+      where: { id: { in: product.favorites.map(f => f.id) } }, //armamos una array con las id de favoritos 
+      data: {
+        products: { disconnect: { id: productId } } //desconectamos lso rpoductos de favoritos
+      } //
+    });
+  }
+
+  if (product.previewImgBase?.id) { //si hay id de imagen
+    await prisma.productPreviewImage.delete({
+      where: { id: product.previewImgBase.id } //buscamos la imagen de preview 
+    });
+  }
+
+  // console.log(product.userProducts.id)
+  if (product.userProducts?.id) {
+    await prisma.userProducts.delete({ //eliminamos el producto de la lista del usuario que lo creo
+      where: { id: product.userProducts.id }, //armamos una array con las id de favoritos 
+      data: {
+        products: { disconnect: { id: productId } } //desconectamos lso rpoductos de favoritos
+      } //
+      // where: { id: product.userProducts.id }
+    });
+  }
+  
+
+
+  // const productImagesRemoved = await prisma.ProductImages.deleteMany({ //eliminamos todas la imagenes
+  //   where: {productCompleteId: Number(productId)}
+  // })
+  // const productPreviewImgRemoved = await prisma.ProductPreviewImage.delete({//elimnamos la imagen de preview
+  //   where: {productId: Number(productId)}
+  // })
+  // const productCompleteRemoved = await prisma.productComplete.delete({//eliminamos los datos extras del producto
+  //   where: {id: Number(productId)}
+  // })
+  // const productRemoved = await prisma.product.delete({//eliminamos el producto
+  //   where: {id: Number(productId)},
+  // })
+
+
+  return NextResponse.json(product)
 }

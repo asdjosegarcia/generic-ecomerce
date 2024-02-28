@@ -53,7 +53,7 @@
     height: 100vh;
     width: 100vw;
 }
-svg{
+.question--card__container svg{
     padding-bottom: 5px;
 }
 .question--card__dislike-container .LikeFilledSVG{

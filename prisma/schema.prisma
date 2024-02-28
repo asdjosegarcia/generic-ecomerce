@@ -195,6 +195,7 @@ model PurchasedProduct {
     seller             String?
     previewImgBase     Bytes?
     previewImgMimetype String        @default("")
+    units              Int           @default(1)
     //relacion con UserPurchases
     userPurchases      UserPurchases @relation(fields: [userPurchasesId], references: [id])
     userPurchasesId    Int

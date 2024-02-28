@@ -1,0 +1,17 @@
+meta {
+  name: DELETE-CompleteProduct
+  type: http
+  seq: 2
+}
+
+delete {
+  url: http://localhost:3000/api/products/completeproducts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productId":5
+  }
+}

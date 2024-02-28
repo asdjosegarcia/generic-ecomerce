@@ -164,7 +164,7 @@ export async function DELETE(request) {
     })
     response = "Product Deleted";
   } else {
-    response = "error"
+    response = "Prodcut not found"
   }
 
   return NextResponse.json(response);

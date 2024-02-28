@@ -25,7 +25,7 @@ const ProductCard = ({ product, favorite, disableFavorite }) => {
       binaryString += String.fromCharCode(byteArray[i]);//byteArray[i] nos dara cada byte, String.fromCharCode() transformara el byte de DECIMAL a caracter UTF-16,+= sumara el caracter a binaryString 
     }
     const base64String = btoa(binaryString);//btoa() funcion que transforma caractes de UTF-16 c/u a Base64 
-    imgSrc='data:'+product.mymetype+';base64,'+base64String //agregamos lo necesario para que se pueda representar en <img>
+    imgSrc='data:'+product.previewImgBase.mimetype+';base64,'+base64String //agregamos lo necesario para que se pueda representar en <img>
   }else{
     imgSrc=product.previewImg
   }

@@ -46,7 +46,7 @@ export async function PATCH(request) {
             condition:originalProduct.condition,
             shipment:originalProduct.shipment,
             previewImg:originalProduct.previewImg,
-            previewImgBase:originalProduct.previewImgBase.data.data,
+            previewImgBase:originalProduct.previewImgBase.data,
             previewImgMimetype:originalProduct.previewImgBase.mimetype,
             units:units,
             userPurchasesId:userPurchases.id

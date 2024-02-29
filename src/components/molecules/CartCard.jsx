@@ -5,7 +5,7 @@ import CartInputNumber from './CartInputNumber'
 import HeartSVG from '@/SVG/HeartSVG'
 import HeartOutlineSVG from '@/SVG/HeartOutlineSVG'
 import DeleteProductButton from '@/components/atoms/DeleteProductButton'
-
+import BadgetFreeShipping from '../atoms/BadgetFreeShipping'
 
 
 const CartCard = ({ product }) => {

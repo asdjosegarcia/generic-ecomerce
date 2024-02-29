@@ -1,41 +1,64 @@
 .shipment-bar__container{
- width: 100%;
+ width: calc(100% - 20px) ;
  display: flex;
  /* background-color:red; */
  align-items: center;
- height: 55px;
+ height: 100%;
  /* justify-content: space-between; */
+ position: relative;
+ margin: 10px 10px;
 }
 .shipment-bar{
     width: 100%;
-    height: 30px;
+    height: 20%;
     border: none;
     border-radius: 40px;
-    box-shadow: 5px 5px 5px #696969;
-    margin-top: 5px;
+    box-shadow: 0px 0px 5px #696969;
+    /* margin-top: 5px; */
+    background-color: white;
 
 }
+
+.shipment-bar::-webkit-progress-value {
+    background-color: rgb(124, 131, 240);
+
+  }
+  
+  .shipment-bar::-moz-progress-bar {
+    background-color: rgb(0, 170, 0);;
+
+
+  }
+  
 .ShipmentProgressBar .HouseSVG,.BagSVG ,.ShipingTruckSVG{
     position: absolute;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
-    height: 45px;
-    width: 45px;
+    height: 90%;
+    /* width: 45px; */
     padding: 5px;
     fill: #696969;
-    box-shadow: 5px 5px 5px #696969;
+    /* box-shadow: 5px 5px 5px #696969; */
+    box-shadow: 0px 0px 5px #696969;
+
 }
 .ShipmentProgressBar .HouseSVG{
     right: 0;
 }
 .ShipmentProgressBar .BagSVG{
-    background-color: rgb(124, 131, 240);
+    /* background-color: rgb(124, 131, 240); */
+    background-color: rgb(69, 196, 69);;
     fill: white;
+    /* box-shadow: 0px 0px 5px #696969; */
+
+
+
 }
 .ShipmentProgressBar .ShipingTruckSVG{
-    background-color: rgb(124, 131, 240);
+    /* background-color: rgb(124, 131, 240); */
+    background-color: rgb(69, 196, 69);;
+
     fill: white;
     border-radius: 5px;
     padding: 0px 2px;
-    /* left: 25%; */
 }

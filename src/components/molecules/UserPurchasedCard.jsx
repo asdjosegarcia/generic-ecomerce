@@ -8,15 +8,20 @@ const UserPurchasedCard = (props) => {
     const editedProdcut={
       ...props.product,
       id:props.product.originalId,
-      
-
-
+      previewImgBase:{
+        data:{
+          data:props.product.previewImgBase.data,
+          // type: "Buffer",
+        },
+        mimetype:props.product.previewImgMimetype
+      },
+      // previewImgBase:{mimetype:props.product.previewImgMimetype}
     }
-    console.log('edited',editedProdcut)
+    // console.log('edited',editedProdcut) 
     // console.log(props.product)
   return (
     <div className='UserPurchasedCard'>
-        <ProductCard product={props.product} disableFavorite={true}/*  img64={} */></ProductCard>
+        <ProductCard product={editedProdcut} disableFavorite={true}/*  img64={} */></ProductCard>
         <ShipmentProgressBar ></ShipmentProgressBar>
         <ButtonViewMore></ButtonViewMore>
     </div>

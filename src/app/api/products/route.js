@@ -15,9 +15,9 @@ export async function GET(){
         // include:{
         //     userPurchases:true
         // }
-        // include:{
-        //     previewImgBase:true
-        // }
+        include:{
+            previewImgBase:true
+        }
         }) //prisma la clas que instanciamos en prisma.js, como planificamos la tabla en eschema.prisma, findMany() trae todo lo que hay
     // console.log(products)
     return NextResponse.json(products)

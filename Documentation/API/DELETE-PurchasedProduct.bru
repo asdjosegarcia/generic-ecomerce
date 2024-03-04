@@ -5,7 +5,14 @@ meta {
 }
 
 delete {
-  url: 
-  body: none
+  url: http://localhost:3000/api/user/purchases
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "userEmail":"user8@gmail.com",
+    "productId":8
+  }
 }

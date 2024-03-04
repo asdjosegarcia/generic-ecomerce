@@ -19,7 +19,7 @@ export async function POST(request) {
 }
 
 export async function PATCH(request) {
-    const { userEmail,productId,units } = await request.json()
+    const { userEmail,productId,units,paymentType } = await request.json()
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
 
@@ -46,7 +46,7 @@ export async function PATCH(request) {
             condition:originalProduct.condition,
             shipment:originalProduct.shipment,
             seller:originalProduct.seller,
-            paymentType:"creddit card",
+            paymentType:paymentType,
             previewImg:originalProduct.previewImg,
             previewImgBase:originalProduct.previewImgBase.data,
             previewImgMimetype:originalProduct.previewImgBase.mimetype,

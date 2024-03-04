@@ -1,4 +1,4 @@
-.ButtonViewMore{
+.ButtonViewMore,.ButtonViewLess{
     width: 100%;
     border: none;
     /* color: none; */
@@ -8,6 +8,20 @@
     padding: 0;
 
 }
-.ButtonViewMore__expand-more-container svg{
+.ButtonViewLess{
+    padding-bottom: 10px;
+}
+.ButtonViewLess p{
+    margin: 0px;
+    margin-top: -7px;
+
+}
+
+.ButtonViewMore__expand-more-container svg, .ButtonViewLess__expand-more-container svg{
     height: 24px;
 }
+/* .ButtonViewMore__expand-more-container p, .ButtonViewLess__expand-more-container p{
+} */
+/* .ButtonViewLess__expand-more-container{
+    
+} */

@@ -31,7 +31,7 @@ const UserPurchasedCard = (props) => {
     <div className='UserPurchasedCard'>
         <ProductCard product={editedProdcut} disableFavorite={true}/*  img64={} */></ProductCard>
         <ShipmentProgressBar ></ShipmentProgressBar>
-        {getMore && <UserPurchasedMore></UserPurchasedMore> }
+        {getMore && <UserPurchasedMore product={editedProdcut}></UserPurchasedMore> }
         <ButtonViewMore function={viewMore} status={getMore} ></ButtonViewMore>
         
     </div>

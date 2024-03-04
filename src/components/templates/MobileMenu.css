@@ -4,6 +4,7 @@
     width: 100vw;
     top: 0;
     position: absolute;
+    z-index: 1;
 }
 
 .mobile-menu__container{

@@ -190,10 +190,11 @@ model PurchasedProduct {
     title              String?       @default("Product")
     price              Float?
     createdAt          DateTime      @default(now())
+    paymentType        String        @default("")
     condition          String?
     shipment           Float         @default(0.00) //
-    previewImg         String        @default("")
     seller             String?
+    previewImg         String        @default("")
     previewImgBase     Bytes?
     previewImgMimetype String        @default("")
     units              Int           @default(1)

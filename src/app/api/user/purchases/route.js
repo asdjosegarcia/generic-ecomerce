@@ -14,7 +14,7 @@ export async function POST(request) {
         }
         
     })
-    console.log(user)
+    // console.log(user)
     return NextResponse.json(products)
 }
 
@@ -45,12 +45,13 @@ export async function PATCH(request) {
             price:originalProduct.price,
             condition:originalProduct.condition,
             shipment:originalProduct.shipment,
+            seller:originalProduct.seller,
+            paymentType:"creddit card",
             previewImg:originalProduct.previewImg,
             previewImgBase:originalProduct.previewImgBase.data,
             previewImgMimetype:originalProduct.previewImgBase.mimetype,
             units:units,
             userPurchasesId:userPurchases.id
-            
         }
     })
     // console.log(user)

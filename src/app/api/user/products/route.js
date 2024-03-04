@@ -7,16 +7,17 @@ export async function POST(request) {
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
     })
-    const products=await prisma.userProducts.findUnique({
-        where:{userId:user.id},
+    const userProducts = await prisma.userProducts.findUnique({
+        where: { userId: user.id },
         include: {
-            products:{
-                include:{
-                    previewImgBase: true ,
+            products: {
+                include: {
+                    previewImgBase: true,
                 }
             }
         }
-        
+
     })
-    return NextResponse.json(products)
+    return NextResponse.json(userProducts)
 }
+

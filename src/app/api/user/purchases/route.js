@@ -56,3 +56,25 @@ export async function PATCH(request) {
     // console.log(user)
     return NextResponse.json(newPurchasedProduct)
 }
+
+export async function DELETE(request) {
+    const { userEmail, productId } = await request.json()
+    const user = await prisma.user.findUnique({
+        where: { email: userEmail },//agregamos el email solo como medida de seguridad para asegurarnos de que quien eleimina el producto es el dueño del producto
+        include:{
+            userPurchases:{//buscamos dentro de el modelo de almacenamiento de prodcutos comprados unico por usuario
+                include: {
+                    purchasedProduct:{//en los productos comprados
+                        where:{originalId:productId}//buscamos la id original del producto
+                    }
+                }
+        }
+    }
+    })
+    const userPurchasedDeleted = await prisma.purchasedProduct.delete({
+        where: {
+            id: user.userPurchases.purchasedProduct[0].id
+        }
+    })
+    return NextResponse.json(userPurchasedDeleted)
+}

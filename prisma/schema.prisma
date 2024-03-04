@@ -189,6 +189,7 @@ model PurchasedProduct {
     originalId         Int
     title              String?       @default("Product")
     price              Float?
+    createdAt          DateTime      @default(now())
     condition          String?
     shipment           Float         @default(0.00) //
     previewImg         String        @default("")

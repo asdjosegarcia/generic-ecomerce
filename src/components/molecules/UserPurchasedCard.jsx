@@ -5,6 +5,7 @@ import ButtonViewMore from '../atoms/ButtonViewMore'
 import './UserPurchasedCard.css'
 import UserPurchasedMore from './UserPurchasedMore'
 
+
 const UserPurchasedCard = (props) => {
   const [getMore,setMore]=useState(false)
 
@@ -27,10 +28,13 @@ const UserPurchasedCard = (props) => {
       setMore(!getMore)
 
     }
+
+
+    
   return (
     <div className='UserPurchasedCard'>
         <ProductCard product={editedProdcut} disableFavorite={true}/*  img64={} */></ProductCard>
-        <ShipmentProgressBar ></ShipmentProgressBar>
+        <ShipmentProgressBar progress={props.progress} ></ShipmentProgressBar>
         {getMore && <UserPurchasedMore product={editedProdcut}></UserPurchasedMore> }
         <ButtonViewMore function={viewMore} status={getMore} ></ButtonViewMore>
         

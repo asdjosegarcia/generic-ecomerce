@@ -39,7 +39,7 @@ const page = () => {
 
   return (
     <div>
-      {getProducts&& getProducts.map((product,index)=>(<UserPurchasedCard product={product} key={index}  ></UserPurchasedCard>))}
+      {getProducts&& getProducts.map((product,index)=>(<UserPurchasedCard product={product} key={index} progress={Math.floor(Math.random() * 70) + 5}  ></UserPurchasedCard>))}
       
       {/* <ShipmentProgressBar></ShipmentProgressBar> */}
 

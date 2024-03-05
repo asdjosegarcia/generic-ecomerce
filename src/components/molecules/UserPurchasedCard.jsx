@@ -9,24 +9,25 @@ import UserPurchasedMore from './UserPurchasedMore'
 const UserPurchasedCard = (props) => {
   const [getMore,setMore]=useState(false)
 
-    const editedProdcut={
+  ////////////////edited objecto product
+    const editedProdcut={//editamos el objeto para no tener que hacer un porductCard nuevo, o editarlo, ya que este esta en toda la app y seria delicado editarlo
       ...props.product,
-      id:props.product.originalId,
-      previewImgBase:{
+      orderId:props.product.id, //numero de compra
+      id:props.product.originalId, //id del prodcuto original
+      previewImgBase:{ //imagen de preview
         data:{
           data:props.product.previewImgBase.data,
           // type: "Buffer",
         },
         mimetype:props.product.previewImgMimetype
       },
-      // previewImgBase:{mimetype:props.product.previewImgMimetype}
+      
     }
-    // console.log('edited',editedProdcut) 
-    // console.log(props.product)
-    // console.log(getMore)
+
+
+    ////////////More info about the product 
     const viewMore=()=>{
       setMore(!getMore)
-
     }
 
 

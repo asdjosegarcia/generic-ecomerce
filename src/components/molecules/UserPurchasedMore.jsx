@@ -30,7 +30,7 @@ const UserPurchasedMore = (props) => {
 
     return (
         <div className="UserPurchasedMore user-purchased-more__container">
-            <p>Order Nº: {props.product.id}</p>
+            <p>Order Nº: {props.product.orderId}</p>
             <p>Seller: {props.product.seller}</p>
             <p>Payment: {props.product.paymentType}</p>
             <p>Purchase Date: {formatedDate}</p>

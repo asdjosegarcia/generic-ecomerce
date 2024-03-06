@@ -57,6 +57,8 @@ model Notifications {
 
 model Notification {
     id              Int            @id @default(autoincrement())
+    type            Int            @default(1)
+    view            Boolean        @default(false)
     title           String?
     description     String?
     icon            String?
@@ -64,6 +66,8 @@ model Notification {
     //relacion notificacion
     Notifications   Notifications? @relation(fields: [notificationsId], references: [id])
     notificationsId Int            @default(1)
+    //relacion con product
+    product         Product[] @relation("notificationProducts")
 }
 
 model Product {
@@ -93,9 +97,11 @@ model Product {
     //////////relacion preievImgBase64
     previewImgBase        ProductPreviewImage? // Relación 1 a 1 opcional
     productPreviewImageId Int?
-
+    //////////relacion con userrProducts
     userProducts   UserProducts @relation(fields: [userProductsId], references: [id])
     userProductsId Int
+    //////////relacion con notification
+    notification Notification[] @relation("notificationProducts")
 }
 
 model ProductPreviewImage {

@@ -66,23 +66,17 @@ const MobileMenu = (props) => {
           {/* <input ref={inputRef}></input> */}
           <button onClick={searchFunc} >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
           <Link href={'/user/notifications'}>
-          <button onClick={() => { props.setMobileMenu(false)}} >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
+            <button onClick={() => { props.setMobileMenu(false) }} >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
           </Link>
-          {(session?.user?.name) ?
-            <>
-              <Link  href='/user/purchases'>
-                <button onClick={() => { props.setMobileMenu(false) }}>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
-              </Link>
-              <Link  href='/user/products'>
-                <button onClick={() => { props.setMobileMenu(false) }}>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
-              </Link>
-              <Link className='mobile-menu__Favorites-link' href='/favorites'>
-                <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
-              </Link>
-            </>
-            :
-            <></>
-          }
+          <Link href='/user/purchases'>
+            <button onClick={() => { props.setMobileMenu(false) }}>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
+          </Link>
+          <Link href='/user/products'>
+            <button onClick={() => { props.setMobileMenu(false) }}>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
+          </Link>
+          <Link className='mobile-menu__Favorites-link' href='/favorites'>
+            <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
+          </Link>
           <button>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
           {(!session?.user?.name) ?
             <>

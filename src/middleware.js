@@ -6,6 +6,7 @@ export const config = {
       '/cart/:path*',
       '/favorites/:path*',
       '/product/new',
+      '/user/notifications'
     ]
 
 

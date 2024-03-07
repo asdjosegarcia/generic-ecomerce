@@ -65,7 +65,9 @@ const MobileMenu = (props) => {
           </Link>
           {/* <input ref={inputRef}></input> */}
           <button onClick={searchFunc} >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
-          <button>Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
+          <Link href={'/user/notifications'}>
+          <button onClick={() => { props.setMobileMenu(false)}} >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
+          </Link>
           {(session?.user?.name) ?
             <>
               <Link  href='/user/purchases'>

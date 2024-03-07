@@ -1,12 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react';
-import UserPurchasedCard from '@/components/molecules/UserPurchasedCard';
-// import UserProductCard from '@/components/molecules/UserProductCard';
-// import MainAddButton from '@/components/atoms/MainAddButton';
-// import PlusSVG from '@/SVG/PlusSVG';
-// import "./UserProductPage.css"
-// import Link from 'next/link'
 import Loading from '@/components/templates/Loading';
 import NothingHere from '@/components/organisms/NothingHere';
 import PlusSVG from '@/SVG/PlusSVG';

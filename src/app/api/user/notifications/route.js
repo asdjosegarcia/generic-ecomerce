@@ -8,17 +8,7 @@ export async function POST(request) {
         where: { email: userEmail },
         include:{notifications:true}
     })
-    // const notifications = await prisma.notifications.findUnique({
-    //     where: { userId: user.id },
-    //     // include: {
-    //     //     products: {
-    //     //         include: {
-    //     //             previewImgBase: true,
-    //     //         }
-    //     //     }
-    //     // }
 
-    // })
-    return NextResponse.json(user)
+    return NextResponse.json(user.notifications)
 }
 

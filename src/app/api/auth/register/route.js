@@ -56,6 +56,9 @@ export async function POST(request){//creacion de usuario
                 },
                 userProducts:{
                     create:{}
+                },
+                notifications:{//creamos la notificacion ya relaciona a el usuario
+                    create:{}
                 }
             }
         })

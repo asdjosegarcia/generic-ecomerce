@@ -41,7 +41,7 @@ const page = () => {
             {(getProducts?.length>0)?
                 <FavoritesList products={getProducts}></FavoritesList>
                 :
-                <NothingHere buttonText={"Add Favorites"} buttonIcon={<><PlusSVG/> &nbsp; <HeartSVG></HeartSVG></>  }/>
+                <NothingHere buttonText={"Add Favorites"} redirectLink={"/"} buttonIcon={<><PlusSVG/> &nbsp; <HeartSVG></HeartSVG></>  }/>
             }
             </>
         }

@@ -11,7 +11,7 @@ const NothingHere = (props) => {
         <p>Add something! </p>
         <p>:)</p>
         {/* <div className='NothingHere-message__buton-container'> */}
-        <Link href={"./"}>
+        <Link href={props.redirectLink}>
           <MainButton text={props.buttonText} icon={props.buttonIcon} />
         </Link>
         {/* </div> */}

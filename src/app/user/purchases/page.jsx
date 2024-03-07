@@ -1,5 +1,5 @@
 "use client"
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react';
 import UserPurchasedCard from '@/components/molecules/UserPurchasedCard';
 // import UserProductCard from '@/components/molecules/UserProductCard';
@@ -7,41 +7,56 @@ import UserPurchasedCard from '@/components/molecules/UserPurchasedCard';
 // import PlusSVG from '@/SVG/PlusSVG';
 // import "./UserProductPage.css"
 // import Link from 'next/link'
+import Loading from '@/components/templates/Loading';
+import NothingHere from '@/components/organisms/NothingHere';
+import PlusSVG from '@/SVG/PlusSVG';
 
 
 
 
 const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
-  const [getProducts,setProducts]=useState(null)
-  const[getReaload,setReload]=useState(false)
+  const [getProducts, setProducts] = useState(null)
+  const [getReaload, setReload] = useState(false)
+  const [getLoading, setLoading] = useState(true)
 
-  
+
   useEffect(() => {
-    const request=async ()=>{
-      if(session?.user ){
+    const request = async () => {
+      if (session?.user) {
         console.log('request')
         const res = await fetch(`/api/user/purchases`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({userEmail:session?.user.email}),
+          body: JSON.stringify({ userEmail: session?.user.email }),
         });
         const data = await res.json();
-        setProducts( data.purchasedProduct)
+        setProducts(data.purchasedProduct)
+        setLoading(false)
       }
     }
     request()
-  }, [session,getReaload])
-  
+  }, [session, getReaload])
+
   // console.log(getProducts)
 
   return (
     <div>
-      {getProducts&& getProducts.map((product,index)=>(<UserPurchasedCard product={product} key={index} progress={Math.floor(Math.random() * 70) + 5}  ></UserPurchasedCard>))}
-      
-      {/* <ShipmentProgressBar></ShipmentProgressBar> */}
+      {(getLoading) ?
+        <Loading />
+        :
+        <>
+          {(getProducts?.length > 0) ?
+            <p>hola</p>
+            // { getProducts&& getProducts.map((product, index) => (<UserPurchasedCard product={product} key={index} progress={Math.floor(Math.random() * 70) + 5}  ></UserPurchasedCard>))}
+          :
+          <NothingHere buttonText={"Add Purchases"} buttonIcon={<PlusSVG/>} redirectLink={"/"} />
+            }
+        </>
+      }
+
 
     </div>
   )

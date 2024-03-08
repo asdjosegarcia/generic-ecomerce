@@ -1,0 +1,32 @@
+meta {
+  name: PATCH-User-Notification
+  type: http
+  seq: 8
+}
+
+patch {
+  url: http://localhost:3000/api/user/notifications
+  body: json
+  auth: none
+}
+
+body:json {
+  {  
+    "type":0,
+    "userEmail":"user8@gmail.com",
+    "title":"Purchased Completed!",
+    "description":"Did you buy Tux",
+    "link":"/product/1"
+    
+    
+    
+  }
+}
+
+docs {
+  Agregar notificacion a una cuenta de usuario
+  //tipos/type:
+  1 basic
+  2 purchase
+  
+}

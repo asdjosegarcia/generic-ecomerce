@@ -52,7 +52,7 @@ model Notifications {
     //////////////relacion user
     user         User           @relation(fields: [id], references: [id])
     //////////////relacion notificacion
-    Notification Notification[] //relacion 1 a muchos
+    notification Notification[] //relacion 1 a muchos
 }
 
 model Notification {
@@ -64,7 +64,7 @@ model Notification {
     icon            String?
     link            String?
     //relacion notificacion
-    Notifications   Notifications? @relation(fields: [notificationsId], references: [id])
+    notifications   Notifications? @relation(fields: [notificationsId], references: [id])
     notificationsId Int            @default(1)
     //relacion con product
     product         Product[] @relation("notificationProducts")

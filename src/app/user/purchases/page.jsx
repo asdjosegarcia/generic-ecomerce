@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import Loading from '@/components/templates/Loading';
 import NothingHere from '@/components/organisms/NothingHere';
 import PlusSVG from '@/SVG/PlusSVG';
-
+import UserPurchasedCard from '@/components/molecules/UserPurchasedCard';
 
 
 
@@ -43,8 +43,9 @@ const page = () => {
         :
         <>
           {(getProducts?.length > 0) ?
-            <p>hola</p>
-            // { getProducts&& getProducts.map((product, index) => (<UserPurchasedCard product={product} key={index} progress={Math.floor(Math.random() * 70) + 5}  ></UserPurchasedCard>))}
+            <>
+            { getProducts&& getProducts.map((product, index) => (<UserPurchasedCard product={product} key={index} progress={Math.floor(Math.random() * 70) + 5}  ></UserPurchasedCard>))}
+            </>
           :
           <NothingHere buttonText={"Add Purchases"} buttonIcon={<PlusSVG/>} redirectLink={"/"} />
             }

@@ -9,13 +9,13 @@ export async function POST(request) {
         include: { 
             notifications: {
                 include:{
-                    Notification:true
+                    notification:true
                 }
             }
          }
     })
 
-    return NextResponse.json(user)
+    return NextResponse.json(user.notifications)
 }
 
 export async function PATCH(request) {

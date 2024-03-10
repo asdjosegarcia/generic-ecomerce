@@ -5,7 +5,18 @@ meta {
 }
 
 patch {
-  url: 
-  body: none
+  url: http://localhost:3000/api/user/notifications
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "userEmail":"user8@gmail.com",
+    "id":2
+  }
+}
+
+docs {
+  Cambia el view de la notificacion por true, asi la notificacion es marcada como vista por el usuario
 }

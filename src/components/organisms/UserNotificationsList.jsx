@@ -13,7 +13,7 @@ const UserNotificationsList = (props) => {
       case (notification.type == null):
         return <p key={index}>null</p>
       case (notification.type < 10):
-        return <UserNotificationCardZero key={index} notification={notification} />;
+        return <UserNotificationCardZero key={index} notification={notification} userEmail={props.userEmail} />;
       default:
         return <p key={index}>default</p>;
     }

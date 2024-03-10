@@ -7,7 +7,7 @@ import UserNotificationsList from '@/components/organisms/UserNotificationsList'
 const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getUserNotifications,setUserNotifications]=useState()
-
+  // console.log(session.user.email);
 
   useEffect(() => {
     const request=async()=>{
@@ -17,7 +17,7 @@ const page = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({userEmail:"user8@gmail.com"}),
+          body: JSON.stringify({userEmail:session.user.email}),
         });
         const data = await res.json();
         setUserNotifications(data)
@@ -32,7 +32,7 @@ const page = () => {
   return (
     <div className='userNotificationPage'>
       {getUserNotifications&&
-        <UserNotificationsList notifications={getUserNotifications.notification} />
+        <UserNotificationsList userEmail={session?.user?.email} notifications={getUserNotifications.notification} />
       }
     </div>
   )

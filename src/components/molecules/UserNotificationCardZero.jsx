@@ -34,7 +34,7 @@ const UserNotificationCardZero = (props) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({userEmail:"user8@gmail.com",id:props.notification.id}),
+          body: JSON.stringify({userEmail:props.userEmail,id:props.notification.id}),
         });
         const data = await res.json();
         // console.log("notification:", data)

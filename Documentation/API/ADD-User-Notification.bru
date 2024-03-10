@@ -1,0 +1,22 @@
+meta {
+  name: ADD-User-Notification
+  type: http
+  seq: 10
+}
+
+patch {
+  url: http://localhost:3000/api/user/notifications
+  body: json
+  auth: none
+}
+
+body:json {
+  {  
+    "type":10,
+    "userEmail":"user8@gmail.com",
+    "title":"Registration successfully!",
+    "description":"You can edit your profile here!",
+    "link":"/product/1",
+    "icon":"https://cdn3.iconfinder.com/data/icons/login-4/512/LOGIN-10-512.png"
+  }
+}

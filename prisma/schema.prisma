@@ -63,6 +63,8 @@ model Notification {
     title           String?
     description     String?
     icon            String?
+    iconBase        Bytes?
+    iconMimetype    String?
     link            String?
     //relacion notificacion
     notifications   Notifications? @relation(fields: [notificationsId], references: [id])

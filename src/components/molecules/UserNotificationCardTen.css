@@ -1,0 +1,41 @@
+.UserNotificationCardTen {
+    width: 100;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+}
+
+.UserNotificationCardTen__Link{
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    text-decoration: none;
+    color: inherit;
+    /* display: flex; */
+    /* flex-direction: column; */
+    margin: 5px 5px;
+}
+.UserNotificationCardTen__icon{
+    height: 40px;
+    grid-column: 1/2;
+}
+
+.UserNotificationCardTen__title {
+    font-weight: 500;
+    text-transform: capitalize; 
+    width: 100%;
+    margin: 0;
+    grid-column: 2/3;
+
+}
+
+.UserNotificationCardTen__description {
+    text-transform: capitalize; 
+    width: 100%;
+    margin: 0;
+    grid-column: 2/3;
+
+}
+.UserNotificationCardTen__date{
+    position: absolute;
+    right: 5px;
+    /* top: 5px; */
+}

@@ -17,6 +17,14 @@ export async function POST(request) {
 
     return NextResponse.json(user.notifications)
 }
+export async function DELETE(request) {
+    const { userEmail,id } = await request.json()
+    const notificationDeleted = await prisma.notification.delete({
+        where: { id: id },
+    })
+
+    return NextResponse.json(notificationDeleted)
+}
 
 export async function PATCH(request) {
     //editamos una notificacion en particular o creamos una notificacion dentro de Notifications

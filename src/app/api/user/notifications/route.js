@@ -21,6 +21,7 @@ export async function POST(request) {
 export async function PATCH(request) {
     //editamos una notificacion en particular o creamos una notificacion dentro de Notifications
     const { userEmail, type, title, description, icon, link,id } = await request.json()
+    console.log(userEmail,id);
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
         include: { notifications: true }
@@ -79,7 +80,7 @@ export async function PATCH(request) {
             }
 
         })
-        return NextResponse.json(viewNotificacion)
+        return NextResponse.json(viewNotificacion.view)
         
     }
 

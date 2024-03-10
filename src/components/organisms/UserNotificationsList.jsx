@@ -20,7 +20,6 @@ const UserNotificationsList = (props) => {
   return (
     <div className='UserNotificationsList'>
       {notificationsToRender}
-      {/* <UserNotificationCardZero></UserNotificationCardZero> */}
     </div>
   )
 }

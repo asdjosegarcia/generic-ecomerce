@@ -48,9 +48,9 @@ const UserNotificationCardTen = (props) => {
     <div className='UserNotificationCardTen' style={getStyle}>
         <a  onClick={redirect} className='UserNotificationCardTen__Link'>
         <img src={props.notification.icon} className='UserNotificationCardTen__icon'></img>
-        <h3 className='UserNotificationCardTen__title'>{props.notification.title}</h3>
-        <p className='UserNotificationCardTen__description'>{props.notification.description}</p>
-        <span className='UserNotificationCardTen__date'>{formatedDate}</span>
+        <h3 className='UserNotificationCardTen__title'  style={getStyle}>{props.notification.title}</h3>
+        <p className='UserNotificationCardTen__description'  style={getStyle}>{props.notification.description}</p>
+        <span className='UserNotificationCardTen__date'  style={getStyle}>{formatedDate}</span>
         </a>
     </div>
   )

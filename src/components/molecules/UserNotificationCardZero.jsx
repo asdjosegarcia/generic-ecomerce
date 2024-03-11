@@ -47,9 +47,9 @@ const UserNotificationCardZero = (props) => {
   return (
     <div className='UserNotificationCardZero' style={getStyle}>
         <a  onClick={redirect} className='UserNotificationCardZero__Link'>
-        <h3 className='UserNotificationCardZero__title'>{props.notification.title}</h3>
-        <p className='UserNotificationCardZero__description'>{props.notification.description}</p>
-        <span className='UserNotificationCardZero__date'>{formatedDate}</span>
+        <h3 className='UserNotificationCardZero__title' style={getStyle}>{props.notification.title}</h3>
+        <p className='UserNotificationCardZero__description' style={getStyle}>{props.notification.description}</p>
+        <span className='UserNotificationCardZero__date' style={getStyle}>{formatedDate}</span>
         </a>
     </div>
   )

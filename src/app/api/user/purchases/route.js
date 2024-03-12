@@ -22,6 +22,7 @@ export async function PATCH(request) {
     const { userEmail,productId,units,paymentType } = await request.json()
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
+        include: { notifications: true }//es necesario para crear la notificacion del producto
 
     })
     const originalProduct=await prisma.product.findUnique({
@@ -52,6 +53,19 @@ export async function PATCH(request) {
             previewImgMimetype:originalProduct.previewImgBase.mimetype,
             units:units,
             userPurchasesId:userPurchases.id
+        }
+    })
+
+    const newProductNotification = await prisma.notification.create({//creamos una notificacion en las notificaciones del usuario, indicando que el producto se compro
+        data: {
+            type: 20,
+            title:"Purchase completed!",
+            description: `Did you buy ${newPurchasedProduct.title} x${newPurchasedProduct.units} `,
+            link: '/user/purchases',
+            notificationsId: user.notifications.id,
+            product:{
+                connect:[{id:productId}]
+            }
         }
     })
     // console.log(user)

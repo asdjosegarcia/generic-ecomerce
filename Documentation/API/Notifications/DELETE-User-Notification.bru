@@ -1,17 +1,17 @@
 meta {
   name: DELETE-User-Notification
   type: http
-  seq: 11
+  seq: 4
 }
 
 delete {
-  url: 
+  url: http://localhost:3000/api/user/notifications
   body: json
   auth: none
 }
 
 body:json {
   {
-    "id":6
+    "id":2
   }
 }

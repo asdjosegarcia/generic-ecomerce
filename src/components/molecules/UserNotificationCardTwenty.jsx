@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 let imgSrc;
 const UserNotificationCardTwenty = (props) => {
-    console.log(props.notification.product[0].previewImgBase.data.data);
+    // console.log(props.notification.product[0].previewImgBase.data.data);
   const router = useRouter()
   const [getStyle,setStyle]=useState({})
   // console.log(props.notification);
@@ -58,7 +58,7 @@ const UserNotificationCardTwenty = (props) => {
         <a  onClick={redirect} className='UserNotificationCardTwenty__Link'>
         <img src={imgSrc} className='UserNotificationCardTwenty__icon'></img>
         <h3 className='UserNotificationCardTwenty__title'  style={getStyle}>{props.notification.title}</h3>
-        <p className='UserNotificationCardTwenty__description'  style={getStyle}>{props.notification.description}</p>
+        <p className='UserNotificationCardTwenty__description'  style={getStyle}>{props.notification.description+' '+props.notification.product[0].title}</p>
         <span className='UserNotificationCardTwenty__date'  style={getStyle}>{formatedDate}</span>
         </a>
     </div>

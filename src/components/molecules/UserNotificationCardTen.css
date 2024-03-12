@@ -34,12 +34,16 @@
 }
 
 .UserNotificationCardTen__description {
-    text-transform: capitalize; 
     width: 100%;
     margin: 0;
     grid-column: 2/3;
     color: rgb(53, 53, 53);
 
+
+}
+
+.UserNotificationCardTen__description::first-letter{
+    text-transform: capitalize; 
 
 }
 .UserNotificationCardTen__date{

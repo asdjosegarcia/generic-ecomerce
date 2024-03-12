@@ -2,6 +2,7 @@ import React from 'react'
 import './UserNotificationsList.css'
 import UserNotificationCardZero from '../molecules/UserNotificationCardZero'
 import UserNotificationCardTen from '../molecules/UserNotificationCardTen'
+import UserNotificationCardTwenty from '../molecules/UserNotificationCardTwenty'
 
 
 const UserNotificationsList = (props) => {
@@ -17,6 +18,8 @@ const UserNotificationsList = (props) => {
         return <UserNotificationCardZero key={index} notification={notification} userEmail={props.userEmail} />;
       case (notification.type < 20):
         return <UserNotificationCardTen key={index} notification={notification} userEmail={props.userEmail} />;
+      case (notification.type < 30):
+        return <UserNotificationCardTwenty key={index} notification={notification} userEmail={props.userEmail} />;
       default:
         return <p key={index}>default</p>;
     }

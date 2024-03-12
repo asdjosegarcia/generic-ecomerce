@@ -1,0 +1,23 @@
+meta {
+  name: ADD-User-Notification-type-20+
+  type: http
+  seq: 12
+}
+
+patch {
+  url: http://localhost:3000/api/user/notifications
+  body: json
+  auth: none
+}
+
+body:json {
+  {  
+    "type":20,
+    "userEmail":"user8@gmail.com",
+    "title":"Payment successfully!",
+    "description":"You bought a",
+    "link":"/product/1",
+    "icon":"https://cdn3.iconfinder.com/data/icons/login-4/512/LOGIN-10-512.png",
+    "productId":1
+  }
+}

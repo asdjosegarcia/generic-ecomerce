@@ -3,13 +3,21 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function POST(request) {
-    const { userEmail } = await request.json()
+    const { userEmail,notificationId } = await request.json()
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
         include: { 
             notifications: {
                 include:{
-                    notification:true
+                    notification:{
+                        include:{
+                            product:{
+                                include:{
+                                    previewImgBase:true
+                                }
+                            }
+                        }
+                    }
                 }
             }
          }
@@ -17,6 +25,7 @@ export async function POST(request) {
 
     return NextResponse.json(user.notifications)
 }
+
 export async function DELETE(request) {
     const { userEmail,id } = await request.json()
     const notificationDeleted = await prisma.notification.delete({
@@ -28,7 +37,7 @@ export async function DELETE(request) {
 
 export async function PATCH(request) {
     //editamos una notificacion en particular o creamos una notificacion dentro de Notifications
-    const { userEmail, type, title, description, icon, link,id } = await request.json()
+    const { userEmail, type, title, description, icon, link,id,productId } = await request.json()
     console.log(userEmail,id);
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
@@ -72,7 +81,10 @@ export async function PATCH(request) {
                         description: description,
                         icon: icon,//aun no se me ocurre la mejor forma de manejar iconos
                         link: link,
-                        notificationsId: user.notifications.id
+                        notificationsId: user.notifications.id,
+                        product:{
+                            connect:[{id:productId}]
+                        }
                     }
                 })
                 break;
@@ -89,14 +101,7 @@ export async function PATCH(request) {
 
         })
         return NextResponse.json(viewNotificacion.view)
-        
     }
-
-
-
-
-
-    
 }
 
 

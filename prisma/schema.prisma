@@ -210,4 +210,5 @@ model PurchasedProduct {
     //relacion con UserPurchases
     userPurchases      UserPurchases @relation(fields: [userPurchasesId], references: [id])
     userPurchasesId    Int
+
 }

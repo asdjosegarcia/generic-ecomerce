@@ -17,7 +17,7 @@ const CreditCardForm = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userEmail:"user8@gmail.com",
+        userEmail:session.user.email,
         productId:await props.product.id, // el await solo es para vitar cualquier bug 
         paymentType:"credit card"
       }),

@@ -77,7 +77,9 @@ const MobileMenu = (props) => {
           <Link className='mobile-menu__Favorites-link' href='/favorites'>
             <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
           </Link>
-          <button>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
+          <Link href='/offers' >
+          <button onClick={() => { props.setMobileMenu(false) }}>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
+          </Link>
           {(!session?.user?.name) ?
             <>
               <Link href='/auth/login'>

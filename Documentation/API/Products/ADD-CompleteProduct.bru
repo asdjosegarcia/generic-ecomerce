@@ -1,0 +1,33 @@
+meta {
+  name: ADD-CompleteProduct
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/products/completeproducts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+  "title": "Moto E22 64gb 4gb Ram Negro",
+  "price": 19.99,
+  "previewImg":"https://http2.mlstatic.com/D_NQ_NP_2X_952396-MLU74218675320_012024-F.webp",
+  "condition": "Used",
+  "shipment": 0.00,
+  "discount":10,
+  "qualification": 4.5,
+  "sellerEmail": "user21@gmail.com",
+  "categoryIds": [1,5],
+  "stock": 11,
+  "description": "desciption"
+  }
+}
+
+docs {
+  Nos permite crear un producto nuevo con todos los datos extra
+  Importante, que los category existan o nos va a dar error
+  
+}

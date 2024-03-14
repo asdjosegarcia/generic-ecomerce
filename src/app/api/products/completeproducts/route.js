@@ -29,10 +29,10 @@ export async function POST(request) {
     categoryIds,
     stock,
     description,
+    discount,
     imgName,
     imgType,
     imgData,
-    email,
   } = await request.json(); //transformamos la peticion a json a js, y se almacenan en title y description
   const seller = await prisma.user.findUnique({
     where: {
@@ -58,6 +58,7 @@ export async function POST(request) {
       shipment: shipment,
       qualification: qualification,
       seller: seller.username,
+      discount:discount,
       category: {
         connect: categoryIds.map((categoryId) => ({ id: Number(categoryId) })), //reicivimos un array y conectamos cada id del array con product
       },
@@ -130,7 +131,7 @@ export async function DELETE(request) {
       where: { productCompleteId: product.productCompleteId }, //borramos todos los comentarios que tengan el id
     });
 
-    if (prisma.cart.length > 0) {
+    if (prisma.cart.length > 0) {//////////////////HAY QUE ELIMINAR TODOS ESTOS IF Y CAMBIAR LOS UPDATEMANY Y DELETEMANY POR orTrow si es prosible
       //si tiene algo
       await prisma.cart.updateMany({
         where: { id: { in: product.cart.map((c) => c.id) } }, //creamos un array con las id de Cart, los buscamos

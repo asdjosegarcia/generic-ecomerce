@@ -27,6 +27,7 @@ const ArchiveSelector = (props) => {
       <input
         className="archive-selector__input"
         type="file"
+        accept="image/*" //solo imagenes, quitando esto acepta cualquier otro codigo
         onChange={handleFileInputChange}
       />
       {(img64)? <img className="archive-selector__img-preview" src={'data:'+file.type+';base64,'+img64}></img> :<AddPhotoSVG/>}

@@ -7,7 +7,11 @@ export async function GET(request, { params }) {
         where: { //were se usa para buscar lo que coincida
             id: Number(params.categoryId)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
         },include:{
-            products:true
+            products:{
+                include:{
+                    previewImgBase:true
+                }
+            }
         }
 
         // include: { ProductComplete: true },

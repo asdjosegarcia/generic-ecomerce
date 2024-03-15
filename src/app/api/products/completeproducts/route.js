@@ -82,6 +82,9 @@ export async function POST(request) {
     include: {
       ProductComplete: true,
     },
+    include:{
+      category:true
+  },
   });
 
   return NextResponse.json(newProduct);

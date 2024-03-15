@@ -163,6 +163,19 @@ model Category {
     id       Int       @id @default(autoincrement())
     name     String    @unique
     products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
+    //relacion con CategoryImg
+    categoryImg CategoryImg?
+}
+
+model CategoryImg {
+    id       Int     @id @default(autoincrement())
+    imgUrl   String?
+    name     String?  
+    mimetype String? 
+    data     Bytes?
+    //relacion con 1 a 1 con category
+    category Category? @relation(fields: [id],references: [id])
+
 }
 
 model ProductImages {
@@ -210,5 +223,4 @@ model PurchasedProduct {
     //relacion con UserPurchases
     userPurchases      UserPurchases @relation(fields: [userPurchasesId], references: [id])
     userPurchasesId    Int
-
 }

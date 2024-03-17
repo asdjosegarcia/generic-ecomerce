@@ -6,13 +6,13 @@ import './CategoryVerticalCard.css'
 let imgSrc;
 const CategoryVerticalCard = (props) => {
   const contexto = useContext(variableContext)
-  // console.log("category",props.category);
+  console.log("category",props.category);
   if(props.category?.categoryImg?.imgUrl== null){
     imgSrc=contexto.bytesToBase(props.category?.categoryImg?.data.data,props.category?.categoryImg?.mimetype)
-    console.log('data',props.category?.categoryImg);
+    // console.log('data',props.category?.categoryImg);
   }else{
     imgSrc=props.category?.categoryImg?.imgUrl;
-    console.log('url',props.category?.categoryImg);
+    // console.log('url',props.category?.categoryImg);
 
   }
   return (

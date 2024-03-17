@@ -18,13 +18,18 @@ export async function POST(request,{params}){
     const newCategory=await prisma.category.create({
         data:{
             name:name,
-            categoryImg:{
-                imgUrl:imgUrl,
-                name:imgName,
-                mimetype:imgMimetype,
-                data:imgData,
-            }
+                categoryImg:{
+                    create:{
+                        imgUrl:imgUrl,
+                        name:imgName,
+                        mimetype:imgMimetype,
+                        data:imgData,
+                    }
+                }
         },
+        include: {
+            categoryImg: true
+        }
     })
     return NextResponse.json(newCategory)
 }
@@ -35,12 +40,12 @@ export async function PATCH(request,{params}){
         where:{id:id},
         data:{
             name:name,
-            categoryImg:{
-                imgUrl:imgUrl,
-                name:imgName,
-                mimetype:imgMimetype,
-                data:imgData,
-            }
+                categoryImg:{
+                    imgUrl:imgUrl,
+                    name:imgName,
+                    mimetype:imgMimetype,
+                    data:imgData,
+                }
         },
     })
     return NextResponse.json(updatedCategory)

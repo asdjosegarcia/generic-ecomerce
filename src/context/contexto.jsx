@@ -7,7 +7,17 @@ import React, { useState, useRef } from "react";
 
 
 export const variableContext = React.createContext();//creamos un context
-
+//////////////////////////////////img
+const bytesToBase=(imgBase,imgMimetype)=>{
+    const byteArray = new Uint8Array(imgBase);//creamos un Unit8Array que no almacena los array en grupos aunque asi lo mustre firefox, sino en un valor de 8bits/1 byte(datos binarios de 8 bits 0 a 255) ej 125,0,5,3,etc (datos codificados en bits)
+    // console.log(byteArray)
+    let binaryString = '';//almacenara un string, a cada string se le suma 1 caracter por cada 8bites/1byte gracias a String.fromCharCode que transforma cada byte en 1 caracter, los � son datos que el navegador no puede representar
+    for (let i = 0; i < byteArray.length; i++) {//1 recorrido por cada byte
+      binaryString += String.fromCharCode(byteArray[i]);//byteArray[i] nos dara cada byte, String.fromCharCode() transformara el byte de DECIMAL a caracter UTF-16,+= sumara el caracter a binaryString 
+    }
+    const base64String =  btoa(binaryString);//btoa() funcion que transforma caractes de UTF-16 c/u a Base64 
+    return('data:'+imgMimetype +';base64,'+base64String )//agregamos lo necesario para que se pueda representar en <img>
+}
 
 export function FuncionProvider({ children }) {//creamos la funcion que encapsulara los valores y luego encapsulara el componente principal de la app
   //lo que vamos a compartir en toda la app
@@ -38,6 +48,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
 
       <variableContext.Provider
         value={{
+          bytesToBase,
           getProductListURL, setProductListURL,
           getUrlParams, setUrlParams,
           searchRef, focusSearch,

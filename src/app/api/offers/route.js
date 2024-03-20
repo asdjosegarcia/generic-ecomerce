@@ -15,7 +15,11 @@ export async function POST(request) {
         products=await prisma.product.findMany({
             where:{discount:{gt: 0 }},// "gt" greater than (mayor que)
         })
-            
+            products={
+                // name:"all",
+                products:products
+            }
+        
     }else{
     // products='queso';
 
@@ -32,7 +36,7 @@ export async function POST(request) {
                 }
             }
         })
-        products=products[0].products
+        products=products[0]
 
     }
     return NextResponse.json(products)

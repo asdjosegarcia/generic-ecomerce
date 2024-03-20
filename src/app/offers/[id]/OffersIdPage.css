@@ -1,0 +1,17 @@
+.OffersIdPage h1{
+    text-align: center;
+    color: rgb(53, 53, 53);
+    font-weight: 500;
+}
+.OffersIdPage h1::first-letter{
+    text-transform: capitalize;
+}
+.OffersIdPage h2{
+    text-align: center;
+    color: rgb(0, 170, 0);
+    font-size: 4rem;
+    margin:10px 0;
+    font-weight: 400;
+    
+
+}

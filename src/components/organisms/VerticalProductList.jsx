@@ -16,8 +16,8 @@ const VerticalProductList = (props) => {
         })
       }
     else{
-      setProducts(props.products)
-      console.log(props.products);
+      setProducts(props.products.products)
+      // console.log(props.products);
     }
       
     }, [props.link])
@@ -25,7 +25,7 @@ const VerticalProductList = (props) => {
     
   return (
     <div className="vertical-list__container" >
-        <p className="vertical-list__title" >{props.title}</p>
+        <p className="vertical-list__title" >{props.title}{/* {props.products.name} */}</p>
         <div className='vertical-list__cards-container'>
         {
         getProducts?.map((product,index)=>(<VerticalProductCard  product={product} key={product.id}/>))

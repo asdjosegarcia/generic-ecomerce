@@ -27,6 +27,7 @@ a{ /* todos los text que se encuentren dentro de <Link/> */
 }
 .CategoryVerticalCard__img{
     height: 80%;
+    max-width: 95%;
     object-fit: contain;
 }
 .CategoryVerticalCard__title{

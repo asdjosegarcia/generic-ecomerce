@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 let imgSrc;
 const VerticalProductCard = (props) => {
-    console.log(props.product);
+    // console.log(props.product);
     let newPrice
     if (props.product.discount > 0) {
         const priceDiscount = props.product.price * props.product.discount / 100

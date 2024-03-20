@@ -6,13 +6,16 @@ const prisma = new PrismaClient()
 export async function POST(request) {
     let products;
     const { userEmail,categoryId } = await request.json()
+    console.log(categoryId);
+
     // const user = await prisma.user.findUnique({
     //     where: { email: userEmail },
     // })
-    if(!categoryId){
+    if(categoryId=='all'){
         products=await prisma.product.findMany({
             where:{discount:{gt: 0 }},// "gt" greater than (mayor que)
         })
+            
     }else{
     // products='queso';
 
@@ -29,7 +32,7 @@ export async function POST(request) {
                 }
             }
         })
-        console.log(categoryId);
+        products=products[0].products
 
     }
     return NextResponse.json(products)

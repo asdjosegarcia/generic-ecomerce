@@ -5,16 +5,23 @@ import VerticalProductCard from '../molecules/VerticalProductCard'
 
 const VerticalProductList = (props) => {
     const [getProducts,setProducts]=useState(null)
-
     useEffect(() => {
-      if(props?.link && getProducts==null){//si getProduct ya tiiene los productos evitamoshacer otra recarga
+
+      if(props?.link && getProducts==undefined){//si getProduct ya tiiene los productos evitamoshacer otra recarga
         fetch(props.link)//realizamos una peticion get a parametro de la url.id
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {                    
             setProducts(data[0].products)
+            // console.log(data[0].products);
         })
       }
+    else{
+      setProducts(props.products)
+      console.log(props.products);
+    }
+      
     }, [props.link])
+// console.log(getProducts);
     
   return (
     <div className="vertical-list__container" >

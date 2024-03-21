@@ -24,6 +24,8 @@ a{ /* todos los text que se encuentren dentro de <Link/> */
 }
 .vertical-card__title{
     margin: 10px 0px;
+    height: 2.4em; /* solo se mostraran 2 lineas de texto en el titulo*/
+    overflow: hidden; /* oculta el texto que pase el limite de altura*/
 }
 .vertical-card__price-container{
     display: flex;

@@ -5,6 +5,7 @@ import BadgetPercentageDiscount from '../atoms/BadgetPercentageDiscount'
 import Link from 'next/link'
 
 let imgSrc;
+let title;
 const VerticalProductCard = (props) => {
     // console.log(props.product);
     let newPrice
@@ -26,8 +27,7 @@ const VerticalProductCard = (props) => {
       }else{
         imgSrc=props.product.previewImg
       }
-
-    // console.log(props.product)
+    
     return (
         <Link href={`/product/${props.product.id}`}>
             <div className='vertical-card__container'>

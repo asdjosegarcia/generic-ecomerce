@@ -6,6 +6,9 @@ export async function POST(request) {
     const { userEmail, type, title, description, icon, link,id,productId } = await request.json()
     const user = await prisma.user.findUnique({//
         where: { email:userEmail },
+        include:{
+            userProfileImg:true
+        }
     })
     const {password, ...filterUserData}=user//removemos la password
 

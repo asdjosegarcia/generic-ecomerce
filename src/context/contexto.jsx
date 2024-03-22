@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 
 
 
-
+let userRegion="en-US"
 
 export const variableContext = React.createContext();//creamos un context
 //////////////////////////////////img Base64
@@ -19,7 +19,7 @@ const bytesToBase=(imgBase,imgMimetype)=>{
     return('data:'+imgMimetype +';base64,'+base64String )//agregamos lo necesario para que se pueda representar en <img>
 }
 /////////////////////////////////Date
-const dateIsoToShort=(isoDate,region)=>{
+const dateIsoToShort=(isoDate,userRegion)=>{
   const date = new Date(isoDate); //creamos un objeto con new date que tiene funciones
   const options = {
     //   weekday: "long", // 'short', 'long', 'narrow' como se va a mostrar el dia de la semana
@@ -27,7 +27,8 @@ const dateIsoToShort=(isoDate,region)=>{
       month: "numeric", // 'short', 'long', 'numeric', '2-digit' como se  va a mostrar el mes
       day: "numeric", // '2-digit', 'numeric' como se va a mostrar el dia
   };
-  const formatedDate = date.toLocaleDateString("en-US", options); //en-US formato de region, en este caso eeuu
+  const formatedDate = date.toLocaleDateString(userRegion/* "en-US" */, options); //en-US formato de region, en este caso eeuu
+  return formatedDate
 }
 
 export function FuncionProvider({ children }) {//creamos la funcion que encapsulara los valores y luego encapsulara el componente principal de la app
@@ -60,6 +61,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
       <variableContext.Provider
         value={{
           bytesToBase,
+          dateIsoToShort,
           getProductListURL, setProductListURL,
           getUrlParams, setUrlParams,
           searchRef, focusSearch,

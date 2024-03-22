@@ -27,7 +27,7 @@ model User {
     //////////////relacion userProducts
     userProducts   UserProducts?
     //////////////relacion 1 a 1 con UserProfileimg
-    UserProfileImg UserProfileImg?
+    userProfileImg UserProfileImg?
 }
 
 model UserProfileImg {

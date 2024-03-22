@@ -7,7 +7,7 @@ import React, { useState, useRef } from "react";
 
 
 export const variableContext = React.createContext();//creamos un context
-//////////////////////////////////img
+//////////////////////////////////img Base64
 const bytesToBase=(imgBase,imgMimetype)=>{
     const byteArray = new Uint8Array(imgBase);//creamos un Unit8Array que no almacena los array en grupos aunque asi lo mustre firefox, sino en un valor de 8bits/1 byte(datos binarios de 8 bits 0 a 255) ej 125,0,5,3,etc (datos codificados en bits)
     // console.log(byteArray)
@@ -17,6 +17,17 @@ const bytesToBase=(imgBase,imgMimetype)=>{
     }
     const base64String =  btoa(binaryString);//btoa() funcion que transforma caractes de UTF-16 c/u a Base64 
     return('data:'+imgMimetype +';base64,'+base64String )//agregamos lo necesario para que se pueda representar en <img>
+}
+/////////////////////////////////Date
+const dateIsoToShort=(isoDate,region)=>{
+  const date = new Date(isoDate); //creamos un objeto con new date que tiene funciones
+  const options = {
+    //   weekday: "long", // 'short', 'long', 'narrow' como se va a mostrar el dia de la semana
+      year: "numeric", // '2-digit', 'numeric' como se va a mostrar el año
+      month: "numeric", // 'short', 'long', 'numeric', '2-digit' como se  va a mostrar el mes
+      day: "numeric", // '2-digit', 'numeric' como se va a mostrar el dia
+  };
+  const formatedDate = date.toLocaleDateString("en-US", options); //en-US formato de region, en este caso eeuu
 }
 
 export function FuncionProvider({ children }) {//creamos la funcion que encapsulara los valores y luego encapsulara el componente principal de la app

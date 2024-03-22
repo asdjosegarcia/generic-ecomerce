@@ -53,7 +53,7 @@ const MobileMenu = (props) => {
             :
             <>
               <p className="mobile-menu__username">{session?.user?.name}</p>
-              <a className="mobile-menu__user-profile" >{"My Profile >"}</a>
+              <Link href={'/user/profile'} onClick={() => { props.setMobileMenu(false) }} className="mobile-menu__user-profile" >{"My Profile >"}</Link>
             </>
           }
 

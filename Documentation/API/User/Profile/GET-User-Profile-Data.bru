@@ -1,0 +1,21 @@
+meta {
+  name: GET-User-Profile-Data
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/user/profile
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userEmail":"user8@gmail.com"
+  }
+}
+
+docs {
+  nos da los datos del usuario para el usuario y no para externos a el,
+}

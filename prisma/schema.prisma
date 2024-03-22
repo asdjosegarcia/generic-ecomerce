@@ -8,24 +8,33 @@ datasource db {
 }
 
 model User {
-    id            Int            @id @default(autoincrement())
-    email         String         @unique
-    username      String         @unique
-    password      String
-    createdAt     DateTime       @default(now())
-    updatedAt     DateTime       @updatedAt
+    id             Int              @id @default(autoincrement())
+    email          String           @unique
+    username       String           @unique
+    password       String
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
     ///////////////relacion cart
-    cart          Cart? //relacion 1 a 1
+    cart           Cart? //relacion 1 a 1
     ///////////////relacion notificaciones
-    notifications Notifications?
+    notifications  Notifications?
     //////////////relacion preguntas
-    questions     Question[] //relacion uno a muchos
+    questions      Question[] //relacion uno a muchos
     //////////////relacion Favorites
-    favorites     Favorites? //relacion 1 a 1 
+    favorites      Favorites? //relacion 1 a 1 
     //////////////relacion UserPuschases 
-    userPurchases UserPurchases?
+    userPurchases  UserPurchases?
     //////////////relacion userProducts
-    userProducts  UserProducts?
+    userProducts   UserProducts?
+    //////////////relacion 1 a 1 con UserProfileimg
+    UserProfileImg UserProfileImg?
+}
+
+model UserProfileImg {
+    id       Int    @id @default(autoincrement())
+    mimetype String @default("")
+    data     Bytes?
+    user     User?  @relation(fields: [id], references: [id])
 }
 
 model Favorites {
@@ -160,22 +169,21 @@ model Comment {
 }
 
 model Category {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
+    id          Int          @id @default(autoincrement())
+    name        String       @unique
+    products    Product[] //products es una relación uno a muchos con la entidad Product, indicando que una categoría puede tener varios productos, pero un producto pertenece a una sola categoría.
     //relacion con CategoryImg
     categoryImg CategoryImg?
 }
 
 model CategoryImg {
-    id       Int     @id @default(autoincrement())
+    id       Int       @id @default(autoincrement())
     imgUrl   String?
-    name     String?  
-    mimetype String? 
+    name     String?
+    mimetype String?
     data     Bytes?
     //relacion con 1 a 1 con category
-    category Category? @relation(fields: [id],references: [id])
-
+    category Category? @relation(fields: [id], references: [id])
 }
 
 model ProductImages {

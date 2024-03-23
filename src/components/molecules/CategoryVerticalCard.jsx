@@ -17,7 +17,7 @@ const CategoryVerticalCard = (props) => {
 
   }
   return (
-    <Link href={`/offers/${props.category.id}`}>
+    <Link className='CategoryVerticalCard' href={`/offers/${props.category.id}`}>
       <div className='CategoryVerticalCard CategoryVerticalCard__container '>
         <img className='CategoryVerticalCard__img' src={imgSrc}></img>
         <h1 className='CategoryVerticalCard__title'>{props.category.name}</h1>

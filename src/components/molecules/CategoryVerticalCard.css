@@ -1,7 +1,7 @@
-p{
+/* .CategoryVerticalCard p{
     margin: 0;
-}
-a{ /* todos los text que se encuentren dentro de <Link/> */
+} */
+.CategoryVerticalCard { /* todos los text que se encuentren dentro de <Link/> */
     text-decoration: none;
     color: rgb(22, 22, 22);
     display: flex;

@@ -3,8 +3,9 @@ import React, { useEffect, useState, useContext } from 'react'
 import './UserProfilePage.css'
 import { variableContext } from "@/context/contexto";
 import CopySVG from '@/SVG/CopySVG';
-import EditSVG from '@/SVG/EditSVG';
 import AddPhotoSVG from '@/SVG/AddPhotoSVG';
+import CircleButton from '@/components/atoms/CircleButton';
+import ShareSVG from '@/SVG/ShareSVG';
 
 
 
@@ -64,10 +65,10 @@ const page = () => {
         <>
         <section className='UserProfilePage__section-img'>
           <img className='UserProfilePage__img' src={profileimg}></img>
-          <button className='UserProfilePage__img-edit' >
-            {/* <EditSVG width="24px"/> */}
-            <AddPhotoSVG />
-          </button>
+          <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />}/>
+          {/* <button className='UserProfilePage__img-edit' >
+            
+          </button> */}
         </section>
           <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
           <span>ID: {getUserData.id}</span>
@@ -76,8 +77,9 @@ const page = () => {
           <span>Last Update: {updatedAt}</span>
 
           <section className='UserProfilePage__extra-options'>
-            <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button>
-
+            {/* <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button> */}
+            <CircleButton function={()=>copyText()} /* onClick={() => { copyText(); }} */ icon={<CopySVG/>}/>
+            <CircleButton icon={<ShareSVG/>}/>
           </section>
         </>
       }

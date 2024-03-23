@@ -3,8 +3,11 @@ import ShareSVG from '@/SVG/ShareSVG'
 import './CircleButton.css'
 
 const CircleButton = (props) => {
+    const styles={
+        "backgroundColor":`${props.backgroundColor}`
+    }
     return (
-            <button onClick={props.function} className={`CircleButton ${props.className}`}>
+            <button style={styles} onClick={props.function} className={`CircleButton ${props.className}`}>
                 {props.icon}
             </button>
     )

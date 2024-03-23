@@ -57,19 +57,41 @@ const page = () => {
         console.error("Error al copiar texto: ", err);
       });
   }
+  ////////////////////////Compartir usuario
+  function compartirEnlace() {
+    // URL que deseas compartir
+    let url = /* window.location.href */'http://localhost:3000/user/profile';
+
+    // Verificar si el navegador soporta la API de Web Share
+    if (navigator.share) {
+      // Usar la API de Web Share para compartir
+      navigator.share({
+        title: 'Título del enlace',
+        url: url
+      }).then(() => {
+        console.log('Enlace compartido exitosamente');
+      }).catch((error) => {
+        console.error('Error al compartir enlace:', error);
+      });
+    } else {
+      // Si el navegador no soporta la API de Web Share, mostrar un mensaje alternativo
+      alert('Tu navegador no soporta la función de compartir enlace.');
+    }
+  }
+  
 
 
   return (
     <div className='UserProfilePage'>
       {getUserData &&
         <>
-        <section className='UserProfilePage__section-img'>
-          <img className='UserProfilePage__img' src={profileimg}></img>
-          <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />}/>
-          {/* <button className='UserProfilePage__img-edit' >
+          <section className='UserProfilePage__section-img'>
+            <img className='UserProfilePage__img' src={profileimg}></img>
+            <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} backgroundColor={"white"} />
+            {/* <button className='UserProfilePage__img-edit' >
             
           </button> */}
-        </section>
+          </section>
           <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
           <span>ID: {getUserData.id}</span>
           <span>Email: {getUserData.email}</span>
@@ -78,15 +100,14 @@ const page = () => {
 
           <section className='UserProfilePage__extra-options'>
             {/* <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button> */}
-            <CircleButton function={()=>copyText()} /* onClick={() => { copyText(); }} */ icon={<CopySVG/>}/>
-            <CircleButton icon={<ShareSVG/>}/>
+            <CircleButton function={() => copyText()}  icon={<CopySVG />} />
+            <CircleButton function={() => compartirEnlace()} icon={<ShareSVG />} />
           </section>
         </>
       }
 
-      {/* Profile */}
     </div>
   )
 }
 
-export default page
+ export default page

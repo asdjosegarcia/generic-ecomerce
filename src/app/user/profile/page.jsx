@@ -6,6 +6,10 @@ import CopySVG from '@/SVG/CopySVG';
 import AddPhotoSVG from '@/SVG/AddPhotoSVG';
 import CircleButton from '@/components/atoms/CircleButton';
 import ShareSVG from '@/SVG/ShareSVG';
+import ArchiveSelector from '@/components/molecules/ArchiveSelector';
+import MainButton from '@/components/atoms/MainButton';
+import UploadSVG from '@/SVG/UploadSVG';
+import CloseSVG from '@/SVG/CloseSVG';
 
 
 
@@ -14,7 +18,10 @@ let updatedAt;
 let profileimg;
 const page = () => {
   const [getUserData, setUserData] = useState()
+  const [getAddImage, setAddImage] = useState(false)
+  const [getImage, setImage] = useState()
   const contexto = useContext(variableContext)
+
   //////////////////////peticion datos del usuario
   useEffect(() => {
     const request = async () => {
@@ -78,7 +85,15 @@ const page = () => {
       alert('Tu navegador no soporta la función de compartir enlace.');
     }
   }
-  
+  /////////////////////////Update Picture
+  const imageUpdater = () => {
+    console.log('aca se sube la imagen');
+    console.log(getImage);
+    
+
+
+  }
+  // console.log(getImage);
 
 
   return (
@@ -87,11 +102,18 @@ const page = () => {
         <>
           <section className='UserProfilePage__section-img'>
             <img className='UserProfilePage__img' src={profileimg}></img>
-            <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} backgroundColor={"white"} />
+            <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} function={() => { setAddImage(true) }} backgroundColor={"white"} />
             {/* <button className='UserProfilePage__img-edit' >
             
           </button> */}
           </section>
+          {getAddImage &&
+            <div className='UserProfilePage__add-image--container'>
+              <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={()=>setAddImage(false)}></CircleButton>
+              <ArchiveSelector type={"image"} getImage={getImage} setImage={setImage} />
+              <MainButton text={"Update Picture"} funct={ imageUpdater} icon={<UploadSVG />}></MainButton>
+            </div>
+          }
           <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
           <span>ID: {getUserData.id}</span>
           <span>Email: {getUserData.email}</span>
@@ -100,7 +122,7 @@ const page = () => {
 
           <section className='UserProfilePage__extra-options'>
             {/* <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button> */}
-            <CircleButton function={() => copyText()}  icon={<CopySVG />} />
+            <CircleButton function={() => copyText()} icon={<CopySVG />} />
             <CircleButton function={() => compartirEnlace()} icon={<ShareSVG />} />
           </section>
         </>
@@ -110,4 +132,4 @@ const page = () => {
   )
 }
 
- export default page
+export default page

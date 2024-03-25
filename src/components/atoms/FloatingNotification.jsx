@@ -5,7 +5,7 @@ import './FloatingNotification.css'
 import { variableContext } from "@/context/contexto";
 
 
-const FloatingNotification = (props) => {
+const FloatingNotification = () => {
   const contexto = useContext(variableContext)
   const [getClearNotify, setClearNotify] = useState(null)
   setTimeout(() => {//una vez concluio el tiempo
@@ -21,7 +21,11 @@ const FloatingNotification = (props) => {
       { contexto.getNotificationText &&
       <div className={`floating-notifaction__container ${getClearNotify ? 'hidden' : ''}`} >
         <p>{contexto.getNotificationText ? contexto.getNotificationText : ''} </p>
-        {(props.error) ? <CloseSVG></CloseSVG> : <CheckCompleteSVG width={'40px'} fill={'green'}></CheckCompleteSVG>}
+        {contexto.getNotificationIcon?
+          contexto.getNotificationIcon
+        :
+        <CheckCompleteSVG width={'40px'} fill={'green'}/>
+        }
       </div>
       }
     </>
@@ -36,4 +40,5 @@ export default FloatingNotification
 //import { variableContext } from "@/context/contexto";
 //
 //const contexto = useContext(variableContext)
-//contexto.setNotificationText('')
+// contexto.setNotificationIcon(<CloseSVG width={'40px'} fill={'red'}/>)
+// contexto.setNotificationText('Texto que sale en la notificacion')

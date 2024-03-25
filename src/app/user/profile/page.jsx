@@ -10,6 +10,7 @@ import ArchiveSelector from '@/components/molecules/ArchiveSelector';
 import MainButton from '@/components/atoms/MainButton';
 import UploadSVG from '@/SVG/UploadSVG';
 import CloseSVG from '@/SVG/CloseSVG';
+import FloatingNotification from '@/components/atoms/FloatingNotification';
 
 
 
@@ -87,12 +88,31 @@ const page = () => {
   }
   /////////////////////////Update Picture
   const imageUpdater = () => {
-    
-    
+    if(getImage){ //verificamos que tengamos una iamgen cargada en el input
+      const request = async () => {
+        const res = await fetch(`/api/user/profile`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            userEmail: "user8@gmail.com",
+            imgMimetype:getImage.imgType,
+            imgData:getImage.imgData,
+          }),
+        });
+        const data = await res.json();
+        setUserData(data)
+        // console.log(await data)
+      }
+      request()
+      setAddImage(false)//cerramos el menu
+    }else{
+      contexto.setNotificationIcon(<CloseSVG width={'40px'} fill={'red'}/>)
+      contexto.setNotificationText('Add a picture before')
+    }
 
-    setAddImage(false)//cerramos el menu
   }
-  // console.log(getImage);
 
 
   return (

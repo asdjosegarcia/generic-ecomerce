@@ -47,6 +47,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
     userEmail:''
   })
   const [getNotificationText, setNotificationText] = useState(false) //estado que manjea las notificaciones
+  const [getNotificationIcon,setNotificationIcon]=useState(false)
   const [getUserData,setUserData]=useState(null)
   const [getProductListURL, setProductListURL] = useState("")
   const [getBackground,setBackground]=useState(false)
@@ -66,6 +67,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getUrlParams, setUrlParams,
           searchRef, focusSearch,
           getNotificationText, setNotificationText,
+          getNotificationIcon,setNotificationIcon,
           // userData,
           getUserData,setUserData,
           getBackground,setBackground,

@@ -12,6 +12,9 @@
 
 
 }
+.UserProfilePage__img{
+    object-fit: cover;
+}
 /* .UserProfilePage .ArchiveSelector{
     position: absolute;
     padding: 50vw;

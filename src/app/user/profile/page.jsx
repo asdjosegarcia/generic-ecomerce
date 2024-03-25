@@ -20,8 +20,10 @@ let profileimg;
 const page = () => {
   const [getUserData, setUserData] = useState()
   const [getAddImage, setAddImage] = useState(false)
+  const [getProfileImg,setProfileImg]=useState('')
   const [getImage, setImage] = useState()
   const contexto = useContext(variableContext)
+
 
   //////////////////////peticion datos del usuario
   useEffect(() => {
@@ -38,9 +40,9 @@ const page = () => {
       console.log(await data)
       /////////////////////segunda peticion en caso de que le usuario no tenga imagen de perfil
       if (data.userProfileImg) {
-        profileimg =/* data.userProfileImg */ ''
+        setProfileImg(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
       } else {
-        profileimg = `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`
+        setProfileImg( `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`)
       }
     }
     request()
@@ -57,12 +59,14 @@ const page = () => {
     const text = `ID: ${getUserData.id} \nEmail: ${getUserData.email} \nCreatedAt: ${createdAt} \nLast Update: ${updatedAt}`;
     navigator.clipboard.writeText(text) //usamos API Clipboard para copiar el texto a el portapapeles del usuario
       .then(() => {
-        // Mostrar un mensaje de éxito
-        alert("Texto copiado al portapapeles!");
+        // contexto.setNotificationIcon(<CheckCompleteSVG width={'40px'} fill={'green'}/>)
+        contexto.setNotificationText('Text copied to clipboard')
+
       })
       .catch((err) => {
-        // Manejar cualquier error que pueda ocurrir
-        console.error("Error al copiar texto: ", err);
+        contexto.setNotificationIcon(<CloseSVG width={'40px'} fill={'red'} />)
+        contexto.setNotificationText('Error to coppy', err)
+
       });
   }
   ////////////////////////Compartir usuario
@@ -88,27 +92,38 @@ const page = () => {
   }
   /////////////////////////Update Picture
   const imageUpdater = () => {
-    if(getImage){ //verificamos que tengamos una iamgen cargada en el input
+    console.log(getImage);
+    if (getImage) { //verificamos que tengamos una iamgen cargada en el input
       const request = async () => {
         const res = await fetch(`/api/user/profile`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ 
+          body: JSON.stringify({
             userEmail: "user8@gmail.com",
-            imgMimetype:getImage.imgType,
-            imgData:getImage.imgData,
+            imgMimetype: getImage.imgType,
+            imgData: getImage.imgData,
           }),
         });
         const data = await res.json();
         setUserData(data)
         // console.log(await data)
+        if (res.ok) {
+          setAddImage(false)//cerramos el menu
+          setProfileImg('data:'+getImage.imgType +';base64,'+getImage.imgData )
+
+          console.log('perfileImg',contexto.bytesToBase(getImage.imgData, getImage.imgType));
+          contexto.setNotificationText('Picture Updated')
+          // setReload(!getReload)
+        }else{
+          contexto.setNotificationText('Error') 
+        }
       }
       request()
-      setAddImage(false)//cerramos el menu
-    }else{
-      contexto.setNotificationIcon(<CloseSVG width={'40px'} fill={'red'}/>)
+
+    } else {
+      contexto.setNotificationIcon(<></>)
       contexto.setNotificationText('Add a picture before')
     }
 
@@ -120,7 +135,7 @@ const page = () => {
       {getUserData &&
         <>
           <section className='UserProfilePage__section-img'>
-            <img className='UserProfilePage__img' /* src={profileimg} */></img>
+            <img className='UserProfilePage__img' src={getProfileImg}></img>
             <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} function={() => { setAddImage(true) }} backgroundColor={"white"} />
             {/* <button className='UserProfilePage__img-edit' >
             
@@ -128,9 +143,9 @@ const page = () => {
           </section>
           {getAddImage &&
             <div className='UserProfilePage__add-image--container'>
-              <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={()=>setAddImage(false)}></CircleButton>
+              <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={() => setAddImage(false)}></CircleButton>
               <ArchiveSelector type={"image"} getImage={getImage} setImage={setImage} />
-              <MainButton text={"Update Picture"} funct={ imageUpdater} icon={<UploadSVG />}></MainButton>
+              <MainButton text={"Update Picture"} funct={imageUpdater} icon={<UploadSVG />}></MainButton>
             </div>
           }
           <h1 className='UserProfilePage__username'>{getUserData.username}</h1>

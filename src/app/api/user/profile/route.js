@@ -15,3 +15,24 @@ export async function POST(request) {
     return NextResponse.json(filterUserData)
 }
 
+export async function PATCH(request) {
+    const { userEmail,username,imgMimetype,imgData } = await request.json()
+    const updatedUser = await prisma.user.update({//
+        where: { email:userEmail },
+        include:{ //incluimos esto solo para que nos incluya los datos en la respuesta
+            userProfileImg:true
+        },
+        data:{
+            username:username,
+                userProfileImg:{
+                    update: {
+                        mimetype: imgMimetype,
+                        data: imgData
+                      }
+                }
+        }
+    })
+    const {password, ...filterUserData}=updatedUser//removemos la password
+
+    return NextResponse.json(filterUserData)
+}

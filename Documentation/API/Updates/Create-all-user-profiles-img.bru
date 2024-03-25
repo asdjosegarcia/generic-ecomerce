@@ -1,0 +1,19 @@
+meta {
+  name: Create-all-user-profiles-img
+  type: http
+  seq: 1
+}
+
+patch {
+  url: http://localhost:3000/api/updates
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+docs {
+  consulta de unioca ejecucion para agrar imagenes de perfil a los usuarios que no la tengan
+}

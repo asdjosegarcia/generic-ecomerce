@@ -87,11 +87,10 @@ const page = () => {
   }
   /////////////////////////Update Picture
   const imageUpdater = () => {
-    console.log('aca se sube la imagen');
-    console.log(getImage);
+    
     
 
-
+    setAddImage(false)//cerramos el menu
   }
   // console.log(getImage);
 
@@ -101,7 +100,7 @@ const page = () => {
       {getUserData &&
         <>
           <section className='UserProfilePage__section-img'>
-            <img className='UserProfilePage__img' src={profileimg}></img>
+            <img className='UserProfilePage__img' /* src={profileimg} */></img>
             <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} function={() => { setAddImage(true) }} backgroundColor={"white"} />
             {/* <button className='UserProfilePage__img-edit' >
             

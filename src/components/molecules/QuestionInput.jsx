@@ -58,9 +58,9 @@ const QuestionInput = (props) => {
     return (
         <>
             <form className="question-input__container" onSubmit={sendQuestion}>
-                <div>
-                <p className='question-input__caracters-number'>{getTextareaValue.length}/90</p>
+                <div className='question-input__text-area-container'>
                  <textarea type="text" placeholder="Ask a question" className="question-input__input" value={getTextareaValue} maxLength={90} rows="2"  onChange={(e) => { setTextareaValue(e.target.value)   }} />
+                <p className='question-input__caracters-number'>{getTextareaValue.length}/90</p>
                 </div>
                 <button className="question-input__button">Send</button>
             </form>

@@ -13,34 +13,36 @@
     width: 90%;
     position: relative;
 }
+.question-input__text-area-container{
+    height: 80px;
+}
 .question-input__input{
-    width: 300px;
-    padding: 5px ;
-    border-radius: 5px;
     border: 1px solid gray;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
-    height: 5ch;
-    margin: 0;
-    background-color: #00000000;
+    resize: none;
+    border-radius: 5px;
+
 }
 .question-input__button{
     width: 27%;
     height: 40px;
-    /* font-size: 1.2rem; */
     font-weight: 500;
-    padding: 3px;
+    padding: 0px;
     background-color: #3483fa;
     color: blanchedalmond;
     border: none;
     border-radius: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     
 }
 .question-input__caracters-number{
-    right: 5px;
-    bottom: -15px;
+    right: 0;
+    bottom: 0;
     position: absolute;
     color: #696969;
+    margin: 0;
 
 }

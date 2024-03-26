@@ -126,7 +126,7 @@ export async function DELETE(request) {
     console.log(product);
 
     await prisma.product.update({//desconectamos a el producto de sus categorias
-      where: { id: product.id },
+      where: { id: product.id },//buscamos el producto mediante su id
       data: {
         category: {
           disconnect: product.category.map((c) =>({id:Number( c.id)}))//recorremos el array de categorias, extaemos su Id y le indicamos que desconecte las id de cada una de las categorias
@@ -134,11 +134,6 @@ export async function DELETE(request) {
       }
     })  
 
-    // await prisma.category.deleteMany({
-    //   //
-    //   where: { id: { in: product.category.map((c) => c.id) } }, //c categoria, extraemos el id de cada categoria generando un array con categorias
-    //   //in palabra clave de prisma que se utiliza para buscar los valores que se encuentren dentro de un array, en ese caso el array que generamos con map
-    // });
 
     await prisma.comment.deleteMany({
       where: { productCompleteId: product.productCompleteId }, //borramos todos los comentarios que tengan el id

@@ -31,7 +31,11 @@ const ProductMain = ({ product }) => {
     imgSrc='data:'+product?.ProductComplete?.productImages[0].mimetype+';base64,'+base64String //agregamos lo necesario para que se pueda representar en <img>
     // console.log(imgSrc)
   }else{
-    imgSrc=product?.ProductComplete?.images.image1
+    if(imgSrc=product?.ProductComplete?.images?.image1){
+      imgSrc=product?.ProductComplete?.images.image1
+    }else{
+      imgSrc='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images'
+    }
   }
 
   const addToCart=async (productId)=>{
@@ -99,3 +103,5 @@ const ProductMain = ({ product }) => {
 }
 
 export default ProductMain
+//link en caso de necesitar una imagen de muestra
+//https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images

@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 export async function GET(request, { params }){
     const products=await prisma.category.findMany({//iniciamos la 
         include: {
-            // products: true,//nos incluye los productos que tienen este categoria
+            products: true,//nos incluye los productos que tienen este categoria
             categoryImg:true,
           },
         }) 

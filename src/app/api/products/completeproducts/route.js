@@ -58,7 +58,7 @@ export async function POST(request) {
       shipment: shipment,
       qualification: qualification,
       seller: seller.username,
-      discount:discount,
+      discount: discount,
       category: {
         connect: categoryIds.map((categoryId) => ({ id: Number(categoryId) })), //reicivimos un array y conectamos cada id del array con product
       },
@@ -82,9 +82,9 @@ export async function POST(request) {
     include: {
       ProductComplete: true,
     },
-    include:{
-      category:true
-  },
+    include: {
+      category: true
+    },
   });
 
   return NextResponse.json(newProduct);
@@ -123,12 +123,22 @@ export async function DELETE(request) {
         where: { id: Number(product.ProductComplete.id) },
       });
     }
+    console.log(product);
 
-    await prisma.category.deleteMany({
-      //
-      where: { id: { in: product.category.map((c) => c.id) } }, //c categoria, extraemos el id de cada categoria generando un array con categorias
-      //in palabra clave de prisma que se utiliza para buscar los valores que se encuentren dentro de un array, en ese caso el array que generamos con map
-    });
+    await prisma.product.update({//desconectamos a el producto de sus categorias
+      where: { id: product.id },
+      data: {
+        category: {
+          disconnect: product.category.map((c) =>({id:Number( c.id)}))//recorremos el array de categorias, extaemos su Id y le indicamos que desconecte las id de cada una de las categorias
+        }
+      }
+    })  
+
+    // await prisma.category.deleteMany({
+    //   //
+    //   where: { id: { in: product.category.map((c) => c.id) } }, //c categoria, extraemos el id de cada categoria generando un array con categorias
+    //   //in palabra clave de prisma que se utiliza para buscar los valores que se encuentren dentro de un array, en ese caso el array que generamos con map
+    // });
 
     await prisma.comment.deleteMany({
       where: { productCompleteId: product.productCompleteId }, //borramos todos los comentarios que tengan el id

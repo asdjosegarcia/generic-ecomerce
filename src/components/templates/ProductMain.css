@@ -33,6 +33,21 @@ header .porduct--qualification__container svg{
     background-color: #d1d5db;
     height: 100%;
 }
+.prodcut__favorite-button{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.808);
+    border-radius: 50%;
+}
+.prodcut__favorite-button svg{
+    width: 30px; 
+    height: 30px; 
+}
 .product--img__contiainter .product__img{
     width: 100%;
 }

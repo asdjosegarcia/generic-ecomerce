@@ -9,7 +9,11 @@ import ProductQuestionList from '@/components/organisms/ProductQuestionList'
 // import { useRouter } from 'next/navigation'
 import FloatingNotification from '@/components/atoms/FloatingNotification'
 import Link from 'next/link'
+import DisabledFavoriteButton from '../atoms/DisabledFavoriteButton'
+import EnabledFavoriteButton from '../atoms/EnabledFavoriteButton'
 import { variableContext } from "@/context/contexto";
+import { useSession } from 'next-auth/react';
+
 
 
 
@@ -17,7 +21,10 @@ import { variableContext } from "@/context/contexto";
 let imgSrc;
 
 const ProductMain = ({ product }) => {
+  const [getFavorite, setFavorite] = useState(false)
   const contexto = useContext(variableContext)
+  const { data: session } = useSession();//cargamos datos del usuario en session   
+
   // const router = useRouter()
   const [getNotificationText,setNotificationText]=useState(null)
 
@@ -79,7 +86,12 @@ const ProductMain = ({ product }) => {
 
         <p className='product__title'>{product?.title}</p>
         <div className='product--img__contiainter'>
-          <></>
+      {/* ////////////////////////////////////////////////////// */}
+        <span className='prodcut__favorite-button' >{(getFavorite) ?
+            <EnabledFavoriteButton favorite={setFavorite} email={session?.user.email} productId={product.id} notification={contexto.setNotificationText} />
+            :
+            <DisabledFavoriteButton favorite={setFavorite} email={session?.user.email} productId={product.id} notification={contexto.setNotificationText} />}
+          </span>
           <img className='product__img' src={imgSrc} alt="" />
         </div>
         <p className='prodcut__price'>${product?.price}</p>

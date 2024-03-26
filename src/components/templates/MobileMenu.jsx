@@ -15,6 +15,7 @@ import TiketSVG from '@/SVG/TiketSVG'
 import PorcentSVG from '@/SVG/PorcentSVG'
 import OffSVG from '@/SVG/OffSVG'
 import InventorySVG from '@/SVG/InventorySVG'
+import CartSVG from '@/SVG/CartSVG'
 
 
 
@@ -74,6 +75,10 @@ const MobileMenu = (props) => {
           <Link href='/user/products'>
             <button onClick={() => { props.setMobileMenu(false) }}>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
           </Link>
+          <Link className='mobile-menu__cart-link' href='/cart'>
+            <button onClick={() => { props.setMobileMenu(false) }}>My cart <CartSVG width={'24px'} fill={'#696969'}></CartSVG></button>
+          </Link>
+
           <Link className='mobile-menu__Favorites-link' href='/favorites'>
             <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
           </Link>

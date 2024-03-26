@@ -79,6 +79,7 @@ const ProductMain = ({ product }) => {
 
         <p className='product__title'>{product?.title}</p>
         <div className='product--img__contiainter'>
+          <></>
           <img className='product__img' src={imgSrc} alt="" />
         </div>
         <p className='prodcut__price'>${product?.price}</p>

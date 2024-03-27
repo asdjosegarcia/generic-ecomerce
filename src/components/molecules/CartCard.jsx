@@ -17,7 +17,7 @@ const contexto = useContext(variableContext)
   };
 
 
-  console.log(product);
+  // console.log(product);
   if(product.previewImg){
     imgSrc=product.previewImg
   }else{

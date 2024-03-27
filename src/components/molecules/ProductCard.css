@@ -20,7 +20,7 @@
     width: 120px;
 }
 .prodcut-card__img{
-    height: 100px;
+    height: 110px;
     /* padding-left:10px; */
     /* padding: 5px; */
 
@@ -37,8 +37,12 @@
     grid-row:1/4 ;
     padding-top: 10px;
     font-size: 1.1rem;
+    height: 2.4em; /* solo se mostraran 2 lineas de texto en el titulo*/
+    overflow: hidden; /* oculta el texto que pase el limite de altura*/
+    /* margin-bottom: 10px; */
 }
 .prodcut-card__price{
+    margin-top: 7px;
     grid-row:2/3 ;
     align-self: center;
 }

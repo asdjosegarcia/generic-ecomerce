@@ -43,7 +43,7 @@ const page = () => {
               request()
         } 
     }, [contexto.getNotificationText, contexto.getUserData])
-    console.log(getProducts)
+    // console.log(getProducts)
     return (
         <>
             {(getLoading)? 

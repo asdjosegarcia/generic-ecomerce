@@ -20,16 +20,28 @@ const page = () => {
 
     useEffect(() => {
         if (session) {//si params.id tiene algo
-            fetch(`/api/favorites/${session.user.email}`)//realizamos una peticion get a parametro de la url.id
-                .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-                .then(data => {                    
-                    setProducts(data.products)
+            // fetch(`/api/favorites/${session.user.email}`)//realizamos una peticion get a parametro de la url.id
+            //     .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
+            //     .then(data => {                    
+            //         setProducts(data.products)
+            //         setLoading(false)
+            //         // console.log(data.products)
+            //     })
+            const request=async ()=>{
+                const res = await fetch(`/api/favorites`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({email:session.user.email}),
+                });
+                const data = await res.json();
+                  setProducts(data.products)
                     setLoading(false)
-                    // console.log(data.products)
-                })
-        } else {
 
-        }
+              }
+              request()
+        } 
     }, [contexto.getNotificationText, contexto.getUserData])
     console.log(getProducts)
     return (

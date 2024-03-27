@@ -2,25 +2,33 @@ import React, { useContext } from 'react'
 import Link from 'next/link'
 import './CartCard.css'
 import CartInputNumber from './CartInputNumber'
-import HeartSVG from '@/SVG/HeartSVG'
-import HeartOutlineSVG from '@/SVG/HeartOutlineSVG'
 import DeleteProductButton from '@/components/atoms/DeleteProductButton'
 import BadgetFreeShipping from '../atoms/BadgetFreeShipping'
+import { variableContext } from "@/context/contexto";
 
 
+
+let imgSrc;
 const CartCard = ({ product }) => {
+const contexto = useContext(variableContext)
+
   const handleClickOnButtons = (event) => {
     event.stopPropagation();// evita que el clic en los botones active el enlace del contenedor padre
   };
 
-  console.log(product);
 
+  console.log(product);
+  if(product.previewImg){
+    imgSrc=product.previewImg
+  }else{
+    imgSrc=contexto.bytesToBase(product.previewImgBase.data.data,product.previewImgBase.mimetype)
+  }
 
   return (
     <>
       <div className='cart-card' >
         <Link className='cart-card__link-img' href={`/product/${product.id}`} >
-          <img className='cart-card__img' src={product.previewImg} alt="" />
+          <img className='cart-card__img' src={imgSrc} alt="" />
         </Link>
         <Link className='cart-card__link-title' href={`/product/${product.id}`} >
           <p className='cart-card__title'>{product.title}</p>

@@ -83,6 +83,10 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
 
   )
 }
-///////////////modo de uso 
-//componente en el que se va a usar 
+////////componente en el que se va a usar:
+//import React, { useContext } from 'react'
+//import { variableContext } from "@/context/contexto";
+//const contexto = useContext(variableContext)
+//contexto.setNotificationText('Added to cart!')
+
 

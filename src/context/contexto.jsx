@@ -83,5 +83,6 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
 
   )
 }
-
+///////////////modo de uso 
+//componente en el que se va a usar 
 

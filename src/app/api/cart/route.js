@@ -35,7 +35,11 @@ export async function POST(request) {
             include: {
                 cart: {
                     include: {
-                        products: true
+                        products: {
+                            include: {
+                                previewImgBase: true
+                            }
+                        }
                     }
                 }
             },

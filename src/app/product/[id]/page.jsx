@@ -25,7 +25,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
           body: JSON.stringify({userEmail:session?.user?.email}),
         });
         const data = await res.json();
-        console.log(await data)
+        // console.log(await data)
         setProduct(data)
       }
       request()

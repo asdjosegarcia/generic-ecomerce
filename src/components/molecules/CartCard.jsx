@@ -13,9 +13,7 @@ const CartCard = ({ product }) => {
     event.stopPropagation();// evita que el clic en los botones active el enlace del contenedor padre
   };
 
-  // contexto.product
-  // console.log(product.id)
-
+  console.log(product);
 
 
   return (
@@ -30,7 +28,7 @@ const CartCard = ({ product }) => {
 
         <h4 className='cart-card__price'>${product.price}</h4>
         <div className='cart-card__favorite-delete-container'>
-          <span className='cart-card__favorite'>{(product.favorites) ? <HeartSVG width={24} height={24} fill={'#3483fa'} /> : <HeartOutlineSVG width={24} height={24} fill={'#3483fa'} />}</span>
+          {/* <span className='cart-card__favorite'>{(product.favorites) ? <HeartSVG width={24} height={24} fill={'#3483fa'} /> : <HeartOutlineSVG width={24} height={24} fill={'#3483fa'} />}</span> */}
           <DeleteProductButton style={{ pointerEvents: 'none' }} link={'/api/cart/'} productId={product.id} ></DeleteProductButton>
         </div>
         <p className='cart-card__shipment'>{product.shipment == 0 ? <BadgetFreeShipping /> : '$' + product.shipment}</p>

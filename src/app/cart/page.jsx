@@ -5,10 +5,13 @@ import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
 import Loading from '@/components/templates/Loading';
 import ProductsSumary from '@/components/molecules/ProductsSumary';
+// import { useRouter } from 'next/navigation'
+
 
 
 
 const Cart = () => {
+  // const router = useRouter();
   const contexto = useContext(variableContext)
   const [getProducts, setProducts] = useState(null)//aqui cargaremos los datos del produto
   const { data: session } = useSession();//cargamos datos del usuario en session   
@@ -18,14 +21,22 @@ const Cart = () => {
 
   useEffect(() => {
     if (session) {//si params.id tiene algo
-      fetch(`/api/cart/${session.user.email}`)//realizamos una peticion get a parametro de la url.id
-        .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
-        .then(data => {
+      const request=async ()=>{
+        const res = await fetch(`/api/cart`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({email:session.user.email}),
+        });
+        const data = await res.json();
           setProducts(data)
-        })
-    } else {
+      }
+      request()
+    
+    } 
 
-    }
+
   }, [contexto.getNotificationText, contexto.getUserData])
   return (
     <div>

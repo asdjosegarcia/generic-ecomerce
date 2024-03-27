@@ -1,0 +1,21 @@
+meta {
+  name: GET-User-Cart
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/cart
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+  "email":"user21@gmail.com"
+  }
+}
+
+docs {
+  obtenemos los porductos del carrito del usuario mediante su email
+}

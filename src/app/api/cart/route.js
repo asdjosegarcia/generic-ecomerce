@@ -44,13 +44,7 @@ export async function POST(request) {
                 }
             },
         })
-        // const cart = await prisma.cart.findUnique({//
-        //     where: { id: user.cart.id },
-        //     include: { products: true },
-        // })
-
         return NextResponse.json(user.cart)
-
     }
 }
 

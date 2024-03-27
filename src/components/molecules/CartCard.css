@@ -22,6 +22,7 @@
 .cart-card__img{
     height: 120px;
     width: 120px;
+    object-fit: contain;
     padding-left:10px ;
 
 

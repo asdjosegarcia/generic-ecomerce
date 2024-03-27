@@ -26,6 +26,7 @@ export async function GET(request, { params }) {
 }
 export async function POST(request, { params }) {
     const { userEmail, productId } = await request.json();
+    console.log(userEmail);
     let product = await prisma.product.findUnique({//encontrar unico
         where: { //were se usa para buscar lo que coincida
             id: Number(params.id)//le decimos que busque lo que corresponda con lo que le mandamos en params.id
@@ -42,7 +43,7 @@ export async function POST(request, { params }) {
         },
     })
 
-    if (userEmail ) {//si tenemos el email de usuario le agregaremos una seccion favorite=true a los productos que corresponda
+    if (userEmail !== undefined && userEmail !== '' ) {//si tenemos el email de usuario le agregaremos una seccion favorite=true a los productos que corresponda
         const user = await prisma.user.findUnique({//
             where: { email: userEmail },
             include: {

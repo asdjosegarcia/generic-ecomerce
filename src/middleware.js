@@ -8,6 +8,7 @@ export const config = {
       '/product/new',
       '/user/notifications',
       '/user/purchases',
+      '/user/products',
     ]
 
 

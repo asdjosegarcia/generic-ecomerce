@@ -58,7 +58,7 @@ const page = () => {
   const inputChange = (event) => {
     let { name, value } = event.target;
     // console.log(name, value)
-    console.log(getProduct)
+    // console.log(getProduct)
     if (getError !== null) {//si hay algo en errores
       setError()//borramos errores
     }
@@ -73,7 +73,7 @@ const page = () => {
       case (name == "shipment"):
         if (value == "Auto") {
           value = Number((Math.random() * 10).toFixed(2));//por el momento no tenemos logistica :P
-          console.log(value)
+          // console.log(value)
         } else {
           value = 0
         }
@@ -110,7 +110,7 @@ const page = () => {
 
     } else {
       contexto.setNotificationText('Error')
-      console.log('error')
+      // console.log('error')
     }
   
   };

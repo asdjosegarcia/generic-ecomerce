@@ -9,7 +9,6 @@ let total=0;
 let quantityOfProducts=0
 const ProductsSumary = (props) => {
     const contexto = useContext(variableContext)
-    console.log(contexto.getCart);
 
 
     if(Object.keys(contexto.getProductsPrices).length &&  Object.keys(contexto.getProductsShippment).length){

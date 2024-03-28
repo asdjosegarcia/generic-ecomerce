@@ -17,7 +17,6 @@ const page = () => {
 
   
   useEffect(() => {
-    console.log('request')
     const request=async ()=>{
       if(session?.user ){
         const res = await fetch(`/api/user/products`, {

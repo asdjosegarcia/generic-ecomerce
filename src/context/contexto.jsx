@@ -4,8 +4,6 @@ import React, { useState, useRef } from "react";
 
 
 
-let userRegion="en-US"
-
 export const variableContext = React.createContext();//creamos un context
 //////////////////////////////////img Base64
 const bytesToBase=(imgBase,imgMimetype)=>{
@@ -39,6 +37,17 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
       searchRef.current.focus();//el metodo focus enfoca el input para que el usuario pueda conezar a escribir
     }
   };
+  /////////////////////////////////carrito del usuario
+  const [getCart,setCart]=useState({
+    products:[],
+    porductsPrice:{},
+    porductsNumber:0,
+    porductsQuantity:0,
+    total:0,
+    totalShipment:0,
+
+  })
+  /////////////////////////////////busqueda
   const [getUrlParams, setUrlParams] = useState({//filtros de busqueda que se fusionan
     freeShipping: false,
     new: false,
@@ -74,6 +83,7 @@ export function FuncionProvider({ children }) {//creamos la funcion que encapsul
           getQuestionMenu,setQuestionMenu,
           getNewQuestion,setNewQuestion,
           getProductsPrices,setProductsPrices,
+          getCart,setCart,
           getProductsShippment,setProductsShipment
         }}
       >{/* value almacena lo que queremos entregar a el resto de la app */}

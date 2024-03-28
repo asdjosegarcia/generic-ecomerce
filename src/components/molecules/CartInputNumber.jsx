@@ -15,20 +15,22 @@ const CartInputNumber = ({ productPrice, productId, productShipment }) => {
     if (getInputValue > 1) {
       setInputValue(getInputValue - 1)
       updateProductsPrices(getInputValue - 1)
+      contexto.setCart({ ...contexto.getCart, porductsQuantity: contexto.getCart.porductsQuantity-1})
+
     }
   }
 
   const plusOne = () => {
-    // if(getInputValue>1){
     setInputValue(getInputValue + 1)
     updateProductsPrices(getInputValue + 1)
-    
-    // }
+    contexto.setCart({ ...contexto.getCart, porductsQuantity: contexto.getCart.porductsQuantity+1})
   }
+
 
   const updateProductsPrices = (numberOfItems) => {//actualizamos el objeto con precios y envio
     contexto.setProductsPrices({ ...contexto.getProductsPrices, [productId]: productPrice * numberOfItems })
     contexto.setProductsShipment({ ...contexto.getProductsShippment, [productId]: productShipment })
+    
 
     // console.log(contexto.getProductsPrices)
     // console.log(contexto.getProductsShippment)
@@ -38,7 +40,7 @@ const CartInputNumber = ({ productPrice, productId, productShipment }) => {
       updateProductsPrices(getInputValue)
     }
   }, [])
-  
+
 
   return (
     <div className='cart-input__container'>

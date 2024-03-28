@@ -30,12 +30,11 @@ const Cart = () => {
           body: JSON.stringify({email:session.user.email}),
         });
         const data = await res.json();
+        contexto.setCart({...contexto.getCart,products:data.products,porductsQuantity:data.products.length})//cargamos el array de porductos en el contexto
           setProducts(data)
       }
       request()
     } 
-
-
   }, [contexto.getNotificationText, contexto.getUserData])
   return (
     <div>

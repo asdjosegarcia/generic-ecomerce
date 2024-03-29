@@ -26,12 +26,13 @@ p{
     font-size: 1.2rem;
     font-weight: 500;
 }
-.product-summary__container .MainButton{
+.ProductsSumary a{
     grid-column: 1/3;
+
+}
+.product-summary__container .MainButton{
     margin: 10px 25px ;
     width: calc(100% - 50px);
     height: 45px;
     font-size: 1.3rem;
-
-
 }

@@ -2,27 +2,28 @@ import React, { useContext } from 'react'
 import './ProductsSumary.css'
 import MainButton from '../atoms/MainButton'
 import { variableContext } from "@/context/contexto";
+import Link from 'next/link';
 
-let allProductsPrice=0;
-let allProductsShipment=0;
-let total=0;
-let quantityOfProducts=0
+let allProductsPrice = 0;
+let allProductsShipment = 0;
+let total = 0;
+let quantityOfProducts = 0
 const ProductsSumary = (props) => {
     const contexto = useContext(variableContext)
 
 
-    if(Object.keys(contexto.getProductsPrices).length &&  Object.keys(contexto.getProductsShippment).length){
-        allProductsPrice=Object.values(contexto.getProductsPrices)//tansforma el objeto en array para poder sumarlos
+    if (Object.keys(contexto.getProductsPrices).length && Object.keys(contexto.getProductsShippment).length) {
+        allProductsPrice = Object.values(contexto.getProductsPrices)//tansforma el objeto en array para poder sumarlos
         // console.log(allProductsPrice);
-        allProductsPrice=(allProductsPrice.reduce((a,b)=>{ return a+b})).toFixed(2) 
+        allProductsPrice = (allProductsPrice.reduce((a, b) => { return a + b })).toFixed(2)
         //esto no es recomendable en un sistema con dinero real por obvias razones
-        
-        
-        allProductsShipment=Object.values(contexto.getProductsShippment)
-        allProductsShipment=(allProductsShipment.reduce((a,b)=>{ return a+b})).toFixed(2)
-        
-        total=(Number(allProductsPrice)+Number(allProductsShipment)).toFixed(2)
-        
+
+
+        allProductsShipment = Object.values(contexto.getProductsShippment)
+        allProductsShipment = (allProductsShipment.reduce((a, b) => { return a + b })).toFixed(2)
+
+        total = (Number(allProductsPrice) + Number(allProductsShipment)).toFixed(2)
+
     }
     // console.log(contexto.getProductsPrices);
     // quantityOfProducts=allProductsPrice.length
@@ -46,7 +47,9 @@ const ProductsSumary = (props) => {
             <p className='product-summary__total-shippment'>${allProductsShipment}</p>
             <p className='product-summary__total'>Total</p>
             <p className='product-summary__total-total'>${total}</p>
-            <MainButton text={`Buy (${contexto.getCart.porductsQuantity})`} />
+            <Link href={'/'}>
+                <MainButton text={`Buy (${contexto.getCart.porductsQuantity})`} />
+            </Link>
             {/* <button className='product-summary__pay-button'>Buy(9)</button> */}
 
         </div>

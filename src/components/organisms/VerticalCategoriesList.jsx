@@ -13,7 +13,7 @@ const VerticalCategoriesList = (props) => {
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {                    
             setCategories(data)
-            console.log(data);
+            // console.log(data);
         })
       }
     }, [props.link])

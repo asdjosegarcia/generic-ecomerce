@@ -16,7 +16,7 @@ const Page = ({ params }) => {
           body: JSON.stringify({ categoryId: params.id }),
         });
         const data = await res.json();
-        // console.log(await data)
+        console.log(await data)
         setProducts(data)
       }
       request()

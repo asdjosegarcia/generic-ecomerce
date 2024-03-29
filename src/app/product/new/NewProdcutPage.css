@@ -54,6 +54,7 @@
 }
 
 .new-product__price-span-container,
+.new-product__discount-span-container,
 .new-product__shipment-span-container,
 .new-product__shipment-span-container {
   display: flex;
@@ -61,7 +62,7 @@
   align-items: center;
 }
 
-.new-product__price-input,.new-product__units-input {
+.new-product__price-input,.new-product__units-input,.new-product__discount-input {
   width: 7rem;
   margin-left: 5%;
   border-radius: 5px;

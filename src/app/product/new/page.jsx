@@ -12,13 +12,14 @@ let email = ''
 const page = () => {
   const contexto = useContext(variableContext)
   const router = useRouter();
-  const [getPreviewImage,setPreviewImage]=useState()
+  const [getPreviewImage, setPreviewImage] = useState()
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getCategories, setCategories] = useState(null)
   const [getError, setError] = useState();
   const [getProduct, setProduct] = useState({
     title: "",
     price: 0,
+    discount: 0,
     previewImg: "",
     condition: "Used",
     shipment: 0,
@@ -27,9 +28,9 @@ const page = () => {
     categoryIds: [],
     stock: 0,
     description: "",
-    previewImgName:"",
-    previewImgType:"",
-    previewImgData:"",
+    previewImgName: "",
+    previewImgType: "",
+    previewImgData: "",
     imgName: "", //esto requiere cambios para agregar varias imagenes a Complete prodcuts
     imgType: "",
     imgData: "",
@@ -47,18 +48,18 @@ const page = () => {
       email = session.user.email
       setProduct({ ...getProduct, sellerEmail: email, })//carga de email del vendedor si no hay nada
     }
-    if(getProduct.previewImgName!==getPreviewImage?.imgName){
-      setProduct({...getProduct,previewImgName:getPreviewImage?.imgName,previewImgType:getPreviewImage?.imgType,previewImgData:getPreviewImage?.imgData,imgName:getPreviewImage?.imgName,imgType:getPreviewImage?.imgType,imgData:getPreviewImage?.imgData})
-       //hay que modificar esto cuando se agreguen carga de mas imagenes
+    if (getProduct.previewImgName !== getPreviewImage?.imgName) {
+      setProduct({ ...getProduct, previewImgName: getPreviewImage?.imgName, previewImgType: getPreviewImage?.imgType, previewImgData: getPreviewImage?.imgData, imgName: getPreviewImage?.imgName, imgType: getPreviewImage?.imgType, imgData: getPreviewImage?.imgData })
+      //hay que modificar esto cuando se agreguen carga de mas imagenes
     }
-    
-  }, [getProduct,getPreviewImage])
+
+  }, [getProduct, getPreviewImage])
 
 
   const inputChange = (event) => {
     let { name, value } = event.target;
     // console.log(name, value)
-    // console.log(getProduct)
+    console.log(getProduct)
     if (getError !== null) {//si hay algo en errores
       setError()//borramos errores
     }
@@ -66,6 +67,11 @@ const page = () => {
     switch (true) {
       case name == "price":
         value = Number(value) ? Number(value) : setError({ ...getError, price: "The price can only contain numbers" });
+        break;
+      case name == "discount":
+        value = Number(value) ? Number(value) : setError({ ...getError, discount: "The discount can only contain numbers" });
+
+        // console.log('hola');
         break;
       case (name == "stock"):
         value = Number(value) ? Number(value) : setError({ ...getError, stock: "The units can only contain numbers" });
@@ -92,7 +98,7 @@ const page = () => {
     setProduct({ ...getProduct, [name]: value, });
   };
 
-  const create = async() => {
+  const create = async () => {
     // console.log(getProduct);
     // console.log("create");
 
@@ -112,7 +118,7 @@ const page = () => {
       contexto.setNotificationText('Error')
       // console.log('error')
     }
-  
+
   };
 
   return (
@@ -182,6 +188,28 @@ const page = () => {
           <p> &nbsp; $</p>
         </span>
         {getError?.price && <p className="error">{getError.price}</p>}
+      </section>
+
+      <section>
+        <p className="new-product__description-title new-product__section-title">
+          Discount:
+        </p>
+        <span className="new-product__discount-span-container">
+          <input
+            onChange={inputChange}
+            name="discount"
+            className="new-product__discount-input"
+            type="number"
+            pattern="^\d*(\.\d{0,2})?$" //decimales
+            min={0}
+            max={99}
+            maxlength="2"
+            inputMode="numeric" //teclado numerico en mobiles
+            placeholder="25"
+          ></input>
+          <p> &nbsp; %</p>
+        </span>
+        {getError?.discount && <p className="error">{getError.discount}</p>}
       </section>
 
       <section className="new-product_condition-container">

@@ -1,8 +1,10 @@
-.link{ /* establecemos el color y subrayado del texto por defecto  */
+.link {
+    /* establecemos el color y subrayado del texto por defecto  */
     text-decoration: none;
     color: inherit;
 }
-.product-card{
+
+.product-card {
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px;
     display: grid;
@@ -10,67 +12,84 @@
     grid-template-rows: max-content min-content min-content;
     column-gap: 10px;
 }
-.product-card *{
-    margin: 0 ;
+
+.product-card * {
+    margin: 0;
 }
-.prodcut-card__img-container{
+
+.prodcut-card__img-container {
     grid-column: 1/2;
     grid-row: 1/4;
     text-align: center;
     width: 120px;
 }
-.prodcut-card__img{
+
+.prodcut-card__img {
     height: 110px;
+    width: 110px;
+    object-fit: contain;/* se mantiene la relacion aspecto */
     /* padding-left:10px; */
     /* padding: 5px; */
 
 
 }
-.prodcut-card__title, .prodcut-card__price, .prodcut-card__shipment{
+
+.prodcut-card__title,
+.prodcut-card__price,
+.prodcut-card__shipment {
     grid-column: 2/4;
     /* grid-row:1/4; */
     /* padding-left:15px ; */
 
 }
-.prodcut-card__title{
+
+.prodcut-card__title {
     grid-column: 2/3;
-    grid-row:1/4 ;
+    grid-row: 1/4;
     padding-top: 10px;
     font-size: 1.1rem;
-    height: 2.4em; /* solo se mostraran 2 lineas de texto en el titulo*/
-    overflow: hidden; /* oculta el texto que pase el limite de altura*/
+    height: 2.4em;
+    /* solo se mostraran 2 lineas de texto en el titulo*/
+    overflow: hidden;
+    /* oculta el texto que pase el limite de altura*/
     /* margin-bottom: 10px; */
 }
-.prodcut-card__price{
+
+.prodcut-card__price {
     margin-top: 7px;
-    grid-row:2/3 ;
+    grid-row: 2/3;
     align-self: center;
 }
-.prodcut-card__shipment{
-    grid-row:3/4 ;
+
+.prodcut-card__shipment {
+    grid-row: 3/4;
     padding-bottom: 5px;
 
 }
-.prodcut-card__qualification{
-    grid-column:2/4 ;
-    grid-row:2/3 ;
+
+.prodcut-card__qualification {
+    grid-column: 2/4;
+    grid-row: 2/3;
     padding-right: 10px;
     justify-self: end;
     align-self: center;
 }
-.prodcut-card__favorite{
-    grid-row:1/2 ;
-    grid-column:3/4 ;
+
+.prodcut-card__favorite {
+    grid-row: 1/2;
+    grid-column: 3/4;
     padding: 10px 10px 0 0;
 }
-.prodcut-card__condition{
-    grid-row:3/4 ;
-    grid-column:2/4 ;
+
+.prodcut-card__condition {
+    grid-row: 3/4;
+    grid-column: 2/4;
     padding-right: 10px;
     justify-self: end;
-    
+
     color: #696969;
 }
+
 /* .prodcut-card__price{
 }
 .prodcut-card__shipment{

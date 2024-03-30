@@ -1,0 +1,29 @@
+meta {
+  name: DELETE user-product-cart
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:3000/api/cart/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+  "email":"user22@gmail.com",
+  "productId":16
+  }
+  
+}
+
+docs {
+  Borra el prodcuto"prodcutId" del carrito del usuario"user8@gmail.com"
+  
+  {
+  "email":"user22@gmail.com",
+  "productId":16
+  }
+  
+}

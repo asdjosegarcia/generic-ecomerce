@@ -13,12 +13,12 @@ export async function GET(request, { params }) {
 }
 
 export async function POST(request) {
-    let  productQuantity;
+    let productQuantity;
     const { email, password, productId, quantity } = await request.json()
-    if(quantity==undefined){//si no recivimos una cantidad
-        productQuantity=1 //la cantidad de ese prodcuto en el carrito sera 1
-    }else{
-        productQuantity=quantity//la cantidad de ese prodcuto en el carrito sera quantity
+    if (quantity == undefined) {//si no recivimos una cantidad
+        productQuantity = 1 //la cantidad de ese prodcuto en el carrito sera 1
+    } else {
+        productQuantity = quantity//la cantidad de ese prodcuto en el carrito sera quantity
     }
 
     if (productId !== undefined) {
@@ -54,9 +54,10 @@ export async function POST(request) {
                         products: {
                             include: {
                                 previewImgBase: true,
-                                cartProductQuantities: true
                             },
-                        }
+                        },
+                        cartProductQuantities:true,
+
                     }
                 }
             },
@@ -79,6 +80,12 @@ export async function DELETE(request) {
             products: {//seleccionamos la tabla product
                 disconnect: [{ id: productId }],//desconectamos el producto del cart mediante su id
             },
+            cartProductQuantities: {
+                deleteMany: {//borramos todos los cartProductQuantities que tengan la id del producto
+                    productId: productId,
+                },
+            },
+
         },
     });
     return NextResponse.json(updatedCart)

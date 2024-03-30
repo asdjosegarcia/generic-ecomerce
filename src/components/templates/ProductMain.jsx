@@ -12,19 +12,22 @@ import DisabledFavoriteButton from '../atoms/DisabledFavoriteButton'
 import EnabledFavoriteButton from '../atoms/EnabledFavoriteButton'
 import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
+import CartInputNumber from '../molecules/CartInputNumber'
+import InputWithButtons from '../molecules/InputWithButtons'
 
 
 
 
 
 let imgSrc;
-
+let quantityPrice
 const ProductMain = ({ product }) => {
   const router = useRouter();
   const [getFavorite, setFavorite] = useState(product?.favorite)
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getNotificationText, setNotificationText] = useState(null)
+  const [getproductQuantity,setproductQuantity]=useState(1)
   // console.log(product?.favorite);
 
   if (product?.ProductComplete?.productImages[0]?.data) {
@@ -43,7 +46,7 @@ const ProductMain = ({ product }) => {
       imgSrc = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images'
     }
   }
-
+////////////////////Añadir a el carrito
   const addToCart = async (productId) => {
     if (session?.user.email) {
       const email = session?.user.email
@@ -56,6 +59,7 @@ const ProductMain = ({ product }) => {
           email: email,
           // pasword:'',
           productId: productId,
+          quantity:getproductQuantity,
         }),
       });
       if (res.ok) {
@@ -66,11 +70,10 @@ const ProductMain = ({ product }) => {
     }else{
       router.push('/auth/login');
     }
-
-
   }
+  ////////////////////calcular precio segun cantidad
+    quantityPrice=product?.price*getproductQuantity
 
-  // console.log(product)
   return (
     <div className='product__container'>
       {getNotificationText && <FloatingNotification notificationText={getNotificationText}></FloatingNotification>}
@@ -100,6 +103,10 @@ const ProductMain = ({ product }) => {
         <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
       </div>
       <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
+      <section className='product__input--container'>
+      <InputWithButtons currentValue={getproductQuantity} newValue={setproductQuantity}></InputWithButtons>
+      <p>=${quantityPrice}</p>
+      </section>
       <Link href={'/product/buy/' + product?.id}>
         <button /* onClick={()=>{router.push('/product/buy/'+product?.id)}} */ className='btn btn__buy'>Buy now</button>
       </Link>

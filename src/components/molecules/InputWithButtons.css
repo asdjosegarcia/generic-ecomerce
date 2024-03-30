@@ -1,0 +1,44 @@
+
+input[type="number"] {/* remueve las flechas hacia arriba y abajo de un input de tipo number */
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+.InputWithButtons__container{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    align-items: center;
+    
+
+}
+.InputWithButtons__container input{
+    width: 25px;
+    height: 26px;
+    text-align: center;
+    border: 1px solid #696969;
+    font-size: 1rem;
+}
+.InputWithButtons__container button{
+    height: 30px;
+    width: 30px;
+    background-color: #696969;
+    border: none;
+    display: flex;
+    align-items: center;
+    fill: rgb(255, 255, 255);
+    /* border-radius: 5px; */
+    /* font-size: 1.5rem; */
+}
+.InputWithButtons__container button:hover{
+    background-color: white;
+    fill:#3483fa ;
+    border: 1px solid #696969;
+}
+.InputWithButtons__container .InputWithButtons__minus-button {
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px ;
+}
+.InputWithButtons__container .InputWithButtons__plus-button{
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px ;
+}

@@ -30,6 +30,26 @@ model User {
     userProfileImg UserProfileImg?
 }
 
+model Cart {
+    id       Int       @id @default(autoincrement())
+    password String
+    //////////////relacion con user
+    user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
+    //////////////relacion con products
+    products Product[] @relation("cartProducts") //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
+    ///////////////relacion 1 a muchos con CartProductQuantity
+    cartProductQuantities CartProductQuantity[]
+}
+model CartProductQuantity{
+    id Int  @id @default(autoincrement())
+    quantity Int @default(1)
+    ////////////relacion 1 a muchos con cart
+    cart Cart @relation(fields:[cartId],references:[id])
+    cartId Int
+    ////////////relacion 1 a muchos con Product
+    product Product @relation(fields:[productId],references: [id])
+    productId Int
+}
 model UserProfileImg {
     id       Int    @id @default(autoincrement())
     mimetype String?
@@ -46,14 +66,6 @@ model Favorites {
     products Product[] @relation("favoritesPorducts")
 }
 
-model Cart {
-    id       Int       @id @default(autoincrement())
-    password String
-    //////////////relacion con user
-    user     User      @relation(fields: [id], references: [id]) //relacion 1 a 1 , 1 usuario puede tener 1 cart
-    //////////////relacion con products
-    products Product[] @relation("cartProducts") //relacion 1 a muchos, cart puede tener varios productos, pero product solo puede tener 1 cart
-}
 
 model Notifications {
     id           Int            @id @default(autoincrement())
@@ -114,6 +126,8 @@ model Product {
     userProductsId        Int
     //////////relacion con notification
     notification          Notification[]       @relation("notificationProducts")
+    //////////relacion 1 a muchos con CartProductQuantity
+    cartProductQuantities CartProductQuantity[] 
 }
 
 model ProductPreviewImage {

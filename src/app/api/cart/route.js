@@ -13,7 +13,14 @@ export async function GET(request, { params }) {
 }
 
 export async function POST(request) {
-    const { email, password, productId } = await request.json()
+    let  productQuantity;
+    const { email, password, productId, quantity } = await request.json()
+    if(quantity==undefined){//si no recivimos una cantidad
+        productQuantity=1 //la cantidad de ese prodcuto en el carrito sera 1
+    }else{
+        productQuantity=quantity//la cantidad de ese prodcuto en el carrito sera quantity
+    }
+
     if (productId !== undefined) {
         const user = await prisma.user.findUnique({//buscamos 1 unico item en la lista user
             where: { email: email },//cuando encuentra un user con la id userId..
@@ -26,9 +33,18 @@ export async function POST(request) {
                 products: {//seleccionamos la tabla product
                     connect: [{ id: productId }],//producto que conectamos, el producto debe existir, si el producto ya esta relacionado no se agrega de nuevo
                 },
+                cartProductQuantities: {
+                    create: {//creamos un item en el  cartProductQuantities[]
+                        quantity: 1, //catidad de productos
+                        product: {  //
+                            connect: { id: productId }
+                        }
+                    }
+                }
             },
         });
-        return NextResponse.json(updatedCart)
+        const response = `Product ${productId} x${productQuantity} added to cart`
+        return NextResponse.json(response)
     } else {
         const user = await prisma.user.findUnique({//
             where: { email: email },
@@ -37,8 +53,9 @@ export async function POST(request) {
                     include: {
                         products: {
                             include: {
-                                previewImgBase: true
-                            }
+                                previewImgBase: true,
+                                cartProductQuantities: true
+                            },
                         }
                     }
                 }

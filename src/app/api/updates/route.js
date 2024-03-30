@@ -6,7 +6,8 @@ const prisma = new PrismaClient()
 ///////////////////////////////////////create users perfiles imgs
 //a esta consulta se aplica si funciona no lo toques por que solo se ejecuta una vez
 export async function PATCH(request) {
-    const { userEmail, username, type, title, description, icon, link, id, productId } = await request.json()
+    const { updateId} = await request.json()
+
     const users = await prisma.user.findMany({
         where: { userProfileImg: null },//buscamos todos los uduarios que no tenga imagen de perfil
         include: {
@@ -27,4 +28,5 @@ export async function PATCH(request) {
 
     return NextResponse.json(filterUserData)
 }
-////
+
+

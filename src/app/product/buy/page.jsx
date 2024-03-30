@@ -1,9 +1,12 @@
+'use client'
 import React from 'react'
+import CreditCardForm from '@/components/organisms/CreditCardForm'
 
 const page = () => {
   return (
     <div>
-      preparar
+    
+    <CreditCardForm product={20}></CreditCardForm>
     </div>
   )
 }

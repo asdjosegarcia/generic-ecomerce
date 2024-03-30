@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
       previewImgBase:true
     }
   })
-  console.log(product)
+  // console.log(product)
   return NextResponse.json(product)//mostramos la tarea en pantalla
 }
 

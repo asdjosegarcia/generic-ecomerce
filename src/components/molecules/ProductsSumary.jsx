@@ -47,7 +47,7 @@ const ProductsSumary = (props) => {
             <p className='product-summary__total-shippment'>${allProductsShipment}</p>
             <p className='product-summary__total'>Total</p>
             <p className='product-summary__total-total'>${total}</p>
-            <Link href={'/'}>
+            <Link href={'/product/buy'}>
                 <MainButton text={`Buy (${contexto.getCart.porductsQuantity})`} />
             </Link>
             {/* <button className='product-summary__pay-button'>Buy(9)</button> */}

@@ -35,7 +35,7 @@ export async function POST(request) {
                 },
                 cartProductQuantities: {
                     create: {//creamos un item en el  cartProductQuantities[]
-                        quantity: 1, //catidad de productos
+                        quantity: productQuantity, //catidad de productos
                         product: {  //
                             connect: { id: productId }
                         }

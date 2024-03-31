@@ -12,6 +12,7 @@ const ProductsSumary = (props) => {
     const contexto = useContext(variableContext)
 
     /////////////////calcular suma de los precios de prodcutos, envios y cantidad
+    //useEffect(() => {}, [contexto.getCart])// para re-renderizar,no quitar 
     totalProductsPrice=contexto.getCart.products.reduce((accumulator,product)=>{//suma del precio de todos los productos
         return accumulator+(product.price*product.cartProductQuantities[0].quantity)
     },0)
@@ -27,11 +28,11 @@ const ProductsSumary = (props) => {
         <div className='product-summary__container ProductsSumary'>
             <p className='product-summary__titile'>Summary</p>
             <p className='product-summary__products'>Products</p>
-            <p className='product-summary__total-products'>${totalProductsPrice}</p>
+            <p className='product-summary__total-products'>${(totalProductsPrice).toFixed(2)}</p>
             <p className='product-summary__shippment'>Shippment</p>
-            <p className='product-summary__total-shippment'>${totalShipmentPrice}</p>
+            <p className='product-summary__total-shippment'>${(totalShipmentPrice).toFixed(2)}</p>
             <p className='product-summary__total'>Total</p>
-            <p className='product-summary__total-total'>${totalProductsPrice+totalShipmentPrice}</p>
+            <p className='product-summary__total-total'>${(totalProductsPrice+totalShipmentPrice).toFixed(2)}</p>
             <Link href={'/product/buy'}>
                 <MainButton text={`Buy (${quantityOfProducts})`} />
             </Link>

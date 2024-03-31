@@ -12,8 +12,8 @@ import InputWithButtons from './InputWithButtons'
 let imgSrc;
 const CartCard = ({ product, index}) => {
   // console.log(product);
-  const [getproductQuantity, setproductQuantity] = useState(product.cartProductQuantities[0].quantity)
   const contexto = useContext(variableContext)
+  const [getproductQuantity, setproductQuantity] = useState(contexto?.getCart.products[index].cartProductQuantities[0].quantity)
   // console.log(contexto.getCart);
   
   ///////actualizamos el Cart del contexto

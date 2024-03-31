@@ -16,7 +16,8 @@ const Cart = () => {
 
 
   useEffect(() => {
-    if (session) {//si params.id tiene algo
+    if (session  ) {//si params.id tiene algo
+      console.log('request');
       const request=async ()=>{
         const res = await fetch(`/api/cart`, {
           method: 'POST',
@@ -30,7 +31,8 @@ const Cart = () => {
       }
       request()
     } 
-  }, [contexto.getNotificationText, contexto.getUserData])
+  }, [contexto.getNotificationText, contexto.getUserData,])
+  useEffect(() => {}, [contexto.getCart])
   return (
     <div>
       {contexto.getCart.products ?

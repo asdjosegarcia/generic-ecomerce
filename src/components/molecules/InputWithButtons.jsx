@@ -5,19 +5,19 @@ import './InputWithButtons.css'
 
 
 const InputWithButtons = (props) => {
-    const minusOne=()=>{
-        if (props.currentValue > 1) {
-            props.newValue(props.currentValue-1)
-        }
+  const minusOne = () => {
+    if (props.currentValue > 1) {
+      props.newValue(props.currentValue - 1)
     }
-    const plusOne=()=>{
-        props.newValue(props.currentValue+1)
+  }
+  const plusOne = () => {
+    props.newValue(props.currentValue + 1)
 
 
-    }
+  }
   return (
-    <div>
-          <div className='InputWithButtons__container'>
+    // <div>
+    <div className=' InputWithButtons InputWithButtons__container'>
       <button onClick={() => minusOne()} className='InputWithButtons__minus-button'>
         <MinusSVG height={'30px'}></MinusSVG>
       </button>
@@ -26,7 +26,7 @@ const InputWithButtons = (props) => {
         <PlusSVG height={'30px'}></PlusSVG>
       </button>
     </div>
-    </div>
+    // </div>
   )
 }
 

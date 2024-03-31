@@ -57,10 +57,12 @@
 }
 
 /* estilos del componente CartInputNumber */
-.cart-input__container{ 
+.cart-card .InputWithButtons{ 
     grid-row:3/4 ;
     grid-column:3/4 ;
     margin-right: 10px;
+    margin-bottom: 10px;
+
     /* position: fixed; */
     /* pointer-events: none; */
     

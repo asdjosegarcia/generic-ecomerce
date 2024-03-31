@@ -18,7 +18,6 @@ const CartCard = ({ product, index}) => {
   
   ///////actualizamos el Cart del contexto
   useEffect(() => {
-    // contexto.setCart({...contexto.getCart,products[]})
     const cartCopy={...contexto.getCart}
     cartCopy.products[index].cartProductQuantities[0].quantity=getproductQuantity
     contexto.setCart(cartCopy)

@@ -11,13 +11,9 @@ import ProductsSumary from '@/components/molecules/ProductsSumary';
 
 
 const Cart = () => {
-  // const router = useRouter();
   const contexto = useContext(variableContext)
-  // const [getProducts, setProducts] = useState(null)//aqui cargaremos los datos del produto
   const { data: session } = useSession();//cargamos datos del usuario en session   
-  // const [getLoading,setLoading]=useState(true)
 
-  // console.log(session?.user.email)
 
   useEffect(() => {
     if (session) {//si params.id tiene algo
@@ -31,7 +27,6 @@ const Cart = () => {
         });
         const data = await res.json();
         contexto.setCart({...contexto.getCart,products:data.products,porductsQuantity:data.products.length})//cargamos el array de porductos en el contexto
-          // setProducts(data)
       }
       request()
     } 

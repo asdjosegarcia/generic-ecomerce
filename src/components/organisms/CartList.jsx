@@ -5,7 +5,6 @@ const CartList = ({products}) => {
     return (
         <div>
             {products.map((product,index)=>(
-                // console.log(product);
                 <CartCard  key={index} product={product} index={index}></CartCard>
             ))}
         </div>

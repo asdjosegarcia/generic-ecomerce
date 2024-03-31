@@ -72,7 +72,7 @@ const ProductMain = ({ product }) => {
     }
   }
   ////////////////////calcular precio segun cantidad
-    quantityPrice=product?.price*getproductQuantity
+    quantityPrice=(product?.price*getproductQuantity).toFixed(2)
 
   return (
     <div className='product__container'>

@@ -13,7 +13,7 @@ import ProductsSumary from '@/components/molecules/ProductsSumary';
 const Cart = () => {
   // const router = useRouter();
   const contexto = useContext(variableContext)
-  const [getProducts, setProducts] = useState(null)//aqui cargaremos los datos del produto
+  // const [getProducts, setProducts] = useState(null)//aqui cargaremos los datos del produto
   const { data: session } = useSession();//cargamos datos del usuario en session   
   // const [getLoading,setLoading]=useState(true)
 
@@ -31,17 +31,17 @@ const Cart = () => {
         });
         const data = await res.json();
         contexto.setCart({...contexto.getCart,products:data.products,porductsQuantity:data.products.length})//cargamos el array de porductos en el contexto
-          setProducts(data)
+          // setProducts(data)
       }
       request()
     } 
   }, [contexto.getNotificationText, contexto.getUserData])
   return (
     <div>
-      {getProducts ?
+      {contexto.getCart.products ?
         <>
-          <CartList products={getProducts.products}></CartList>
-          <ProductsSumary products={getProducts.products}></ProductsSumary>
+          <CartList products={contexto.getCart.products}></CartList>
+          <ProductsSumary products={contexto.getCart.products}></ProductsSumary>
         </>
         :
         <Loading></Loading>

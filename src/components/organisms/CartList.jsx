@@ -6,7 +6,7 @@ const CartList = ({products}) => {
         <div>
             {products.map((product,index)=>(
                 // console.log(product);
-                <CartCard  key={index} product={product}></CartCard>
+                <CartCard  key={index} product={product} index={index}></CartCard>
             ))}
         </div>
     )

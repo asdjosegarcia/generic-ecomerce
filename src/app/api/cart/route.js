@@ -46,23 +46,28 @@ export async function POST(request) {
         const response = `Product ${productId} x${productQuantity} added to cart`
         return NextResponse.json(response)
     } else {
-        const user = await prisma.user.findUnique({//
+        const user = await prisma.user.findUnique({
             where: { email: email },
             include: {
-                cart: {
-                    include: {
-                        products: {
-                            include: {
-                                previewImgBase: true,
-                            },
-                        },
-                        cartProductQuantities:true,
-
-                    }
-                }
+                cart: true
             },
         })
-        return NextResponse.json(user.cart)
+        const cartWithProductQuantities = await prisma.cart.findUnique({//
+            where: { id: user.cart.id },
+                include: {
+                    products: {
+                        include: {
+                            previewImgBase: true,
+                            cartProductQuantities: {
+                                where: { cartId: user.cart.id }
+                            },
+
+                        },
+                    },
+
+                }
+        })
+        return NextResponse.json(cartWithProductQuantities)
     }
 }
 

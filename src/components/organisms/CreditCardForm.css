@@ -1,6 +1,15 @@
 .credit-card-form__container{
     margin-top: 10px;
-    background-color: rgb(231, 231, 231);
+    /* background-color: rgb(231, 231, 231); */
+    /* background: rgb(27,26,32);
+    background: linear-gradient(166deg, rgba(27,26,32,1) 15%, rgba(107,102,0,1) 35%, rgba(78,78,78,1) 61%, rgba(37,40,0,1) 83%, rgba(37,40,0,1) 96%, rgba(52,52,52,1) 96%);  */
+    /* background: rgb(27,26,32);
+    background: linear-gradient(166deg, rgba(27,26,32,1) 15%, rgba(103,103,103,1) 35%, rgba(78,78,78,1) 61%, rgba(97,97,97,1) 83%, rgba(37,40,0,1) 96%, rgba(52,52,52,1) 96%);  */
+    background: rgb(27,26,32);
+    background: linear-gradient(140deg, rgba(27,26,32,1) 11%, rgba(103,103,103,1) 35%, rgba(45,45,45,1) 58%, rgba(97,97,97,1) 83%, rgba(37,40,0,1) 96%, rgba(41,41,41,1) 96%); 
+
+
+
     border: 1px solid 6969696c;
     border-radius: 5px;
     width: calc(100% - 20px);
@@ -9,6 +18,13 @@
     grid-template-columns: 5;
     grid-template-rows: 9;
     grid-gap: 10px;
+    box-shadow: 5px 5px 5px rgb(139, 139, 139);
+}
+label{
+    /* color: rgb(204, 194, 1); */
+    color: white;
+    text-shadow: 1px 1px 2px rgb(139, 139, 139);
+
 }
 .credit-card-form__container input{
     width:calc(100% - 10px) ;
@@ -21,7 +37,11 @@
 }
 
 .credit-card-form__title{
+    color: rgb(216, 216, 216);
+    text-shadow: 2px 2px 2px rgb(53, 53, 53);
+
     font-size: 1.4rem;
+    margin: 0px;
     font-weight: 500;
     grid-column: 1/6;
     text-align: center;

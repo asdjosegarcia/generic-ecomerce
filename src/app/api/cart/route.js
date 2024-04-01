@@ -67,6 +67,9 @@ export async function POST(request) {
 
                 }
         })
+        // console.log(cartWithProductQuantities);
+        delete cartWithProductQuantities.password;//funcion desactivada por el momento
+
         return NextResponse.json(cartWithProductQuantities)
     }
 }

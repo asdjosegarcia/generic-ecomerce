@@ -1,0 +1,27 @@
+.CircleImgList{
+    display: flex;
+    /* max-height: 800px; */
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+ .CircleImgList div{
+    display: flex;
+
+    overflow: hidden;/* lo que sobresalga del contenedor no se mostrara */
+    box-shadow: 5px 5px 3px   rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    /* border: 1px solid rgb(233, 233, 233); */
+    border-radius: 50%; 
+    height: 110px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+ }
+
+
+
+.CircleImgList img{
+    height: 90px;
+    width: 90px;
+    object-fit: contain;
+}

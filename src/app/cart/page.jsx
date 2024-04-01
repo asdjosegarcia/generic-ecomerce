@@ -17,7 +17,6 @@ const Cart = () => {
 
   useEffect(() => {
     if (session  ) {//si params.id tiene algo
-      console.log('request');
       const request=async ()=>{
         const res = await fetch(`/api/cart`, {
           method: 'POST',

@@ -5,6 +5,7 @@ import Loading from '@/components/templates/Loading';
 import NothingHere from '@/components/organisms/NothingHere';
 import PlusSVG from '@/SVG/PlusSVG';
 import UserPurchasedCard from '@/components/molecules/UserPurchasedCard';
+import './PurchasesPage.css'
 
 
 
@@ -37,7 +38,7 @@ const page = () => {
   // console.log(getProducts)
 
   return (
-    <div>
+    <div className='PurchasesPage'>
       {(getLoading) ?
         <Loading />
         :

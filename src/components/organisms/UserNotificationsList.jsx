@@ -3,14 +3,13 @@ import './UserNotificationsList.css'
 import UserNotificationCardZero from '../molecules/UserNotificationCardZero'
 import UserNotificationCardTen from '../molecules/UserNotificationCardTen'
 import UserNotificationCardTwenty from '../molecules/UserNotificationCardTwenty'
+import './UserNotificationsList.css'
 
 
 const UserNotificationsList = (props) => {
-  // console.log(props.notifications);
-  const reversedNotifications = [...props.notifications].reverse()//invertimos la lista para tener las notificaciones nuevas primero
 
 
-  const notificationsToRender = reversedNotifications.map((notification, index) => {
+  const notificationsToRender = props.notifications.map((notification, index) => {
     switch (true) {//al ser diferente notificaciones estas tendran tipos ej notificacion por compra sera tipo 20-29 y notificacion basica tipo 10-19, tipo texto 0-9
       case (notification.type == null):
         return <p key={index}>null</p>

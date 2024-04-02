@@ -3,31 +3,32 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function POST(request) {
-    const { userEmail,notificationId } = await request.json()
+    const { userEmail, notificationId } = await request.json()
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
-        include: { 
+        include: {
             notifications: {
-                include:{
-                    notification:{
-                        include:{
-                            product:{
-                                include:{
-                                    previewImgBase:true
+                include: {
+                    notification: {
+                        orderBy: { createdAt: 'desc' },
+                        include: {
+                            product: {
+                                include: {
+                                    previewImgBase: true
                                 }
                             }
                         }
                     }
-                }
+                },
             }
-         }
+        }
     })
 
     return NextResponse.json(user.notifications)
 }
 
 export async function DELETE(request) {
-    const { userEmail,id } = await request.json()
+    const { userEmail, id } = await request.json()
     const notificationDeleted = await prisma.notification.delete({
         where: { id: id },
     })
@@ -37,13 +38,13 @@ export async function DELETE(request) {
 
 export async function PATCH(request) {
     //editamos una notificacion en particular o creamos una notificacion dentro de Notifications
-    const { userEmail, type, title, description, icon, link,id,productId } = await request.json()
-    console.log(userEmail,id);
+    const { userEmail, type, title, description, icon, link, id, productId } = await request.json()
+    console.log(userEmail, id);
     const user = await prisma.user.findUnique({
         where: { email: userEmail },
         include: { notifications: true }
     })
-    if(!id){
+    if (!id) {
         let newNotification;
         switch (true) {//al ser diferente notificaciones estas tendran tipos ej notificacion por compra sera tipo 20-29 y notificacion basica tipo 10-19, tipo texto 0-9
             case (type == null):
@@ -58,7 +59,7 @@ export async function PATCH(request) {
                         notificationsId: user.notifications.id
                     }
                 })
-    
+
                 break;
             case (type < 20):
                 newNotification = await prisma.notification.create({
@@ -71,7 +72,7 @@ export async function PATCH(request) {
                         notificationsId: user.notifications.id
                     }
                 })
-    
+
                 break;
             case (type < 30):
                 newNotification = await prisma.notification.create({
@@ -82,8 +83,8 @@ export async function PATCH(request) {
                         icon: icon,//aun no se me ocurre la mejor forma de manejar iconos
                         link: link,
                         notificationsId: user.notifications.id,
-                        product:{
-                            connect:[{id:productId}]
+                        product: {
+                            connect: [{ id: productId }]
                         }
                     }
                 })
@@ -91,12 +92,12 @@ export async function PATCH(request) {
             default:
         }
         return NextResponse.json(newNotification)
-    }else{
+    } else {
         //buscamos la notificacion que corresponda segun el id y la marcamos con true
-        const viewNotificacion = await prisma.notification.update({ 
+        const viewNotificacion = await prisma.notification.update({
             where: { id: id },
-            data:{
-                view:true
+            data: {
+                view: true
             }
 
         })

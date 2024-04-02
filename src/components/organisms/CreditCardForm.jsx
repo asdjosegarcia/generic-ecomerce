@@ -4,26 +4,47 @@ import { useSession } from "next-auth/react";
 import "./CreditCardForm.css";
 import PuchaseComplete from "@/components/organisms/PuchaseComplete";
 
+
+let prodcutsToBuy=[]
 const CreditCardForm = (props) => {
   const { data: session } = useSession();
   const [getPuchaseComplete,setPuchaseComplete]=useState(null)//despues lo cambiamos por false
+  // console.log(props.products);
  
-  //add product to userPurchases
-  // console.log(props?.product?.id)
+
   const request=async ()=>{
-    const res = await fetch(`/api/user/purchases`, {
+    props.products.map((product)=>{
+      prodcutsToBuy.push({productId:product.id,units:product.cartProductQuantities[0].quantity})
+    })
+    // const res = await fetch(`/api/user/purchases`, {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     userEmail:session.user.email,
+    //     productId:await props.product.id, // el await solo es para vitar cualquier bug 
+    //     paymentType:"credit card"
+    //   }),
+    // });
+    // const data = await res.json();
+    // console.log(await data)
+
+
+
+        const res = await fetch(`/api/user/purchases`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         userEmail:session.user.email,
-        productId:await props.product.id, // el await solo es para vitar cualquier bug 
-        paymentType:"credit card"
+        paymentType:"credit card",
+        products:prodcutsToBuy
       }),
     });
-    const data = await res.json();
-    console.log(await data)
+    // const data = await res.json();
+    // console.log(await data)
     if(res.ok){
       setPuchaseComplete(true)
     }else{

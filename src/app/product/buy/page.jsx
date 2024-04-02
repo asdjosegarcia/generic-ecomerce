@@ -58,7 +58,7 @@ const page = () => {
         <p className='ProductBugPage__summary--total-price'>${totalProductsPrice}</p>
         </div>
       </section>
-      <CreditCardForm product={20}></CreditCardForm>
+      <CreditCardForm products={contexto.getCart.products}></CreditCardForm>
     </div>
   )
 }

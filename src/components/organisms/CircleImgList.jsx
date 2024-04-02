@@ -5,11 +5,11 @@ import './CircleImgList.css'
 
 const CircleImgList = (props) => {
   const contexto = useContext(variableContext)
-    console.log(props.products);
+    // console.log(props.products);
 
   const image=(product)=>{
     let imageSrc;
-    console.log(product);
+    // console.log(product);
     if(product.previewImg==""){
       imageSrc= contexto.bytesToBase(product.previewImgBase.data.data,product.previewImgBase.mimetype)
     }else{

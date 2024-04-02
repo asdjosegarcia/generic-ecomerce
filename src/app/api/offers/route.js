@@ -14,6 +14,9 @@ export async function POST(request) {
     if(categoryId=='all'){
         products=await prisma.product.findMany({
             where:{discount:{gt: 0 }},// "gt" greater than (mayor que)
+            include:{
+                previewImgBase:true
+            }
         })
             products={
                 // name:"all",

@@ -20,7 +20,7 @@
     grid-gap: 10px;
     box-shadow: 5px 5px 5px rgb(139, 139, 139);
 }
-label{
+.credit-card-form__container label{
     /* color: rgb(204, 194, 1); */
     color: white;
     text-shadow: 1px 1px 2px rgb(139, 139, 139);

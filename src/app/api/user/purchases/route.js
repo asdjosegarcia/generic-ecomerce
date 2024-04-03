@@ -21,7 +21,7 @@ export async function POST(request) {
 export async function PATCH(request) {
     const { userEmail,productId,units,paymentType,products } = await request.json()
     if(products){
-        console.log();
+        // console.log();
 
         const user = await prisma.user.findUnique({
             where: { email: userEmail },

@@ -1,0 +1,21 @@
+meta {
+  name: UPDATE-porducts-quantity
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/api/cart
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email":"user21@gmail.com",
+    "products":[
+      {"prodcutId":10,"quantity":5},
+      {"prodcutId":15,"quantity":5}
+    ]
+  }
+}

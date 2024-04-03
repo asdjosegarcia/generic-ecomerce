@@ -45,6 +45,8 @@ export async function POST(request) {
         });
         const response = `Product ${productId} x${productQuantity} added to cart`
         return NextResponse.json(response)
+
+
     } else {
         const user = await prisma.user.findUnique({
             where: { email: email },
@@ -54,18 +56,18 @@ export async function POST(request) {
         })
         const cartWithProductQuantities = await prisma.cart.findUnique({//
             where: { id: user.cart.id },
-                include: {
-                    products: {
-                        include: {
-                            previewImgBase: true,
-                            cartProductQuantities: {
-                                where: { cartId: user.cart.id }
-                            },
-
+            include: {
+                products: {
+                    include: {
+                        previewImgBase: true,
+                        cartProductQuantities: {
+                            where: { cartId: user.cart.id }
                         },
-                    },
 
-                }
+                    },
+                },
+
+            }
         })
         // console.log(cartWithProductQuantities);
         delete cartWithProductQuantities.password;//funcion desactivada por el momento
@@ -99,4 +101,29 @@ export async function DELETE(request) {
     return NextResponse.json(updatedCart)
 }
 
+export async function PATCH(request) {
+    const { email, password, products } = await request.json()
+    const user = await prisma.user.findUnique({
+        where: { email: email },
+        include: {
+            cart: true
+        },
+    })
+
+    products.map(async(product) => {
+         await prisma.cartProductQuantity.updateMany({
+            where: {
+                cartId: user.cart.id,//esto podria evitarse usando directamente la id del product quantity pero no lo voy a hacer por falta de tiempo
+                productId: product.id
+            },
+            data: {
+                quantity: product.quantity
+            }
+        });
+    })
+
+
+    return NextResponse.json(`ok`)
+
+}
 

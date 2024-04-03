@@ -68,7 +68,7 @@ export async function PATCH(request) {
                     link: '/user/purchases',
                     notificationsId: user.notifications.id,
                     product:{
-                        connect:[{id:productId}]
+                        connect:[{id:product.productId}]
                     }
                 }
             })

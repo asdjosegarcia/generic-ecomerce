@@ -1,53 +1,40 @@
 "use client'"
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import "./CreditCardForm.css";
 import PuchaseComplete from "@/components/organisms/PuchaseComplete";
 
 
-let prodcutsToBuy=[]
+let prodcutsToBuy = []
 const CreditCardForm = (props) => {
   const { data: session } = useSession();
-  const [getPuchaseComplete,setPuchaseComplete]=useState(null)//despues lo cambiamos por false
+  const [getPuchaseComplete, setPuchaseComplete] = useState(null)//despues lo cambiamos por false
   // console.log(props.products);
- 
 
-  const request=async ()=>{
-    props.products.map((product)=>{
-      prodcutsToBuy.push({productId:product.id,units:product.cartProductQuantities[0].quantity})
+  const request = async () => {
+    props.products.map((product) => {
+      prodcutsToBuy.push({ //añadimos la id del prodcuto y la cantidad a  el array, para luego enviarlo en la peticion
+        productId: product.id,
+         units:(product.cartProductQuantities)? product.cartProductQuantities[0].quantity : props.quantity  //si no tiene cantidad la tomamos de props
+        })
     })
-    // const res = await fetch(`/api/user/purchases`, {
-    //   method: 'PATCH',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     userEmail:session.user.email,
-    //     productId:await props.product.id, // el await solo es para vitar cualquier bug 
-    //     paymentType:"credit card"
-    //   }),
-    // });
-    // const data = await res.json();
-    // console.log(await data)
 
-
-
-        const res = await fetch(`/api/user/purchases`, {
+    const res = await fetch(`/api/user/purchases`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userEmail:session.user.email,
-        paymentType:"credit card",
-        products:prodcutsToBuy
+        userEmail: session.user.email,
+        paymentType: "credit card",
+        products: prodcutsToBuy
       }),
     });
     // const data = await res.json();
     // console.log(await data)
-    if(res.ok){
+    if (res.ok) {
       setPuchaseComplete(true)
-    }else{
+    } else {
       alert('error')
     }
   }
@@ -67,18 +54,18 @@ const CreditCardForm = (props) => {
       <input className="credit-card-form__number-input" type="text" />
       <label className="credit-card-form__expiration-mm">Expiration date</label>
       <div className="credit-card-form__expiration-input">
-      <input className="credit-card-form__expirtation-mm-input" /* type="number" */ placeholder="MM" maxLength="2" /* min="1" max="12" */ />
-      <p>/</p>
-      <input className="credit-card-form__expiration-yy-input" /* type="number" */ placeholder="YY" maxLength="2" /* min="0" max="99" */ />
+        <input className="credit-card-form__expirtation-mm-input" /* type="number" */ placeholder="MM" maxLength="2" /* min="1" max="12" */ />
+        <p>/</p>
+        <input className="credit-card-form__expiration-yy-input" /* type="number" */ placeholder="YY" maxLength="2" /* min="0" max="99" */ />
       </div>
       <div className="credit-card-form__credit-cards-logos">
-      <img src="/img/visa-logo.png" alt="" />
-      <img src="/img/mastercard-logo.png" alt="" />
+        <img src="/img/visa-logo.png" alt="" />
+        <img src="/img/mastercard-logo.png" alt="" />
       </div>
       {/* <input type="date" id="expiracion" name="expiracion" min="2022-01" max="2030-12"></input> */}
-      <button onClick={()=>request()}  className="credit-card-form__confirm-button"  >Confirm </button>
-    {getPuchaseComplete && (<PuchaseComplete username={session?.user?.name}></PuchaseComplete>)}
-      
+      <button onClick={() => request()} className="credit-card-form__confirm-button"  >Confirm </button>
+      {getPuchaseComplete && (<PuchaseComplete username={session?.user?.name}></PuchaseComplete>)}
+
     </div>
   );
 };

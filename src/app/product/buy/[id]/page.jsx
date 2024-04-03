@@ -19,6 +19,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
         })
     }
 }, [])
+// console.log(getProduct);
 
  
 
@@ -27,7 +28,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
     {getProduct &&(
         <ProductCard product={getProduct}></ProductCard>)
     }
-    <CreditCardForm product={getProduct}></CreditCardForm>
+    <CreditCardForm products={[getProduct]} quantity={1}></CreditCardForm>
       
 
       

@@ -34,7 +34,7 @@ const ProductsSumary = (props) => {
             <p className='product-summary__total'>Total</p>
             <p className='product-summary__total-total'>${(totalProductsPrice+totalShipmentPrice).toFixed(2)}</p>
             <Link href={'/product/buy'}>
-                <MainButton text={`Buy (${quantityOfProducts})`} />
+                <MainButton funct={props.function} text={`Buy (${quantityOfProducts})`} />
             </Link>
 
         </div>

@@ -12,7 +12,7 @@ const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
 
   useEffect(() => {
-    if (session && !contexto.getCart.prodcuts) {
+    if (session /* && !contexto.getCart.prodcuts */) {
       // console.log('HOLA');
       const request = async () => {
         const res = await fetch(`/api/cart`, {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev && start http://localhost:3000",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,7 +15,8 @@
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.49.2"
+    "react-hook-form": "^7.49.2",
+    "vercel": "^33.6.3"
   },
   "devDependencies": {
     "bcrypt": "^5.1.1",

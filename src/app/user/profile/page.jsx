@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState, useContext } from 'react'
 import './UserProfilePage.css'
+import { useSession } from 'next-auth/react';
 import { variableContext } from "@/context/contexto";
 import CopySVG from '@/SVG/CopySVG';
 import AddPhotoSVG from '@/SVG/AddPhotoSVG';
@@ -18,9 +19,10 @@ let createdAt;
 let updatedAt;
 let profileimg;
 const page = () => {
+  const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getUserData, setUserData] = useState()
   const [getAddImage, setAddImage] = useState(false)
-  const [getProfileImg,setProfileImg]=useState('')
+  const [getProfileImg, setProfileImg] = useState('')
   const [getImage, setImage] = useState()
   const contexto = useContext(variableContext)
 
@@ -33,20 +35,22 @@ const page = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userEmail: "user8@gmail.com" }),
+        body: JSON.stringify({ userEmail: session?.user.email }),
       });
       const data = await res.json();
       setUserData(data)
       console.log(await data)
       /////////////////////segunda peticion en caso de que le usuario no tenga imagen de perfil
-      if (data.userProfileImg) {
+      if (data.userProfileImg?.data) {
         setProfileImg(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
       } else {
-        setProfileImg( `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`)
+        setProfileImg(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`)
       }
     }
-    request()
-  }, [])
+    if (session?.user) {
+      request()
+    }
+  }, [session])
 
 
   //////////////////////Manejo de fechas
@@ -101,7 +105,7 @@ const page = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            userEmail: "user8@gmail.com",
+            userEmail: session?.user.email,
             imgMimetype: getImage.imgType,
             imgData: getImage.imgData,
           }),
@@ -111,13 +115,13 @@ const page = () => {
         // console.log(await data)
         if (res.ok) {
           setAddImage(false)//cerramos el menu
-          setProfileImg('data:'+getImage.imgType +';base64,'+getImage.imgData )
+          setProfileImg('data:' + getImage.imgType + ';base64,' + getImage.imgData)
 
-          console.log('perfileImg',contexto.bytesToBase(getImage.imgData, getImage.imgType));
+          console.log('perfileImg', contexto.bytesToBase(getImage.imgData, getImage.imgType));
           contexto.setNotificationText('Picture Updated')
           // setReload(!getReload)
-        }else{
-          contexto.setNotificationText('Error') 
+        } else {
+          contexto.setNotificationText('Error')
         }
       }
       request()

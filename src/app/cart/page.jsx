@@ -13,12 +13,9 @@ import ProductsSumary from '@/components/molecules/ProductsSumary';
 const Cart = () => {
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
-  console.log('primer log');
 
   useEffect(() => {
     if (session) {//si params.id tiene algo
-      console.log('session',session);
-      console.log('contexto',contexto);
       const request = async () => {
         const res = await fetch(`/api/cart`, {
           method: 'POST',
@@ -28,7 +25,6 @@ const Cart = () => {
           body: JSON.stringify({ email: session.user.email }),
         });
         const data = await res.json();
-        console.log('data',data);
         contexto.setCart({ ...contexto.getCart, products: data.products, porductsQuantity: data.products.length })//cargamos el array de porductos en el contexto
       }
       request()

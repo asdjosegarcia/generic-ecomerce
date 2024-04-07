@@ -57,6 +57,11 @@ export async function POST(request) {//creacion de usuario
                 userProducts: {
                     create: {}
                 },
+                userProfileImg:{
+                    create:{
+                        mimetype:""
+                    }
+                },
                 notifications: {//creamos la notificacion ya relaciona a el usuario
                     create: {
                         notification: {
@@ -77,7 +82,8 @@ export async function POST(request) {//creacion de usuario
 
                         }
                     }
-                }
+                },
+
             }
         })
         const { password: _, ...user } = newUser//copiamos el usuario sin password

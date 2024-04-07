@@ -9,6 +9,7 @@ export const config = {
       '/user/notifications',
       '/user/purchases',
       '/user/products',
+      '/user/profile'
     ]
 
 

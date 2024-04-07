@@ -39,7 +39,7 @@ const page = () => {
       });
       const data = await res.json();
       setUserData(data)
-      console.log(await data)
+      // console.log(await data)
       /////////////////////segunda peticion en caso de que le usuario no tenga imagen de perfil
       if (data.userProfileImg?.data) {
         setProfileImg(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
@@ -96,7 +96,7 @@ const page = () => {
   }
   /////////////////////////Update Picture
   const imageUpdater = () => {
-    console.log(getImage);
+    // console.log(getImage);
     if (getImage) { //verificamos que tengamos una iamgen cargada en el input
       const request = async () => {
         const res = await fetch(`/api/user/profile`, {

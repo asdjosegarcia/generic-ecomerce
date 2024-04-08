@@ -13,8 +13,10 @@ export async function GET() {
   return NextResponse.json(products);
 }
 
+
 let response = "";
 export async function POST(request) {
+  // console.log(await request.json());
   const {
     title,
     price,
@@ -40,6 +42,7 @@ export async function POST(request) {
       email: sellerEmail, //lo que coincida con el email
     },
   });
+  console.log('seller', seller);
   const newProduct = await prisma.product.create({
     //linea para crear datos en nuestra base de datos
     data: {
@@ -76,7 +79,7 @@ export async function POST(request) {
         },
       },
       userProducts: {
-        connect: { id: seller.id }, //conectamos con userProducts
+        connect: { userId: seller.id }, //conectamos con userProducts
       },
     },
     include: {
@@ -129,10 +132,10 @@ export async function DELETE(request) {
       where: { id: product.id },//buscamos el producto mediante su id
       data: {
         category: {
-          disconnect: product.category.map((c) =>({id:Number( c.id)}))//recorremos el array de categorias, extaemos su Id y le indicamos que desconecte las id de cada una de las categorias
+          disconnect: product.category.map((c) => ({ id: Number(c.id) }))//recorremos el array de categorias, extaemos su Id y le indicamos que desconecte las id de cada una de las categorias
         }
       }
-    })  
+    })
 
 
     await prisma.comment.deleteMany({
@@ -172,7 +175,7 @@ export async function DELETE(request) {
     })
     response = "Product Deleted";
   } else {
-    response = "Prodcut not found"
+    response = "Product not found"
   }
 
   return NextResponse.json(response);

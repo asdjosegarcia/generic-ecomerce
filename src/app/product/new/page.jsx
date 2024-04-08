@@ -203,7 +203,7 @@ const page = () => {
             pattern="^\d*(\.\d{0,2})?$" //decimales
             min={0}
             max={99}
-            maxlength="2"
+            maxLength="2"
             inputMode="numeric" //teclado numerico en mobiles
             placeholder="25"
           ></input>

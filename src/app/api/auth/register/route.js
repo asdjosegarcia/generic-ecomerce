@@ -55,7 +55,7 @@ export async function POST(request) {//creacion de usuario
                     create: {}//creamos la relacion
                 },
                 userProducts: {
-                    create: {}
+                    create: { }
                 },
                 userProfileImg:{
                     create:{

@@ -46,7 +46,7 @@ const page = () => {
         :
         <>
           <div className='UserProductPage'>
-            {(getProducts?.length > 0) ?
+            {(getProducts?.products.length > 0) ?
               <>
                 {getProducts.products.map((product, index) => (<UserProductCard getReaload={getReaload} setReload={setReload} key={index} product={product}></UserProductCard>))}
                 <Link href='/product/new/'>

@@ -1,5 +1,5 @@
 .input__container {
-  background-color: #fef9c3;
+  background-color: #fdfcf2;
   border-radius: 5px;
   grid-column: 2/3;
   width: 100%;
@@ -16,6 +16,9 @@
   font-size: 1.2rem;
   color: dimgrey;
   border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 400;
+
 }
 .input__container input:focus{
     outline: none;
@@ -30,7 +33,7 @@
 
 
 .input__container .input__icon {
-  font-size: 2.2rem;
+  font-size: 2.0rem;
   position: absolute;
 }
 @keyframes horizontalInputExpancion {

@@ -10,7 +10,7 @@ const page = () => {
   return (
 
         <div className='OffersPage OffersPage__container'>
-          {getLoading && <Loading background={'white'}/>}
+          {getLoading && <Loading backgroundColor={"rgba(160, 160, 160, 0.164)"}/>}
           <img className='OffersPage__banner-img' src='/img/banners/discount-1.jpg'></img>
           <VerticalCategoriesList link={'/api/categories/'} setLoading={setLoading}></VerticalCategoriesList>
         </div>

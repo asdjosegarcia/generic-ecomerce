@@ -2,9 +2,11 @@
 import VerticalProductList from '@/components/organisms/VerticalProductList'
 import React, { useState, useEffect } from 'react'
 import './OffersIdPage.css'
+import Loading from '@/components/templates/Loading'
 
 const Page = ({ params }) => {
   const [getProducts, setProducts] = useState(null)
+  const [getLoading, setLoading] = useState(true)
   useEffect(() => {
     if (params.id !== null && getProducts == undefined) {
       const request = async () => {
@@ -18,6 +20,7 @@ const Page = ({ params }) => {
         const data = await res.json();
         console.log(await data)
         setProducts(data)
+        setLoading(false)
       }
       request()
     }
@@ -26,16 +29,23 @@ const Page = ({ params }) => {
 
 
   return (
-    <div className='OffersIdPage'>
-      {getProducts &&
+    <>
+      {(getLoading) ?
+        <Loading />
+        :
         <>
-          <h1>{getProducts.name} </h1>
-          <h2>-75% OFF</h2>
-          <VerticalProductList products={getProducts} ></VerticalProductList>
+          <div className='OffersIdPage'>
+            {getProducts &&
+              <>
+                <h1>{getProducts.name} </h1>
+                <h2>-75% OFF</h2>
+                <VerticalProductList products={getProducts} ></VerticalProductList>
+              </>
+            }
+          </div>
         </>
       }
-
-    </div>
+    </>
   )
 }
 

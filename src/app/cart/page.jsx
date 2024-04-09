@@ -13,6 +13,8 @@ import ProductsSumary from '@/components/molecules/ProductsSumary';
 const Cart = () => {
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
+  const [getLoading, setLoading] = useState(true)
+
 
   useEffect(() => {
     if (session) {//si params.id tiene algo
@@ -26,15 +28,16 @@ const Cart = () => {
         });
         const data = await res.json();
         contexto.setCart({ ...contexto.getCart, products: data.products, porductsQuantity: data.products.length })//cargamos el array de porductos en el contexto
+        setLoading(false)
       }
       request()
     }
   }, [contexto.getNotificationText, contexto.getUserData,])
   useEffect(() => { }, [contexto.getCart])
   const updateDbCart = async () => {
-    
-    const productsToSend=contexto.getCart.products.map((product)=>{
-      return ({id:product.id,quantity:product.cartProductQuantities[0].quantity})
+
+    const productsToSend = contexto.getCart.products.map((product) => {
+      return ({ id: product.id, quantity: product.cartProductQuantities[0].quantity })
     })
 
     const res = await fetch(`/api/cart`, {
@@ -51,16 +54,22 @@ const Cart = () => {
   }
 
   return (
-    <div>
-      {contexto.getCart.products ?
-        <>
-          <CartList products={contexto.getCart.products}></CartList>
-          <ProductsSumary function={updateDbCart} products={contexto.getCart.products}></ProductsSumary>
-        </>
+    <>
+      {(getLoading) ?
+        <Loading />
         :
-        <Loading></Loading>
+        <div>
+          {contexto.getCart.products ?
+            <>
+              <CartList products={contexto.getCart.products}></CartList>
+              <ProductsSumary function={updateDbCart} products={contexto.getCart.products}></ProductsSumary>
+            </>
+            :
+            <Loading></Loading>
+          }
+        </div>
       }
-    </div>
+    </>
   )
 }
 

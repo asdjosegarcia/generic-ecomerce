@@ -21,6 +21,9 @@ a{ /* todos los text que se encuentren dentro de <Link/> */
 }
 .vertical-card__img{
     height: 100px;
+    width: 150px;
+    object-fit: contain;
+    
 }
 .vertical-card__title{
     margin: 10px 0px;

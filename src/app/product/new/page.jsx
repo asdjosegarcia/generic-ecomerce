@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 import { variableContext } from "@/context/contexto";
 import { useRouter } from 'next/navigation'
 import PlusSVG from "@/SVG/PlusSVG";
+import Loading from "@/components/templates/Loading";
 
 
 let email = ''
@@ -17,6 +18,7 @@ const page = () => {
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getCategories, setCategories] = useState(null)
   const [getError, setError] = useState();
+  const [getLoading, setLoading] = useState(false);
   const [getProduct, setProduct] = useState({
     title: "",
     price: 0,
@@ -102,6 +104,7 @@ const page = () => {
   const create = async () => {
     // console.log(getProduct);
     // console.log("create");
+    setLoading(true)
 
     const res = await fetch(`/api/products/completeproducts`, {
       method: 'POST',
@@ -114,155 +117,157 @@ const page = () => {
     if (res.ok) {
       contexto.setNotificationText('Product for sale!')
       router.push(`/product/${data.id}`)
-
     } else {
       contexto.setNotificationText('Error')
-      // console.log('error')
+      setLoading(false)
     }
 
   };
 
   return (
-    <div className="NewProdcutPage new-porduct-page__container">
-      <h1 className="new-prodcut-page__title">Sell your product!</h1>
-      <section className="new-product__name-container">
-        <p className="new-product__name-title new-product__section-title">
-          Product title:
-        </p>
-        <input
-          name="title"
-          className="new-product__name-input"
-          type="text"
-          placeholder="Samsung Galaxy x3 plus"
-          onChange={inputChange}
-        ></input>
-        {getError?.title && <p className="error">{getError.title}</p>}
-      </section>
-      <section>
-        <p className="new-product__section-title">Image:</p>
-
-        <ArchiveSelector
-          type={"image"}
-          getImage={getPreviewImage}
-          setImage={setPreviewImage}
-        ></ArchiveSelector>
-        {getError?.image && <p className="error">{getError.image}</p>}
-      </section>
-      <section className="new-product__description-container">
-        <p className="new-product__description-title new-product__section-title">
-          Description:
-        </p>
-        <textarea
-          onChange={inputChange}
-          name="description"
-          className="new-product__description-textarea"
-          placeholder="Smartphone xxx model xxxx  "
-        ></textarea>
-        {getError?.description && <p className="error">{getError.description}</p>}
-      </section>
-      <section className="new-product_category-container">
-        <p className="new-product__category-title new-product__section-title">
-          Categories:
-        </p>
-        <span className="new-product__category-span-container">
-          <form>
-            {getCategories?.map(({ id, name }) => (<label key={id} ><input type="checkbox" name="categoryIds" onChange={inputChange} value={id} /><p>{name}</p></label>))}
-          </form>
-        </span>
-      </section>
-      <section className="new-product_price-container ">
-        <p className="new-product__description-title new-product__section-title">
-          Price:
-        </p>
-        <span className="new-product__price-span-container">
+    <>
+      {getLoading && <Loading backgroundeColor={"rgba(0, 0, 0, 0.303)"}></Loading>}
+      <div className="NewProdcutPage new-porduct-page__container">
+        <h1 className="new-prodcut-page__title">Sell your product!</h1>
+        <section className="new-product__name-container">
+          <p className="new-product__name-title new-product__section-title">
+            Product title:
+          </p>
           <input
-            onChange={inputChange}
-            name="price"
-            className="new-product__price-input"
+            name="title"
+            className="new-product__name-input"
             type="text"
-            pattern="^\d*(\.\d{0,2})?$" //decimales
-            min={0}
-            max={99999}
-            inputMode="numeric" //teclado numerico en mobiles
-            placeholder="5.60"
-          ></input>
-          <p> &nbsp; $</p>
-        </span>
-        {getError?.price && <p className="error">{getError.price}</p>}
-      </section>
-
-      <section>
-        <p className="new-product__description-title new-product__section-title">
-          Discount:
-        </p>
-        <span className="new-product__discount-span-container">
-          <input
+            placeholder="Samsung Galaxy x3 plus"
             onChange={inputChange}
-            name="discount"
-            className="new-product__discount-input"
-            type="number"
-            pattern="^\d*(\.\d{0,2})?$" //decimales
-            min={0}
-            max={99}
-            maxLength="2"
-            inputMode="numeric" //teclado numerico en mobiles
-            placeholder="25"
           ></input>
-          <p> &nbsp; %</p>
-        </span>
-        {getError?.discount && <p className="error">{getError.discount}</p>}
-      </section>
+          {getError?.title && <p className="error">{getError.title}</p>}
+        </section>
+        <section>
+          <p className="new-product__section-title">Image:</p>
 
-      <section className="new-product_condition-container">
-        <p className="new-product__description-title new-product__section-title">
-          Condition:
-        </p>
-        <span className="new-product__condition-span-container">
-          <form>
-            <label>
-              <input type="radio" name="condition" value="New" onChange={inputChange} />
-              &nbsp;New&nbsp;
-            </label>
-            <label>
-              <input type="radio" name="condition" value="Used" onChange={inputChange} />
-              &nbsp;Used
-            </label>
-          </form>
-        </span>
-      </section>
-      <section className="new-product__units-container">
-        <p className="new-product__section-title">Units available:</p>
-        <input
-          name="stock"
-          onChange={inputChange}
-          className="new-product__units-input"
-          type="number"
-          defaultValue={1}
-          min={1}
-        ></input>
-        {getError?.stock && (<p className="error">{getError.stock}</p>)}
-      </section>
-      <section className="new-product_shipment-container">
-        <p className="new-product__shipment-title new-product__section-title">
-          Shipment:
-        </p>
-        <span className="new-product__shipment-span-container">
-          <form>
-            <label>
-              <input type="radio" name="shipment" value="Auto" onChange={inputChange} />
-              &nbsp;Auto&nbsp;
-            </label>
-            <label>
-              <input type="radio" name="shipment" value={0} onChange={inputChange} />
-              &nbsp;Free
-            </label>
-          </form>
-        </span>
-      </section>
-      <section className="new-product_create-container">
-        <MainButton text={"Create"} funct={create} icon={<PlusSVG></PlusSVG>}></MainButton>
-      </section>
-    </div>
+          <ArchiveSelector
+            type={"image"}
+            getImage={getPreviewImage}
+            setImage={setPreviewImage}
+          ></ArchiveSelector>
+          {getError?.image && <p className="error">{getError.image}</p>}
+        </section>
+        <section className="new-product__description-container">
+          <p className="new-product__description-title new-product__section-title">
+            Description:
+          </p>
+          <textarea
+            onChange={inputChange}
+            name="description"
+            className="new-product__description-textarea"
+            placeholder="Smartphone xxx model xxxx  "
+          ></textarea>
+          {getError?.description && <p className="error">{getError.description}</p>}
+        </section>
+        <section className="new-product_category-container">
+          <p className="new-product__category-title new-product__section-title">
+            Categories:
+          </p>
+          <span className="new-product__category-span-container">
+            <form>
+              {getCategories?.map(({ id, name }) => (<label key={id} ><input type="checkbox" name="categoryIds" onChange={inputChange} value={id} /><p>{name}</p></label>))}
+            </form>
+          </span>
+        </section>
+        <section className="new-product_price-container ">
+          <p className="new-product__description-title new-product__section-title">
+            Price:
+          </p>
+          <span className="new-product__price-span-container">
+            <input
+              onChange={inputChange}
+              name="price"
+              className="new-product__price-input"
+              type="text"
+              pattern="^\d*(\.\d{0,2})?$" //decimales
+              min={0}
+              max={99999}
+              inputMode="numeric" //teclado numerico en mobiles
+              placeholder="5.60"
+            ></input>
+            <p> &nbsp; $</p>
+          </span>
+          {getError?.price && <p className="error">{getError.price}</p>}
+        </section>
+
+        <section>
+          <p className="new-product__description-title new-product__section-title">
+            Discount:
+          </p>
+          <span className="new-product__discount-span-container">
+            <input
+              onChange={inputChange}
+              name="discount"
+              className="new-product__discount-input"
+              type="number"
+              pattern="^\d*(\.\d{0,2})?$" //decimales
+              min={0}
+              max={99}
+              maxLength="2"
+              inputMode="numeric" //teclado numerico en mobiles
+              placeholder="25"
+            ></input>
+            <p> &nbsp; %</p>
+          </span>
+          {getError?.discount && <p className="error">{getError.discount}</p>}
+        </section>
+
+        <section className="new-product_condition-container">
+          <p className="new-product__description-title new-product__section-title">
+            Condition:
+          </p>
+          <span className="new-product__condition-span-container">
+            <form>
+              <label>
+                <input type="radio" name="condition" value="New" onChange={inputChange} />
+                &nbsp;New&nbsp;
+              </label>
+              <label>
+                <input type="radio" name="condition" value="Used" onChange={inputChange} />
+                &nbsp;Used
+              </label>
+            </form>
+          </span>
+        </section>
+        <section className="new-product__units-container">
+          <p className="new-product__section-title">Units available:</p>
+          <input
+            name="stock"
+            onChange={inputChange}
+            className="new-product__units-input"
+            type="number"
+            defaultValue={1}
+            min={1}
+          ></input>
+          {getError?.stock && (<p className="error">{getError.stock}</p>)}
+        </section>
+        <section className="new-product_shipment-container">
+          <p className="new-product__shipment-title new-product__section-title">
+            Shipment:
+          </p>
+          <span className="new-product__shipment-span-container">
+            <form>
+              <label>
+                <input type="radio" name="shipment" value="Auto" onChange={inputChange} />
+                &nbsp;Auto&nbsp;
+              </label>
+              <label>
+                <input type="radio" name="shipment" value={0} onChange={inputChange} />
+                &nbsp;Free
+              </label>
+            </form>
+          </span>
+        </section>
+        <section className="new-product_create-container">
+          <MainButton text={"Create"} funct={create} icon={<PlusSVG></PlusSVG>}></MainButton>
+        </section>
+      </div>
+    </>
   );
 };
 

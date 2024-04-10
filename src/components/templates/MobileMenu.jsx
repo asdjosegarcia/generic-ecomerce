@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 import './MobileMenu.css'
 import UserSVG from '@/SVG/UserSVG'
 import Link from 'next/link'
@@ -18,7 +18,7 @@ import InventorySVG from '@/SVG/InventorySVG'
 import CartSVG from '@/SVG/CartSVG'
 
 
-
+let profileImgSrc= ''
 
 const MobileMenu = (props) => {
   const { data: session } = useSession();
@@ -35,6 +35,34 @@ const MobileMenu = (props) => {
     contexto.focusSearch()
   }
 
+  useEffect(() => {
+    const request=async ()=>{
+      const res = await fetch(`/api/user/profile`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({userEmail:session?.user?.email}),
+      });
+      const data = await res.json();
+      console.log(await data)
+      if(data.userProfileImg?.data?.data){
+        console.log('data');
+        profileImgSrc=contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype)
+      }else{
+        console.log('online');
+        profileImgSrc=`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`
+      }
+
+    }
+    if(session){
+      request()
+    }
+  
+   
+  }, [session])
+  
+
   // console.log(session)
 
 
@@ -44,8 +72,8 @@ const MobileMenu = (props) => {
       <div className='mobile-menu__container'>
         <div className='mobile-menu__user' >
           <div className="mobile-menu__user-img">
-            <UserSVG width={"100%"} fill={'#696969'}></UserSVG>
-            {/* <img></img> */}
+            {/* <UserSVG width={"100%"} fill={'#696969'}></UserSVG> */}
+            <img src={profileImgSrc}></img>
           </div>
           {(!session?.user?.name) ?
             <Link className='mobile-menu__username-link' href='/auth/login'>

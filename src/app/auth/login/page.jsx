@@ -42,7 +42,7 @@ const LoginPage = () => {
         <form onSubmit={onSubmit} className=''>{/* una vez completado el formulario ejecuta la funcion onSubmit, que ejecuta handle submit */}
           <h1 className="">Login</h1>
           <label htmlFor="email" className="">Email</label>{/* texto superior */}
-          <input type="text" {...(register("email", { required: { value: true, message: 'Email is required' } }))} placeholder="yourUser123@email.com" value={"TestUser1@gmail.com"} className="" />
+          <input type="text" {...(register("email", { required: { value: true, message: 'Email is required' } }))} placeholder="yourUser123@email.com" defaultValue={"TestUser1@gmail.com"} className="" />
           {
             errors.email && (//si error.email existe
               <span className="">{errors.email.message}</span>//se crea este span
@@ -50,7 +50,7 @@ const LoginPage = () => {
           }
           <br></br>
           <label htmlFor="password" className="">Password</label>{/* texto superior */}
-          <input type="password" {...(register("password", { required: { value: true, message: 'Password is required' } }))} value={"testuser1"} placeholder="******" className="" />
+          <input type="password" {...(register("password", { required: { value: true, message: 'Password is required' } }))} defaultValue={"testuser1"} placeholder="******" className="" />
           {
             errors.password && (//si error.password existe
               <span className="">{errors.password.message}</span>//se crea este span

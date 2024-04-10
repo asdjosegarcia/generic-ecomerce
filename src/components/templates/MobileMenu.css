@@ -35,10 +35,13 @@
     /* background-color: ; */
     /* border: 2px solid #fff159; */
     /* color: #fff159; */
-    color:#696969 ;
-    background-color: #fef9c3;
+    /* color:#696969 ; */
+    color: white;
+    /* background-color: #fef9c3; */
+    background: rgb(27,26,32);
+    background: linear-gradient(140deg, rgba(27,26,32,1) 11%, rgba(170,170,170,1) 35%, rgba(45,45,45,1) 54%, rgba(0,0,0,1) 68%, rgba(62,62,62,1) 83%, rgba(0,0,0,1) 91%, rgba(37,40,0,1) 96%);  
     /* background-color: rgb(231, 231, 231); */
-
+    text-shadow: 1px 1px 1px #ffffff38;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(2,50px);
@@ -49,7 +52,14 @@
     align-self: center;
     border-radius: 50%;
     border: 3px solid #fff159 ;
-    margin: 10px;
+    margin: auto;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+.mobile-menu__user-img img{
+    height: 80px;
+    width: 80px;
 }
 .mobile-menu__username-link{
     color:white;
@@ -79,7 +89,7 @@
     grid-row: 2/3;
     background-color: #00000000;
     border: none;
-    color: #003cb5;
+    color: #07b1ff;
     font-size: 1.2rem;
 }
 .mobile-menu__options button{

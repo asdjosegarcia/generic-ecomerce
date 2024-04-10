@@ -6,6 +6,7 @@ import MainButton from "@/components/atoms/MainButton";
 import { useSession } from 'next-auth/react';
 import { variableContext } from "@/context/contexto";
 import { useRouter } from 'next/navigation'
+import PlusSVG from "@/SVG/PlusSVG";
 
 
 let email = ''
@@ -259,7 +260,7 @@ const page = () => {
         </span>
       </section>
       <section className="new-product_create-container">
-        <MainButton text={"Create"} funct={create}></MainButton>
+        <MainButton text={"Create"} funct={create} icon={<PlusSVG></PlusSVG>}></MainButton>
       </section>
     </div>
   );

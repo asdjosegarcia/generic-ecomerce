@@ -17,7 +17,7 @@ const LoginPage = () => {
   const onSubmit = handleSubmit(async data => { //data es la informacion que tomamos del usuario
     const res = await signIn('credentials', {//signIn es una funcion de next-auth para el logueo, ya sea con google,facebook etc, por defecto nos redirecciona
 
-      email: data.email,
+      email: data.email.toLowerCase(),
       password: data.password,
       redirect: false,//para evitar el redireccionamiento al loguearse
     })
@@ -42,7 +42,7 @@ const LoginPage = () => {
         <form onSubmit={onSubmit} className=''>{/* una vez completado el formulario ejecuta la funcion onSubmit, que ejecuta handle submit */}
           <h1 className="">Login</h1>
           <label htmlFor="email" className="">Email</label>{/* texto superior */}
-          <input type="text" {...(register("email", { required: { value: true, message: 'Email is required' } }))} placeholder="yourUser123@email.com" className="" />
+          <input type="text" {...(register("email", { required: { value: true, message: 'Email is required' } }))} placeholder="yourUser123@email.com" value={"TestUser1@gmail.com"} className="" />
           {
             errors.email && (//si error.email existe
               <span className="">{errors.email.message}</span>//se crea este span
@@ -50,7 +50,7 @@ const LoginPage = () => {
           }
           <br></br>
           <label htmlFor="password" className="">Password</label>{/* texto superior */}
-          <input type="password" {...(register("password", { required: { value: true, message: 'Password is required' } }))} placeholder="******" className="" />
+          <input type="password" {...(register("password", { required: { value: true, message: 'Password is required' } }))} value={"testuser1"} placeholder="******" className="" />
           {
             errors.password && (//si error.password existe
               <span className="">{errors.password.message}</span>//se crea este span

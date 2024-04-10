@@ -12,6 +12,7 @@ import { useSession } from 'next-auth/react';
 
 const page = ({ params }) => {//recivimos la id del producto en el que clikeamos como un {id:5}
   const [getProduct, setProduct] = useState(null)//aqui cargaremos los datos del produto
+  const [getLoading,setLoading]=useState(true)
   const { data: session } = useSession();//cargamos datos del usuario en session   
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
         const data = await res.json();
         // console.log(await data)
         setProduct(data)
+        setLoading(false)
       }
       request()
     }
@@ -36,7 +38,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
 
   return (
     <>
-      {(getProduct) ?
+      {(!getLoading && getProduct) ?
         <>
           <ProductMain product={getProduct}></ProductMain>
           <PorductQuestionList product={getProduct}></PorductQuestionList>

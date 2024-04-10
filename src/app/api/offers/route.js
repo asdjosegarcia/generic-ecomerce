@@ -10,7 +10,6 @@ export async function GET(request, { params }) {//nos da 5 prodcutos que tengan 
           previewImgBase:true
         }
       })
-      console.log(products);
       products=[{ //lo entregamos asi por que no quiero editar el frontend
         products:products
     }]

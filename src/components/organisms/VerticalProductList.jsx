@@ -12,7 +12,6 @@ const VerticalProductList = (props) => {
         .then(res => res.json())//tranformamos la respuesta a json y almacenamos en data
         .then(data => {
           setProducts(data[0].products)
-          console.log(data[0].products);
         })
     }
     else {

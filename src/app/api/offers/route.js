@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 export async function GET(request, { params }) {//nos da 5 prodcutos que tengan un descuento mayor a 0
     let products = await prisma.product.findMany({
         where: {discount:{gt: 0 }},
-        take: 5,
+        take: 6,
         include:{
           previewImgBase:true
         }

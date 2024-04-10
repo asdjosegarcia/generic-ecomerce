@@ -21,18 +21,19 @@ const Registerpage = () => {
     const [getPasswordNoMatch, setPasswordNoMatch] = useState(null)
 
 
-    const onSubmit = handleSubmit(async (data) => {//
-        // console.log(data) datos que enviamos
 
+    const onSubmit = handleSubmit(async (data) => {//
+        console.log('submit');
         if (data.password !== data.confirmPassword) {//comprobamos si contraseña y confirmarcontraseña no coinciden
             // alert("password do not match")
             setPasswordNoMatch("Password does not match")
         } else {
+            setLoading(true)
             const res = await fetch('/api/auth/register', {//enviamos los datos a register
                 method: 'POST',
                 body: JSON.stringify({//transformamos el objeto a JSON
                     username: data.username,//enviamos los datos de data por separado
-                    email: data.email,
+                    email: data.email.toLowerCase(),
                     password: data.password
                 }),
                 headers: {
@@ -42,15 +43,13 @@ const Registerpage = () => {
             if (res.ok) {//comprobamos respuesta
                 router.push('/auth/login')//si todo sale bien al ejecutar la funcion redirifimos a el usuario a el Login
             } else {
+                setLoading(false)
                 const errorResponse = await res.json()
                 setError(errorResponse.message)
-                console.log(errorResponse.message)
-                setLoading(false)
-
             }
         }
-    })
 
+    })
 
 
     return (
@@ -95,10 +94,8 @@ const Registerpage = () => {
                     {
                         error && (<p>{error}</p>)
                     }
-                    <button onClick={() => { setLoading(true) }}>Register</button>
+                    <button >Register</button>
                     <button className="register--form__login" onClick={() => router.push('/auth/login')}>Login</button>
-
-
                 </form>
             </div>
         </>

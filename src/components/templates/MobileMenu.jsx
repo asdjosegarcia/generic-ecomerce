@@ -53,6 +53,7 @@ const MobileMenu = (props) => {
           reader.onloadend = () => {//cuando se complete la lectura ejecuta
             // const base64data = reader.result; //resultado de la lectura
             setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
+            sessionStorage.setItem('imgSrc',reader.result)
               ;
           }
         }
@@ -61,12 +62,11 @@ const MobileMenu = (props) => {
     }
 
 
-
     if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
       request()
       onlyRequest = false
     } else {
-      setImgSrc(sessionStorage.getItem('imgSrc'))
+      setImgSrc(sessionStorage.getItem('imgSrc'));
     }
   }, [session])
 

@@ -72,6 +72,8 @@
     background-color: #3483fa;
     border-radius: 5px;
     text-align: center;
+    margin: 10px;
+
 }
 .mobile-menu__username-button{
     color: aliceblue;

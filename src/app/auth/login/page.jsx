@@ -62,7 +62,7 @@ const LoginPage = () => {
           <button className="" onClick={() => { setLoading(true) }}>
             Login
           </button>
-          <button className='login--form__register' onClick={() => { router.push('/auth/register') }}>Register</button>
+          <button className='login--form__register' onClick={(event) => { event.preventDefault(); router.push('/auth/register') }}>Register</button>
         </form>
       </div>
     </>

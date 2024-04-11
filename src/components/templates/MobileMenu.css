@@ -60,6 +60,8 @@
 .mobile-menu__user-img img{
     height: 80px;
     width: 80px;
+    object-fit: cover;
+
 }
 .mobile-menu__username-link{
     color:white;

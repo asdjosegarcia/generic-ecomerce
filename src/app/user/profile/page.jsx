@@ -116,7 +116,7 @@ const page = () => {
         if (res.ok) {
           setAddImage(false)//cerramos el menu
           setProfileImg('data:' + getImage.imgType + ';base64,' + getImage.imgData)
-
+          sessionStorage.setItem('imgSrc','data:' + getImage.imgType + ';base64,' + getImage.imgData )
           console.log('perfileImg', contexto.bytesToBase(getImage.imgData, getImage.imgType));
           contexto.setNotificationText('Picture Updated')
           // setReload(!getReload)

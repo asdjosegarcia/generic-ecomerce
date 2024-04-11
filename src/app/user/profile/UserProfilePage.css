@@ -48,6 +48,8 @@
 .UserProfilePage__add-image--container .ArchiveSelector img{
     width: 90vw;
     height: 90vw;
+    object-fit: cover;
+
 }
 .UserProfilePage__add-image--container .MainButton{
     margin-top: 20px;

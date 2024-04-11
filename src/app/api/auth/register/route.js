@@ -70,11 +70,11 @@ export async function POST(request) {//creacion de usuario
                                     type: 0,
                                     title: "Register succesfully",
                                     description: "Your notifications start here",
-                                    link:"/user/profile",
                                     view:true
                                 }, {
                                     type: 10,
                                     title: "New Profile",
+                                    link:"/user/profile",
                                     icon: "https://static.vecteezy.com/system/resources/previews/000/367/333/original/edit-profile-vector-icon.jpg",
                                     description: "Click here to edit your profile",
                                 }

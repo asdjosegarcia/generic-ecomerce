@@ -20,7 +20,6 @@ const page = () => {
   useEffect(() => {
     const request = async () => {
       if (session) {
-        console.log('request')
         const res = await fetch(`/api/user/purchases`, {
           method: 'POST',
           headers: {

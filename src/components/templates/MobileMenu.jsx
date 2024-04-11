@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext,useEffect } from 'react'
+import React, { useContext,useEffect,useState } from 'react'
 import './MobileMenu.css'
 import UserSVG from '@/SVG/UserSVG'
 import Link from 'next/link'
@@ -18,23 +18,18 @@ import InventorySVG from '@/SVG/InventorySVG'
 import CartSVG from '@/SVG/CartSVG'
 
 
-let profileImgSrc= ''
-
+let onlyRequest=true
 const MobileMenu = (props) => {
+  const [getImgSrc,setImgSrc]=useState()
   const { data: session } = useSession();
   const contexto = useContext(variableContext)
 
-  // const inputRef = useRef(null)
-  // const enfocarInput = () => {
-  //   if (inputRef.current) {
-  //     inputRef.current.focus();
-  //   }
-  // };
   const searchFunc = () => {
     props.setMobileMenu(false)
     contexto.focusSearch()
   }
 
+  ///////////////////////////////establecer imagen de perfil del usuario
   useEffect(() => {
     const request=async ()=>{
       const res = await fetch(`/api/user/profile`, {
@@ -45,25 +40,38 @@ const MobileMenu = (props) => {
         body: JSON.stringify({userEmail:session?.user?.email}),
       });
       const data = await res.json();
-      console.log(await data)
-      if(data.userProfileImg?.data?.data){
-        console.log('data');
-        profileImgSrc=contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype)
+      // console.log(await data)
+      if(data.userProfileImg?.data?.data){ //si hay datos en la imagen del usuario
+        setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
+        sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
       }else{
-        console.log('online');
-        profileImgSrc=`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`
+        const requestImgApi=async()=>{
+          const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
+          const blob = await response.blob(); // obtenemos los datos binarios como un blob, ya que es una imagen no podemos usar .json
+          const reader = new FileReader(); //creamos una instancia de reader,(permite leer archivos o datos)
+          reader.readAsDataURL(blob); // leemos la imagen como base64
+          reader.onloadend = () => {//cuando se complete la lectura ejecuta
+              // const base64data = reader.result; //resultado de la lectura
+              setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
+              sessionStorage.setItem('imgSrc',reader.result );
+          }
+        }
+        requestImgApi()
       }
+    }
 
-    }
-    if(session){
+
+
+    if(session && onlyRequest && !sessionStorage.getItem('imgSrc')){//si unica peticion es true y session tiene algo
       request()
+      onlyRequest=false
+    }else{
+      setImgSrc(sessionStorage.getItem('imgSrc'))
     }
-  
-   
   }, [session])
   
 
-  // console.log(session)
+
 
 
   return (
@@ -73,7 +81,7 @@ const MobileMenu = (props) => {
         <div className='mobile-menu__user' >
           <div className="mobile-menu__user-img">
             {/* <UserSVG width={"100%"} fill={'#696969'}></UserSVG> */}
-            <img src={profileImgSrc}></img>
+            <img src={getImgSrc}></img>
           </div>
           {(!session?.user?.name) ?
             <Link className='mobile-menu__username-link' href='/auth/login'>

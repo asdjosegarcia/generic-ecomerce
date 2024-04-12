@@ -1,5 +1,5 @@
 .banner-card__container {
-  width: 100%;
+  /* width: 100%; */
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg,
       rgba(0, 0, 0, 0) 0%,
@@ -20,7 +20,7 @@
 
 .banner-card__cards-container {
   display: inline-block;
-  width: 100vw;
+  /* width: 100vw; */
   overflow: hidden;
   position: relative;
 
@@ -34,7 +34,6 @@
   border-radius: 5px;
   /* margin: 5px; */
   scroll-snap-align: center;
-  object-fit: cover;
 
 }
 
@@ -74,6 +73,33 @@
   animation: slide 15s infinite linear;
 }
 
+@media(min-width:800px) {
+  .banner-card__cards-container {
+    /* margin: 0 50px; */
+    /* height: 500px; */
+    width: 100vw;
+    height: 380px;
+    /* max-width: 100%; */
+  }
+  #slide-1{/* a estoy hay una mnaera de hacerlo con js pero ya tengo sueño */
+    background: linear-gradient(to right, #b8690a 0%, #ffd814 50%, #b8690a 100%);
+  }
+  #slide-2{/* a estoy hay una mnaera de hacerlo con js pero ya tengo sueño */
+    background: linear-gradient(to right, #000000 0%, #ff5353 50%, #1a1a1a 100%);
+  }
+  #slide-3{/* a estoy hay una mnaera de hacerlo con js pero ya tengo sueño */
+    background: linear-gradient(to right, #044a85 0%, #fdfffe 50%, #044a85 100%);
+  }
 
-
-
+  .banner-card__img {
+    top: 0px;
+    
+    margin:0 0px;
+    height:  100%;
+    object-fit: scale-down;
+    
+    /* border: 1px solid red; */
+    -webkit-mask-image: linear-gradient(to top, transparent, black 10%);
+    mask-image: linear-gradient(to top, transparent, rgb(0, 0, 0) 10%);
+  }
+}

@@ -89,8 +89,19 @@
 
     color: #696969;
 }
-
-/* .prodcut-card__price{
+@media(min-width:800px) {
+    .prodcut-card__img-container{
+        padding-right: 30px;
+    }
+    .prodcut-card__img {
+        height: 140px;
+        width: 140px;
+    }
+    .prodcut-card__title {
+        font-size: 1.2rem;
+        height: 2.4em;
+    }
+    .prodcut-card__shipment{
+        padding-bottom: 15px;
+    }
 }
-.prodcut-card__shipment{
-} */

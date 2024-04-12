@@ -16,14 +16,18 @@ const rubik = Rubik({//fuente
 export const metadata = {
   title: 'Open Comerce',
   description: 'Created by asdjosegarcia',
+  image: '/img/open-trade.png'/* no funciona :/ */
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="image/x-icon " href="/favicon.ico" />
+        <link rel="image/x-icon" href="/favicon.ico" />
         <title>Open Trade</title>
+        {/* <meta property="og:image" content="/img/open-trade.png" />
+        <meta property="og:description" content="TEST_META_DESCRIPTION" /> */}
+
       </head>
       <body className={rubik.className} >
         <FuncionProvider>

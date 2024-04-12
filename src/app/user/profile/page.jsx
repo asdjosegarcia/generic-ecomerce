@@ -12,7 +12,7 @@ import MainButton from '@/components/atoms/MainButton';
 import UploadSVG from '@/SVG/UploadSVG';
 import CloseSVG from '@/SVG/CloseSVG';
 import FloatingNotification from '@/components/atoms/FloatingNotification';
-
+import Loading from '@/components/templates/Loading';
 
 
 let createdAt;
@@ -24,6 +24,7 @@ const page = () => {
   const [getAddImage, setAddImage] = useState(false)
   const [getProfileImg, setProfileImg] = useState('')
   const [getImage, setImage] = useState()
+  const [getLoading, setLoading] = useState(true)
   const contexto = useContext(variableContext)
 
 
@@ -38,6 +39,7 @@ const page = () => {
         body: JSON.stringify({ userEmail: session?.user.email }),
       });
       const data = await res.json();
+      setLoading(false)
       setUserData(data)
       // console.log(await data)
       /////////////////////segunda peticion en caso de que le usuario no tenga imagen de perfil
@@ -116,7 +118,7 @@ const page = () => {
         if (res.ok) {
           setAddImage(false)//cerramos el menu
           setProfileImg('data:' + getImage.imgType + ';base64,' + getImage.imgData)
-          sessionStorage.setItem('imgSrc','data:' + getImage.imgType + ';base64,' + getImage.imgData )
+          sessionStorage.setItem('imgSrc', 'data:' + getImage.imgType + ';base64,' + getImage.imgData)
           console.log('perfileImg', contexto.bytesToBase(getImage.imgData, getImage.imgType));
           contexto.setNotificationText('Picture Updated')
           // setReload(!getReload)
@@ -135,38 +137,44 @@ const page = () => {
 
 
   return (
-    <div className='UserProfilePage'>
-      {getUserData &&
-        <>
-          <section className='UserProfilePage__section-img'>
-            <img className='UserProfilePage__img' src={getProfileImg}></img>
-            <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} function={() => { setAddImage(true) }} backgroundColor={"white"} />
-            {/* <button className='UserProfilePage__img-edit' >
+    <>
+      {(getLoading) ?
+        <Loading />
+        :
+        <div className='UserProfilePage'>
+          {getUserData &&
+            <>
+              <section className='UserProfilePage__section-img'>
+                <img className='UserProfilePage__img' src={getProfileImg}></img>
+                <CircleButton className='UserProfilePage__img-edit' icon={<AddPhotoSVG />} function={() => { setAddImage(true) }} backgroundColor={"white"} />
+                {/* <button className='UserProfilePage__img-edit' >
             
           </button> */}
-          </section>
-          {getAddImage &&
-            <div className='UserProfilePage__add-image--container'>
-              <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={() => setAddImage(false)}></CircleButton>
-              <ArchiveSelector type={"image"} getImage={getImage} setImage={setImage} />
-              <MainButton text={"Update Picture"} funct={imageUpdater} icon={<UploadSVG />}></MainButton>
-            </div>
+              </section>
+              {getAddImage &&
+                <div className='UserProfilePage__add-image--container'>
+                  <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={() => setAddImage(false)}></CircleButton>
+                  <ArchiveSelector type={"image"} getImage={getImage} setImage={setImage} />
+                  <MainButton text={"Update Picture"} funct={imageUpdater} icon={<UploadSVG />}></MainButton>
+                </div>
+              }
+              <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
+              <span>ID: {getUserData.id}</span>
+              <span>Email: {getUserData.email}</span>
+              <span>CreatedAt: {createdAt}</span>
+              <span>Last Update: {updatedAt}</span>
+
+              <section className='UserProfilePage__extra-options'>
+                {/* <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button> */}
+                <CircleButton function={() => copyText()} icon={<CopySVG />} />
+                <CircleButton function={() => compartirEnlace()} icon={<ShareSVG />} />
+              </section>
+            </>
           }
-          <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
-          <span>ID: {getUserData.id}</span>
-          <span>Email: {getUserData.email}</span>
-          <span>CreatedAt: {createdAt}</span>
-          <span>Last Update: {updatedAt}</span>
 
-          <section className='UserProfilePage__extra-options'>
-            {/* <button onClick={() => { copyText(); }}>Copy <CopySVG width={"15px"}></CopySVG> </button> */}
-            <CircleButton function={() => copyText()} icon={<CopySVG />} />
-            <CircleButton function={() => compartirEnlace()} icon={<ShareSVG />} />
-          </section>
-        </>
+        </div>
       }
-
-    </div>
+    </>
   )
 }
 

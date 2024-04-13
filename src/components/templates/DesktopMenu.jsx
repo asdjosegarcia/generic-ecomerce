@@ -30,46 +30,45 @@ const DesktopMenu = (props) => {
   }
 
   ///////////////////////////////establecer imagen de perfil del usuario
-  useEffect(() => {
-    const request = async () => {
-      const res = await fetch(`/api/user/profile`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userEmail: session?.user?.email }),
-      });
-      const data = await res.json();
-      // console.log(await data)
-      if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
-        setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
-        sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
-      } else {
-        const requestImgApi = async () => {
-          const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
-          const blob = await response.blob(); // obtenemos los datos binarios como un blob, ya que es una imagen no podemos usar .json
-          const reader = new FileReader(); //creamos una instancia de reader,(permite leer archivos o datos)
-          reader.readAsDataURL(blob); // leemos la imagen como base64
-          reader.onloadend = () => {//cuando se complete la lectura ejecuta
-            // const base64data = reader.result; //resultado de la lectura
-            setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
-            sessionStorage.setItem('imgSrc',reader.result)
-              ;
-          }
-        }
-        requestImgApi()
-      }
-    }
+  // useEffect(() => {
+  //   const request = async () => {
+  //     const res = await fetch(`/api/user/profile`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ userEmail: session?.user?.email }),
+  //     });
+  //     const data = await res.json();
+  //     // console.log(await data)
+  //     if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
+  //       setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
+  //       sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
+  //     } else {
+  //       const requestImgApi = async () => {
+  //         const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
+  //         const blob = await response.blob(); // obtenemos los datos binarios como un blob, ya que es una imagen no podemos usar .json
+  //         const reader = new FileReader(); //creamos una instancia de reader,(permite leer archivos o datos)
+  //         reader.readAsDataURL(blob); // leemos la imagen como base64
+  //         reader.onloadend = () => {//cuando se complete la lectura ejecuta
+  //           // const base64data = reader.result; //resultado de la lectura
+  //           setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
+  //           sessionStorage.setItem('imgSrc',reader.result)
+  //             ;
+  //         }
+  //       }
+  //       requestImgApi()
+  //     }
+  //   }
 
 
-    if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
-      request()
-      onlyRequest = false
-    } else {
-      setImgSrc(sessionStorage.getItem('imgSrc'));
-    }
-  }, [session])
-
+  //   if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
+  //     request()
+  //     onlyRequest = false
+  //   } else {
+  //     setImgSrc(sessionStorage.getItem('imgSrc'));
+  //   }
+  // }, [session])
 
 
 
@@ -82,8 +81,8 @@ const DesktopMenu = (props) => {
             <button onClick={() => { props.setMobileMenu(false) }} >Home <HomeSVG width={'24px'} fill={"#696969"}></HomeSVG></button>
           </Link>
           {/* <input ref={inputRef}></input> */}
-          <button onClick={searchFunc} >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
-          <Link href={'/user/notifications'}>
+          <button onClick={searchFunc} className='dektop-menu__search-button' >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
+          <Link href={'/user/notifications'} className='dektop-menu__notifications-button-link'>
             <button onClick={() => { props.setMobileMenu(false) }} >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
           </Link>
           <Link href='/user/purchases'>

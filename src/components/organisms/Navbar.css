@@ -32,6 +32,8 @@ a{ /* este es el Link */
     justify-content: space-around;
     flex-direction: row;
     align-items: center;
+    width: 100%;
+
 }
 .nav__buttons-container svg{
     padding: 0;
@@ -51,5 +53,18 @@ a{ /* este es el Link */
 @media(min-width:800px){
     .nav__container{
         border:none;
+    /* justify-items: normal; */
+    }
+    .nav_desktop-profile-img{
+        border-radius: 50%;
+        border: 3px solid #fff159 ;
+        margin: auto;
+        height: 50px;
+        width: 50px;
+        overflow: hidden;
+        /* margin-left: 40px; */
+        /* right: 5px; */
+    }
+    .nav__buttons-container{
     }
 }

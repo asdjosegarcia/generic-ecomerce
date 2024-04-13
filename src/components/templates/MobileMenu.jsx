@@ -20,7 +20,7 @@ import CartSVG from '@/SVG/CartSVG'
 
 let onlyRequest = true
 const MobileMenu = (props) => {
-  const [getImgSrc, setImgSrc] = useState()
+  // const [getImgSrc, setImgSrc] = useState()
   const { data: session } = useSession();
   const contexto = useContext(variableContext)
 
@@ -29,46 +29,46 @@ const MobileMenu = (props) => {
     contexto.focusSearch()
   }
 
-  ///////////////////////////////establecer imagen de perfil del usuario
-  useEffect(() => {
-    const request = async () => {
-      const res = await fetch(`/api/user/profile`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userEmail: session?.user?.email }),
-      });
-      const data = await res.json();
-      // console.log(await data)
-      if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
-        setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
-        sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
-      } else {
-        const requestImgApi = async () => {
-          const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
-          const blob = await response.blob(); // obtenemos los datos binarios como un blob, ya que es una imagen no podemos usar .json
-          const reader = new FileReader(); //creamos una instancia de reader,(permite leer archivos o datos)
-          reader.readAsDataURL(blob); // leemos la imagen como base64
-          reader.onloadend = () => {//cuando se complete la lectura ejecuta
-            // const base64data = reader.result; //resultado de la lectura
-            setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
-            sessionStorage.setItem('imgSrc',reader.result)
-              ;
-          }
-        }
-        requestImgApi()
-      }
-    }
+  // ///////////////////////////////establecer imagen de perfil del usuario
+  // useEffect(() => {
+  //   const request = async () => {
+  //     const res = await fetch(`/api/user/profile`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ userEmail: session?.user?.email }),
+  //     });
+  //     const data = await res.json();
+  //     // console.log(await data)
+  //     if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
+  //       setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
+  //       sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
+  //     } else {
+  //       const requestImgApi = async () => {
+  //         const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
+  //         const blob = await response.blob(); // obtenemos los datos binarios como un blob, ya que es una imagen no podemos usar .json
+  //         const reader = new FileReader(); //creamos una instancia de reader,(permite leer archivos o datos)
+  //         reader.readAsDataURL(blob); // leemos la imagen como base64
+  //         reader.onloadend = () => {//cuando se complete la lectura ejecuta
+  //           // const base64data = reader.result; //resultado de la lectura
+  //           setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
+  //           sessionStorage.setItem('imgSrc',reader.result)
+  //             ;
+  //         }
+  //       }
+  //       requestImgApi()
+  //     }
+  //   }
 
 
-    if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
-      request()
-      onlyRequest = false
-    } else {
-      setImgSrc(sessionStorage.getItem('imgSrc'));
-    }
-  }, [session])
+  //   if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
+  //     request()
+  //     onlyRequest = false
+  //   } else {
+  //     setImgSrc(sessionStorage.getItem('imgSrc'));
+  //   }
+  // }, [session])
 
 
 
@@ -84,7 +84,7 @@ const MobileMenu = (props) => {
               {(!session?.user ) ?
                 <UserSVG width={"100%"} fill={'black'} />
                 :
-                <img src={getImgSrc}></img>
+                <img src={props.imgSrc}></img>
               }
             </>
             {/* <UserSVG width={"100%"} fill={'#696969'}></UserSVG> */}

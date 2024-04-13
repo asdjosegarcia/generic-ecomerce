@@ -31,9 +31,30 @@
 
     background-color: rgb(255, 243, 68);
 }
-.dektop-menu__options button:hover{
+
+.dektop-menu__options button:hover {
     background-color: rgb(255, 253, 153);
 }
-.dektop-menu__options button svg{
+
+.dektop-menu__options button svg {
     padding-left: 5px;
+}
+
+
+@media(max-width:1270px) {
+    .dektop-menu__options button {
+        flex-direction: column;
+        height: 7vh;
+        width: 12.5vw;
+
+    }
+
+    .dektop-menu__options button svg {
+        padding-left: none;
+    }
+
+    .dektop-menu__options .dektop-menu__search-button,
+    .dektop-menu__notifications-button-link {
+        display: none;
+    }
 }

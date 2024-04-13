@@ -118,3 +118,22 @@
     border-radius: 50px;
     font-weight: 500;
 }
+/* @media(min-width:800px){
+    .mobile-menu__background{
+        display: none;
+        visibility: hidden;
+    }
+    .mobile-menu__container{
+        position: relative;
+        width: 600px;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    .mobile-menu__user{
+        display: flex;
+
+    }
+
+
+} */

@@ -48,3 +48,24 @@
     left: 5vw;
   }
 }
+
+@media(min-width:800px){
+.input__container input {
+  width: 70vw;
+  max-width: 1200px;
+}
+.input__container input{
+  background-color: rgb(255, 255, 207);
+} 
+.input__container input:focus{
+  background-color: white;
+} 
+
+.input__container:focus-within {
+  animation: none;
+  position: relative;
+
+}
+
+
+}

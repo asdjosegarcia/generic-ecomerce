@@ -11,16 +11,21 @@ import { variableContext } from "@/context/contexto";
 import LoadUserData from '@/components/atoms/LoadUserData'
 // import  from '../molecules/QuestionCard'
 import QuestionCardMenu from './QuestionCardMenu'
+import DesktopMenu from '../templates/DesktopMenu'
 
 
 
-
+let desktop=false
 const Navbar = () => {
     const [getMobileMenu, setMobileMenu] = useState(false)
+    // const [getDesktopMenu, setDesktopMenu] = useState(false)
+
     const contexto = useContext(variableContext)
+    // const windowWidth=window.innerWidth;
+    if(window.innerWidth>800){
+        desktop=true
+    }
 
-
-    // let mobileMenuOn=null
     return (
         <>
         {contexto.getBackground &&
@@ -45,24 +50,8 @@ const Navbar = () => {
                         <MenuSVG width={'40px'} height={'40px'} fill={'#696969'} ></MenuSVG>
                     </button>
                 </div>
-                {/* <div>ubicación</div> */}
-                {/*         <ul>
-            <li>Categorias</li>
-            <li>Ofertas</li>
-            <li>Historial</li>
-            <li>Supermercado</li>
-            <li>Vender</li>
-            <li>Ayuda</li>
-        </ul> */}
-                {/* <span>imagen promocional</span> */}
-
-                {/*         <ul className='personal-menu'>
-            <li>Crea tu cuenta</li>
-            <li>Ingresá</li>
-            <li>Mis compras</li>
-            <li>🛒</li>
-        </ul> */}
             </nav>
+             {desktop && <DesktopMenu/>}
             {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu}></MobileMenu>)}
         </>
 

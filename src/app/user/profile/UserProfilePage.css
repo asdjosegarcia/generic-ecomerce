@@ -93,3 +93,64 @@
 .UserProfilePage__extra-options button{
     margin: 10px;
 }
+
+@media(min-width:800px){
+    .UserProfilePage{
+        /* width: 10vw; */
+        margin: 0 auto;
+    }
+    .UserProfilePage__section-img{
+        width: 50vw;
+        height: 50vw;
+    }
+    .UserProfilePage__add-image--container{
+        width: 50vw;
+    }
+    .UserProfilePage__add-image--container .ArchiveSelector{
+        width: 50vw;
+        height: 50vw;
+
+    }
+     .UserProfilePage__add-image--container .ArchiveSelector img{
+        width: 50vw;
+        height: 50vw;
+    }
+    
+    .UserProfilePage__img{
+        width: 50vw;
+        height: 50vw;
+    }
+    .UserProfilePage__img-edit{
+        margin-left: 50vw;
+    }
+}
+@media(min-width:1200px){
+    .UserProfilePage{
+        /* width: 10vw; */
+        margin: 0 auto;
+    }
+    .UserProfilePage__section-img{
+        width: 30vw;
+        height: 30vw;
+    }
+    .UserProfilePage__add-image--container{
+        width: 30vw;
+    }
+    .UserProfilePage__add-image--container .ArchiveSelector{
+        width: 30vw;
+        height: 30vw;
+
+    }
+     .UserProfilePage__add-image--container .ArchiveSelector img{
+        width: 30vw;
+        height: 30vw;
+    }
+    
+    .UserProfilePage__img{
+        width: 30vw;
+        height: 30vw;
+    }
+    .UserProfilePage__img-edit{
+        margin-left: 30vw;
+    }
+}

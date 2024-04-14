@@ -44,13 +44,14 @@
 @media(max-width:1270px) {
     .dektop-menu__options button {
         flex-direction: column;
-        height: 7vh;
+        height: 5vh;
         width: 12.5vw;
+        padding: 0 ;
 
     }
 
     .dektop-menu__options button svg {
-        padding-left: none;
+        padding: 0;
     }
 
     .dektop-menu__options .dektop-menu__search-button,

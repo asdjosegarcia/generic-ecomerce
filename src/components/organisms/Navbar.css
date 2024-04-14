@@ -9,12 +9,10 @@
     align-items: center;
     justify-items: center;
     border-bottom: 1px solid rgba(71, 71, 71, 0.116);
-    /* position: absolute; */
-    /* z-index: 1; */
-    /* grid-template-rows: repeat(auto,3); */
+
 }
 
-a{ /* este es el Link */
+a{ 
     display: flex;
     align-items: center;
 }
@@ -53,7 +51,6 @@ a{ /* este es el Link */
 @media(min-width:800px){
     .nav__container{
         border:none;
-    /* justify-items: normal; */
     }
     .nav_desktop-profile-img{
         border-radius: 50%;
@@ -62,9 +59,12 @@ a{ /* este es el Link */
         height: 50px;
         width: 50px;
         overflow: hidden;
-        /* margin-left: 40px; */
-        /* right: 5px; */
+
     }
-    .nav__buttons-container{
+}
+@media(max-width:1270px) {
+    .nav_desktop-profile-username{
+        display: none;
     }
+
 }

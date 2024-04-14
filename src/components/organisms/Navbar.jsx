@@ -4,6 +4,7 @@ import './Navbar.css'
 import SearchInput from '@/components/molecules/SearchInput'
 import MenuSVG from '@/SVG/MenuSVG'
 import CartSVG from '@/SVG/CartSVG'
+import NotificationSVG from '@/SVG/NotificationSVG'
 import Link from 'next/link'
 import MobileMenu from '@/components/templates/MobileMenu'
 import FloatingNotification from '@/components/atoms/FloatingNotification';
@@ -18,7 +19,8 @@ import { useSession } from "next-auth/react";
 
 
 let desktop = false
-let onlyRequest=true
+let onlyRequest = true
+let username="Login"
 const Navbar = () => {
     const [getMobileMenu, setMobileMenu] = useState(false)
     const [getImgSrc, setImgSrc] = useState(true)
@@ -29,22 +31,23 @@ const Navbar = () => {
     const contexto = useContext(variableContext)
 
     ///////////////////////////detectar tamaño de pantalla
-    const windowSize=()=>{
+    const windowSize = () => {
         if (window.innerWidth > 800) {//si es mayor a 800 estamos en desktop
             desktop = true
             setDesktopMenu(true)
-        }else{
+        } else {
             setDesktopMenu(false)
         }
     }
-    window.addEventListener('resize', function(event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
+    window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
         windowSize()
     });
 
-    ///////////////////////////////establecer imagen de perfil del usuario
+    ///////////////////////////////establecer imagen,username,tamaño de ventana del usuario
     useEffect(() => {
         windowSize()//etecta si estamos en desktop o mobile
         const request = async () => {
+            console.log('peticion');
             const res = await fetch(`/api/user/profile`, {
                 method: 'POST',
                 headers: {
@@ -53,10 +56,11 @@ const Navbar = () => {
                 body: JSON.stringify({ userEmail: session?.user?.email }),
             });
             const data = await res.json();
-            // console.log(await data)
+            username=data.username //cargamos el nombre de usuario
             if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
                 setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
                 sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
+                sessionStorage.setItem('username',data.username );
             } else {
                 const requestImgApi = async () => {
                     const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
@@ -66,8 +70,11 @@ const Navbar = () => {
                     reader.onloadend = () => {//cuando se complete la lectura ejecuta
                         // const base64data = reader.result; //resultado de la lectura
                         setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
-                        sessionStorage.setItem('imgSrc', reader.result)
-                            ;
+                        sessionStorage.setItem('imgSrc', reader.result);
+                        sessionStorage.setItem('username',data.username );
+
+                        
+
                     }
                 }
                 requestImgApi()
@@ -79,7 +86,9 @@ const Navbar = () => {
             request()
             onlyRequest = false
         } else {
+            username=sessionStorage.getItem('username')
             setImgSrc(sessionStorage.getItem('imgSrc'));
+
         }
     }, [session])
 
@@ -108,7 +117,15 @@ const Navbar = () => {
                         {/* </button> */}
                     </Link>
                     {getDesktopMenu ?
-                        <img src={getImgSrc} className='nav_desktop-profile-img'></img>
+                        <>
+                            <Link href={'/user/notifications'} className='nav_desktop-notifications-button-link'>
+                                    <NotificationSVG width={'40px'} height={'40px'} fill={"#696969"}></NotificationSVG>
+                            </Link>
+                            <Link href={'/user/profile'}>
+                            <img src={getImgSrc} className='nav_desktop-profile-img'></img>
+                            <p className='nav_desktop-profile-username'>{username}</p>
+                            </Link>
+                        </>
                         :
                         <button className='nav_button' onClick={() => { setMobileMenu(!getMobileMenu) }}>
                             <MenuSVG width={'40px'} height={'40px'} fill={'#696969'} ></MenuSVG>
@@ -116,7 +133,9 @@ const Navbar = () => {
                     }
                 </div>
             </nav>
-            {getDesktopMenu && <DesktopMenu />}
+            {getDesktopMenu &&
+                <DesktopMenu />
+            }
             {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu} imgSrc={getImgSrc}></MobileMenu>)}
         </>
 

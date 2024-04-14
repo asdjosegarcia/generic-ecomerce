@@ -78,44 +78,44 @@ const DesktopMenu = (props) => {
       <div className='dektop-menu__container'>
         <div className='dektop-menu__options'>
           <Link href='/'>
-            <button onClick={() => { props.setMobileMenu(false) }} >Home <HomeSVG width={'24px'} fill={"#696969"}></HomeSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */ >Home <HomeSVG width={'24px'} fill={"#696969"}></HomeSVG></button>
           </Link>
           {/* <input ref={inputRef}></input> */}
           <button onClick={searchFunc} className='dektop-menu__search-button' >Search <SearchSVG width={'24px'} fill={'#696969'}></SearchSVG></button>
           <Link href={'/user/notifications'} className='dektop-menu__notifications-button-link'>
-            <button onClick={() => { props.setMobileMenu(false) }} >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */ >Notifications <NotificationSVG width={'24px'} fill={"#696969"}></NotificationSVG></button>
           </Link>
           <Link href='/user/purchases'>
-            <button onClick={() => { props.setMobileMenu(false) }}>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>My Shopping   <TiketSVG width={'24px'} fill={"#696969"}></TiketSVG> </button>
           </Link>
           <Link href='/user/products'>
-            <button onClick={() => { props.setMobileMenu(false) }}>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
           </Link>
           <Link className='dektop-menu__cart-link' href='/cart'>
-            <button onClick={() => { props.setMobileMenu(false) }}>My cart <CartSVG width={'24px'} fill={'#696969'}></CartSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>My cart <CartSVG width={'24px'} fill={'#696969'}></CartSVG></button>
           </Link>
 
           <Link className='dektop-menu__Favorites-link' href='/favorites'>
-            <button onClick={() => { props.setMobileMenu(false) }}>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>Favorites <HeartOutlineSVG width={'24px'} fill={'#696969'}></HeartOutlineSVG></button>
           </Link>
           <Link href='/offers' >
-            <button onClick={() => { props.setMobileMenu(false) }}>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>Offers <PorcentSVG width={'24px'} fill={"#696969"}></PorcentSVG></button>
           </Link>
           {(!session?.user?.name) ?
             <>
               <Link href='/auth/login'>
-                <button className="dektop-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG></button>
+                <button className="dektop-menu__trade-button" /* onClick={() => { props.setMobileMenu(false) }} */>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG></button>
               </Link>
               <Link href='/auth/login'>
-                <button onClick={() => { props.setMobileMenu(false) }}>Login</button>
+                <button /* onClick={() => { props.setMobileMenu(false) }} */>Login</button>
               </Link>
             </>
             :
             <>
               <Link href='/product/new/'>
-                <button className="dektop-menu__trade-button" onClick={() => { props.setMobileMenu(false) }}>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG> </button>
+                <button className="dektop-menu__trade-button" /* onClick={() => { props.setMobileMenu(false) }} */>Trade <PlusSVG width={'24px'} fill={"#696969"}></PlusSVG> </button>
               </Link>
-              <button className="dektop-menu__logout-button" onClick={() => { props.setMobileMenu(false); signOut() }}>Logout <OffSVG width={'24px'} fill={"#ff7b7b"}></OffSVG></button>
+              <button className="dektop-menu__logout-button" onClick={() => { /* props.setMobileMenu(false); */ signOut();sessionStorage.clear(); }}>Logout <OffSVG width={'24px'} fill={"#ff7b7b"}></OffSVG></button>
             </>
           }
         </div>

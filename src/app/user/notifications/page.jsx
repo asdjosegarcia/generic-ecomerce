@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react';
 import UserNotificationsList from '@/components/organisms/UserNotificationsList';
 import Loading from '@/components/templates/Loading';
+import './UserNotificationPage.css'
 
 
 const page = () => {

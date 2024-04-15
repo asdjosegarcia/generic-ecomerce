@@ -7,7 +7,7 @@
 
 .UserNotificationCardTwenty__Link{
     display: grid;
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: auto 1fr;
     /* grid-template-rows: 1fr; */
 
     text-decoration: none;

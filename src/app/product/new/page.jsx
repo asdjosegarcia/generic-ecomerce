@@ -143,7 +143,7 @@ const page = () => {
           {getError?.title && <p className="error">{getError.title}</p>}
         </section>
         <section>
-          <p className="new-product__section-title">Image:</p>
+          <p className="new-product__section-image">Image:</p>
 
           <ArchiveSelector
             type={"image"}

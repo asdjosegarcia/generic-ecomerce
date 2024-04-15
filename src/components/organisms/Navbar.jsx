@@ -10,7 +10,6 @@ import MobileMenu from '@/components/templates/MobileMenu'
 import FloatingNotification from '@/components/atoms/FloatingNotification';
 import { variableContext } from "@/context/contexto";
 import LoadUserData from '@/components/atoms/LoadUserData'
-// import  from '../molecules/QuestionCard'
 import QuestionCardMenu from './QuestionCardMenu'
 import DesktopMenu from '../templates/DesktopMenu'
 import { useSession } from "next-auth/react";
@@ -25,8 +24,6 @@ const Navbar = () => {
     const [getMobileMenu, setMobileMenu] = useState(false)
     const [getImgSrc, setImgSrc] = useState(true)
     const { data: session } = useSession();
-
-    // const [getDesktopProfile]
     const [getDesktopMenu, setDesktopMenu] = useState(false)
     const contexto = useContext(variableContext)
 
@@ -39,9 +36,11 @@ const Navbar = () => {
             setDesktopMenu(false)
         }
     }
-    window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
-        windowSize()
-    });
+    if(typeof window !== 'undefined'){// si windows no es un defined, esto para evitar errores al generar el build, ya que da problemas por no estar en un navegaor sino en el servidor
+        window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
+            windowSize()
+        });
+    }
 
     ///////////////////////////////establecer imagen,username,tamaño de ventana del usuario
     useEffect(() => {
@@ -72,15 +71,11 @@ const Navbar = () => {
                         setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
                         sessionStorage.setItem('imgSrc', reader.result);
                         sessionStorage.setItem('username',data.username );
-
-                        
-
                     }
                 }
                 requestImgApi()
             }
         }
-
 
         if (session && onlyRequest && !sessionStorage.getItem('imgSrc')) {//si unica peticion es true y session tiene algo
             request()
@@ -91,10 +86,6 @@ const Navbar = () => {
 
         }
     }, [session])
-
-
-
-
 
     return (
         <>
@@ -138,8 +129,6 @@ const Navbar = () => {
             }
             {getMobileMenu && (<MobileMenu setMobileMenu={setMobileMenu} imgSrc={getImgSrc}></MobileMenu>)}
         </>
-
-
     )
 }
 

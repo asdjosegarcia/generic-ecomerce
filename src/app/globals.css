@@ -1,3 +1,10 @@
 /* svg{
     padding:0px;
 } */
+@media(min-width:800px) {
+    .GeneralBackground {
+        background: rgb(255, 255, 255);
+        background: linear-gradient(140deg, rgba(255, 255, 255, 1) 11%, rgba(208, 208, 208, 1) 35%, rgba(255, 255, 255, 1) 54%, rgba(244, 244, 244, 1) 68%, rgba(238, 238, 238, 1) 83%, rgba(255, 255, 255, 1) 91%, rgba(228, 228, 228, 1) 96%);
+        height: 100vh;
+    }
+}

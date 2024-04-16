@@ -6,7 +6,7 @@ import { FuncionProvider } from "../context/contexto.jsx";
 import { Rubik } from 'next/font/google'//funte
 
 const rubik = Rubik({//fuente
-  weight: ['300','400','500', '700',],
+  weight: ['300', '400', '500', '700',],
   subsets: ['latin'],
 })
 
@@ -30,11 +30,13 @@ export default function RootLayout({ children }) {
 
       </head>
       <body className={rubik.className} >
-        <FuncionProvider>
-          <Navbar />
-          {/* <LoadUserData></LoadUserData> */}
-          {children}
-        </FuncionProvider>
+        <div className='GeneralBackground'>
+          <FuncionProvider>
+            <Navbar />
+            {/* <LoadUserData></LoadUserData> */}
+            {children}
+          </FuncionProvider>
+        </div>
       </body>
     </html>
   )

@@ -5,10 +5,15 @@
 @media(min-width:800px){
 .PurchasesPage{
     width: 70vw;
+    /* min-height: 60vw; */
     margin: auto;
     padding: 20px;
     /* border: 1px solid rgba(128, 128, 128, 0.39); */
     border-radius: 10px;
     box-shadow: 0px 10px 10px gray;
+    background-color: white;
+}
+.PurchasesPage .NothingHere{
+    padding-bottom: 10vw;
 }
 }

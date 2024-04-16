@@ -25,7 +25,7 @@ const DesktopMenu = (props) => {
   const contexto = useContext(variableContext)
 
   const searchFunc = () => {
-    props.setMobileMenu(false)
+    // props.setMobileMenu(false)
     contexto.focusSearch()
   }
 

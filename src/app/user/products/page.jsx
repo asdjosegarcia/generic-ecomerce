@@ -47,12 +47,12 @@ const page = () => {
         <>
           <div className='UserProductPage'>
             {(getProducts?.products.length > 0) ?
-              <>
+              <div className=' UserProductPage_product-card'>
                 {getProducts.products.map((product, index) => (<UserProductCard getReaload={getReaload} setReload={setReload} key={index} product={product}></UserProductCard>))}
                 <Link href='/product/new/'>
                   <MainAddButton text={"Trade"} icon={<PlusSVG></PlusSVG>}></MainAddButton>
                 </Link>
-              </>
+              </div>
               :
               <NothingHere buttonText={"Create a product!"} redirectLink={"/product/new/"} buttonIcon={<PlusSVG /> } />
             }

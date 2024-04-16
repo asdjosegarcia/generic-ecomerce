@@ -5,6 +5,7 @@ import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
 import Loading from '@/components/templates/Loading';
 import ProductsSumary from '@/components/molecules/ProductsSumary';
+import './UserCartPage.css'
 // import { useRouter } from 'next/navigation'
 
 
@@ -58,7 +59,7 @@ const Cart = () => {
       {(getLoading) ?
         <Loading />
         :
-        <div>
+        <div className='UserCartPage'>
           {contexto.getCart.products ?
             <>
               <CartList products={contexto.getCart.products}></CartList>

@@ -1,0 +1,17 @@
+@media(min-width:800px){
+
+    .ProductByIdPage{
+        width: 70vw;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0px 10px 10px rgb(196, 196, 196);
+        padding: 0 2vw 2vw 2vw ;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 1fr 35%;
+    }
+    .ProductMain{
+        grid-column: 1/3;
+    }
+
+}

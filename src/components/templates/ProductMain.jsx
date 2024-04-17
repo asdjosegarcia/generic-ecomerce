@@ -14,6 +14,7 @@ import { variableContext } from "@/context/contexto";
 import { useSession } from 'next-auth/react';
 import CartInputNumber from '../molecules/CartInputNumber'
 import InputWithButtons from '../molecules/InputWithButtons'
+import VerifiedCheckSVG from '@/SVG/VerifiedCheckSVG'
 
 
 
@@ -27,7 +28,8 @@ const ProductMain = ({ product }) => {
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
   const [getNotificationText, setNotificationText] = useState(null)
-  const [getproductQuantity,setproductQuantity]=useState(1)
+  const [getproductQuantity, setproductQuantity] = useState(1)
+
   // console.log(product?.favorite);
 
   if (product?.ProductComplete?.productImages[0]?.data) {
@@ -46,7 +48,8 @@ const ProductMain = ({ product }) => {
       imgSrc = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixsector.com%2Fcache%2F517d8be6%2Fav5c8336583e291842624.png&f=1&nofb=1&ipt=f0dd3636f84b1ff677873f0bacc0999feaa87f94ce139855b0cdc836bf7246f3&ipo=images'
     }
   }
-////////////////////Añadir a el carrito
+
+  ////////////////////añadir a el carrito
   const addToCart = async (productId) => {
     if (session?.user.email) {
       const email = session?.user.email
@@ -59,7 +62,7 @@ const ProductMain = ({ product }) => {
           email: email,
           // pasword:'',
           productId: productId,
-          quantity:getproductQuantity,
+          quantity: getproductQuantity,
         }),
       });
       if (res.ok) {
@@ -67,26 +70,26 @@ const ProductMain = ({ product }) => {
       } else {
         contexto.setNotificationText('Error')
       }
-    }else{
+    } else {
       router.push('/auth/login');
     }
   }
   ////////////////////calcular precio segun cantidad
-    quantityPrice=(product?.price*getproductQuantity).toFixed(2)
+  quantityPrice = (product?.price * getproductQuantity).toFixed(2)
+  
 
   return (
-    <div className='product__container'>
+    <div className='ProductMain product__container'>
       {getNotificationText && <FloatingNotification notificationText={getNotificationText}></FloatingNotification>}
 
       <header>
-        <p>{product?.condition}</p>
+        <p>This product is  {product?.condition}</p>
         <div className='porduct--qualification__container'>
           {/* <p className='porduct--qualification__qualification-number'>{product?.qualification}</p> */}
           <BadgetStars qualification={product?.qualification} />
           <p>(560)</p>
         </div>
       </header>
-
       <p className='product__title'>{product?.title}</p>
       <div className='product--img__contiainter'>
         {/* ////////////////////////////////////////////////////// */}
@@ -97,26 +100,27 @@ const ProductMain = ({ product }) => {
         </span>
         <img className='product__img' src={imgSrc} alt="" />
       </div>
-      <p className='prodcut__price'>${product?.price}</p>
-      <div className='product__shipment--container'>
-        <ShippingSVG width={'24px'} fill={"#696969"}></ShippingSVG>
-        <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
-      </div>
-      <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
-      <section className='product__input--container'>
-      <InputWithButtons currentValue={getproductQuantity} newValue={setproductQuantity}></InputWithButtons>
-      <p>=${quantityPrice}</p>
+      <section className='product__price-section'>
+        <p className='prodcut__price'>${product?.price}</p>
+        <div className='product__shipment--container'>
+          <ShippingSVG width={'24px'} fill={"#696969"}></ShippingSVG>
+          <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
+        </div>
+        <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
+        <div className='product__input--container'>
+          <InputWithButtons currentValue={getproductQuantity} newValue={setproductQuantity}></InputWithButtons>
+          <p>=${quantityPrice}</p>
+        </div>
+        <div className='product__buttons-container'>
+          <button onClick={() => { router.push('/product/buy/' + product?.id) }} className='btn btn__buy'>Buy now</button>
+          <button onClick={() => { addToCart(product.id) }} className='btn btn__cart'>Add to cart</button>
+        </div>
       </section>
-      <Link href={'/product/buy/' + product?.id}>
-        <button /* onClick={()=>{router.push('/product/buy/'+product?.id)}} */ className='btn btn__buy'>Buy now</button>
-      </Link>
-      <button onClick={() => { addToCart(product.id) }} className='btn btn__cart'>Add to cart</button>
       <div>
         <p className='product__description--title'>Description</p>
         <p className='product__description--content'>{product?.ProductComplete?.description}</p>
       </div>
-      <p className='porduct__seller'>Seller:{product?.seller}</p>
-      {/* <p>{product?.description}</p> */}
+      <p className='porduct__seller'>Seller: {product?.seller} <VerifiedCheckSVG width="24px" fill="#2a8ddc"/></p>
 
     </div>
   )

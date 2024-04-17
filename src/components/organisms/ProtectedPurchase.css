@@ -1,0 +1,13 @@
+.ProtectedPurchase{
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    margin: 10px;
+}
+.ProtectedPurchase p {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.ProtectedPurchase p svg{
+    padding-right: 5px;
+}

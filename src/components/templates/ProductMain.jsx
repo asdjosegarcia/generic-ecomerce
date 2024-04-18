@@ -76,7 +76,7 @@ const ProductMain = ({ product }) => {
   }
   ////////////////////calcular precio segun cantidad
   quantityPrice = (product?.price * getproductQuantity).toFixed(2)
-  
+
 
   return (
     <div className='ProductMain product__container'>
@@ -103,13 +103,19 @@ const ProductMain = ({ product }) => {
       <section className='product__price-section'>
         <p className='prodcut__price'>${product?.price}</p>
         <div className='product__shipment--container'>
-          <ShippingSVG width={'24px'} fill={"#696969"}></ShippingSVG>
-          <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
+          <span >
+            <ShippingSVG width={'24px'} fill={"#696969"}></ShippingSVG>
+            <p className='prodcut__shipment'>{product?.shipment == 0 ? <BadgetFreeShipping /> : '‎ $' + product?.shipment}</p>
+          </span>
+          <p className='prodcut__shipment-message'>We will send you the product no matter where you are!</p>
         </div>
-        <p className='product__stock'>{`Stock(${product?.ProductComplete?.stock})`}</p>
         <div className='product__input--container'>
+          <p className='product__stock-message'>Quantity:</p>
+          <span>
           <InputWithButtons currentValue={getproductQuantity} newValue={setproductQuantity}></InputWithButtons>
           <p>=${quantityPrice}</p>
+          </span>
+          <p className='product__stock-message'>{`Units available (${product?.ProductComplete?.stock})`}</p>
         </div>
         <div className='product__buttons-container'>
           <button onClick={() => { router.push('/product/buy/' + product?.id) }} className='btn btn__buy'>Buy now</button>
@@ -120,7 +126,7 @@ const ProductMain = ({ product }) => {
         <p className='product__description--title'>Description</p>
         <p className='product__description--content'>{product?.ProductComplete?.description}</p>
       </div>
-      <p className='porduct__seller'>Seller: {product?.seller} <VerifiedCheckSVG width="24px" fill="#2a8ddc"/></p>
+      <p className='porduct__seller'>Seller: {product?.seller} <VerifiedCheckSVG width="24px" fill="#2a8ddc" /></p>
 
     </div>
   )

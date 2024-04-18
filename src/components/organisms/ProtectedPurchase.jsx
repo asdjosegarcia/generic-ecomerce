@@ -7,7 +7,7 @@ import './ProtectedPurchase.css'
 const ProtectedPurchase = () => {
     return (
         <div className='ProtectedPurchase'>
-            <p><ShieldProtectSVG width={"24px"} fill="green"/>Purchase protected by open comerce</p>
+            <p><ShieldProtectSVG width={"24px"} fill="green"/>Purchase protected by Open Trade</p>
             <p><UndoArrowSVG width={"24px"} fill={"black"}/>Free return</p>
             <p><PremiunSVG width={"24px"} fill={"blue"}/>3 months warranty</p>
         </div>

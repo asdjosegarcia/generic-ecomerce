@@ -47,3 +47,19 @@ width: 90vw;
     color: #3483fa;
     background-color: #ffffff;
 }
+@media(min-width:800px){
+    .login--form__container{
+        width: 600px;
+        margin: 0 auto;
+        height: 80vh;
+        display: flex;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+    }
+    .login--form__container form{
+        padding: 2vw;
+        background-color: white;
+        border-radius: 5px;
+    }
+}

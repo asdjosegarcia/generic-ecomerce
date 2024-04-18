@@ -8,6 +8,7 @@ import HeartSVG from '@/SVG/HeartSVG';
 import PlusSVG from '@/SVG/PlusSVG';
 
 import Loading from '@/components/templates/Loading';
+import './UserFavoritesPage.css'
 
 
 const page = () => {
@@ -44,7 +45,9 @@ const page = () => {
             : 
             <>
             {(getProducts?.length>0)?
+            <div className='UserFavoritesPage'>
                 <FavoritesList products={getProducts}></FavoritesList>
+            </div>
                 :
                 <NothingHere buttonText={"Add Favorites"} redirectLink={"/"} buttonIcon={<><PlusSVG/> &nbsp; <HeartSVG></HeartSVG></>  }/>
             }

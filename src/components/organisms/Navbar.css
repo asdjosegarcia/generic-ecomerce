@@ -9,9 +9,7 @@
     align-items: center;
     justify-items: center;
     border-bottom: 1px solid rgba(71, 71, 71, 0.116);
-
 }
-
 a{ 
     display: flex;
     align-items: center;
@@ -21,7 +19,6 @@ a{
     margin: auto 0;
     border-radius: 5px;
     left: 10vw;
-
 }
 
 .nav__buttons-container{
@@ -31,7 +28,6 @@ a{
     flex-direction: row;
     align-items: center;
     width: 100%;
-
 }
 .nav__buttons-container svg{
     padding: 0;
@@ -52,19 +48,30 @@ a{
     .nav__container{
         border:none;
     }
+    .nav_desktop-profile{
+        background-color:#fffabe ;
+        border-radius: 50px;
+        padding: 0 40px 0 0 0;
+        text-decoration: none;
+    }
     .nav_desktop-profile-img{
         border-radius: 50%;
-        border: 3px solid #fff159 ;
         margin: auto;
         height: 50px;
         width: 50px;
         overflow: hidden;
-
+    }
+    .nav_desktop-profile-username{
+        font-weight: 500;
+        color:#696969;
+        padding: 0 7px 0 2px;
     }
 }
 @media(max-width:1270px) {
+    .nav_desktop-profile{
+        background-color:#00000000 ;
+    }
     .nav_desktop-profile-username{
         display: none;
     }
-
 }

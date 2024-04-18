@@ -19,10 +19,10 @@ import { useSession } from "next-auth/react";
 
 let desktop = false
 let onlyRequest = true
-let username="Login"
+let username = "Login"
 const Navbar = () => {
     const [getMobileMenu, setMobileMenu] = useState(false)
-    const [getImgSrc, setImgSrc] = useState(true)
+    const [getImgSrc, setImgSrc] = useState('/img/user.svg')
     const { data: session } = useSession();
     const [getDesktopMenu, setDesktopMenu] = useState(false)
     const contexto = useContext(variableContext)
@@ -36,7 +36,7 @@ const Navbar = () => {
             setDesktopMenu(false)
         }
     }
-    if(typeof window !== 'undefined'){// si windows no es un defined, esto para evitar errores al generar el build, ya que da problemas por no estar en un navegaor sino en el servidor
+    if (typeof window !== 'undefined') {// si windows no es un defined, esto para evitar errores al generar el build, ya que da problemas por no estar en un navegaor sino en el servidor
         window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
             windowSize()
         });
@@ -55,11 +55,11 @@ const Navbar = () => {
                 body: JSON.stringify({ userEmail: session?.user?.email }),
             });
             const data = await res.json();
-            username=data.username //cargamos el nombre de usuario
+            username = data.username //cargamos el nombre de usuario
             if (data.userProfileImg?.data?.data) { //si hay datos en la imagen del usuario
                 setImgSrc(contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype))
                 sessionStorage.setItem('imgSrc', contexto.bytesToBase(data.userProfileImg.data.data, data.userProfileImg.mimetype));
-                sessionStorage.setItem('username',data.username );
+                sessionStorage.setItem('username', data.username);
             } else {
                 const requestImgApi = async () => {
                     const response = await fetch(`https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${data.username[0]}&size=480`);
@@ -70,7 +70,7 @@ const Navbar = () => {
                         // const base64data = reader.result; //resultado de la lectura
                         setImgSrc(reader.result)//cargamos el resultado de la lectura (base64) a el imgSrc
                         sessionStorage.setItem('imgSrc', reader.result);
-                        sessionStorage.setItem('username',data.username );
+                        sessionStorage.setItem('username', data.username);
                     }
                 }
                 requestImgApi()
@@ -81,8 +81,12 @@ const Navbar = () => {
             request()
             onlyRequest = false
         } else {
-            username=sessionStorage.getItem('username')
-            setImgSrc(sessionStorage.getItem('imgSrc'));
+            if (sessionStorage.getItem('imgSrc') !== null) {//si hay algo en el sessionStorage
+                setImgSrc(sessionStorage.getItem('imgSrc'));
+                username = sessionStorage.getItem('username')
+                // console.log('');
+                // console.log('ave');
+            }
 
         }
     }, [session])
@@ -110,11 +114,11 @@ const Navbar = () => {
                     {getDesktopMenu ?
                         <>
                             <Link href={'/user/notifications'} className='nav_desktop-notifications-button-link'>
-                                    <NotificationSVG width={'40px'} height={'40px'} fill={"#696969"}></NotificationSVG>
+                                <NotificationSVG width={'40px'} height={'40px'} fill={"#696969"}></NotificationSVG>
                             </Link>
-                            <Link href={'/user/profile'}>
-                            <img src={getImgSrc} className='nav_desktop-profile-img'></img>
-                            <p className='nav_desktop-profile-username'>{username}</p>
+                            <Link href={'/user/profile'} className='nav_desktop-profile'>
+                                <img src={getImgSrc} className='nav_desktop-profile-img'></img>
+                                <p className='nav_desktop-profile-username'>{username}</p>
                             </Link>
                         </>
                         :

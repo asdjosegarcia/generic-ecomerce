@@ -1,16 +1,12 @@
 
 .UserCartPage {
-    width: 70vw;
+    width: 65vw;
     margin: auto;
     border-radius: 5px;
+    background-color: white;
+
     box-shadow: 0px 10px 10px rgb(196, 196, 196);
     padding-bottom: 1vw;
-}
-
-.CartList,
-.ProductsSumary {
-    width: 65vw;
-    background-color: white;
-    box-shadow: 0px 10px 10px rgb(196, 196, 196);
-    margin: 10px auto;
+    /* margin: auto; */
+    
 }

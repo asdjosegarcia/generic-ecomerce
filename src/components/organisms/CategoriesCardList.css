@@ -1,0 +1,22 @@
+
+
+
+
+
+@media(min-width:800px){
+    .CategoriesCardList__container .CategoryVerticalCard{
+        height: 400px;
+        width: 800px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    /* .CategoriesCardList__container .CategoryVerticalCard__img-container{
+        overflow: hidden;
+        width: 600px;
+    height: 600px;
+        } */
+/* .CategoriesCardList__container .CategoryVerticalCard__img-container{
+}     */
+
+}

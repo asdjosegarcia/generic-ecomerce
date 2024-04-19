@@ -61,10 +61,10 @@ const Cart = () => {
         :
         <div className='UserCartPage'>
           {contexto.getCart.products ?
-            <>
+            <div >
               <CartList products={contexto.getCart.products}></CartList>
               <ProductsSumary function={updateDbCart} products={contexto.getCart.products}></ProductsSumary>
-            </>
+            </div>
             :
             <Loading></Loading>
           }

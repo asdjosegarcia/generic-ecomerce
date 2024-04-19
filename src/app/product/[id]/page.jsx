@@ -22,7 +22,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
   useEffect(() => {
     if (params.id) {//si params.id tiene algo
       const request = async () => {
-        windowSize()//establecemos si el usuario esta en desktop o mobile
+        // windowSize()//establecemos si el usuario esta en desktop o mobile
         const res = await fetch(`/api/products/completeproducts/${params.id}`, {
           method: 'POST',
           headers: {
@@ -39,20 +39,20 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
     }
   }, [session])
   
-  //////////////////////detectamos tamaño de apntalla, por lo general para saber si estamos en desktop o mobile
-  const windowSize = () => {
-    if (window.innerWidth > 800) {//si es mayor a 800 estamos en desktop
-      // desktop = true
-      setDesktopMenu(true)
-    } else {
-      setDesktopMenu(false)
-    }
-  }
-  if (typeof window !== 'undefined') {// si windows no es un defined, esto para evitar errores al generar el build, ya que da problemas por no estar en un navegaor sino en el servidor
-    window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
-      windowSize()
-    });
-  }
+  // //////////////////////detectamos tamaño de apntalla, por lo general para saber si estamos en desktop o mobile
+  // const windowSize = () => {
+  //   if (window.innerWidth > 800) {//si es mayor a 800 estamos en desktop
+  //     // desktop = true
+  //     setDesktopMenu(true)
+  //   } else {
+  //     setDesktopMenu(false)
+  //   }
+  // }
+  // if (typeof window !== 'undefined') {// si windows no es un defined, esto para evitar errores al generar el build, ya que da problemas por no estar en un navegaor sino en el servidor
+  //   window.addEventListener('resize', function (event) { //detecta cuando el tamaño de la pantalla cambia y ejecuta
+  //     windowSize()
+  //   });
+  // } 
   
   
   
@@ -60,7 +60,7 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
     <>
       {(!getLoading && getProduct) ?
         <div className='ProductByIdPage'>
-          <ProductMain product={getProduct} dektop={getDesktopMenu}></ProductMain>
+          <ProductMain product={getProduct} /* dektop={getDesktopMenu} */></ProductMain>
           <PorductQuestionList product={getProduct}></PorductQuestionList>
           <ProtectedPurchase></ProtectedPurchase>
         </div>

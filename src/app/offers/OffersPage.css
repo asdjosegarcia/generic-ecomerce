@@ -1,7 +1,21 @@
-.OffersPage__banner-img{
+.OffersPage__banner-img {
     width: 100%;
-    height: 200px;
+    /* height: 500px; */
     border-radius: 10px;
+    object-fit: contain;
+    /* position: absolute; */
+
+}
+.OffersPage{
+    background: rgb(0, 0, 0);
+    background: linear-gradient(140deg, rgba(0, 0, 0, 1) 0%, rgba(128, 117, 0, 1) 16%, rgba(0, 0, 0, 1) 23%, rgba(0, 0, 0, 1) 30%, rgba(255, 211, 0, 1) 42%, rgba(255, 252, 237, 1) 45%, rgba(208, 172, 1, 1) 47%, rgba(65, 56, 0, 1) 58%, rgba(0, 0, 0, 1) 74%, rgba(97, 90, 0, 1) 83%, rgba(0, 0, 0, 1) 90%);
+    z-index: 2;
+    min-height: 100vh;
+}
+@media(min-width:800px){
+    .OffersPage__banner-img {
+        height: 500px;
     object-fit: cover;
 
+    }
 }

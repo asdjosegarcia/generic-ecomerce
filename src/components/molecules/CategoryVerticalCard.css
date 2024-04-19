@@ -1,22 +1,31 @@
 /* .CategoryVerticalCard p{
     margin: 0;
 } */
+
 .CategoryVerticalCard { /* todos los text que se encuentren dentro de <Link/> */
     text-decoration: none;
-    color: rgb(22, 22, 22);
+    /* color: rgb(22, 22, 22); */
     display: flex;
     flex-direction: column;
     align-self: center;
     width: 100%;
+    padding-top: 10px;
+    color: rgb(238, 238, 238);
+
+
 }
 .CategoryVerticalCard__container{
     width:  90%;
     height: 240px;
     border-radius: 5px;
     margin: 10px 0;
-    padding: 5px;
-    background-color: #fff;
-    box-shadow: 0px 10px 10px gray;
+
+    /* padding: 5px; */
+    /* background-color: #fff; */
+    background-color: rgba(41, 41, 41, 0.959);
+    border: 1px solid rgba(255, 255, 255, 0.377);
+
+    box-shadow: 0px 10px 10px rgb(34, 34, 34);
     /* position: relative; */
 
     text-align: center;
@@ -24,11 +33,16 @@
 .CategoryVerticalCard__img-container{
     width: 100%;
     text-align: center;
+    background-color: #fff;
+
 }
 .CategoryVerticalCard__img{
     height: 80%;
     max-width: 95%;
     object-fit: contain;
+    margin: auto;
+    border-radius: 5px;
+
 }
 .CategoryVerticalCard__title{
     margin: 10px 0px;

@@ -1,8 +1,13 @@
-.vertical-list__container {
+ .vertical-list__container {
     padding: 5px;
     margin: 20px 0px;
     border-radius: 5px;
-    box-shadow: 10px 10px 10px #bdbdbd;
+    box-shadow: 0px 10px 10px #bdbdbd;
+
+}
+.OffersIdPage .vertical-list__container {
+    box-shadow: 0px 10px 10px #141414;
+
 }
 
 .vertical-list__title {
@@ -23,25 +28,41 @@
 
 .vertical-list__cards-container .vertical-card__container {
     /* aplicamos estilos solo a las cards que esten dentro del conetenedor */
-    width: 100%;
+    /* width: 100%; */
     margin: 0px;
     border: 1px solid rgb(190, 190, 190);
 }
 
 .vertical-list__cards-container a {
-    width: 100%;
+    /* width: 100%; */
+}
+@media(min-width:600px) {
+    .vertical-list__cards-container {
+        grid-template-columns: repeat(3, auto);
+        /* width: 100%; */
+    
+        }
 }
 
-@media(min-width:800px) {
-    .vertical-list__cards-container {
-    grid-template-columns: repeat(3, 1fr);
+
+@media(min-width:700px) {
+    OffersIdPage .vertical-list__cards-container {
+    grid-template-columns: repeat(2, auto);
+    /* width: 100%; */
 
     }
-    .vertical-list__container {
-        box-shadow: 0px 10px 10px #bdbdbd;
+    OffersIdPage .vertical-list__container {
+        box-shadow: 0px 10px 10px #141414;
 
     }
     .vertical-list__title {
         font-size: 1.5rem;
     }
+}
+@media(min-width:1400px) {
+    .vertical-list__cards-container {
+        grid-template-columns: repeat(3, auto);
+        /* width: 100%; */
+    
+        }
 }

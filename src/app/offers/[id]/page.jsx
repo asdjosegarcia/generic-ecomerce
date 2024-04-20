@@ -36,11 +36,14 @@ const Page = ({ params }) => {
         <>
           <div className='OffersIdPage'>
             {getProducts &&
-              <>
-                <h1>{getProducts.name} </h1>
+              <div className='OffersIdPage__products'>
+                <header className='OffersIdPage__header'>
+                <h1>Black Friday</h1>
+                {/* <h1>{getProducts.name} </h1> */}
                 <h2>-75% OFF</h2>
+                </header>
                 <VerticalProductList products={getProducts} ></VerticalProductList>
-              </>
+              </div>
             }
           </div>
         </>

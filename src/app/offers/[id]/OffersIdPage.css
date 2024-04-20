@@ -1,17 +1,61 @@
+.OffersIdPage{
+    background: rgb(0, 0, 0);
+    background: linear-gradient(140deg, rgba(0, 0, 0, 1) 0%, rgba(128, 117, 0, 1) 16%, rgba(0, 0, 0, 1) 23%, rgba(0, 0, 0, 1) 30%, rgba(255, 211, 0, 1) 42%, rgba(255, 252, 237, 1) 45%, rgba(208, 172, 1, 1) 47%, rgba(65, 56, 0, 1) 58%, rgba(0, 0, 0, 1) 74%, rgba(97, 90, 0, 1) 83%, rgba(0, 0, 0, 1) 90%);
+    min-height: 100vh;
+    padding-bottom: 1vw;
+    
+
+}
 .OffersIdPage h1{
     text-align: center;
-    color: rgb(53, 53, 53);
+    /* color: rgb(121, 121, 121); */
+
+    background: linear-gradient(140deg, rgba(0, 0, 0, 1) 0%, rgba(128, 117, 0, 1) 16%, rgba(0, 0, 0, 1) 23%, rgba(0, 0, 0, 1) 30%, rgba(255, 211, 0, 1) 42%, rgba(255, 252, 237, 1) 45%, rgba(208, 172, 1, 1) 47%, rgb(255, 255, 255) 58%, rgb(255, 213, 0) 64%, rgb(0, 0, 0) 83%, rgba(0, 0, 0, 1) 90%);
+    -webkit-background-clip: text;/* muestra el fondo(gradiente) solo donde tengamos texto */
+    background-clip: text;/* lo mismo que la linea anterior, solo que para otros navegadores */
+    color: transparent; /* transparencia de texto original para que el gradiente se pueda ver */
+
     font-weight: 500;
+    margin:0 0;
+}
+.OffersIdPage__header{
+background-color: rgba(36, 36, 36, 0.603);
+width: 100%;
+/* border-radius:   5px ; */
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+
 }
 .OffersIdPage h1::first-letter{
     text-transform: capitalize;
+    
 }
 .OffersIdPage h2{
     text-align: center;
-    color: rgb(0, 170, 0);
+    /* color: rgba(0, 255, 0, 0.582); */
+    
+    background: linear-gradient(140deg, rgba(0, 0, 0, 1) 0%, rgba(128, 117, 0, 1) 16%, rgba(0, 0, 0, 1) 23%, rgba(0, 0, 0, 1) 30%, rgba(255, 211, 0, 1) 42%, rgba(255, 252, 237, 1) 45%, rgba(208, 172, 1, 1) 47%, rgb(255, 255, 255) 58%, rgb(255, 213, 0) 64%, rgb(0, 0, 0) 83%, rgba(0, 0, 0, 1) 90%);
+    -webkit-background-clip: text;/* muestra el fondo(gradiente) solo donde tengamos texto */
+    background-clip: text;/* lo mismo que la linea anterior, solo que para otros navegadores */
+    color: transparent; /* transparencia de texto original para que el gradiente se pueda ver */
+
+    /* text-shadow: 0px 1px 2px #ffe600; */
     font-size: 4rem;
-    margin:10px 0;
+    margin:0 0;
     font-weight: 400;
     
+}
+@media(min-width:800px){
 
+    .OffersIdPage__products{
+        width: 90vw;
+        margin: auto;
+
+    }
+}
+@media(min-width:1200px){
+    .OffersIdPage__products{
+        width: 70vw;
+
+    }
 }

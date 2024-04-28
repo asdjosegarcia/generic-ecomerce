@@ -169,7 +169,7 @@ model Question {
     Product           Product?         @relation(fields: [productId], references: [id]) //relacion 1 a muchos
     productId         Int
     ///////////relacion user
-    User              User?            @relation(fields: [username], references: [username]) //relacion 1 a muchos con products
+    User              User?            @relation(fields: [username], references: [username]) 
     username          String?
 }
 

@@ -119,9 +119,12 @@
     .UserProfilePage__img{
         width: 50vw;
         height: 50vw;
+        z-index: 0;
     }
     .UserProfilePage__img-edit{
         margin-left: 50vw;
+        z-index: 2;
+
     }
 }
 @media(min-width:1200px){

@@ -42,7 +42,7 @@ header .porduct--qualification__container svg {
     position: absolute;
     display: flex;
     justify-content: center;
-    right: 20px;
+    right: 5px;
     height: 30px;
     width: 30px;
     padding: 5px;
@@ -214,6 +214,9 @@ margin-bottom: 10px;
         width: 70%;
         margin: 5px auto;
     }
+    .prodcut__favorite-button {
+        top: 5px;
+    }
 
     .product__title,
     header {
@@ -223,7 +226,15 @@ margin-bottom: 10px;
 @media(min-width:1100px) {
     .product--img__contiainter {
         height: 26vw;
-
+        display: flex;
+        align-items: center;
+    }
+    .product--img__contiainter .product__img {
+        /* width: 40vw; */
+        max-width: 40vw;
+        max-height: 100%;
+        height: auto;
+        
     }
 
 }

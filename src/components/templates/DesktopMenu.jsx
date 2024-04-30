@@ -92,7 +92,7 @@ const DesktopMenu = (props) => {
             <button /* onClick={() => { props.setMobileMenu(false) }} */>My Products   <InventorySVG width={'24px'} fill={"#696969"}></InventorySVG> </button>
           </Link>
           <Link className='dektop-menu__cart-link' href='/cart'>
-            <button /* onClick={() => { props.setMobileMenu(false) }} */>My cart <CartSVG width={'24px'} fill={'#696969'}></CartSVG></button>
+            <button /* onClick={() => { props.setMobileMenu(false) }} */>My Cart <CartSVG width={'24px'} fill={'#696969'}></CartSVG></button>
           </Link>
 
           <Link className='dektop-menu__Favorites-link' href='/favorites'>

@@ -20,9 +20,9 @@ const Main = () => {
       <MainBanner></MainBanner>
       <div className='main_products'>
       <HorizontalProductList  title={'Stuff that might interest you!'} link={'/api/products/category/1'}></HorizontalProductList>
-      <HorizontalProductList  title={'Smartphones'} link={'/api/products/category/2'}></HorizontalProductList>
+      <HorizontalProductList  title={'Smartphones'} link={'/api/products/category/3'}></HorizontalProductList>
       <VerticalProductList title={'Offers'} link={'/api/offers'}></VerticalProductList>  
-      <ProductList title={'Waiting for you'} link={'/api/products/category/3'}/>      
+      <ProductList title={'Waiting for you'} link={'/api/products/category/5'}/>      
       {/* <VerticalProductList title={'Categories'} link={'/api/products/category/5'}></VerticalProductList>   */}
       <HorizontalProductList  title={'Your history'} link={'/api/products/category/4'}></HorizontalProductList>
       </div>

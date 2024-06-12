@@ -85,13 +85,11 @@ const ProductSearchList = (params) => {//ccrea la lista de productos
 
   return (
     <div className='product-search-list__container'>
-      {/* <button onClick={() => { itemsRequest() }}>request</button> */}
 
 
       {!getLoading ? 
-      <div>
-       {productList.map((product, index) => ( <ProductCard key={index} product={product}/>))}
-      </div>
+
+        productList.map((product, index) => ( <ProductCard key={index} product={product}/>))
        : 
        <Loading></Loading>
        }

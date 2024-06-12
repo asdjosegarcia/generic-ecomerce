@@ -1,7 +1,7 @@
 .loading-background{
   /* background-color: rgba(160, 160, 160, 0.164); */
   height: 100%;
-  width: 100vw;
+  width: 100%;
   position: fixed;
 }
 .loading-container{

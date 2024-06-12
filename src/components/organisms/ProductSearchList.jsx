@@ -12,8 +12,8 @@ import { useSession } from 'next-auth/react';
 let apiUrl = '';//por defecto sera ''
 let productList = []//por defecto no habran productos para renderizar
 let paramsUrl = '';
-const ProductSearchList = (params) => {//ccrea la lista de productos
-  const [getLoading, setLoading] = useState(true);//si se esta cargando la lista de productos
+const ProductSearchList = ({params,getLoading,setLoading}) => {//ccrea la lista de productos
+  // const [getLoading, setLoading] = useState(true);//si se esta cargando la lista de productos
   const contexto = useContext(variableContext)
   const { data: session } = useSession();//cargamos datos del usuario en session   
 
@@ -40,7 +40,7 @@ const ProductSearchList = (params) => {//ccrea la lista de productos
     
     
     
-    setLoading(true)//establecemos que inicio la carga
+    // setLoading(true)//establecemos que inicio la carga
     const itemsRequest = async () => {
       // console.log('')
       const res = await fetch(`/api/products/filter-by/`, {
@@ -85,15 +85,15 @@ const ProductSearchList = (params) => {//ccrea la lista de productos
 
   return (
     <div className='product-search-list__container'>
+      {/* <button onClick={() => { itemsRequest() }}>request</button> */}
 
 
       {!getLoading ? 
-
         productList.map((product, index) => ( <ProductCard key={index} product={product}/>))
        : 
-       <Loading></Loading>
-       }
+       <></>}
       {/* <button onClick={() => { itemsRequest() }}>request</button> */}
+      {/* {getLoading && <Loading></Loading>} */}
       
       
 

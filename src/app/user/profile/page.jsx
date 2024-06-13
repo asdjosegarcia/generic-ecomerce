@@ -152,11 +152,13 @@ const page = () => {
           </button> */}
               </section>
               {getAddImage &&
+              <div className='UserProfilePage__add-image--background'>
                 <div className='UserProfilePage__add-image--container'>
                   <CircleButton icon={<CloseSVG />} backgroundColor={"white"} function={() => setAddImage(false)}></CircleButton>
                   <ArchiveSelector type={"image"} getImage={getImage} setImage={setImage} />
                   <MainButton text={"Update Picture"} funct={imageUpdater} icon={<UploadSVG />}></MainButton>
                 </div>
+              </div>
               }
               <h1 className='UserProfilePage__username'>{getUserData.username}</h1>
               <span>ID: {getUserData.id}</span>

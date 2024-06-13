@@ -43,7 +43,7 @@ const page = () => {
 
 
   return (
-    <div className='ProductBugPage'>
+    <div className='ProductBuyPage'>
       <section >
         <CircleImgList products={contexto.getCart.products} />
       </section>

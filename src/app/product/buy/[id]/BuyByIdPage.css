@@ -1,0 +1,12 @@
+@media(min-width:800px) {
+    .BuyByIdPage{
+        width: 60vw;
+        padding: 0 20px 20px 20px;
+        box-shadow: 0px 10px 10px rgb(230, 230, 230);
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .BuyByIdPage .ProductCard{
+        background-color: white;
+    }
+}

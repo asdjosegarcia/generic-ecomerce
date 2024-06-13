@@ -1,14 +1,15 @@
 'use client'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreditCardForm from '@/components/organisms/CreditCardForm'
 import ProductCard from '@/components/molecules/ProductCard'
+import './BuyByIdPage.css'
 
 
 // import { useRouter } from 'next/navigation'
 
 
 const page = ({ params }) => {//recivimos la id del producto en el que clikeamos como un {id:5}
-  const [getProduct,setProduct]=useState(null)//aqui cargaremos los datos del produto
+  const [getProduct, setProduct] = useState(null)//aqui cargaremos los datos del produto
 
   useEffect(() => {
     if (params.id) {//si params.id tiene algo
@@ -18,21 +19,21 @@ const page = ({ params }) => {//recivimos la id del producto en el que clikeamos
           setProduct(data)
         })
     }
-}, [])
-// console.log(getProduct);
+  }, [])
+  // console.log(getProduct);
 
- 
+
 
   return (
-    <>
-    {getProduct &&(
+    <div className="BuyByIdPage">
+      {getProduct && (
         <ProductCard product={getProduct}></ProductCard>)
-    }
-    <CreditCardForm products={[getProduct]} quantity={1}></CreditCardForm>
-      
+      }
+      <CreditCardForm products={[getProduct]} quantity={1}></CreditCardForm>
 
-      
-    </>
+
+
+    </div>
   )
 }
 
